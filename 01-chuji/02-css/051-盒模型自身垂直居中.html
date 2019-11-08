@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>051-盒模型自身垂直居中.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 500px;
+			height: 500px;
+			background-color: gray;
+			margin:30px auto;
+			padding-top: 150px;
+			box-sizing: border-box;
+		}
+		.son{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin: 0px auto;
+
+		}/*给元素设置垂直剧中 需要给父元素设置padding 或者给子元素设置margin 但必须把盒子设置成ie盒模型*/
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>

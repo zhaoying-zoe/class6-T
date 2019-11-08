@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>031-优先级-混合选择器直接选中-.html</title>
+	<style type="text/css">
+		ul li{
+			color: red;
+		}
+		/*ul .wwe{
+			color: blue;
+		}
+		ul #wwe{
+			color: gray;
+		}*/
+		.wwwe .wwe{
+			color: pink;
+		}
+		.wwwe #wwe{
+			color: tomato;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul class="wwwe" id="wwwe">
+			<li class="wwe" id="wwe">
+				我是内容
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

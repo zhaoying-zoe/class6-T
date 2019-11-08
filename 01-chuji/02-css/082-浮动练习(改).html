@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>082-浮动练习(改).html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.middle{
+			width: 800px;
+			margin: 0 auto;
+		}
+		.clearfix:after{
+	        content: "";
+	        clear: both;
+	        display: block;
+	        height: 0px;
+	        visibility: hidden;
+	    }
+	    .clearfix{
+	        *zoom:1;
+	    }
+		header{
+			height: 100px;
+			margin-bottom: 10px;
+		}
+		.logo{
+			width: 100px;
+			height: 100px;
+			background: red;
+			float: left;
+		}
+		.hd1{
+			width: 150px;
+			height: 50px;
+			background: gray;
+			float: right;
+		}
+		.hd2{
+			width: 560px;
+			height: 50px;
+			background: purple;
+			float: right;
+		}
+		section{
+			height: 600px;
+			background: blue;
+			margin-bottom:10px;
+		}
+		footer{
+			height: 100px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<header class="top middle clearfix">
+		<div class="logo"></div>
+		<div class="hd1"></div>
+		<div class="hd2"></div>
+	</header>
+	<section class="middle">
+		<div class="left">
+			<div class="left1">
+				<div class="left1l">
+					<div class="left1ltop"></div>
+					<div class="left1lbottom"></div>
+				</div>
+				<div class="left1r"></div>
+			</div>
+			<div class="left2"></div>
+		</section>
+		<div class="right"></div>
+	</div>
+	<footer class="middle">
+		<div class="foot"></div>
+	</footer>
+</body>
+</html>

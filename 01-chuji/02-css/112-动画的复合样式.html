@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>112-动画的复合样式.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			animation: dadada 1s ease 1s infinite alternate;
+		}
+		@keyframes dadada{
+			from{
+				transform: scale(1);
+			}
+			to{
+				transform: scale(1.5);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>116-3d转换.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 600px;
+			height: 600px;
+			border: 25px solid #000;
+			margin: 50px auto;
+			background: gray;
+			perspective: 500px;
+			transform: rotateX(20deg) rotateZ(30deg);
+			transform-style: preserve-3d;
+		}
+		.box div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			margin: 200px auto;
+			transform: rotateY(50deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div></div>
+	</div>
+</body>
+</html>

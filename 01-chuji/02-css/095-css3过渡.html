@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>095-css3过渡.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			font-size: 10px;
+			background: blue;
+			transition-property: width,background,font-size;
+			transition-duration: 20s;
+		}
+		.box:hover{
+			width: 800px;
+			background: red;
+			font-size: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">哒哒哒</div>
+</body>
+</html>

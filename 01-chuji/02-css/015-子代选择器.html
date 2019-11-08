@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-子代选择器.html</title>
+	<style type="text/css">
+		div>p{
+			color: #123456;
+		}
+		div>.wee{
+			background-color: gray;
+			width: 100px;
+		}
+		div>div>p{
+			background-color: tomato;
+			width: 100px;
+			height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="boy">
+		<div class="bod">
+			小猪猪
+			<p>小猪</p>
+		</div>
+		<div>
+			大猪
+			<p>猪圈</p>
+		</div>
+	</div>
+	<div class="we">
+		<p>
+			<div class="wee">
+				笨猪
+			</div>
+		</p>
+	</div>
+</body>
+</html>

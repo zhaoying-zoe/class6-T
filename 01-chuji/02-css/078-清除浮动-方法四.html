@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>078-清除浮动-方法四.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father1{
+			width: 100%;
+			background: red;
+			/* margin-bottom: 30px; */
+		}
+		.father2{
+			width: 100%;
+			background: blue;
+			 /* margin-top: 20px; */ 
+		}
+		.father1 div{
+			width: 100px;
+			background: yellow;
+			float: left;
+
+		}
+		.father2 div{
+			width: 100px;
+			background: tomato;
+			float: left;
+		}
+		.box{
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div class="father1">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<p class="box"></p>
+	</div>
+	<div class="father2">
+		<div>.1</div>
+		<div>.2</div>
+		<div>.3</div>
+	</div>
+</body>
+</html>

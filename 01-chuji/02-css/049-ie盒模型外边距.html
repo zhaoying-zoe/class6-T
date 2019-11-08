@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>049-ie盒模型外边距.html</title>
+	<style type="text/css">
+		.father{
+			width: 300px;
+			height: 100px;
+			background-color: gray;
+			box-sizing: border-box;
+		}
+		div .son1{
+			width: 100px;
+			height: 100px;
+			background-color: #f00;
+			display: inline-block;
+			padding-top: 10px;
+		}
+		div .son2{
+			width: 100px;
+			height: 100px;
+			background-color: #0f0;
+			display: inline-block;
+		}
+		div .son3{
+			width: 100px;
+			height: 100px;
+			background-color: #00f;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1"></div><div class="son2"></div><div class="son3"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>074-浮动造成父元素高度塌陷.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father1{
+			width: 100%;
+			/* height: 60px; */
+			background: red;
+		}
+		.father2{
+			width: 100%;
+			/* height: 60px; */
+			background: blue;
+		}
+		.son1{
+			width: 100px;
+			height: 20px;
+			background: yellow;
+			float: left;
+		}
+		.son2{
+			width: 100px;
+			height: 20px;
+			background: yellow;
+			float: left;
+		}
+		.son3{
+			width: 100px;
+			height: 20px;
+			background: yellow;
+			float: left;
+		}
+		.son4{
+			width: 100px;
+			height: 20px;
+			background: tomato;
+			float: left;
+		}
+		.son5{
+			width: 100px;
+			height: 20px;
+			background: tomato;
+			float: left;
+		}
+		.son6{
+			width: 100px;
+			height: 20px;
+			background: tomato;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="father1">
+		<div class="son1">1</div>
+		<div class="son2">2</div>
+		<div class="son3">3</div>
+	</div>
+	<div class="father2">
+		<div class="son4">.1</div>
+		<div class="son5">.2</div>
+		<div class="son6">.3</div>
+	</div>
+</body>
+</html>

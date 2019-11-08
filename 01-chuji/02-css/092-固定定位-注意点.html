@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>092-固定定位注意点.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 500px;
+			height: 500px;
+			background: red;
+			margin:0 auto;
+			/* position: fixed; */
+		}
+		.box2{
+			width: 50px;
+			height: 50px;
+			background: purple;
+			left: 0px;
+			position: fixed;
+		}
+		body{
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<div class="box2"></div>
+	</div>
+</body>
+</html>

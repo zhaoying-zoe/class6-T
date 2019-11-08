@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>105-2d转换-修改旋转轴向.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 800px;
+			height: 680px;
+			border: 1px solid #000;
+			margin: 0 auto;
+		}
+		.box div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin: 20px auto;
+			perspective: 500px;
+		}
+		.box div img{
+			width: 100%;
+			height: 100%;
+		}
+		.box div:nth-child(1) img{
+			transform: rotateX(45deg);
+		}
+		.box div:nth-child(2) img{
+			transform: rotateY(40deg);
+			
+		}
+		.box div:nth-child(3) img{
+			/* transform: rotates(35deg); */
+			transform: rotateZ(35deg);
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box1"><img src="photo/poluo1.jpg"></div>
+		<div class="box2"><img src="photo/poluo2.jpg"></div>
+		<div class="box3"><img src="photo/poluo3.jpg"></div>
+	</div>
+</body>
+</html>

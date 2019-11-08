@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>125-单页平滑过度页面.html</title>
+	<link rel="stylesheet" type="text/css" href="css-link/font-awesome.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.top input:checked + a{
+			color: red;
+		}
+		.top input,.top a{
+			width: 20%;
+			height: 34px;
+			line-height: 34px;
+			text-align: center;
+			position: fixed;
+			top: 0px;
+		}
+		.top a{
+			text-decoration: none;
+			font-size: 24px;
+			background: #2f2f2f;
+			color: #fff;
+			z-index: 2;
+		}
+		.top a i{
+			font-size: 28px;
+			margin-right: 5px;
+		}
+		.top input{
+			z-index: 999;
+			opacity: 0;
+			cursor: pointer;
+		}
+		.top input:hover + a{
+			background: #111;
+		}
+		#ctr1,#ctr1+a{
+			left: 0%;
+		}
+		#ctr2,#ctr2+a{
+			left: 20%;
+		}
+		#ctr3,#ctr3+a{
+			left: 40%;
+		}
+		#ctr4,#ctr4+a{
+			left: 60%;
+		}
+		#ctr5,#ctr5+a{
+			left: 80%;
+		}
+		html{
+			height: 100%;
+		}
+		body{
+			height: 100%;
+		}
+		.top{
+			height: 100%;
+			overflow: hidden;
+		}
+		.bottom{
+			height: 100%;
+			margin-top: 34px;
+			transition: all 1s;
+		}
+		.bottom .box1{
+			height: 100%;
+		}
+		.bottom .box2{
+			height: 100%;
+		}
+		.bottom .box3{
+			height: 100%;
+		}
+		.bottom .box4{
+			height: 100%;
+		}
+		.bottom .box5{
+			height: 100%;
+		}
+		.top #ctr1:checked ~.bottom{
+			transform: translateY(0%);
+		}
+		.top #ctr2:checked ~.bottom{
+			transform: translateY(-100%);
+		}
+		.top #ctr3:checked ~.bottom{
+			transform: translateY(-200%);
+		}
+		.top #ctr4:checked ~.bottom{
+			transform: translateY(-300%);
+		}
+		.top #ctr5:checked ~.bottom{
+			transform: translateY(-400%);
+		}
+		.bottom div img{
+			width: 100%;
+			height: 100%;
+		}
+		/*.top input:checked ~ .bottom{
+			animation:sport 2s linear 0s infinite;
+		}*/
+		#ctr1:checked ~ .bottom .box1{
+			animation:sport 2s;
+		}
+		#ctr2:checked ~ .bottom .box2{
+			animation:sport 2s;
+		}
+		#ctr3:checked ~ .bottom .box3{
+			animation:sport 2s;
+		}
+		#ctr4:checked ~ .bottom .box4{
+			animation:sport 2s;
+		}
+		#ctr5:checked ~ .bottom .box5{
+			animation:sport 2s;
+		}
+		@keyframes sport{
+			from{
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="top">
+		<input type="radio" name="radio-part" id="ctr1" checked>
+		<a href="#"><i class="fa fa-home"></i>Home</a>
+		<input type="radio" name="radio-part" id="ctr2">
+		<a href="#"><i class="fa fa-coffee"></i>Service</a>
+		<input type="radio" name="radio-part" id="ctr3">
+		<a href="#"><i class="fa fa-building"></i>About</a>
+		<input type="radio" name="radio-part" id="ctr4">
+		<a href="#"><i class="fa fa-user"></i>Team</a>
+		<input type="radio" name="radio-part" id="ctr5">
+		<a href="#"><i class="fa fa-phone"></i>Contact</a>
+		<div class="bottom">
+			<div class="box1 box"><img src="photo/home.png"></div>
+			<div class="box2 box"><img src="photo/service.png"></div>
+			<div class="box3 box"><img src="photo/about.png"></div>
+			<div class="box4 box"><img src="photo/team.png"></div>
+			<div class="box5 box"><img src="photo/contact.png"></div>
+		</div>
+	</div>
+</body>
+</html>

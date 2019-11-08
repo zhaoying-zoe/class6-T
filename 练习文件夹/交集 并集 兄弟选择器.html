@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>first-child.html</title>
+	<style type="text/css">
+		/*交集选择器*/
+		div.div2{
+			font-size: 40px;
+		}
+		/*并集选择器*/
+		.div3,.div4{
+			font-size: 50px;
+		}
+		/*相邻兄弟选择器 选择后面相邻的兄弟 */
+		.div5+.div6{
+			text-align: center;
+		}
+		/*通用兄弟选择器 后面符合条件的兄弟标签都会被选中*/
+		.div5~div{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="div1">我是div1</div>
+		<div class="div2">我是div2</div>
+		<div class="div3">我是div3</div>
+		<div class="div4">我是div4</div>
+		<div class="div5">我是div5</div>
+		<div class="div6">我是div6</div>
+		<div class="div7">我是div7</div>
+		<div class="div8">我是div8</div>
+	</div>
+</body>
+</html>

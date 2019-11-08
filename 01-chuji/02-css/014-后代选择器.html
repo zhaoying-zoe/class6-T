@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-后代选择器.html</title>
+	<style type="text/css">
+		body div .bod p{
+			font-size: 36px;
+		}
+		div div{
+			color: gray;
+		}
+		.we .wee{
+			background-color: #670000;
+			font-size: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="boy">
+		<div class="bod">
+			小猪猪
+			<p>小猪</p>
+		</div>
+		<div>
+			大猪
+			<p>猪圈</p>
+		</div>
+	</div>
+	<div class="we">
+		<p>
+			<div class="wee">
+				dddd
+			</div>
+		</p>
+	</div>
+</body>
+</html>

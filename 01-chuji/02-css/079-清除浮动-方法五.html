@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>079-清除浮动-方法五.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father1{
+			width: 100%;
+			background: red;
+			/* margin-bottom: 30px; */
+		}
+		.father2{
+			width: 100%;
+			background: blue;
+			 /* margin-top: 20px; */ 
+		}
+		.father1 div{
+			width: 100px;
+			background: yellow;
+			float: left;
+
+		}
+		.father2 div{
+			width: 100px;
+			background: tomato;
+			float: left;
+		}
+		.clearfix:after{
+        content: "";
+        clear: both;
+        display: block;
+        height: 0px;
+        visibility: hidden;
+	    }
+	    .clearfix{
+        *zoom:1;
+	    }
+	</style>
+</head>
+<body>
+	<div class="father1 clearfix">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+	<div class="box"></div>
+	<div class="father2">
+		<div>.1</div>
+		<div>.2</div>
+		<div>.3</div>
+	</div>
+</body>
+</html>

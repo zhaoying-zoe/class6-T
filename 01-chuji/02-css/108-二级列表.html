@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>108-二级列表.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 400px;
+			border: 1px solid #000;
+			margin: 50px auto;
+		}
+		.box>ul{
+			height: 40px;
+			width: 100%;
+			background: gray;
+		}
+		.box>ul>li{
+			list-style: none;
+			width: 100px;
+			height: 40px;
+			float: left;
+			text-align: center;
+			line-height: 40px;
+			background: tomato;
+			margin-left: 25px;
+		}
+		.menu li{
+			width: 100%;
+			height: 40px;
+			list-style: none;
+			background: pink;
+			opacity: 0;
+			transform: rotateY(180deg);
+			transition: all 1s;
+		}
+		.box .top:hover .menu-list{
+			transform: rotateY(0deg);
+			opacity: 1;
+		}
+		.box .top .menu-list:nth-child(1){
+			transition-delay: 0.8s;
+		}
+		.box .top .menu-list:nth-child(2){
+			transition-delay: 0.6s;
+		}
+		.box .top .menu-list:nth-child(3){
+			transition-delay: 0.4s;
+		}
+		.box .top .menu-list:nth-child(4){
+			transition-delay: 0.2s;
+		}
+		.box .top .menu-list:nth-child(5){
+			transition-delay: 0s;
+		}
+		.box .top:hover .menu-list:nth-child(1){
+			transition-delay: 0s;
+		}
+		.box .top:hover .menu-list:nth-child(2){
+			transition-delay:  0.2s;
+		}
+		.box .top:hover .menu-list:nth-child(3){
+			transition-delay:  0.4s;
+		}
+		.box .top:hover .menu-list:nth-child(4){
+			transition-delay: 0.6s;
+		}
+		.box .top:hover .menu-list:nth-child(5){
+			transition-delay: 0.8s;
+		}
+		.bottom{
+			width: 100%;
+			height: 600px;
+			background: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li class="top">
+			一级列表
+				<ul class="menu">
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+				</ul>
+			</li>
+			<li class="top">
+				一级列表
+				<ul class="menu">
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+				</ul>
+			</li>
+			<li class="top">
+			一级列表
+				<ul class="menu">
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="bottom">我是我是我是我是我是我是我是我是我是我是我是我是</div>
+	</div>
+</body>
+</html>

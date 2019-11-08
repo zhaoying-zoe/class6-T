@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>097-css3过渡-过渡执行速度.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 800px;
+			height: 500px;
+			border: 1px solid #000;
+			margin: 50px auto;
+		}
+		li{
+			list-style: none;
+			width: 100px;
+			height: 50px;
+			border: 1px solid #000;
+			margin-top: 15px;
+			background: red; 
+			transition-property: margin-left;
+			transition-duration: 2s;
+		}
+		li:nth-child(2){
+			transition-timing-function: linear;
+		}
+		li:nth-child(3){
+			transition-timing-function: ease;
+		}
+		li:nth-child(4){
+			transition-timing-function: ease-in;
+		}
+		li:nth-child(5){
+			transition-timing-function: ease-out;
+		}
+		li:nth-child(6){
+			transition-timing-function: ease-in-out;
+		}
+		li:nth-child(7){
+			transition-timing-function: cubic-bezier(0,0,0.5,0.6);
+		}
+		ul:hover li{
+			margin-left: 700px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>默认</li>
+		<li>linear</li>
+		<li>ease 默认的</li>
+		<li>ease-in</li>
+		<li>ease-out</li>
+		<li>ease-in-out</li>
+		<li>cubic-bezier</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>094-布局练习.html</title>
+	<link rel="stylesheet" type="text/css" href="css-link/reset.css">
+	<style type="text/css">
+		.top{
+			width: 80%;
+			height: 50px;
+			margin: 10px auto 50px;
+			background: gray;
+			position: fixed;
+			top: 0px;
+			left: 50%;
+			margin-left: -40%;
+			margin-top: 50px;
+		}
+		.top .top1 li{
+			width: 20%;
+			height: 50px;
+			float: left;
+			line-height: 50px;
+			text-align: center;
+			font-weight: bold;
+		}
+		.top .top1 li:nth-child(3){
+			background: red;
+		}
+		.top .top1 li:nth-child(3) img{
+			position: absolute;
+			top: -14px;
+			left: 740px;
+		}
+		.middle{
+			width: 100%;
+			height: 500px;
+			margin: 0 auto 200px;
+			margin-top: 140px;
+		}
+		.left{
+			height: 300px;
+			width: 120px;
+			background:red;
+			position: fixed;
+			left: 0;
+			top:50%;
+			margin-top: -150px;
+		}
+		.middle .center{
+			width: 70%;
+			height: 626px;
+			margin: 0 auto;
+		}
+		.box1{
+			width: 60px;
+			height: 80px;
+			background: rgba(0,0,0,0.2);
+			margin-left: 0px;
+			float: left;
+			margin-top: 315px;
+			font-size: 50px;
+			line-height: 80px;
+			text-align: center;
+			color: white;
+		}
+		.bj-mid{
+			background: url(photo/bj-mid.png) no-repeat;
+			height: 625px;
+			width: 1333px;
+			background-size: 1333px 625px;
+		}
+		.box2{
+			width: 60px;
+			height: 80px;
+			background: rgba(0,0,0,0.5);
+			margin-left: 0px;
+			float: right;
+			margin-top: -310px;
+			font-size: 50px;
+			line-height: 80px;
+			text-align: center;
+			color: white;
+		}
+		.box1:hover{
+			background: rgba(0,0,0,0.8);
+			cursor: pointer;
+		}
+		.box2:hover{
+			background: rgba(0,0,0,0.8);
+			cursor: pointer;
+		}
+		.bjmid{
+			/* position: absolute; */
+			border: 1px solid #000;
+			/* float: left; */
+		}
+		.right{
+			height: 300px;
+			width: 120px;
+			background:red;
+			position: fixed;
+			right: 0;
+			top:50%;
+			margin-top: -150px;
+		}
+		.bottom{
+			width: 80%;
+			height: 1500px;
+			background: rgba(0,0,255,0.5);
+			margin: 0 auto;
+		}
+		.fanhui{
+			width: 100px;
+			height: 100px;
+			background-color: rgba(0,0,0,0.5);
+			position: fixed;
+			bottom: 0;
+			right:0;
+			text-align:center;
+			line-height: 100px;
+		}
+		.fanhui a{
+			color: purple;
+			font-weight:bold;
+		}
+		.fanhui a:link{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="top">
+		<ul class="top1">
+			<li>天猫会员</li>
+			<li>品牌街</li>
+			<li>电器城 <img src="photo/buju-logo.png"></li>
+			<li>营业厅</li>
+			<li>魅力惠</li>
+		</ul>
+	</div>
+	<div class="middle">
+		<div class="left"></div>
+		<div class="center">
+			<div class="box1">&lt;</div>
+			<div class="bj-mid">
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ul>
+			</div>
+			<div class="box2">&gt;</div>
+		</div>
+		<div class="right"></div>
+	</div>
+	<div class="bottom">我是内容</div>
+	<div class="fanhui"><a href="#">返回顶部</a></div>
+</body>
+</html>

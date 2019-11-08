@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>108.二级列表（改）.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.box{
+			width: 400px;
+			height: 600px;
+			border: 1px solid #000;
+			background: gray;
+			margin: 50px auto;
+		}
+		.bd{
+			width: 400px;
+			height: 40px;
+			background: purple;
+		}
+		.bd>li{
+			float: left;
+			margin-left: 50px;
+			text-align: center;
+			line-height: 40px;
+		}
+		.menu li{
+			background: pink;
+			width: 50px;
+			height: 40px;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="bd">
+			<li>
+				一级菜单
+				<ul class="menu">
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+					<li class="menu-list">二级列表</li>
+				</ul>
+			</li>
+			<li>一级菜单</li>
+			<li>一级菜单</li>
+		</ul>
+		<div class="hd"></div>
+	</div>
+</body>
+</html>

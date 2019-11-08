@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>114-动画开始和结束的显示状态.html</title>
+	<style type="text/css">
+		div{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+			background: url(photo/poluo.jpg) no-repeat;
+			margin: 50px auto;
+			transform: rotateZ(0deg);
+			animation: sport 1s linear 0s;
+			animation-play-state: paused;
+			/* animation-fill-mode: none; */
+			/*animation-fill-mode: backwards;*/
+			/* animation-fill-mode: forwards; */
+			animation-fill-mode: both;
+		}
+		div:hover{
+			animation-play-state: running;
+		}
+		@keyframes sport{
+			0%{
+				transform:rotateZ(10deg);
+			}
+			33%{
+				transform:rotateZ(20deg);				
+			}
+			66%{
+				transform:rotateZ(30deg);
+			}
+			100%{
+				transform:rotateZ(40deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

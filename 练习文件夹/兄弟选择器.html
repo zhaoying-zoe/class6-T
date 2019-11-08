@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>兄弟选择器.html</title>
+	<style type="text/css">
+		.son1+div{
+			font-size: 100px;
+			font-weight: lighter;
+		}
+		.son3+div{
+			font-size: 30px;
+			font-weight: bolder;
+			font-family: 楷体;
+		}
+		.son2~div{
+			color: red;
+			font-style: italic; 
+			font-weight: bold;
+		}
+		.son2~#span1{
+			font-weight: lighter;
+			font-family:黑体;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">我是div1</div>
+		<div class="son2">我是div2</div>
+		<span id="span1">我是span标签</span>
+		<div class="son3">我是div3</div>
+		<div class="son4">我是div4</div>
+		<div class="son5">我是div5</div>
+	</div>
+</body>
+</html>

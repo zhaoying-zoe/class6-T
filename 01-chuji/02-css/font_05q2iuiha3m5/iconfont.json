@@ -1,0 +1,51 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5603592",
+      "name": "game fang",
+      "font_class": "gamefang",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "6805824",
+      "name": "Game-Console 3",
+      "font_class": "Game-Console",
+      "unicode": "ea03",
+      "unicode_decimal": 59907
+    },
+    {
+      "icon_id": "8548552",
+      "name": "Game Developer",
+      "font_class": "GameDeveloper",
+      "unicode": "e6ef",
+      "unicode_decimal": 59119
+    },
+    {
+      "icon_id": "8548556",
+      "name": "Game Evaluation",
+      "font_class": "GameEvaluation",
+      "unicode": "e6f0",
+      "unicode_decimal": 59120
+    },
+    {
+      "icon_id": "8548565",
+      "name": "Game Scenario",
+      "font_class": "GameScenario",
+      "unicode": "e6f1",
+      "unicode_decimal": 59121
+    },
+    {
+      "icon_id": "8548566",
+      "name": "Game Development",
+      "font_class": "GameDevelopment",
+      "unicode": "e6f2",
+      "unicode_decimal": 59122
+    }
+  ]
+}

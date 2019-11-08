@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046-margin值溢出.html</title>
+	<style type="text/css">
+		.father{
+			background-color: gray;
+			width: 400px;
+			height: 400px;
+			margin-top: 100px;
+			/* border: 2px solid black; */
+			/* padding: 2px; */
+			overflow: hidden;
+			/* float: left; */
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background-color: tomato;
+			margin-top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>

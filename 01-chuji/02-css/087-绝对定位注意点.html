@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>087-绝对定位注意点.html</title>
+	<style>
+		*{
+			margin: 0;
+			height: 0;
+		}
+		.box1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top: 20px;
+			/* bottom: 50px; */
+			right: 20px;
+			left: 20px;
+		}
+		.box2{
+			width: 300px;
+			height: 300px;
+			background: green;
+		}
+		span{
+			width: 100px;
+			height: 100px;
+			background: gray;
+			position: absolute;
+			top: 50px;
+			left: 60px;
+		}
+		a{
+			width: 200px;
+			height: 20px;
+			position:absolute;
+			top: 90px;
+			left: 60px;
+			background: tomato;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<a href="#">3321321</a>
+	<span>12132132</span>
+</body>
+</html>

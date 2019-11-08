@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-属性选择器.html</title>
+	<style type="text/css">
+		/* [title]{
+			color: red;
+		} 直接通过属性名称，找到所有具有属性名称的元素
+		[title=xiaomi]{
+			color: red;
+		}
+		[title|=xiaomi]{
+			color: red;
+		}
+		[title^=xiaomi]{
+			color: red;
+		}
+		[title$=com]{
+			color: red;
+		}*/
+		[title*="xiaomi.com"]{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<a href="#" title="xiaomi">xiaomi</a><br>
+	<a href="#" title="www.xiaomi">www.xiaomi</a><br>
+	<a href="#" title="xiaomi com">xiaomi com</a><br>
+	<a href="#" title="xiaomi.com">xiaomi.com</a><br>
+	<a href="#" title="www.xiaomi.com">www.xiaomi.com</a><br>
+	<a href="#" title="xiaomi-com">xiaomi-com</a><br>
+
+</body>
+</html>
