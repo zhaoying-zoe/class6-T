@@ -6,54 +6,31 @@
 	<link rel="stylesheet" type="text/css" href="css-link/reset.css">
 	<style type="text/css">
 		.common{
-			width: 90%;
-			border: 1px solid #000;
+			width: 80%;
 			margin: 0 auto;
 		}
 		.top{
 			height: 50px;
-		}
-		.nav-list li{
-			width: 20%;
-			height: 50px;
-			float: left;
-			background: gray;
-			text-align: center;
-			line-height: 50px;
-			position: relative;
-			margin-top: 25px;
-			font-weight: bold;
-		}
-		.nav-list li:nth-child(3){
+			position: fixed;
+			top: 20px;
+			left: 50%;
+			margin-left: -40%;
 			background: red;
-		}
-		.nav-list li img{
-			position: absolute;
-			top: -14px;
-			left: 150px;
 		}
 		.middle{
 			height: 800px;
+			background: pink;
+			margin-top: 100px;
 		}
 		.bottom{
 			height: 1500px;
+			background: gray;
+			margin-top: 25px;
 		}
 	</style>
 </head>
 <body>
-	<div class="top common">
-		<div class="nav-list">
-			<ul>
-				<li>天猫会员</li>
-				<li>品牌街</li>
-				<li>电器城
-					<img src="photo/tm-logo.png">
-				</li>
-				<li>营业厅</li>
-				<li>魅力惠</li>
-			</ul>
-		</div>
-	</div>
+	<div class="top common"></div>
 	<div class="middle common"></div>
 	<div class="bottom common"></div>
 </body>
