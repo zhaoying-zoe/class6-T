@@ -80,6 +80,7 @@
 		background: url(../images/mi-logo3.png) no-repeat;
 		background-position: -55px;
 		transition: background-position 0.2s;
+		cursor: pointer;
 	}
 	.focus .container .header .logo:hover{
 		background-position: 0px;
