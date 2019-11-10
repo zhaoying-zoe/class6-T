@@ -1,3 +1,4 @@
+/*头部样式开始*/
 	.top{
 		width: 100%;
 		height: 40px;
@@ -11,6 +12,10 @@
 		line-height: 40px;
 		float: left;
 		font-size: 12px;
+		cursor: pointer;
+	}
+	.top .nav .nav-list:hover a{
+		color: white;
 	}
 	.top .nav span{
 		margin-left: 5px;
@@ -25,6 +30,10 @@
 	.top .user-info .nav-list{
 		float: left;
 		line-height: 40px;
+		cursor: pointer;
+	}
+	.top .user-info .nav-list:hover a{
+		color: white;
 	}
 	.top .user-info .nav-list span{
 		margin-left: 5px;
@@ -40,15 +49,19 @@
 		line-height: 40px;
 		background: #424242;
 		text-align: center;
+		cursor: pointer;
 	}
-	.top .cart span:nth-child(1){
-		margin-right: 5px;
+	.top .cart:hover{
+		color: #ff6700;
+		background: white;
 	}
 	i{
 		font-size: 20px;
 		vertical-align: -5px;
 		margin-right: 3px;
 	}
+/*头部样式结束*/
+/*焦点区域开始*/
 	.focus{
 		width: 100%;
 		height: 770px;
@@ -61,16 +74,45 @@
 	.focus .container .header .logo{
 		width: 55px;
 		height: 55px;
-		background: pink;
+		overflow: hidden;
 		float: left;
 		margin-top: 22px;
+		background: url(../images/mi-logo3.png) no-repeat;
+		background-position: -55px;
+		transition: background-position 0.2s;
 	}
+	.focus .container .header .logo:hover{
+		background-position: 0px;
+	}
+
+
+	/*出错的交互1 html:<img src="images/mi-logo3.png">
+	.focus .container .header .logo img{
+		transform: translateX(-55px);
+		transition-duration: 0.1s;
+	}
+	.focus .container .header .logo:hover img{
+		transform: translateX(0px);
+	}
+	*/
 	.focus .container .header .header-nav{
-		width: 661px;
+		width: 651px;
 		height: 100px;
-		background: #ccc;
+		background: white;
 		float: left;
-		margin-left: 180px;
+		margin-left: 190px;
+	}
+	.focus .container .header .header-list{
+		float: left;
+		line-height: 100px;
+		margin-right: 20px;
+	}
+	.focus .container .header .header-list a{
+		font-size: 15px;
+		color: #333;
+	}
+	.focus .container .header .header-list:hover a{
+		color: #ff6700;
 	}
 	.focus .container .header .search{
 		width: 296px;
@@ -91,13 +133,18 @@
 		background: purple;
 		margin-top: 14px;
 	}
+/*焦点区域结束*/
+/*主要区域开始*/
 	.main{
 		width: 100%;
 		height: 6035px;
 		background: blue;
 	}
+/*主要区域结束*/
+/*底部区域开始*/
 	.footer{
 		width: 100%;
 		height: 522px;
 		background: black;
 	}
+/*底部区域结束
