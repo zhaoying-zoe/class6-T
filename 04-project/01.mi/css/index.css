@@ -1,0 +1,103 @@
+	.top{
+		width: 100%;
+		height: 40px;
+		background: #333;
+	}
+	.top .nav{
+		height: 40px;
+		float: left;
+	}
+	.top .nav .nav-list{
+		line-height: 40px;
+		float: left;
+		font-size: 12px;
+	}
+	.top .nav span{
+		margin-left: 5px;
+		margin-right: 5px;
+		color: #393d42;
+	}
+	.top .user-info{
+		width: 160px;
+		height: 40px;
+		float: right;
+	}
+	.top .user-info .nav-list{
+		float: left;
+		line-height: 40px;
+	}
+	.top .user-info .nav-list span{
+		margin-left: 5px;
+		margin-right: 5px;
+		color: #393d42;
+	}
+	.top .cart{
+		width: 120px;
+		height: 40px;
+		float: right;
+		color: #b0b0b0;
+		font-size: 12px;
+		line-height: 40px;
+		background: #424242;
+		text-align: center;
+	}
+	.top .cart span:nth-child(1){
+		margin-right: 5px;
+	}
+	i{
+		font-size: 20px;
+		vertical-align: -5px;
+		margin-right: 3px;
+	}
+	.focus{
+		width: 100%;
+		height: 770px;
+		background: #fff;
+	}
+	.focus .container .header{
+		height: 100px;
+		width: 100%;
+	}
+	.focus .container .header .logo{
+		width: 55px;
+		height: 55px;
+		background: pink;
+		float: left;
+		margin-top: 22px;
+	}
+	.focus .container .header .header-nav{
+		width: 661px;
+		height: 100px;
+		background: #ccc;
+		float: left;
+		margin-left: 180px;
+	}
+	.focus .container .header .search{
+		width: 296px;
+		height: 50px;
+		background: #bbb;
+		float: left;
+		margin-left: 34px;
+		margin-top: 25px;
+	}
+	.focus .container .focus-contant{
+		width: 100%;
+		height: 460px;
+		background: yellow;
+	}
+	.focus .container .hot{
+		width: 100%;
+		height: 170px;
+		background: purple;
+		margin-top: 14px;
+	}
+	.main{
+		width: 100%;
+		height: 6035px;
+		background: blue;
+	}
+	.footer{
+		width: 100%;
+		height: 522px;
+		background: black;
+	}
