@@ -36,7 +36,6 @@
 		color: white;
 	}
 	.top .user-info .nav-list span{
-		margin-left: 5px;
 		margin-right: 5px;
 		color: #393d42;
 	}
@@ -118,15 +117,73 @@
 	.focus .container .header .search{
 		width: 296px;
 		height: 50px;
-		background: #bbb;
 		float: left;
 		margin-left: 34px;
 		margin-top: 25px;
+		position: relative;
+	}
+	.focus .container .header .search input{
+		width: 245px;
+		height: 50px;
+		float: left;
+		box-sizing: border-box;
+		border: 1px solid #e0e0e0;
+		border-right: none;
+		outline: none;
+	}
+	.focus .container .header .search .search-btn{
+		width: 51px;
+		height: 50px;
+		border: 1px solid #e0e0e0;
+		float: left;
+		color:#616161;
+		text-align: center;
+		line-height: 50px;
+		box-sizing: border-box;
+	}
+	.focus .container .search .search-btn i{
+		font-size: 24px;
+	}
+	.focus .container .header .search .search-word{
+		position: absolute;
+		font-size: 11px;
+		background: #eee;
+		padding: 1px 5px;
+		color: #757575;
+	}
+	.focus .container .header .search .keyword1{
+		top: 15px;
+		left: 58px;
+	}
+	.focus .container .header .search .keyword2{
+		top: 15px;
+		left: 147px;
+	}
+	.focus .container .header .search .search-list{
+		border:1px solid #ccc;
+		width: 245px;
+	}
+	.focus .container .header .search-list a{
+		color: #333;		
 	}
 	.focus .container .focus-contant{
 		width: 100%;
 		height: 460px;
-		background: yellow;
+		box-sizing: border-box;
+	}
+	.focus .container .focus-contant .cate-list{
+		width: 234px;
+		height: 460px;
+		background: rgba(0,0,0,0.5);
+		box-sizing: border-box;
+		padding: 20px 30px;
+	}
+	.focus .container .focus-contant .cate-item{
+		line-height: 42px;
+	}
+	.focus .container .focus-contant .cate-item a{
+		font-size: 14px;
+		color: #fff;
 	}
 	.focus .container .hot{
 		width: 100%;
