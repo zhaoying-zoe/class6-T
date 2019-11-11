@@ -84,8 +84,6 @@
 	.focus .container .header .logo:hover{
 		background-position: 0px;
 	}
-
-
 	/*出错的交互1 html:<img src="images/mi-logo3.png">
 	.focus .container .header .logo img{
 		transform: translateX(-55px);
@@ -167,19 +165,27 @@
 		color: #333;		
 	}
 	.focus .container .focus-contant{
-		width: 100%;
-		height: 460px;
-		box-sizing: border-box;
+		/* width: 100%; */
+		/* height: 460px; */
+		background: pink;
 	}
 	.focus .container .focus-contant .cate-list{
 		width: 234px;
 		height: 460px;
 		background: rgba(0,0,0,0.5);
 		box-sizing: border-box;
-		padding: 20px 30px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.focus .container .focus-contant .cate-list i{
+		padding-left: 90px;
+		color: #e0e0e0;
+		font-size: 16px;
 	}
 	.focus .container .focus-contant .cate-item{
 		line-height: 42px;
+		height: 42px;
+		padding-left: 34px;
 	}
 	.focus .container .focus-contant .cate-item a{
 		font-size: 14px;
