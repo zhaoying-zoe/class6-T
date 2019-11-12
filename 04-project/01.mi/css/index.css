@@ -120,6 +120,10 @@
 		margin-top: 25px;
 		position: relative;
 	}
+	/*有问题的地方*/
+	.focus .container .search:hover .search-btn{
+		border-color: #aaa;
+	}
 	.focus .container .header .search input{
 		width: 245px;
 		height: 50px;
@@ -128,6 +132,19 @@
 		border: 1px solid #e0e0e0;
 		border-right: none;
 		outline: none;
+		padding-left: 10px;
+	}
+	.focus .header .search input:focus{
+		border-color: #ff6700;
+	}
+	.focus .header .search input:focus +.search-btn{
+		border-color: #ff6700;
+	}
+	.focus .header .search input:focus ~.search-list{
+		display: block;
+	}
+	.focus .header .search input:focus ~.search-word{
+		display: none;
 	}
 	.focus .container .header .search .search-btn{
 		width: 51px;
@@ -141,6 +158,11 @@
 	}
 	.focus .container .search .search-btn i{
 		font-size: 24px;
+		cursor: pointer;
+	}
+	.focus .container .search .search-btn:hover{
+		background: #ff6700;
+		color: white;
 	}
 	.focus .container .header .search .search-word{
 		position: absolute;
@@ -148,6 +170,10 @@
 		background: #eee;
 		padding: 1px 5px;
 		color: #757575;
+	}
+		.focus .container .search .search-word:hover{
+		background: #ff6700;
+		color: white;
 	}
 	.focus .container .header .search .keyword1{
 		top: 15px;
@@ -158,8 +184,18 @@
 		left: 147px;
 	}
 	.focus .container .header .search .search-list{
-		border:1px solid #ccc;
-		width: 245px;
+		border:1px solid #ff6700;
+		width: 244px;
+		background: white;
+		display: none;
+	}
+	.focus .container .header .search .search-item{
+		line-height: 30px;
+		padding-left: 10px;
+		cursor: pointer;
+	}
+	.focus .container .header .search .search-item:hover{
+		background: #fafafa;
 	}
 	.focus .container .header .search-list a{
 		color: #333;		
@@ -167,29 +203,75 @@
 	.focus .container .focus-contant{
 		/* width: 100%; */
 		/* height: 460px; */
-		background: pink;
+		/* background: pink; */
+		position: relative;
 	}
 	.focus .container .focus-contant .cate-list{
 		width: 234px;
 		height: 460px;
-		background: rgba(0,0,0,0.5);
 		box-sizing: border-box;
 		padding-top: 20px;
 		padding-bottom: 20px;
+		position: relative;
+		background: rgba(105,101,101,0.6);
+		z-index:33; 
 	}
 	.focus .container .focus-contant .cate-list i{
-		padding-left: 90px;
+		padding-right: 20px;
 		color: #e0e0e0;
 		font-size: 16px;
+		float: right;
 	}
 	.focus .container .focus-contant .cate-item{
 		line-height: 42px;
+		cursor: pointer;
 		height: 42px;
 		padding-left: 34px;
+	}
+	.focus .container .focus-contant .cate-item:hover{
+		background: #ff6700;
 	}
 	.focus .container .focus-contant .cate-item a{
 		font-size: 14px;
 		color: #fff;
+	}
+	.focus .container .focus-contant .carousel{
+		box-sizing: border-box;
+		height: 460px;
+
+	}
+	.focus .container .focus-contant .carousel img{
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.focus .container .focus-contant .carousel .arrow{
+		width: 41px;
+		height: 69px;
+		position: absolute;
+		line-height: 69px;
+		text-align: center;
+		color: #afcdd6;
+	}
+	.focus .container .focus-contant .carousel .arrow i{
+		font-size: 30px;
+	}
+	.focus .container .focus-contant .carousel .arrow:hover{
+		background: #7d7e7f;
+		color: white;
+	}
+	.focus .container .focus-contant .carousel .arrow-left{
+		top: 190px;
+		left: 234px;		
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 3px;
+	}
+	.focus .container .focus-contant .carousel .arrow-right{
+		top: 190px;
+		left: 1186px;
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
 	}
 	.focus .container .hot{
 		width: 100%;
