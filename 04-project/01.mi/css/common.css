@@ -8,9 +8,6 @@ a{
 	font-size: 12px;
 	color: #b0b0b0;
 }
-a:hover{
-	color: #fff;
-}
 .clearfix:after{
     content: "";
     clear: both;
@@ -20,4 +17,7 @@ a:hover{
 }
 .clearfix{
 	*zoom:1;
+}
+a:hover{
+	color: #fff;
 }

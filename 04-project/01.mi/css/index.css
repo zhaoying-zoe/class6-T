@@ -6,6 +6,48 @@
 		float: right;
 		width: 978px;
 	}
+	.hd{
+		width: 100%;
+		height: 62px;
+		line-height: 62px;
+	}
+	.hd h2{
+		font-size: 22px;
+		font-weight: lighter;
+		float: left;
+	}
+	.hd .more{
+		float: right;
+	}
+	.hd .more.move a{
+		display: block;
+		float: left;
+		width: 36px;
+		height: 24px;
+		line-height: 24px;
+		border: 1px solid #e0e0e0;
+		box-sizing: border-box;
+		margin-top: 28px;
+		text-align: center;
+	}
+	.hd .more.move a:hover i{
+		color: #ff6700;
+	}
+	.hd .more.move a i{
+		color: #bab1b0;
+		font-size: 16px;
+	}
+	.hd .more.move a:first-child{
+		border-right: none;
+	}
+	.main .container .ad{
+		width: 1226px;
+		height: 120px;
+	}
+	.main .container .ad img{
+		width: 100%;
+		height: 100%;
+	}
 /*头部样式开始*/
 	.top{
 		width: 100%;
@@ -23,7 +65,7 @@
 		cursor: pointer;
 	}
 	.top .nav .nav-list:hover a{
-		color: white;
+		color: #fff;
 	}
 	.top .nav span{
 		margin-left: 5px;
@@ -201,6 +243,7 @@
 		line-height: 30px;
 		padding-left: 10px;
 		cursor: pointer;
+		z-index: 999;
 	}
 	.focus .container .header .search .search-item:hover{
 		background: #fafafa;
@@ -220,7 +263,7 @@
 		box-sizing: border-box;
 		padding-top: 20px;
 		padding-bottom: 20px;
-		position: relative;
+		position: absolute;
 		background: rgba(105,101,101,0.6);
 		z-index:33; 
 	}
@@ -245,14 +288,18 @@
 	}
 	.focus .container .focus-contant .carousel{
 		box-sizing: border-box;
+		width: 100%;
 		height: 460px;
-
+		position: relative;
+		top: 0px;
+		left: 0px;
 	}
 	.focus .container .focus-contant .carousel img{
 		width: 100%;
 		position: absolute;
 		top: 0;
 		left: 0;
+		cursor: pointer;
 	}
 	.focus .container .focus-contant .carousel .arrow{
 		width: 41px;
@@ -261,6 +308,7 @@
 		line-height: 69px;
 		text-align: center;
 		color: #afcdd6;
+		cursor: pointer;
 	}
 	.focus .container .focus-contant .carousel .arrow i{
 		font-size: 30px;
@@ -285,16 +333,21 @@
 		height: 60px;
 		width: 82px;
 		position: absolute;
-		bottom:444px;
-		right: 34px;
+		bottom: -20px;
+		right: 0px;
 		z-index: 340;
 	}
 	.focus .container .focus-contant .carousel .btn-list{
 		width: 8px;
 		height: 8px;
-		background: red;
-		border: 2px solid #939295;
-		border-radius: 1px;
+		background: #8f8e92;
+		border: 2px solid #b1b0b3;
+		border-radius: 50%;
+		display: inline-block;
+		cursor: pointer;
+	}
+	.focus .container .focus-contant .carousel .btn-list:hover{
+		background: #f5f4f8;
 	}
 	.focus .container .hot{
 		width: 100%;
@@ -302,10 +355,10 @@
 	}
 	.focus .container .hot .hot-left{
 		height: 170px;
-		background: red;
 	}
 	.focus .container .hot .hot-left .hot-list{
 		float: left;
+		background: #5f5750;
 	}
 	.focus .container .hot .hot-left .hot-item{
 		width: 78px;
@@ -313,9 +366,13 @@
 		float: left;
 		text-align: center;
 	}
-	.focus .container .hot .hot-left i{
+	.focus .container .hot-left .hot-item span{
+		font-size: 12px;
+	}
+	.focus .container .hot .hot-left .hot-item i{
 		display: block;
 		margin-top: 22px;
+		cursor: pointer;
 	}
 	.focus .container .hot .hot-right{
 		height: 170px;
@@ -325,6 +382,7 @@
 		height: 170px;
 		float: left;
 		margin-left: 15px;
+		cursor: pointer;
 	}
 	.focus .container .hot .hot-right .rexiao:first-child{
 		margin-left: 0px;
@@ -340,15 +398,12 @@
 		height:6035px;
 		background: #f5f5f5;
 	}
-	.main .flash .hd{
-		width: 100%;
-		height: 52px;
-		background: pink;
-	}
 	.main .flash .bd .col1{
 		text-align: center;
 		height: 340px;
 		background: #f1eded;
+		border-top: 1px solid #e53935;
+		box-sizing: border-box;
 	}
 	.main .flash .bd .col1 div:nth-child(1){
 		color: #ef3a3b;
@@ -393,11 +448,24 @@
 		color: #fff;
 		font-size: 22px;
 	}
-	.main .flash .bd .col2{
-		background: tomato;
+	.main .flash .bd .col2 .product-list{
 		width: 978px;
 		height: 340px;
 	}
+	.main .bd .col2 .product-item{
+		width: 234px;
+		height: 340px;
+		background: red;
+		float: left;
+		margin-left: 14px;
+	}
+	.main .bd .col2 .product-item:first-child{
+		margin-left: 0px;
+	}
+	.main .container .ad.ad-shangou{
+		margin-top: 22px;
+	} 
+	
 /*主要区域结束*/
 /*底部区域开始*/
 	.footer{
