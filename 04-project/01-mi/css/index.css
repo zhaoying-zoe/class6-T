@@ -242,15 +242,19 @@
 	.focus .header{
 		/*background: red;*/
 	}
-	.focus .header .logo a{
-		float: left;
+	.focus .container .header .logo{
 		width: 55px;
 		height: 55px;
-		background: url(../images/logo-1.png) no-repeat;
+		overflow: hidden;
+		float: left;
 		margin-top: 22px;
+		background: url(../images/mi-logo3.png) no-repeat;
+		background-position: -55px;
+		transition: background-position 0.2s;
+		cursor: pointer;
 	}
-	.focus .header .logo a:hover{
-		background: url(../images/logo-2.png) no-repeat;
+	.focus .container .header .logo:hover{
+		background-position: 0px;
 	}
 	.focus .header .header-nav{
 		float: left;
@@ -648,13 +652,13 @@
 		margin-left: 0px;
 	}
 	.main .video .bd .video-name{
-		font-size: 12px;
+		font-size: 14px;
 		color: #333;
 		text-align: center;
 		margin-top: 33px;
 	}
 	.main .video .bd .video-desc{
-		font-size: 11px;
+		font-size: 12px;
 		color: #b0b0b0;
 		text-align: center;
 	}
@@ -668,21 +672,72 @@
 		height: 272px;
 		background: #fff;
 	}
+	.footer .ft-top .service-list{
+		border-bottom: 1px solid #e0e0e0;
+		padding: 28px 0px;
+	}
 	.footer .ft-top .service-item{
-		box-sizing: border-box;
-		/* text-align: center; */
-		width: 20%;
 		float: left;
+		width: 20%;
+		text-align: center;
+		box-sizing: border-box;
+		border-right: 1px solid #e0e0e0;
+	}
+	.footer .ft-top .service-item i{
+		font-size: 24px;
+		padding-right: 6px;
+		vertical-align: -3px;
+		cursor: pointer;
+		transition: color 0.2s;
 	}
 	.footer .ft-top .service-item a{
 		font-size: 16px;
-		border-right: 1px solid #e0e0e0;
-		height: 79px;
 		color: #616161;
-		line-height: 79px;
+		cursor: pointer;
+		transition: color 0.2s;
+	}
+	.footer .ft-top .service-item i:hover,.footer .ft-top .service-item a:hover{
+		color: #ff6700;
 	}
 	.footer .ft-top .service-item:nth-child(5){
 		border: none;
+	}
+	.footer .ft-top .ft-t-b{
+		width: 80%;
+	}
+	.footer .ft-top .ft-t-b dl{
+		width: 162px;
+	}
+		.footer .ft-top .ft-t-b dl{
+		float: left;
+	}
+	.footer .ft-top .ft-t-b dt{
+		margin: 42px 0px 15px 0px;
+		font-size: 14px;
+	}
+	.footer .ft-top .ft-t-b dd{
+		margin-top: 8px;
+	}
+	.footer .ft-top .ft-t-b dd a{
+		color: #757575;
+		font-size: 12px;
+	}
+	.footer .ft-top .ft-t-b dd a:hover{
+		color: #ff6700;
+	}
+	.footer .ft-top .mes{
+		width: 20%;
+		float: right;
+		text-align: center;
+	}
+	.footer .ft-top .mes li{
+		border-left: 1px solid #e0e0e0;
+
+	}
+	.footer .ft-top .mes .mes-num{
+		color: #ff6700;
+		font-size: 20px;
+		margin-top: 30px;
 	}
 	.footer .ft-bottom{
 		height: 250px;
