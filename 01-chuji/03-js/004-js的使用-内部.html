@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-js的使用-内部.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			margin: 100px auto;
+		}
+	</style>
+	<script type="text/javascript">
+		//函数//
+		function toBig(){
+			var obox=document.getElementById('box')
+			obox.style.background='blue';
+			obox.style.width='400px';
+			obox.style.height='400px';
+		}
+		function toSmall(){
+			var obox=document.getElementById('box')
+			obox.style.background='tomato';
+			obox.style.width='200px';
+			obox.style.height='200px';
+		}
+	</script>
+</head>
+<body>
+	<div id="box" onmouseover="toBig()"onmouseout="toSmall()"></div>
+</body>
+</html>
