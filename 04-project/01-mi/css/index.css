@@ -732,15 +732,68 @@
 	}
 	.footer .ft-top .mes li{
 		border-left: 1px solid #e0e0e0;
-
+	}
+	.footer .ft-top .mes li:nth-child(4){
+		margin-top: 20px;
+	}
+	.footer .ft-top .mes li:nth-child(4):hover a{
+		color: #fff;
+		background: #ff6700;
+	}
+	.footer .ft-top .mes li:nth-child(4) a{
+		font-size: 13px;
+		color: #ff6700;
+		padding: 6px 25px;
+		border: 1px solid #ff6700;
 	}
 	.footer .ft-top .mes .mes-num{
 		color: #ff6700;
 		font-size: 20px;
-		margin-top: 30px;
+		margin-top: 33px;
+	}
+	.footer .ft-top .mes .mes-date{
+		font-size: 12px;
+		margin-top: 6px;
+		color: #616161;
+	}
+	.footer .ft-top .mes .mes-huafei{
+		font-size: 12px;
+		margin-top: 3px;
+		color: #616161;
 	}
 	.footer .ft-bottom{
 		height: 250px;
 		background:#fafafa;
+		padding-top: 20px;
+	}
+	.footer .ft-bottom img{
+		float: left;
+		margin-right: 8px;
+	}
+	.footer .ft-bottom .nav{
+		margin-left:5px;
+		width: 1119px;
+	}
+	.footer .ft-bottom .nav .nav-item{
+		float: left;
+	}
+	.footer .ft-bottom .nav .nav-item .shuxian{
+		margin-left: 3px;
+		margin-right: 3px;
+		color:#3b3733;
+	}
+	.footer .ft-bottom .nav .nav-item a{
+		color: #757575;
+	}
+	.footer .ft-bottom .container div a{
+		margin-left: 60px;
+	}
+	.footer .ft-bottom .container a:hover{
+		color: #ff6700;
+	}
+	.footer .ft-bottom .container .wwe{
+		width: 100px;
+		height: 30px;
+		margin-left: 50px;
 	}
 /*底部区域结束
