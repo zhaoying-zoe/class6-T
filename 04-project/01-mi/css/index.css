@@ -737,8 +737,32 @@
 	}
 	.footer .ft-top .mes .mes-num{
 		color: #ff6700;
-		font-size: 20px;
-		margin-top: 30px;
+		font-size: 21px;
+		margin-top: 35px;
+	}
+	.footer .ft-top .mes-date{
+		font-size: 12px;
+		color: #616161;
+		margin-top: 5px;
+	}
+	.footer .ft-top .mes-huafei{
+		color: #616161;
+		font-size: 12px;
+		margin-top: 3px;
+	}
+	.footer .ft-top .mes li{
+
+	}
+	.footer .ft-top .mes a{
+		border: 1px solid #ff6700;
+		width: 80px;
+		height: 20px;
+		color: #ff6700;
+		padding: 5px 25px;
+		font-size: 13px;
+	}
+	.footer .ft-top .mes li:nth-child(4){
+		margin-top: 20px;
 	}
 	.footer .ft-bottom{
 		height: 250px;
