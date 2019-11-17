@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-严格模式.html</title>
+	<script type="text/javascript">
+		//多行严格放在第一行'use strict'
+		function fn(){
+			'use strict'
+			alert(!this);
+		}
+		function fn1(){
+			//单行严格放在定义的函数的内部第一行
+			//'use strict'
+			alert(!this);
+		}
+		fn();
+		fn1();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
