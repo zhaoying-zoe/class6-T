@@ -5,7 +5,7 @@
 	<title>023
 	-引用数据类型特点.html</title>
 	<script type="text/javascript">
-		var a = {};
+		/*var a = {};
 		console.log(a);
 		console.log(typeof a);
 		
@@ -16,7 +16,18 @@
 		function fn(){
 			console.log(12665);
 		}
-		console.log(typeof fn)
+		console.log(typeof fn)；*/
+		var obj = {
+			name:"tom",
+			age:233
+		}
+		obj.sex = "male";//动态添加属性
+		console.log(obj);
+		var obj2 =  obj;
+		console.log(obj2);
+		obj2.name='bbb';
+		console.log(obj);
+		console.log(obj2);
 	</script>
 </head>
 <body>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-数据转换.html</title>
+	<!-- <script type="text/javascript">
+		alert(5+'5');
+		alert(5-'5');
+	</script> -->
+</head>
+<body>
+	<input type="text" id="tex1">+
+	<input type="text" id="tex2">
+	<input type="button" value="求和" id="btn">
+	<script type="text/javascript">
+		var oTxt1 = document.getElementById('tex1');
+		var oTxt2 = document.getElementById('tex2');
+		var oBtn = document.getElementById('btn');
+		//console.log(oTxt1);
+		//console.log(oTxt2);
+		oBtn.onclick = function(){
+			//alert(222);
+			var val1 = parseFloat(oTxt1.value);
+			var val2 = parseFloat(oTxt2.value);
+			console.log(val1);
+			//console.log();
+			if (isNaN(val1)) {
+				alert('第一行错了..')
+			}else if(isNaN(val2)){
+				alert('23333...')
+			}else{
+				alert(val1+val2);
+			}
+		}
+	</script>
+</body>
+</html>

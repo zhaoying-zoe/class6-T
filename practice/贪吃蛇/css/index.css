@@ -36,7 +36,7 @@
 .pauseBtn button{
     width: 70px;
     height: 70px;
-    background-image: url('../images/btn4.png');
+    background-image: url('../images/btn4.jpg');
     margin-left: -35px;
     margin-top: -35px;
 }
@@ -56,6 +56,6 @@
     border-radius: 50%;
 }
 .food{
-    background: url('../images/food2.png') no-repeat;
+    background: url('../images/food.png') no-repeat;
     background-size: 100% 100%;
 }
