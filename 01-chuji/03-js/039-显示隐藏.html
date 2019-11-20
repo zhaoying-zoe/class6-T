@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>039-显示隐藏.html</title>
+</head>
+<body>
+	<input type="button" id="btn" value="显示或隐藏按钮">
+	<div id="box">2333</div>
+</body>
+<script type="text/javascript">
+	var oBox = document.getElementById('box');
+	var oBtn = document.getElementById('btn');
+	console.log(oBox);
+	console.log(oBtn);
+	oBtn.onclick=function (){
+		//oBox.style.display = 'none';
+		if (oBox.style.display == 'none'){
+			oBox.style.display = 'block';
+		}else{
+			oBox.style.display = 'none';
+		}
+	}
+</script>
+</html>
