@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>047-选项卡.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.btn-list{
+			overflow: hidden;
+		}
+		.btn-item{
+			float: left;
+			font-size: 20px;
+			margin-right: 10px;
+		}
+		.nav-item{
+			width: 250px;
+			height: 250px;
+			line-height: 250px;
+			text-align: center;
+			font-size: 50px;
+			background: #ff6700;
+			margin-top: 5px;
+			display: none;
+		}
+		.active{
+			border-bottom: 2px solid #ff6700;
+			color: #ff6700;
+		}
+	</style>
+</head>
+<body>
+	<ul class="btn-list">
+		<li class="btn-item active">选项一</li>
+		<li class="btn-item">选项二</li>
+		<li class="btn-item">选项三</li>
+		<li class="btn-item">选项四</li>
+	</ul>
+	<ul class="nav-list">
+		<li class="nav-item" style="display: block">1</li>
+		<li class="nav-item">2</li>
+		<li class="nav-item">3</li>
+		<li class="nav-item">4</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var aBtn = document.querySelectorAll('.btn-item');
+	var aContent = document.querySelectorAll('.nav-item');
+	//console.log(oBtn);
+	//console.log(oContent);
+	for(var i = 0;i < aBtn.length;i++){
+		//console.log(aBtn[i]);
+		console.log(i);
+		aBtn[i].index=i;
+		aBtn[i].onclick=function(){
+			for(var j = 0;j < aBtn.length;j++){
+				//console.log(aBtn[j]);
+				aBtn[j].className='btn-item';
+				aContent[j].style.display='none';
+			}
+			console.log(this);
+			this.className='btn-item active';
+			aContent[this.index].style.display='block';
+			//this.indexstyle.display='block';	
+			//alert(2333);
+		}
+	}
+</script>
+</html>
