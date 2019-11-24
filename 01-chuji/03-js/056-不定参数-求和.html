@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>056-不定参数-求和.html</title>
+	<script type="text/javascript">
+		/*
+		function sum(n1,n2,n3,n4){
+			alert(n1+n2+n3+n4);
+		}
+		sum(1,2,3,4);
+		*/
+		function sum(){
+			//console.log(arguments);
+			var result = 0;
+			for(var i = 0;i < arguments.length;i++){
+				//console.log(arguments[i]);
+				result = result + arguments[i];
+			}
+			console.log(result);
+			alert(result);
+		}
+		sum(1,2,3,4,5);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

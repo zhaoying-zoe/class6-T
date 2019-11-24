@@ -9,13 +9,10 @@
 			padding: 0;
 		}
 		.box{
-			width: 380px;
+			width: 390px;
 			height: 600px;
 			background: #ccc;
 			margin: 50px auto;
-			
-		}
-		ul{
 			overflow: hidden;
 		}
 		li{
@@ -33,6 +30,9 @@
 		.plan{
 			margin-top: 20px;
 			margin-left: 20px;
+			position: fixed;
+			top: 520px;
+			left: 760px;
 		}
 		.active{
 			color: #111;
@@ -41,30 +41,30 @@
 	</style>
 </head>
 <body>
-	<div class="box">
-		<ul>
-			<li class="active">1</li>
-			<li>2</li>
-			<li>3</li>
-			<li>4</li>
-			<li>5</li>
-			<li>6</li>
-			<li>7</li>
-			<li>8</li>
-			<li>9</li>
-			<li>10</li>
-			<li>11</li>
-			<li>12</li>
-		</ul>
-		<div class="plan">	
-		</div>
+	<ul class="box">
+		<li class="active">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+		<li>11</li>
+		<li>12</li>
+	</ul>
+	<div class="plan">
+		<h2>1月</h2>
+		<p>睡觉</p>	
 	</div>
 </body>
 <script type="text/javascript">
 	var aLi = document.querySelectorAll('li');
 	var oPlan = document.querySelector('.plan');
-	var aPlan = ['吃饭','睡觉','打豆豆','吃饭','睡觉','打豆豆','吃饭','睡觉','打豆豆','吃饭','睡觉','打豆豆'];
-	oPlan.innerHTML = '<h2>1月</h2><p>睡觉</p>';
+	var aPlan = ['吃饭','睡觉','打豆豆','玩耍','刷猴','搬砖','吃饭','睡觉','打豆豆','玩耍','刷猴','搬砖'];
+	oPlan.innerHTML='<h2>1月</h2><p>睡觉</p>';
 	//console.log(aLi);
 	for(var i = 0;i < aLi.length;i++){
 		//console.log(aLi[i]);
@@ -75,7 +75,7 @@
 			}
 			//console.log(this);
 			this.className='active';
-			oPlan.innerHTML = '<h2>'+(this.index+1)+'月</h2><p>'+aPlan[this.index]+'</p>';
+			oPlan.innerHTML='第'+(this.index+1)+'月<p>'+aPlan[this.index]+'</p>';
 		}
 	}
 </script>
