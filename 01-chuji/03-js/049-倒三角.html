@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>049-倒三角.html</title>
+	<style type="text/css">
+		 *{
+			margin: 0;
+			padding: 0;
+		}
+		.nbsp{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+		}
+		.star{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+		} 
+	</style>
+	<script type="text/javascript">
+		for(i = 0;i < 5;i++){
+			document.write('<p>');
+			for(k = 0;k < 4-i;k++){
+				document.write('<span class=nbsp></span>');
+			}
+			for(j = 0;j <= i;j++){
+				document.write('<span class=star>*</span>');
+			}
+			document.write('</p>');
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
