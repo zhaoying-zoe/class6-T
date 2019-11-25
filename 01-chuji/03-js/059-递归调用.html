@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>059-递归调用.html</title>
+	<script type="text/javascript">
+		function fact(n){
+			console.log(arguments);
+			if(n == 1){
+				return 1;
+			}
+			//return n * fact(n-1);
+			return n * arguments.callee(n-1);//arguments.callee代替递归调用函数
+		}
+		fact(5);
+		var fact2 = fact;
+		//console.log(fact(5));
+		fact = 1;
+		console.log(fact2(5));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

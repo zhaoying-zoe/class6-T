@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>061-全局变量2.html</title>
+	<script type="text/javascript">
+		var i = 5;
+		function fn1(){
+			
+			console.log('fn1',i);
+			function fn2(){
+				i = 2;
+				console.log('fn2',i);
+				function fn3(){
+					console.log('fn3',i);
+				}
+				fn3();
+			}
+			fn2();
+		}
+		console.log('con1',i);
+		fn1();
+		console.log('con2',i);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -28,10 +28,11 @@
 		obj.style[attr] = val;
 	}*/
 	function css(){
-		if(arguments.length == 2)
-			getComputedStyle(obj,false)[attr];
+		if (arguments.length == 2) {
+			alert(getComputedStyle(arguments[0],false)[arguments[1]]);
 		}else{
-			obj.style[attr] = value;
+			arguments[0].style[arguments[1]] = arguments[2];
+		}
 	}
 	oBtn1.onclick = function(){
 		css(oBox,'width','500px');
@@ -43,9 +44,10 @@
 		css(oBox,'background','red');
 	}
 	oBtn4.onclick = function(){
-		//console.log(getComputedStyle(oBox,false)['width']);
-		alert(getComputedStyle(oBox,false)['width']);
-		//alert(oBox.style.width);//获取行内宽度
+		//alert(oBox.style.width);
+		// console.log(getComputedStyle(oBox,false))
+		// alert(getComputedStyle(oBox,false).width);
+		css(oBox,'width');
 	}
 </script>
 </html>

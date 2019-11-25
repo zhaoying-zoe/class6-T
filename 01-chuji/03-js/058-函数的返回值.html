@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>058-函数的返回值.html</title>
+	<script type="text/javascript">
+		
+		function sum(){
+			if (arguments[0] == 0) {
+				return;
+			};
+			var result = 0;
+			for(i = 0;i <arguments.length;i++){
+				result += arguments[i];
+			}
+			// alert(result);
+			return result;
+			// return;
+		}
+		var res = sum(0,2,3);
+		console.log(res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

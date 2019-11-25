@@ -4,23 +4,20 @@
 	<meta charset="UTF-8">
 	<title>056-不定参数-求和.html</title>
 	<script type="text/javascript">
-		/*
-		function sum(n1,n2,n3,n4){
-			alert(n1+n2+n3+n4);
+		/*function sum(n1,n2,n3){
+			alert(n1+n2+n3);
 		}
-		sum(1,2,3,4);
-		*/
+		sum(1,2,3);*/
 		function sum(){
-			//console.log(arguments);
+			// console.log(arguments);
 			var result = 0;
-			for(var i = 0;i < arguments.length;i++){
-				//console.log(arguments[i]);
+			for(var i = 0;i<arguments.length;i++){
+				console.log(arguments[i]);
 				result = result + arguments[i];
 			}
-			console.log(result);
-			alert(result);
+			alert(result)
 		}
-		sum(1,2,3,4,5);
+		sum(1,2,3,4,5,6);
 	</script>
 </head>
 <body>

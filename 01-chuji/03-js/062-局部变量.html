@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>062-局部变量.html</title>
+	<script type="text/javascript">
+		function fn1(){
+			var i = 5;
+			console.log(i);
+			function fn2(){
+				i = 11111111111111111;
+				console.log(i);
+			}
+			fn2();
+		}
+		fn1();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
