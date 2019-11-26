@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>077-节点类型.html</title>
+</head>
+<body>
+	<ul id="box">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var oUl = document.getElementById('box');
+	var aNodes = oUl.childNodes;
+	console.log(aNodes);
+	console.log(oUl.nodeType);
+	var res = [];
+	for(var i = 0;i < aNodes.length;i++){
+		if(aNodes[i].nodeType==1){
+			res.push(aNodes[i]);
+		}
+	}
+	console.log(res);
+</script>
+</html>
