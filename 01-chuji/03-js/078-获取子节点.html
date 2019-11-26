@@ -15,18 +15,18 @@
 </body>
 <script type="text/javascript">
 	var oUl = document.getElementById('ul1');
-	var oNodes = oUl.childNodes;//获取文本和元素节点
+	var aNodes = oUl.childNodes;//获取文本和元素节点
 	var oChildren = oUl.children;//获取元素（li）节点
 	var oFirstchild = oUl.firstChild;
 	var oLastchild = oUl.lastChild;
 	var oFirstElementChild = oUl.firstElementChild;
 	var oLastElementChild = oUl.lastElementChild;
-	console.log(oNodes);
+	console.log(aNodes);
 	console.log(oChildren);
 	console.log(oFirstchild);
-	console.log(oFirstchild == oNodes[0]);
+	console.log(oFirstchild == aNodes[0]);
 	console.log(oLastchild);
-	console.log(oLastchild == oNodes[oNodes.length-1]);
+	console.log(oLastchild == aNodes[aNodes.length-1]);
 	console.log(oFirstElementChild);
 	console.log(oFirstElementChild == oChildren[0]);
 	console.log(oLastElementChild);

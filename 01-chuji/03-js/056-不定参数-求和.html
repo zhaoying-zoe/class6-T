@@ -4,20 +4,22 @@
 	<meta charset="UTF-8">
 	<title>056-不定参数-求和.html</title>
 	<script type="text/javascript">
-		/*function sum(n1,n2,n3){
+		/*
+		function sum(n1,n2,n3){
 			alert(n1+n2+n3);
 		}
-		sum(1,2,3);*/
+		sum(1,2,3);
+		 */
 		function sum(){
-			// console.log(arguments);
-			var result = 0;
-			for(var i = 0;i<arguments.length;i++){
-				console.log(arguments[i]);
-				result = result + arguments[i];
+			//console.log(arguments);
+			var res = 0;
+			for(i = 0;i < arguments.length;i++){
+				//console.log(arguments[i]);
+				res = res + arguments[i];//arguments.length的值与传的值sum(0,2,3)的个数有关[arguments是函数的数组，每个函数都有]
 			}
-			alert(result)
+			alert(res);
 		}
-		sum(1,2,3,4,5,6);
+		sum(1,2,3);
 	</script>
 </head>
 <body>

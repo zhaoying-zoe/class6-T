@@ -15,15 +15,18 @@
 </body>
 <script type="text/javascript">
 	var oUl = document.getElementById('box');
-	var aNodes = oUl.childNodes;
-	console.log(aNodes);
-	console.log(oUl.nodeType);
-	var res = [];
-	for(var i = 0;i < aNodes.length;i++){
-		if(aNodes[i].nodeType==1){
-			res.push(aNodes[i]);
+	var nodes = oUl.childNodes;
+	//console.log(nodes);
+	var res = new Array();
+	for(var i = 0;i < nodes.length;i++){
+		//console.log(nodes[i].nodeType);//查看节点属性值
+		if(nodes[i].nodeType == 1){
+			res.push(nodes[i]);
 		}
 	}
 	console.log(res);
+	console.log(document.nodeType);
+	console.log(window.document);
+	console.log(window);
 </script>
 </html>

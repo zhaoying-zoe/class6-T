@@ -11,14 +11,19 @@
 			};
 			var result = 0;
 			for(i = 0;i <arguments.length;i++){
-				result += arguments[i];
+				result += arguments[i];//arguments.length的值与传的值sum(0,2,3)的个数有关[arguments是函数的数组，每个函数都有]
 			}
 			// alert(result);
-			return result;
+			return result;//一个函数只能有一个返回值
+			// return [result,'a'];//返回多个数值可以返回数组
+			//在函数体内通过return把函数的执行结果返回
 			// return;
 		}
-		var res = sum(0,2,3);
-		console.log(res);
+		sum(0,2,3);
+		var res = sum(0,2,3);//接收函数内部的return;result函数的返回值是在调用的时候获取的
+		//console.log(res);
+		console.log(sum());
+
 	</script>
 </head>
 <body>
