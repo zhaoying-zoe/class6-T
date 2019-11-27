@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>079-封装通过类名获取元素函数.html</title>
+</head>
+<body>
+	<ul id="box">
+		<li class="box"></li>
+		<li></li>
+		<li class="box"></li>
+		<li class="box"></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+<script type="text/javascript">
+	// var oLi = document.getElementsByClassName('box');
+	// console.log(oLi);
+	// var aLi = parentNode.children;【0】
+	var oUl = document.getElementById('box');
+	function getElementsByClass(parentNode,oName){//parentNode是oUl,oName是'box'
+		var aLi = parentNode.children;//在函数内部定义,函数用不了外面的【0】
+		var aEle = new Array();//准备空数组，用来储存目标
+		for(var i = 0;i < aLi.length;i++){
+			console.log(aLi[i].className)
+			if(aLi[i].className==oName){
+				aEle.push(aLi[i]);
+			}
+		}
+		return aEle;
+	}
+	var result = getElementsByClass(oUl,'box');
+	console.log(result);
+</script>
+</html>

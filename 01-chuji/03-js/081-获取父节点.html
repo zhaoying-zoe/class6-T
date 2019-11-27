@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>081-获取父节点.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			margin: 200px auto;
+			/*position: relative;*/
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="box"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var oBox = document.querySelector('.box');
+	var oDiv = oBox.parentNode;
+	var oDiv2 = oBox.offsetParent;//子节点 绝对定位时查看 父节点
+	console.log('parentNode',oDiv);
+	console.log('绝对定位',oDiv2);
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>084-属性操作.html</title>
+</head>
+<body>
+	<input type="text" id="txt" value="" box="kkjkbjh">
+	<input type="button" value="填充" id="btn">
+	<!-- <input type="textarea" id="area"> -->
+	<textarea id="area"></textarea>
+</body>
+<script type="text/javascript">
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oArea = document.getElementById('area');
+	oBtn.onclick = function(){
+		/*//方法一
+		var val = oTxt.value;//获取属性;
+		oArea.value = val; //设置属性;
+		console.log(val)*/
+		/*//方法二
+		var val = oTxt['value'];//获取属性;
+		oArea['value'] = val; //设置属性;
+		console.log(val);
+		*/
+		//方法二
+		var val = oTxt.getAttribute('box');//获取自定义(第一个input中的box)属性;
+		oTxt.setAttribute('box','55555');//设置自定义(第一个input中的box)属性;
+		console.log(val);
+	}
+</script>
+</html>

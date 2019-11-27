@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>080-无序列表鼠标移入高亮移出还原.html</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var oUl = document.getElementById('ul1');
+	var aLi = oUl.children;
+	console.log(aLi);
+	for(var i = 0;i < aLi.length;i++){
+		// console.log(aLi[i]);
+		if(i%2){
+			aLi[i].style.background = 'red';
+		}else{
+			// console.log(222);
+			aLi[i].style.background = 'blue';
+		}
+		/*var color;//定义一个
+		aLi[i].onmouseover = function(){
+			color = this.style.background;
+			this.style.background = 'yellow';
+		}
+		aLi[i].onmouseout = function(){
+			this.style.background = color;
+		}*/
+		aLi[i].onmouseover = function(){
+			this.style.background = 'yellow';
+		}
+		aLi[i].onmouseout = function(){
+			this.style.background = ;
+	}
+}
+</script>
+</html>

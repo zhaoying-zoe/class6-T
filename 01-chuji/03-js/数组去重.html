@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组去重</title>
+	<script type="text/javascript">
+		var arr = new Array(1,5,3,6,2,4,3,1,5);
+		function uniqueArr(arr){
+			var result = new Array();
+			for(var i = 0;i < arr.length;i++){
+				var isDup = false;
+				for(var j = 0;j < result.length;j++){
+					if(arr[i] == result[j]){
+						isDup = true;
+						break;
+					}
+				}
+				if(isDup == false){// !isDup == isDup == false;
+					result.push(arr[i]);
+				}
+			}
+			return result;
+		}
+		var result = uniqueArr(arr);
+		console.log(arr);
+		console.log(result);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

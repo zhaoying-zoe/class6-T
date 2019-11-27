@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>083-获取兄弟节点.html</title>
+</head>
+<body>
+	<ul id="box">
+		<li>1</li>
+		<li>2</li>
+		<li class="box">3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var oLi = document.querySelector('.box');
+	var oUl = document.getElementById('box');
+	var aUl = oUl.childNodes;//获取全部子节点(文本节点和dom节点)
+	console.log(oLi);
+	console.log(oUl);
+	console.log(aUl);
+	console.log(oLi.previousSibling);//查看前一个兄弟节点(文本节点和dom节点)
+	console.log(oLi.previousSibling == aUl[4]);
+	console.log(oLi.nextSibling);//查看后一个兄弟节点(文本节点和dom节点)
+	console.log(oLi.nextSibling == aUl[6]);
+	console.log(oLi.previousElementSibling);//查看前一个兄弟节点(dom节点)
+	console.log(oLi.nextElementSibling);//查看后一个兄弟节点(dom节点)
+</script>
+</html>
