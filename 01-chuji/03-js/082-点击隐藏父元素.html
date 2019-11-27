@@ -6,21 +6,21 @@
 </head>
 <body>
 	<ul>
-		<li>1<a href="#">隐藏</a></li>
-		<li>2<a href="#">隐藏</a></li>
-		<li>3<a href="#">隐藏</a></li>
-		<li>4<a href="#">隐藏</a></li>
-		<li>5<a href="#">隐藏</a></li>
-		<li>6<a href="#">隐藏</a></li>
-		<li>7<a href="#">隐藏</a></li>
-		<li>8<a href="#">隐藏</a></li>
-		<li>9<a href="#">隐藏</a></li>
+		<li>1<a href="javascript:;">隐藏</a></li>
+		<li>2<a href="javascript:;">隐藏</a></li>
+		<li>3<a href="javascript:;">隐藏</a></li>
+		<li>4<a href="javascript:;">隐藏</a></li>
+		<li>5<a href="javascript:;">隐藏</a></li>
+		<li>6<a href="javascript:;">隐藏</a></li>
+		<li>7<a href="javascript:;">隐藏</a></li>
+		<li>8<a href="javascript:;">隐藏</a></li>
+		<li>9<a href="javascript:;">隐藏</a></li>
 	</ul>
 </body>
 <script type="text/javascript">
 	var aA = document.getElementsByTagName('a');//获取全部a
 	// console.log(aA);
-	for(var i = 0;i < aA.length;i++){
+	for(var i = 0;i < aA.length;i++){//循环aA,找到每个a标签
 		aA[i].onclick = function(){
 			// console.log(this.parentNode);
 			this.parentNode.style.display = 'none';//display本身就是'',所以写'none'

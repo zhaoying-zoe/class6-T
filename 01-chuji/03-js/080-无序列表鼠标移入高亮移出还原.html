@@ -30,7 +30,7 @@
 			// console.log(222);
 			aLi[i].style.background = 'blue';
 		}
-		/*var color;//定义一个
+		/*var color;//定义一个值,用来存移动到li之前的颜色,移走的时候用这个值
 		aLi[i].onmouseover = function(){
 			color = this.style.background;
 			this.style.background = 'yellow';
@@ -39,10 +39,11 @@
 			this.style.background = color;
 		}*/
 		aLi[i].onmouseover = function(){
+			this.color = this.style.background;//存background的值
 			this.style.background = 'yellow';
 		}
 		aLi[i].onmouseout = function(){
-			this.style.background = ;
+			this.style.background = this.color;//引用background的值
 	}
 }
 </script>
