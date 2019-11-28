@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>091-删除元素.html</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<input type="button" id="btn" value="删除">
+</body>
+<script type="text/javascript">
+	var oUl = document.getElementById('ul1');
+	var oBtn = document.getElementById('btn');
+	var aLi = oUl.children;//获取aLi的子节点
+	oBtn.onclick = function(){
+		console.log(aLi);
+		oUl.removeChild(aLi[0]);//删除oUl里的aLi[0]
+	}
+</script>
+</html>

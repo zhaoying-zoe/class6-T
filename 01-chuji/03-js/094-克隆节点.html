@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>094-克隆节点.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background: #ff6700;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="cloneNode(false)" id="btn1">
+	<input type="button" value="cloneNode(true)" id="btn2">
+	<div class="box">
+		123
+	</div>
+</body>
+<script type="text/javascript">
+	var oBtn1 = document.getElementById('btn1');
+	var oBtn2 = document.getElementById('btn2');
+	var oDiv = document.querySelector('.box');
+	oBtn1.onclick = function(){
+		var newBox = oDiv.cloneNode(false);//默认克隆的布尔值是false,只克隆div
+		console.log(newBox);
+		document.body.appendChild(newBox);//给body添加newbox
+	}
+	oBtn2.onclick = function(){
+		var newBox = oDiv.cloneNode(true);
+		console.log(newBox);
+		document.body.appendChild(newBox);
+	}
+</script>
+</html>

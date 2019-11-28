@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>093-获取输入框的值插入到无序列表的最前面.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 500px;
+			height: 500px;
+			margin: 100px auto;
+		}
+		li{
+			list-style: none;
+			width: 300px;
+			line-height: 30px;
+			/*padding-right: 180px;*/
+		}
+		a{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<input type="text" id="txt">
+		<input type="button" id="btn" value="插入">
+		<ul id="ul1">
+			<!-- <li>111 <a href="javascript:;">删除</a></li> -->
+		</ul>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oUl = document.getElementById('ul1');
+	oBtn.onclick = function(){
+		var val = oTxt.value;//获取input的值
+		var oLi = document.createElement('li');//定义ul里的li
+		var oA = document.createElement('a');//定义li里的a
+		// console.log(oLi);
+		oLi.innerHTML = val;//把input的值给li
+		oA.innerHTML = '删除';//把'删除'添加给a的innerHTML
+		oA.href = 'javascript:;'//给a添加href
+		oLi.appendChild(oA);//把定义的a添加到li里面
+		oUl.insertBefore(oLi,oUl.firstChild);//把定义的li添加到ul里面
+		// oUl.insertBefore(oLi,oUl.children[0]);//children是数组,需要加[0];
+		oTxt.value = '';//把input框输入剩余的值删除
+		oA.onclick = function(){
+			// oLi.removeChild(oA);
+			oUl.removeChild(oLi);//删除li也把a删除了
+		}
+	}
+</script>
+</html>

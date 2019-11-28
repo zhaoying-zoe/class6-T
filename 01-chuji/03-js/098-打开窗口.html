@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>098-打开窗口.html</title>
+</head>
+<body>
+	<input type="button" id="btn">
+</body>
+<script type="text/javascript">
+	var oBtn = document.getElementById('btn')
+	oBtn.onclick = function(){
+		// window.open('https://www.baidu.com','_self');
+		// //打开网页方式:自身打开网页(打开url)
+		// window.open('001-js的使用行内.html','_self');
+		//打开网页方式:自身打开网页(打开本地地址)
+		window.open('about:blank');//默认新页面打开
+		//打开空白页面
+	}
+</script>
+</html>
