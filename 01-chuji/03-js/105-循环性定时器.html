@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>105-循环性定时器.html</title>
+</head>
+<body>
+	<input type="button" id="btn" value="关闭">
+</body>
+<script type="text/javascript">
+	var timer = 0;
+	var oBtn = document.getElementById('btn');
+	// setInterval('console.log(2333)',2000);//放入字符串console.log
+	function text(){
+		console.log(2333);
+	}
+	// setInterval(text,2000);//放入函数
+	timer = setInterval(function(){//放入匿名函数
+		console.log(23333)
+	},0)//虽然设置了0ms,但是浏览器默认4ms,0不是延迟时间,而是把代码加入到任务队列中的时间
+	oBtn.onclick = function(){
+		clearInterval(timer);
+	}
+</script>
+</html>

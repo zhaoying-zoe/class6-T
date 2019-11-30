@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>104-延迟性定时器.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// console.log(1223);
+	// setTimeout('console.log(1223)',2300);//放入字符串'console.log()'
+	function text(){
+		alert(2333);
+	}
+	// setTimeout(text,2000)//放入函数名字,不放括号
+	setTimeout(function(){//放入匿名函数
+		alert(2333);
+	},2000);
+	// var Timer = setTimeout(text,2000);
+	// console.log(Timer);//查看定时器的id值(数字),用于控制这个定时器
+	// clearTimeout(Timer);//关闭延迟型定时器
+</script>
+</html>

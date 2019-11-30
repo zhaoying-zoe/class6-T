@@ -1,0 +1,47 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>110-数码时钟(文字版).html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: #000;
+			text-align: center;
+		}
+		#timer{
+			color: #fff;
+			font-size: 60px;
+			margin-top: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div id="timer">
+		
+	</div>
+</body>
+<script>
+	var oTimer = document.getElementById('timer');
+
+	function getTime(){//定义函数,函数内容为获取的时间
+		var today = new Date();
+		var iHour = today.getHours();
+		var iMinute = today.getMinutes();
+		var iSecond = today.getSeconds();
+		// console.log(iHour);
+		// console.log(iMinute);
+		// console.log(iSecond);
+		var oTime = iHour +':'+ iMinute + ':' +iSecond;
+		oTimer.innerHTML=oTime;//把文本内容换成定义的时间
+		console.log(oTime);
+	}
+		getTime();//调用函数
+	setInterval(getTime,1000);//定时器内可以直接放函数名字
+
+</script>
+</html>
