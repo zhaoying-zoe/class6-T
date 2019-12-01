@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>110-数码时钟(文字版).html</title>
+	<title>111-数码时钟(图片版).html</title>
 	<style>
 		*{
 			margin: 0;
@@ -22,11 +22,18 @@
 </head>
 <body>
 	<div id="timer">
-		
+		<img src="images/0.png">
+		<img src="images/0.png"> :
+		<img src="images/0.png">
+		<img src="images/0.png"> :
+		<img src="images/0.png">
+		<img src="images/0.png">
 	</div>
 </body>
 <script>
 	var oTimer = document.getElementById('timer');
+	var aImg = oTimer.children;
+	console.log(aImg);
 	function toStr(attr){
 		if(attr<10){
 			attr = '0'+attr;
@@ -35,7 +42,6 @@
 		}
 		return attr;
 	}
-
 	function getTime(){//定义函数,函数内容为获取的时间
 		var today = new Date();
 		var iHour = today.getHours();
@@ -44,11 +50,16 @@
 		// console.log(iHour);
 		// console.log(iMinute);
 		// console.log(iSecond);
-		var oTime = toStr(iHour) +':'+ toStr(iMinute) +':'+ toStr(iSecond);
-		oTimer.innerHTML=oTime;//把文本内容换成定义的时间
+		var oTime = toStr(iHour) + toStr(iMinute) + toStr(iSecond);
 		console.log(oTime);
+		oTime.charAt(i);
+		console.log(oTime.charAt(i));
+		for(var i = 0;i < aImg.length;i++){
+		aImg.src = 'images/'+charAt(i)+'.png';
 	}
-		getTime();//调用函数
+	}
+	
+	getTime();//调用函数
 	setInterval(getTime,1000);//定时器内可以直接放函数名字
 </script>
 </html>
