@@ -31,10 +31,13 @@
 	</div>
 </body>
 <script>
+	// 1.找到各个img标签
+	// 2.先找出标准时间并转换成字符串(调用函数toStr)
+	// 3.把img换成对应的图片(用charAt()字符串对象[0])
 	var oTimer = document.getElementById('timer');
 	var aImg = oTimer.children;
-	console.log(aImg);
-	function toStr(attr){
+	// console.log(aImg);
+	function toStr(attr){//判断时间如果是个位数,就在前面加0,并return字符串
 		if(attr<10){
 			attr = '0'+attr;
 		}else{
@@ -51,14 +54,14 @@
 		// console.log(iMinute);
 		// console.log(iSecond);
 		var oTime = toStr(iHour) + toStr(iMinute) + toStr(iSecond);
-		console.log(oTime);
-		oTime.charAt(i);
-		console.log(oTime.charAt(i));
+		// console.log(oTime);
+		// console.log(oTime.charAt(3));//指oTime的数
+		//charAt():方法可返回指定位置的字符。
+		//stringObject.charAt(index)(字符串对象)[0]
 		for(var i = 0;i < aImg.length;i++){
-		aImg.src = 'images/'+charAt(i)+'.png';
+			aImg[i].src = 'images/'+oTime.charAt(i)+'.png';
+		}
 	}
-	}
-	
 	getTime();//调用函数
 	setInterval(getTime,1000);//定时器内可以直接放函数名字
 </script>
