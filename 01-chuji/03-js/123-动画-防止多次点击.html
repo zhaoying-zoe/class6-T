@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>123-动画-防止多次点击.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			left: 0px;
+			top: 100px;
+		}
+		#liner{
+			width: 1px;
+			height: 600px;
+			background: black;
+			margin-left: 400px;
+
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="btn" value="开始动画">
+	<div id="box"></div>
+	<div id="liner"></div>
+</body>
+<script type="text/javascript">
+	var oBtn = document.getElementById('btn');
+	var oBox = document.getElementById('box');
+	var timer = 0;
+	console.log(oBox)
+	oBtn.onclick = function(){//点击时触发动画
+		clearInterval(timer)//点击按钮状态下:查看定时器运行次数
+		timer = setInterval(function(){//设置定时器:为了让动画持续进行
+			console.log(timer)
+			if (oBox.offsetLeft == 400) {//如果oBox.offsetLeft大于400,需要停止定时器
+			clearInterval(timer);//关闭定时器
+		}else{
+				oBox.style.left = oBox.offsetLeft + 10 + 'px';//移动值为oBox.offsetLeft+10px
+			}
+		},30)
+	}
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>121-window相关事件.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var i = 0;
+	window.onload = function(){//当页面加载结束后执行
+		console.log(++i);
+	}
+	window.onresize = function(){//当页面窗口大小变化时执行
+		console.log(++i);
+	}
+	window.onscroll = function(){//当页面滚动时执行
+		console.log(++i);
+	}
+</script>
+</html>
