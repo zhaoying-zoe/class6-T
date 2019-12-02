@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>114-轮播图.html</title>
+	<title>114-轮播图(改).html</title>
 	<style type="text/css">
 		*{
 			margin: 0;
@@ -10,24 +10,32 @@
 			list-style: none;
 		}
 	.carousel{
-		position: absolute;
-		top: 100px;
-		left: 300px;
+		position: relative;
+		margin: 150px auto;
 		width: 1222px;
 		height: 560px;
 	}
-	.carousel .carousel-item{
+	.carousel .carousel-item:nth-child(1){
 		position: absolute;
-		transition: all 1s;
+		transition: opacity 2s;
 		top: 0px;
 		left: 0px;
+	}
+	.carousel .carousel-item:nth-child(2){
+		position: absolute;
+		transition: opacity 2s;
+		top: 0px;
+		left: 1222px;
+	}
+	.carousel .carousel-item:nth-child(3){
+		position: absolute;
+		transition: opacity 2s;
+		top: 0px;
+		left: 2444px;
 	}
 	.carousel .carousel-item img{
 		width: 100%;
 		height: 560px;
-	}
-	.carousel-item:first-child{
-		z-index: 2;
 	}
 	.carousel .arrow{
 		position: absolute;
@@ -84,9 +92,9 @@
 <body>
 	<div class="carousel">
 		<ul class="carousel-imgs">
-			<li class="carousel-item"><img src="images/carousel-1.jpg" alt=""></li>
-			<li class="carousel-item"><img src="images/carousel-2.webp" alt=""></li>
-			<li class="carousel-item"><img src="images/carousel-3.webp" alt=""></li>
+			<li class="carousel-item"><img src="images/carousel-1-1.webp" alt=""></li>
+			<li class="carousel-item"><img src="images/carousel-2-2.webp" alt=""></li>
+			<li class="carousel-item"><img src="images/carousel-2-3.webp" alt=""></li>
 		</ul>
 		<span class="arrow left-arrow"><i class="iconfont">&lt;</i></span>
 		<span class="arrow right-arrow"><i class="iconfont">&gt;</i></span>
@@ -104,30 +112,22 @@
 	var oBtnRight = document.querySelector('.right-arrow');
 	var aBtns = document.querySelectorAll('.btn-item');
 	var oCarousel = document.querySelector('.carousel');
-	var timer = 0;//定义计时器的id(0代表计时器的类型是number)
-	var now = 0;//定义用来现实的图片的下标(通过改变下标切换图片)
-	// console.log(aLiImg);
-	// console.log(oBtnLeft);
-	// console.log(oBtnRight);
-	// console.log(aBtns);
-	
-	// 1.点击右边按钮,图片转换(通过改变图片的z-index)并且改变下边的小点
-	// 2.
+	var now = 0;
+	var timer = 0;
 	function onclick(){
-		// 清空操作(for循环):改变小点的clasname并且还原图片的z-index为2;
-		for(var i = 0;i < aLiImg.length;i++){
-			aBtns[i].className = 'btn-item';
-			aLiImg[i].style.zIndex = '2';
+		for(var i = 0;i < aLiImg.length;i++){//通过循环把其他元素的属性'归零',通过点击改变目标元素的属性
+			aLiImg[i].style.left = '1222px';
 			aLiImg[i].style.opacity = '0';
+			aBtns[i].className = 'btn-item';
 		}
-		aLiImg[now].style.zIndex = '20';//点击改变图片的z-index:20
-		aLiImg[now].style.opacity = '1';//点击改变图片的opacity:1
-		aBtns[now].className = 'btn-item active';//改变小点的classname
+		aLiImg[now].style.left = '0px';
+		aLiImg[now].style.opacity = '1';
+		aBtns[now].className = 'btn-item active';
 	}
 	// 1.左边点击事件
 	oBtnRight.onclick = function(){
-		now ++;// 等同于:now = now + 1;
-		if (now > aLiImg.length -1) {//改变now下标:还原为0
+		now ++;
+		if(now >= aLiImg.length){
 			now = 0;
 		}
 		onclick();
@@ -135,8 +135,8 @@
 	// 2.右边点击事件
 	oBtnLeft.onclick = function(){
 		now --;
-		if(now < 0){//改变now下标:还原为2
-			now = aLiImg.length - 1;
+		if (now < 0) {
+			now = aLiImg.length - 1;//length=3;改变上一个元素,改变角标为2
 		}
 		onclick();
 	}
@@ -147,7 +147,7 @@
 			now = this.index
 			onclick();
 		}
-	}
+	}	
 	// 4.轮播效果
 	timer = setInterval(oBtnRight.onclick,5000);
 		oCarousel.onmouseover = function(){
@@ -155,6 +155,6 @@
 	} 
 		oCarousel.onmouseout = function(){
 		timer = setInterval(oBtnRight.onclick,5000);
-	} 
+	}
 </script>
 </html>
