@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>124-动画-决定速度的正负.html</title>
+	<title>125-动画结束的条件-决定.html</title>
 	<style type="text/css">
 		*{
 			margin: 0;
@@ -35,20 +35,22 @@
 	var oBox = document.getElementById('box');
 	var timer = 0;
 	
-	console.log(oBox)
+	// console.log(oBox)
 	oBtn.onclick = function(){//点击时触发动画
 		clearInterval(timer)//点击按钮状态下:查看定时器运行次数
 		timer = setInterval(function(){//设置定时器:为了让动画持续进行
-			console.log(timer)
-			var oSpeed = 0;
+			console.log(oBox.offsetLeft);
+			var oSpeed = 0;;
+			// console.log(timer)
 			if (oBox.offsetLeft > 400){
-				oSpeed = -10;
+				oSpeed = -7;
 			}else{
-				oSpeed = 10;
+				oSpeed = 7;
 			}
-			if (oBox.offsetLeft == 400) {//如果oBox.offsetLeft大于400,需要停止定时器
-			clearInterval(timer);//关闭定时器
-		}else{
+			if (Math.abs(oBox.offsetLeft - 400) < Math.abs(oSpeed)){
+				oBox.style.left = '400px';
+				clearInterval(timer);//关闭定时器
+			}else{
 				oBox.style.left = oBox.offsetLeft + oSpeed + 'px';//移动值为oBox.offsetLeft+10px
 			}
 		},30)

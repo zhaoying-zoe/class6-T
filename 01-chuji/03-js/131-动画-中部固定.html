@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>131-动画-中部固定.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 3000px;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script type="text/javascript" src="js/util.js"></script>
+<script>
+	var oBox = document.getElementById('box');
+	
+
+	window.onresize = window.onload = window.onscroll = function(){//当页面滚动时执行
+		var t = (window.innerHeight - oBox.offsetHeight)/2 + getScrollTop();
+		// oBox.style.top = t + 'px';
+		animate(oBox,'top',t);
+	}
+</script>
+</html>

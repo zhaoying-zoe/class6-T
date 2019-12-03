@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>127-动画-伸缩菜单.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			width: 300px;
+			height: 300px;
+			background: gray;
+			position: absolute;
+			top: 50px;
+			left: -300px;
+		}
+		#son{
+			width: 100px;
+			height: 300px;
+			background: red;
+			position: absolute;
+			top: 0px;
+			left: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="son"></div>
+	</div>
+</body>
+<script>
+	var oWrap = document.getElementById('wrap');
+	var oSon = document.getElementById('son');
+	var timer;
+	oWrap.onmouseover = function(){
+		clearInterval(timer)
+		timer = setInterval(function(){
+			console.log(oWrap.offsetLeft);
+			var oSpeed = 0;
+			if (oWrap.offsetLeft > 0){
+				oSpeed = -7;
+			}else{
+				oSpeed = 7;
+			}
+			if (Math.abs(oWrap.offsetLeft - 0) < Math.abs(oSpeed)){
+				oWrap.style.left = '0px';
+				clearInterval(timer);
+			}else{
+				oWrap.style.left = oWrap.offsetLeft + oSpeed + 'px';
+			}
+		},30)
+	}
+	oWrap.onmouseout = function(){
+		clearInterval(timer)
+		timer = setInterval(function(){
+			console.log(oWrap.offsetLeft);
+			var oSpeed = 0;
+			if (oWrap.offsetLeft > -300){
+				oSpeed = -7;
+			}else{
+				oSpeed = 7;
+			}
+			if (Math.abs(oWrap.offsetLeft + 300) < Math.abs(oSpeed)){
+				oWrap.style.left = '-300px';
+				clearInterval(timer);
+			}else{
+				oWrap.style.left = oWrap.offsetLeft + oSpeed + 'px';
+			}
+		},30)
+	}
+</script>
+<html>
