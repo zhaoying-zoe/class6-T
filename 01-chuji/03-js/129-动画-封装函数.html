@@ -47,7 +47,7 @@
 		obj.timer = setInterval(function(){
 			var Current = parseFloat(getComputedStyle(obj,false)[attr]);//获取传入元素的属性
 			if(attr == 'opacity'){//如果传入元素为opacity,则执行下面代码
-				var Current = Math.round(Current * 100);//为了好操作，需要把opacity的值乘100；
+				var Current = Math.round(Current * 100);//为了好操作，需要把opacity的值乘100;
 			}
 			var oSpeed = 0;
 			if(Current > target){//如果当前值大于目标值
@@ -81,4 +81,4 @@
 		animate(oBox3,'opacity',20);
 	}
 </script>
-<ml>
+</html>

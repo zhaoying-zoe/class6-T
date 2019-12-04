@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>136-减速动画-多物体同时运动.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 100px;
+			margin: 50px auto;
+		}
+		.father div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			line-height: 100px;
+			text-align:center;
+			margin-top: 20px;
+		}
+		#box3{
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div id="box1">变宽</div>
+		<div id="box2">变高</div>
+		<div id="box3">变透明</div>
+	</div>
+</body>
+<script>
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var oBox3 = document.getElementById('box3');
+	// var timer;
+	oBox1.onmouseover = function(){
+		clearInterval(oBox1.timer)//多次点击后,后一个定时器会覆盖前一个定时器,所以需要每次执行函数时都需要关闭由于多次点击触发的定时期
+		oBox1.timer = setInterval(function(){//设置定时器:为了让动画持续进行
+			// console.log(oBox1.timer)
+			var oSpeed = 0;//定义速度变量
+			// 一开始的当前值为0,400-0=400;初速度太大,需要除去一个数字 👇
+			oSpeed = (300 - oBox1.offsetWidth)/10;
+			oSpeed < 0 ? oSpeed = Math.floor(oSpeed) : oSpeed = Math.ceil(oSpeed);
+			console.log(oSpeed);//查看当前速度
+			if (!oSpeed) {//如果oBox1.offsetLeft大Width,需要停止定时器
+				clearInterval(oBox1.timer);//关闭定时器
+			}else{
+				oBox1.style.width = oBox1.offsetWidth + oSpeed + 'px';//移动值为oBox.offsetWidth + 速度
+			}
+		},30)
+	}
+	oBox2.onmouseover = function(){
+		clearInterval(oBox2.timer)//多次点击后,后一个定时器会覆盖前一个定时器,所以需要每次执行函数时都需要关闭由于多次点击触发的定时期
+		oBox2.timer = setInterval(function(){//设置定时器:为了让动画持续进行
+			// console.log(oBox2.timer)
+			var oSpeed = 0;//定义速度变量
+			// 一开始的当前值为0,400-0=400;初速度太大,需要除去一个数字 👇
+			oSpeed = (300 - oBox2.offsetHeight)/10;
+			oSpeed < 0 ? oSpeed = Math.floor(oSpeed) : oSpeed = Math.ceil(oSpeed);
+			console.log(oSpeed);//查看当前速度
+			if (!oSpeed) {//如果oBox2.offsetLeft大Width,需要停止定时器
+				clearInterval(oBox2.timer);//关闭定时器
+			}else{
+				oBox2.style.height = oBox2.offsetHeight + oSpeed + 'px';//移动值为oBox.offsetHeight + 速度
+			}
+		},30)
+	}
+	oBox3.onmouseover = function(){//点击时触发动画
+		clearInterval(oBox3.timer)//多次点击后,后一个定时器会覆盖前一个定时器,所以需要每次执行函数时都需要关闭由于多次点击触发的定时期
+		oBox3.timer = setInterval(function(){//设置定时器:为了让动画持续进行
+			// console.log(oBox3.timer)
+			oCurrent = parseFloat(getComputedStyle(oBox3,false)['opacity']);
+		oCurrent = Math.round(oCurrent * 100);
+		console.log(oCurrent);
+			var oSpeed = 0;//定义速度变量
+			// 一开始的当前值为0,400-0=400;初速度太大,需要除去一个数字 👇
+			oSpeed = (100 - oCurrent)/10;
+			oSpeed < 0 ? oSpeed = Math.floor(oSpeed) : oSpeed = Math.ceil(oSpeed);
+			console.log(oSpeed);//查看当前速度
+			if (!oSpeed) {//如果oBox3.oCurrent大于400,需要停止定时器
+				clearInterval(oBox3.timer);//关闭定时器
+			}else{
+				oBox3.style.opacity = (oCurrent + oSpeed)/100;//移动值为oBox.oCurrent + 速度
+			}
+		},30)
+	}
+</script>
+</html>

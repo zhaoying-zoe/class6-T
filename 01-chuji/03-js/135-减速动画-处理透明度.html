@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>135-减速动画-处理透明度.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="btn" value="开始动画">
+	<div id="box"></div>
+</body>
+<script type="text/javascript">
+	var oBtn = document.getElementById('btn');
+	var oBox = document.getElementById('box');
+	var timer = 0;
+	
+	console.log(oBox)
+	oBtn.onclick = function(){//点击时触发动画
+		clearInterval(timer)//多次点击后,后一个定时器会覆盖前一个定时器,所以需要每次执行函数时都需要关闭由于多次点击触发的定时期
+
+		timer = setInterval(function(){//设置定时器:为了让动画持续进行
+			// console.log(timer);
+			oCurrent = parseFloat(getComputedStyle(oBox,false)['opacity']);
+			oCurrent = Math.round(oCurrent * 100);
+			console.log(oCurrent);
+			var oSpeed = 0;//定义速度变量
+			// 一开始的当前值为0,400-0=400;初速度太大,需要除去一个数字 👇
+			oSpeed = (100 - oCurrent)/10;
+			oSpeed < 0 ? oSpeed = Math.floor(oSpeed) : oSpeed = Math.ceil(oSpeed);
+			console.log(oSpeed);//查看当前速度
+			if (!oSpeed) {//如果oBox.oCurrent大于400,需要停止定时器
+				clearInterval(timer);//关闭定时器
+			}else{
+				oBox.style.opacity = (oCurrent + oSpeed)/100;//移动值为oBox.oCurrent + 速度
+			}
+		},30)
+	}
+</script>
+</html>
