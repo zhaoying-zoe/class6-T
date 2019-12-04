@@ -37,21 +37,21 @@
 	
 	// console.log(oBox)
 	oBtn.onclick = function(){//点击时触发动画
-		clearInterval(timer)//点击按钮状态下:查看定时器运行次数
+		clearInterval(timer)//多次点击后,后一个定时器会覆盖前一个定时器,所以需要每次执行函数时都需要关闭由于多次点击触发的定时期
 		timer = setInterval(function(){//设置定时器:为了让动画持续进行
-			console.log(oBox.offsetLeft);
-			var oSpeed = 0;;
+			console.log(oBox.offsetLeft);//检查当前值
+			var oSpeed = 0;//定义速度变量
 			// console.log(timer)
-			if (oBox.offsetLeft > 400){
+			if (oBox.offsetLeft > 400){//当前值大于目标值时，速度变为-7；
 				oSpeed = -7;
-			}else{
+			}else{//当前值小于目标值时，速度变为7；
 				oSpeed = 7;
 			}
-			if (Math.abs(oBox.offsetLeft - 400) < Math.abs(oSpeed)){
-				oBox.style.left = '400px';
+			if(Math.abs(oBox.offsetLeft - 400) < Math.abs(oSpeed)){//如果剩下的距离不够最后一次移动距离,那么就进入下面的内容(关闭定时器+执行代码)
+				oBox.style.left = '400px';//给最后一次的值直接赋为 目标值(400px)
 				clearInterval(timer);//关闭定时器
 			}else{
-				oBox.style.left = oBox.offsetLeft + oSpeed + 'px';//移动值为oBox.offsetLeft+10px
+				oBox.style.left = oBox.offsetLeft + oSpeed + 'px';//移动值为oBox.offsetLeft + 速度
 			}
 		},30)
 	}

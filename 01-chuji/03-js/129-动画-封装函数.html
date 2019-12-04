@@ -36,64 +36,49 @@
 	var oBox1 = document.getElementById('box1');
 	var oBox2 = document.getElementById('box2');
 	var oBox3 = document.getElementById('box3');
-	// var timer;
-	function animate(obj,attr){
-		clearInterval(obj.timer)
+
+	/*
+		obj是改变的元素名称
+		attr是改变的元素属性
+		target是改变的元素的目标值
+	 */
+	function animate(obj,attr,target){//定义封装函数
+		clearInterval(obj.timer);//清除定时器
 		obj.timer = setInterval(function(){
-			var oPacity = parseFloat(getComputedStyle(obj,false)[attr]);
-			var oPacity = Math.round(attr * 100);
+			var Current = parseFloat(getComputedStyle(obj,false)[attr]);//获取传入元素的属性
+			if(attr == 'opacity'){//如果传入元素为opacity,则执行下面代码
+				var Current = Math.round(Current * 100);//为了好操作，需要把opacity的值乘100；
+			}
 			var oSpeed = 0;
-			if (oPacity > 100){
+			if(Current > target){//如果当前值大于目标值
 				oSpeed = -2;
-			}else{
+			}else{//如果当前值小于目标值
 				oSpeed = 2;
 			}
-			if (Math.abs(oPacity - 100) < Math.abs(oSpeed)){
-				obj.style.opacity = '1';
+			if (Math.abs(Current - target) < Math.abs(oSpeed)){
+				if(attr == 'oopacity'){//如果传入值为opacity,则执行下列代码
+					obj.style[attr] = target/100;
+				}else{//如果传入值不为opacity,则执行下列代码(最后加上字符串px)
+					obj.style[attr] = target + 'px';
+				}
 				clearInterval(obj.timer);
 			}else{
-				obj.style.opacity = (attr + oSpeed)/100 ;
+				if(attr == 'opacity'){//如果传入值为opacity,则执行下列代码
+					obj.style[attr] = (Current + oSpeed)/100;
+				}else{//如果传入值不为opacity,则执行下列代码(最后加上字符串px)
+					obj.style[attr] = Current + oSpeed + 'px';
+				}
 			}
 		},30)
 	}
-	oBox1.onmouseover = function(){
-		clearInterval(oBox1.timer);
-		oBox1.timer = setInterval(function(){
-			// console.log(oBox1.offsetWidth);
-			var oSpeed = 0;;
-			if (oBox1.offsetWidth > 300){
-				oSpeed = -7;
-			}else{
-				oSpeed = 7;
-			}
-			if (Math.abs(oBox1.offsetWidth - 300) < Math.abs(oSpeed)){
-				oBox1.style.width = '300px';
-				clearInterval(oBox1.timer);
-			}else{
-				oBox1.style.width = oBox1.offsetWidth + oSpeed + 'px';
-			}
-		},30)
+	oBox1.onmouseover = function(){//移动到时调用函数
+		animate(oBox1,'width',300);//(修改的元素,修改的属性,目标值)
 	}
-	oBox2.onmouseover = function(){
-		clearInterval(oBox2.timer);
-		oBox2.timer = setInterval(function(){
-			// console.log(oBox2.offsetHeight);
-			var oSpeed = 0;;
-			if (oBox2.offsetHeight > 300){
-				oSpeed = -7;
-			}else{
-				oSpeed = 7;
-			}
-			if (Math.abs(oBox2.offsetHeight - 300) < Math.abs(oSpeed)){
-				oBox2.style.height = '300px';
-				clearInterval(oBox2.timer);
-			}else{
-				oBox2.style.height = oBox2.offsetHeight + oSpeed + 'px';
-			}
-		},30)
+	oBox2.onmouseover = function(){//移动到时调用函数
+		animate(oBox2,'height',300);
 	}
-	oBox3.onmouseover = function(){//点击时触发动画
-		animate(oBox3,'opacity','1')
+	oBox3.onmouseover = function(){//移动到时调用函数
+		animate(oBox3,'opacity',20);
 	}
 </script>
 <ml>

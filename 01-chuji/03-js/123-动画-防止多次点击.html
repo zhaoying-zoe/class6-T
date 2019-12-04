@@ -36,7 +36,7 @@
 	var timer = 0;
 	console.log(oBox)
 	oBtn.onclick = function(){//点击时触发动画
-		clearInterval(timer)//点击按钮状态下:查看定时器运行次数
+		clearInterval(timer)//多次点击后,后一个定时器会覆盖前一个定时器,所以需要每次执行函数时都需要关闭由于多次点击触发的定时期
 		timer = setInterval(function(){//设置定时器:为了让动画持续进行
 			console.log(timer)
 			if (oBox.offsetLeft == 400) {//如果oBox.offsetLeft大于400,需要停止定时器
