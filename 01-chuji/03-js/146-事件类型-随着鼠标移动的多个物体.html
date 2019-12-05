@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>146-事件类型-随着鼠标移动的多个物体.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			/*background: red;*/
+			border: 1px solid #000;
+			border-color: red;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 200px;
+			font-size: 100px;
+		}
+		div:nth-child(1){
+			z-index: 999;
+		}
+	</style>
+</head>
+<body>
+	<div>👀</div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/util.js"></script>
+<script type="text/javascript">
+	var aBox = document.getElementsByTagName('div');
+	window.addEventListener('mousemove',function(ev){
+		// oBox.style
+		// console.log(ev.clientX);
+		aBox[0].style.left = ev.clientX + getScrollLeft() + 'px';
+		aBox[0].style.top = ev.clientY  + getScrollTop() + 'px';
+		for(var i = aBox.length - 1;i > 0;i--){
+			aBox[i].style.left = aBox[i-1].offsetLeft + 10 + 'px';
+			aBox[i].style.top = aBox[i-1].offsetTop + 10 + 'px';
+		}
+	},false)
+</script>
+</html>

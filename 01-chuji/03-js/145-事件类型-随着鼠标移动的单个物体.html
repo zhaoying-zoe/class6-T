@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>145-事件类型-随着鼠标移动的单个物体.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="js/util.js"></script>
+<script type="text/javascript">
+	var oBox = document.getElementById('box');
+	window.addEventListener('mousemove',function(ev){
+		// oBox.style
+		console.log(ev.clientX);
+		oBox.style.left = ev.clientX + getScrollLeft() + 'px';
+		oBox.style.top = ev.clientY  + getScrollTop() + 'px';
+	},false)
+</script>
+</html>

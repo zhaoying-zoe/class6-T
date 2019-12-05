@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>143-事件-DOM事件流-1.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 300px;
+			height: 300px;
+			background: red;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		
+	</div>
+</body>
+<script type="text/javascript">
+	var oBox = document.getElementById('box');
+	// oBox.addEventListener('click',function(){
+	// 	console.log('click','box');//5
+	// },true)
+	// window.addEventListener('click',function(){
+	// 	console.log('window','box');//1
+	// },true)
+	// document.addEventListener('click',function(){
+	// 	console.log('document','box');//2
+	// },true)
+	// document.body.addEventListener('click',function(){
+	// 	console.log('body','box');//4
+	// },true)
+	// document.documentElement.addEventListener('click',function(){
+	// 	console.log('html','box');//3
+	// },true)
+	oBox.addEventListener('click',function(){
+		console.log('click','box');//1
+	},false)
+	window.addEventListener('click',function(){
+		console.log('window','box');//5
+	},false)
+	document.addEventListener('click',function(){
+		console.log('document','box');//4
+	},false)
+	document.body.addEventListener('click',function(){
+		console.log('body','box');//2
+	},false)
+	document.documentElement.addEventListener('click',function(){
+		console.log('html','box');//3
+	},false)
+</script>
+</html>

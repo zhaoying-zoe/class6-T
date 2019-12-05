@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>142-事件-事件基础.html</title>
+</head>
+<body>
+	<!-- <button id="btn" onclick="alert(2333)">dianji</button> -->
+	<!-- <button id="btn" onclick="sayHi()">dianji</button> -->
+	<button id="btn">dianji</button>
+	<button id="btn1">dianji yichu</button>
+</body>
+<script type="text/javascript">
+	// DOM0级指定事件一个事件只能指定一个执行程序
+	var oBtn = document.getElementById('btn');
+	var oBtn1 = document.getElementById('btn1');
+	// oBtn.onclick = function(){
+	// 	alert(23333);
+	// }
+	function sayHi(){
+		alert('hi');
+	}
+	function sayHello(){
+		alert('hello');
+	}
+	// DOM0级指定事件一个事件只能指定一个执行程序 👇
+	// oBtn.onclick = sayHi;
+	// oBtn.onclick =sayHello;
+
+	// DOM2级
+	oBtn.addEventListener('click',sayHi,false);
+	oBtn.addEventListener('click',sayHello,false);
+	oBtn.addEventListener('click',function(){
+		alert(2333);
+	},false);
+	//
+	oBtn1.onclick = function(){
+		oBtn.removeEventListener('click',sayHello,false)
+	}
+	
+</script>
+</html>

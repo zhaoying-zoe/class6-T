@@ -36,7 +36,7 @@
 	var oSon = document.getElementById('son');
 	var timer;//定义定时器
 	oWrap.onmouseover = function(){//移动到目标元素时执行的函数
-		clearInterval(timer);//有疑问？？？？
+		clearInterval(timer);//每次进函数时先关闭上一个函数
 		timer = setInterval(function(){
 			console.log(oWrap.offsetLeft);//offsetLeft:元素的左外边框和参考父元素左内边框的距离
 			var oSpeed = 0;//定义速度变量

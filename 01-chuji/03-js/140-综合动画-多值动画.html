@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>140-综合动画-多值动画.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 100px;
+			margin: 50px auto;
+		}
+		.father div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			line-height: 100px;
+			text-align:center;
+			margin-top: 20px;
+		}
+		#box3{
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div id="box1">变宽</div>
+	</div>
+</body>
+<script>
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var oBox3 = document.getElementById('box3');
+	/*
+		obj是改变的元素名称
+		attr是改变的元素属性
+		target是改变的元素的目标值
+	 */
+	function animate3(obj,options,isLinear,fn){
+		if(isLinear = undefined) {
+			isLinear = true;
+		}
+		var isStop = false;
+		clearInterval(obj.timer)
+		obj.timer = setInterval(function(){
+			for(var attr in options){
+				oCurrent = parseFloat(getComputedStyle(obj,false)[attr]);//获取元素属性
+				if(attr == 'opacity') {//如果传入值为opacity,则执行下面的公式
+					oCurrent = Math.round(oCurrent * 100);
+				}
+				console.log(oCurrent);
+				var oSpeed = 0;
+				if(isLinear) {
+					if(Current > options[attr]){
+						oSpeed = -2;
+					}else{
+						oSpeed = 2;
+					}
+					if(Math.abs(Current - options[attr]) < Math.abs(oSpeed)){
+						if(attr == 'opacity'){//如果传入值为opacity,则执行下列代码
+							obj.style[attr] = (Current + oSpeed)/100;
+						}else{//如果传入值不为opacity,则执行下列代码(最后加上字符串px)
+							obj.style[attr] = Current + oSpeed + 'px';
+						}
+						// clearInterval(obj.timer);
+						isStop = true;//给isStop赋值
+					}
+				}else{//减速运动
+					oSpeed = (options[attr] - oCurrent)/10;//给减速动画的速度赋值
+					oSpeed < 0 ? oSpeed = Math.floor(oSpeed) : oSpeed = Math.ceil(oSpeed);
+					if(!oSpeed){//如果速度为0则关闭定时器(通过改变控制定时器的变量来关闭)
+						// clearInterval(obj.timer);//关闭定时器
+						isStop = true;
+					}
+				}
+				if(isStop){
+					clearInterval(obj.timer);
+					typeof fn == 'function' && fn();
+				}else{
+					if(attr == 'opacity') {
+						obj.style[attr] = (oCurrent + oSpeed)/100;
+					}else{
+						obj.style[attr] = oCurrent + oSpeed + 'px';
+					}
+				}
+			}
+		},30)
+	}		
+	oBox1.onmouseover = function(){
+		animate3(oBox1,{'width':300,'height':300,'opacity':30},true);
+	}
+</script>
+</html>
