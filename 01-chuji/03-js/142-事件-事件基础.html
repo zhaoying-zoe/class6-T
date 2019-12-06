@@ -28,14 +28,16 @@
 	// oBtn.onclick =sayHello;
 
 	// DOM2级
-	oBtn.addEventListener('click',sayHi,false);
-	oBtn.addEventListener('click',sayHello,false);
+	oBtn.addEventListener('click',sayHi,false);// 建立函数
+	oBtn.addEventListener('click',sayHello,false);// 建立函数
 	oBtn.addEventListener('click',function(){
 		alert(2333);
-	},false);
+	},false);// 建立匿名函数
 	//
 	oBtn1.onclick = function(){
-		oBtn.removeEventListener('click',sayHello,false)
+		oBtn.removeEventListener('click',sayHello,false);
+		oBtn.removeEventListener('click',function(){alert(2333)}
+		,false);// 不能关闭匿名函数
 	}
 	
 </script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>143-事件-DOM事件流-1.html</title>
+	<title>143-事件-DOM事件流-事件处理程序.html</title>
 	<style type="text/css">
 		*{
 			margin: 0;
@@ -23,6 +23,12 @@
 </body>
 <script type="text/javascript">
 	var oBox = document.getElementById('box');
+
+
+	// 事件捕获:document最先接收到事件,然后沿DOM树依次向下传播到具体的元素
+	
+	// 事件冒泡:事件由具体元素接收,然后逐级向上传播
+	
 	// oBox.addEventListener('click',function(){
 	// 	console.log('click','box');//5
 	// },true)

@@ -16,14 +16,18 @@
 		#ul1{
 			line-height: 40px;
 		}
+		li{
+			border-bottom: 1px dashed #000;
+			line-height: 40px;
+		}
 	</style>
 </head>
 <body>
 	<div class="box">
-		<input type="textarea" id="txt">
+		<textarea id="txt" cols="30" rows="10"></textarea>
 		<input type="button" value="发布" id="btn">
 		<ul id="ul1">
-			
+			<li><a href="005-网页换肤.html">历史纪录</a></li>
 		</ul>
 	</div>
 </body>
@@ -34,10 +38,18 @@
 	var oUl = document.getElementById('ul1');
 	oBtn.onclick = function(){
 		var val = oTxt.value;
-		var oLi = document.createElement('li');
-		oLi.innerHTML = val;
-		oUl.insertBefore(oLi,oUl.firstChild);
-		oTxt.value = '';
+		if(val != ''){
+			
+			var oLi = document.createElement('li');
+			oUl.insertBefore(oLi,oUl.firstChild);
+			oLi.innerHTML = val;
+			oLi.style.lineHeight = '0px';
+			oLi.style.opacity = '0';
+			oTxt.value = '';
+			animate3(oLi,{lineHeight:40},false,function(){
+				animate3(oLi,{opacity:100},false)
+			});
+		}
 	}
 </script>
 </html>

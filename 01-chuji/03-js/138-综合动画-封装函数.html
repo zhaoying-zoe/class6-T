@@ -45,7 +45,7 @@
 		if (isLinear = undefined) {// 参数如果不传入默认为undefined;此处用来判断传入值如果为true:发生匀速运动 传入值为false
 			isLinear = true;
 		}
-		var isStop = false;
+		var isStop = false;// 取非代表没有达到目标
 		clearInterval(obj.timer)//多次点击后,后一个定时器会覆盖前一个定时器,所以需要每次执行函数时都需要关闭由于多次点击触发的定时期
 		obj.timer = setInterval(function(){//设置定时器:为了让动画持续进行
 			// console.log(obj.timer)

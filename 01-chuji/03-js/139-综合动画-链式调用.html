@@ -46,7 +46,7 @@
 		if(isLinear = undefined) {
 			isLinear = true;//当传入值为undefined时转换成true
 		}
-		var isStop = false;//定义变量[0]
+		var isStop = false;//定义变量[0] 取非代表没有达到目标
 		clearInterval(obj.timer)//多次移动后,后一个定时器会覆盖前一个定时器,所以需要每次执行函数时都需要关闭由于多次移动触发的定时器
 		obj.timer = setInterval(function(){//设置定时器:为了让动画持续进行
 			// console.log(obj.timer)
@@ -54,35 +54,35 @@
 			if(attr == 'opacity') {//如果传入值为opacity,则执行下面的公式
 				oCurrent = Math.round(oCurrent * 100);
 			}
-			console.log(oCurrent);
+			// console.log(oCurrent);
 			var oSpeed = 0;//定义速度
 			if(isLinear) {//通过判断传入的第四个值:若传入值为true则匀速运动;否则减速运动
-				if(Current > target){//如果当前值大于目标值
-					oSpeed = -2;//匀减速
-				}else{//如果当前值小于目标值
-					oSpeed = 2;//匀加速
+				if(Current > target){// 如果当前值大于目标值
+					oSpeed = -2;// 匀减速
+				}else{// 如果当前值小于目标值
+					oSpeed = 2;// 匀加速
 				}
 				if(Math.abs(Current - target) < Math.abs(oSpeed)){
 					if(attr == 'opacity'){//如果传入值为opacity,则执行下列代码
 						obj.style[attr] = (Current + oSpeed)/100;
-					}else{//如果传入值不为opacity,则执行下列代码(最后加上字符串px)
+					}else{// 如果传入值不为opacity,则执行下列代码(最后加上字符串px)
 						obj.style[attr] = Current + oSpeed + 'px';
 					}
 					// clearInterval(obj.timer);
-					isStop = true;//给isStop赋值
+					isStop = true;// 两个都是酷似结束才给isStop赋值
 				}
-			}else{//减速运动
+			}else{// 减速运动
 				oSpeed = (target - oCurrent)/10;//给减速动画的速度赋值
-				oSpeed < 0 ? oSpeed = Math.floor(oSpeed) : oSpeed = Math.ceil(oSpeed);
-				if(!oSpeed){//如果速度为0则关闭定时器(通过改变控制定时器的变量来关闭)
+				oSpeed < 0 ? oSpeed = Math.floor(oSpeed) : oSpeed = Math.ceil(oSpeed);//三元判断
+				if(!oSpeed){// 如果速度为0则关闭定时器(通过改变控制定时器的变量来关闭)
 					// clearInterval(obj.timer);//关闭定时器
-					isStop = true;//给控制定时器的变量赋值
+					isStop = true;// 给控制定时器的变量赋值
 				}
 			}
-			if(isStop){//判断变量[0]的值来关闭定时器
-				clearInterval(obj.timer);//通过判断isStop的值来关闭定时器
+			if(isStop){// 判断变量[0]的值来关闭定时器
+				clearInterval(obj.timer);// 通过判断isStop的值来关闭定时器
 				//fn(); 
-				typeof fn == 'function' && fn();//如果第五个传入的值的类型为'function',则执行 与 后面的
+				typeof fn == 'function' && fn();// 如果第五个传入的值的类型为'function',则执行 与 后面的
 			}else{
 				if(attr == 'opacity') {
 					obj.style[attr] = (oCurrent + oSpeed)/100;//变化值为 (当前值 + 速度)/100
@@ -97,11 +97,22 @@
 			animate1(oBox1,'height',300,true);
 		});//(修改的元素,修改的属性,目标值,定义变量,链式函数)
 	}
+	oBox1.onmouseout = function(){//移动到时调用函数
+		animate1(oBox1,'width',100,false,function(){
+			animate1(oBox1,'height',100,true);
+		});//(修改的元素,修改的属性,目标值,定义变量,链式函数)
+	}
 	oBox2.onmouseover = function(){//移动到时调用函数
 		animate1(oBox2,'height',300,true);
 	}
+	oBox2.onmouseout = function(){//移动到时调用函数
+		animate1(oBox2,'width',100,false);
+	}
 	oBox3.onmouseover = function(){//移动到时调用函数
 		animate1(oBox3,'opacity',20);
+	}
+	oBox3.onmouseout = function(){//移动到时调用函数
+		animate1(oBox3,'opacity',100);
 	}
 </script>
 </html>

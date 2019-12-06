@@ -43,7 +43,8 @@
 		if(isLinear = undefined) {
 			isLinear = true;
 		}
-		var isStop = false;
+		// var isStop = false;// 取非代表没有达到目标
+		var isStopall = true;
 		clearInterval(obj.timer)
 		obj.timer = setInterval(function(){
 			for(var attr in options){
@@ -53,44 +54,53 @@
 				}
 				console.log(oCurrent);
 				var oSpeed = 0;
-				if(isLinear) {
+				if(isLinear) {//匀速运动
 					if(Current > options[attr]){
 						oSpeed = -2;
 					}else{
 						oSpeed = 2;
 					}
 					if(Math.abs(Current - options[attr]) < Math.abs(oSpeed)){
-						if(attr == 'opacity'){//如果传入值为opacity,则执行下列代码
+						if(attr == 'opacity'){
 							obj.style[attr] = (Current + oSpeed)/100;
-						}else{//如果传入值不为opacity,则执行下列代码(最后加上字符串px)
+						}else{
 							obj.style[attr] = Current + oSpeed + 'px';
 						}
 						// clearInterval(obj.timer);
-						isStop = true;//给isStop赋值
+						// isStop = true;
+					}else{
+						isStopall = false;
 					}
 				}else{//减速运动
-					oSpeed = (options[attr] - oCurrent)/10;//给减速动画的速度赋值
+					oSpeed = (options[attr] - oCurrent)/10;
 					oSpeed < 0 ? oSpeed = Math.floor(oSpeed) : oSpeed = Math.ceil(oSpeed);
-					if(!oSpeed){//如果速度为0则关闭定时器(通过改变控制定时器的变量来关闭)
-						// clearInterval(obj.timer);//关闭定时器
-						isStop = true;
+					if(!oSpeed){
+						// clearInterval(obj.timer);
+						// isStop = true;
+					}else{
+						isStopall = false;
 					}
 				}
-				if(isStop){
+				if(isStopall){
 					clearInterval(obj.timer);
-					typeof fn == 'function' && fn();
-				}else{
+					typeof fn == 'function' && fn();//fn()代表传入改变的参数以函数方式传入
+				}
+				else{
 					if(attr == 'opacity') {
 						obj.style[attr] = (oCurrent + oSpeed)/100;
 					}else{
 						obj.style[attr] = oCurrent + oSpeed + 'px';
 					}
 				}
+
 			}
 		},30)
 	}		
 	oBox1.onmouseover = function(){
 		animate3(oBox1,{'width':300,'height':300,'opacity':30},true);
+	}
+	oBox1.onmouseout = function(){
+		animate3(oBox1,{'width':100,'height':100,'opacity':100},false);
 	}
 </script>
 </html>

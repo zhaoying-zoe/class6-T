@@ -30,7 +30,7 @@
 	var oBox = document.getElementById('box');
 	window.addEventListener('mousemove',function(ev){
 		// oBox.style
-		console.log(ev.clientX);
+		console.log(ev.clientX);// 鼠标移动的距离(可视区)
 		oBox.style.left = ev.clientX + getScrollLeft() + 'px';
 		oBox.style.top = ev.clientY  + getScrollTop() + 'px';
 	},false)
