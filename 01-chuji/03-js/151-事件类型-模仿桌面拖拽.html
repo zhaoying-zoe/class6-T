@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>151-事件类型-模仿桌面拖拽.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script type="text/javascript">
+	var oBox = document.getElementById('box');
+	oBox.onmousedown = function(ev){// oBox在鼠标点击时定义函数
+		var divX = ev.clientX - oBox.offsetLeft;//鼠标左距离-oBox的左距离
+		var divY = ev.clientY - oBox.offsetTop;//鼠标上距离-oBox的上距离
+		console.log(divX,divY);
+		var oClone = oBox.cloneNode(true);// 克隆元素oBox
+		oClone.style.opacity = '0.5';// 给克隆元素设置opacity为0.5,模仿桌面图标	document.body.appendChild(oClone);// 添加克隆元素oBox
+		document.onmousemove = function(ev){// 鼠标移动是如果速度过快,鼠标会出盒子,所以把oBox改成document
+			oClone.style.left = ev.clientX - divX + 'px';
+			oClone.style.top = ev.clientY - divY + 'px';
+		}
+		document.onmouseup = function(ev){
+			oBox.style.left = oClone.offsetLeft + 'px';
+			oBox.style.top = oClone.offsetTop + 'px';
+			// 为了让clone的元素不影响再次拖动,需要把clone元素移除 👇
+			document.body.removeChild(oClone);
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	}
+</script>
+</html>
