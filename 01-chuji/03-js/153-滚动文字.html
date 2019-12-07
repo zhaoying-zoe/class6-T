@@ -141,24 +141,37 @@
 	</div>
 </body>
 <script type="text/javascript">
+	function animate(){
+		if(t<0){
+			t=0;
+		}else if(t > oFather.offsetHeight - oSon.offsetHeight){
+			t = oFather.offsetHeight - oSon.offsetHeight;
+		}
+		oSon.style.top = t + 'px';
+		var scale = t / (oFather.offsetHeight - oSon.offsetHeight);
+		oPage.style.top = - (oPage.offsetHeight - oContent.offsetHeight) * scale + 'px';
+	}
 	var oWrap = document.querySelector('.wrap');
 	var oContent = document.querySelector('.content');
 	var oPage = document.querySelector('.page');
 	var oFather = document.querySelector('.father');
 	var oSon = document.querySelector('.son');
+	var t = 0;
+	// function handleMove(){
+	// 	if(t<0){
+	// 		t=0;
+	// 	}else if(t > oFather.offsetHeight - oSon.offsetHeight){
+	// 		t = oFather.offsetHeight - oSon.offsetHeight;
+	// 	}
+	// 	oSon.style.top = t + 'px';
+	// 	var scale = t / (oFather.offsetHeight - oSon.offsetHeight);
+	// 	oPage.style.top = - (oPage.offsetHeight - oContent.offsetHeight) * scale + 'px';
+	// }
 	oSon.onmousedown = function(ev){
 		var divY = ev.clientY - oSon.offsetTop;
 		document.onmousemove = function(ev){
-			var t = ev.clientY - divY;
-			if(t < 0){
-				t = 0;
-			}else if(t > oFather.offsetHeight - oSon.offsetHeight){
-				t = oFather.offsetHeight - oSon.offsetHeight;
-			}
-			var scole = t/(oFather.offsetHeight - oSon.offsetHeight);
-			// console.log(scole)
-			oSon.style.top = (oContent.offsetHeight - oSon.offsetHeight)*scole + 'px';
-			oPage.style.top = -(oPage.offsetHeight-oContent.offsetHeight)*scole + 'px';
+			t = ev.clientY - divY;
+			animate();
 		}
 		document.onmouseup = function(ev){
 			document.onmousemove = null;
@@ -166,8 +179,14 @@
 		}
 
 	}
-	oWrap.onmousewheel = function(){
-			alert(23333)
+	oWrap.onmousewheel = function(ev){
+		if(ev.wheelDelta > 0){//向上
+			t -= 10;
+		}else{//向下
+			t += 10;
 		}
+		// console.log(t)
+		animate();
+	}
 </script>
 </html>
