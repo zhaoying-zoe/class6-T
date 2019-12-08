@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>159-愤怒的小鸟.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			width: 700px;
+			height: 700px;
+			border: 1px solid #000;
+			position: absolute;
+			top: 20px;
+			left: 100px;
+		}
+		#bird{
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			top: 0px;
+			left: 50%;
+			margin-left: -25px;
+			background-image: url(images/bird.jpg);
+			background-size: 50px 50px;
+			background-repeat: no-repeat;
+		}
+		.topline{
+			width: 50px;
+			background: red;
+			position: absolute;
+			top: 0px;
+			left: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="bird"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var oBird = document.getElementById('bird');
+	var oWrap = document.getElementById('wrap');
+	var oSpeed = 0;
+	var oBirdTimer = 0,oIineDiv = 0;
+	clearInterval(oBirdTimer);
+	// 清除定时器 👇
+	function clearTimer(){
+		clearInterval(oBirdTimer);
+	}
+	// 小鸟自由落体定时器 👇
+	oBirdTimer = setInterval(function(){
+		oSpeed += 1;
+		var t = oBird.offsetTop + oSpeed;// 挣钱
+		if(t < 0){//计划买啥
+			t = 0;
+			clearTimer();
+		}else if(t > oWrap.offsetHeight - 2 - oBird.offsetHeight){//
+			t = oWrap.offsetHeight - 2 - oBird.offsetHeight;
+			clearTimer();
+		}
+		oBird.style.top = t + 'px';//花钱
+	},30)
+	// 生成柱子函数
+	function addLine(){
+		var oTopDiv = document.creatElement('div');
+		var oBottomDiv = document.creatElement('div');
+		oWrap.insertBefore(oTopDiv,oWrap.firstChild)
+		oWrap.appendChild(oBottomDiv);
+	}
+	// 生成柱子定时器
+	// oIineDiv = setInterval(addLine,600)
+	// 
+	document.onkeydown = function(){
+		// console.log(2333);
+		oSpeed = -10;//每次按键减小 小鸟的速度,
+	}
+</script>
+</html>

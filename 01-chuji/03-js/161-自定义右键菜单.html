@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>161-自定义右键菜单.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 300px;
+			height: 600px;
+			background: red;
+			display: none;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script type="text/javascript">
+	var oBox = document.getElementById('box');
+	document.oncontextmenu = function(ev){// 单击右键让自定义菜单出现
+		oBox.style.display = 'block';
+		oBox.style.top = ev.clientY + 'px';
+		oBox.style.left = ev.clientX + 'px';
+		return false;
+	}
+	oBox.onclick = function(ev){// 阻止冒泡事件
+		ev.stopPropagation()
+	}
+	document.onclick = function(){// 左键单击其他部分让oBox消失
+		oBox.style.display = 'none';
+	}
+</script>
+</html>

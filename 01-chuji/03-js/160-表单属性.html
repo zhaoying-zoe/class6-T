@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>160-表单属性.html</title>
+</head>
+<body>
+	<form id="form1" action="001-js的使用行内.html">
+		<input type="text" id="txt" autocomplete="off">
+		<input type="submit" id="btn" value="提交">
+		<input type="reset" id="res">
+		<p id="mes"></p>
+	</form>
+</body>
+<script type="text/javascript">
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oRes = document.getElementById('res');
+	var oMes = document.getElementById('mes');
+	var oForm = document.getElementById('form1');
+	oTxt.onfocus = function(){// 表单获取焦点触发
+		oMes.innerHTML = '232313213';
+	}
+	oTxt.onblur = function(){// 表单失去焦点触发
+		console.log(2323);
+	}
+	oTxt.onchange = function(){// 页面内容有改动,失去焦点执行
+		console.log('有改动');
+	}
+	oTxt.oninput = function(){// 输入后触发,不包括功能键
+		console.log('输入')
+	}
+	oForm.onsubmit = function(){// form表单提交事件
+		console.log('form表单提交事件')
+	}
+	oForm.onreset = function(){// form表单重置事件
+		console.log('form表单重置事件')
+	}
+</script>
+</html>

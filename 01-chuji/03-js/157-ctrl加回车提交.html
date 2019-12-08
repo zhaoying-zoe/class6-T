@@ -34,10 +34,16 @@
 	var oUl1 = document.getElementById('ul1');
 	oBtn.onclick = function(){
 		var val = oTxt.value;
-		oUl1.createElement('li')
-		li.innerHTML = val;
+		var oLi = document.createElement('li')
+		oLi.innerHTML = val;
 		oTxt.value = '';
-		
+		oUl1.insertBefore(oLi,oUl1.firstChild);
+		// onkeydown
+		// 
+	}
+	oTxt.onkeydown = function(ev){
+		console.log(ev.keyCode);
+		if()
 	}
 </script>
 </html>
