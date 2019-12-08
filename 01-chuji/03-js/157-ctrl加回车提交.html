@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>157-ctrl加回车提交.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 500px;
+			height: 500px;
+			margin: 200px auto;
+		}
+		li{
+			list-style: none;
+			line-height: 40px;
+			border-bottom: 1px dashed #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<input type="" id="txt">
+		<input type="button" value="提交" id="btn">
+		<ul id="ul1">
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oUl1 = document.getElementById('ul1');
+	oBtn.onclick = function(){
+		var val = oTxt.value;
+		oUl1.createElement('li')
+		li.innerHTML = val;
+		oTxt.value = '';
+		
+	}
+</script>
+</html>
