@@ -21,6 +21,16 @@
 			height: 450px;
 			border: 1px solid #000;
 		}
+		#mask{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 240px;
+			height: 240px;
+			background: rgba(255,255,0,0.5);
+			display: none;
+			cursor: move;
+		}
 		#list{
 			position: absolute;
 			top: 460px;
@@ -35,6 +45,7 @@
 			height: 54px;
 			margin-right: 10px;
 			border: 2px solid transparent;
+			border: 1px solid #fff;
 		}
 		#list li.active{
 			border: 2px solid #f00;
@@ -47,12 +58,19 @@
 			height: 600px;
 			border: 1px solid #000;
 			overflow: hidden;
+			display: none;
+		}
+		#largeBox img{
+			position: absolute;
+			top: 0px;
+			left: 0px;
 		}
 	</style>
 </head>
 <body>
 	<div id="wrap">
 		<div id="bigBox">
+			<div id="mask"></div>
 			<img src="images/p_b_0001.jpg" alt="">
 		</div>
 		<ul id="list">
@@ -73,19 +91,54 @@
 </body>
 <script type="text/javascript">
 	var aLi = document.querySelectorAll('#list li');
-	var oLiBigImg = document.querySelectorAll('#bigBox img');
-	var oLiLargeImg = document.querySelectorAll('#largeBox img');
-	var aLi = document.querySelectorAll('#list li');
+	var oBigBox = document.querySelector('#bigBox');
+	var oMask = document.querySelector('#mask');
+	var oWrap = document.querySelector('#wrap');
+	var oLiBigImg = document.querySelector('#bigBox img');
+	var oLiLargeImg = document.querySelector('#largeBox img');
+	var oLargeBox = document.querySelector('#largeBox');
 	for(var i = 0;i<aLi.length;i++){
-		aLi[i].index = i
-		aLi[i].onmouseover = function(){
+		aLi[i].index = i;// 存i值
+		aLi[i].onmouseover = function(){// 放在小图片上
 			for(var j = 0;j < aLi.length;j++){
 			aLi[j].className = '';
 		}
 			// console.log(this);
-			this.className = 'active';
-			oLiBigImg.src = 'images/p_s_000'+this.index+'.jpg'
+			this.className = 'active';// 让这个图片的类名改为'active'
+			oLiBigImg.src = "images/p_b_000"+(this.index+1)+".jpg"
+			oLiLargeImg.src = "images/p_l_000"+(this.index+1)+".jpg"
 		}
+	}
+	oBigBox.onmouseover = function(){// 放在大盒子上移动时
+		oMask.style.display = 'block';// 改变 蒙版 属性
+		oLargeBox.style.display = 'block';// 改变 large盒子 属性
+		oBigBox.onmousemove = function(ev){// // 在大盒子上移动时
+			var t = ev.clientY - oWrap.offsetTop - oMask.offsetHeight*0.5;
+			var l = ev.clientX - oWrap.offsetLeft - oMask.offsetWidth*0.5;
+			// 让蒙版在父元素内移动的条件 👇
+			if(l < 0){
+				l = 0;
+			}else if(l > oBigBox.offsetWidth - oMask.offsetWidth){
+				l = oBigBox.offsetWidth - oMask.offsetWidth
+			}
+			if(t < 0){
+				t = 0;
+			}else if(t > oBigBox.offsetWidth - oMask.offsetWidth){
+				t = oBigBox.offsetWidth - oMask.offsetWidth
+			}
+			// 定义移动比例变量
+			var scaleX = l/(oBigBox.offsetWidth - oMask.offsetWidth);
+			var scaleY = t/(oBigBox.offsetHeight - oMask.offsetHeight);
+			// 改变large盒子的图片属性(top,left)的值
+			oLiLargeImg.style.left = -scaleX*(oLiLargeImg.offsetWidth - oLargeBox.offsetWidth) + 'px';
+			oLiLargeImg.style.top = -scaleY*(oLiLargeImg.offsetHeight - oLargeBox.offsetHeight) + 'px';
+			// 改变蒙版的图片属性(top,left)的值
+			oMask.style.top = t + 'px';
+			oMask.style.left = l + 'px';
+		}
+	}
+	oBigBox.onmouseout = function(){// 离开中盒子时的函数
+		oMask.style.display = 'none';
 	}
 </script>
 </html>
