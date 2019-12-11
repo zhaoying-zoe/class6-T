@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>184-正则体验.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var str = 'asd1af2 a3f ga4gh56af 78 9';
+	var result = [];
+	var tmp = '';
+	for(var i =0;i<str.length;i++){
+		// console.log(isNaN(parseInt(str[i])));
+		if(!isNaN(parseInt(str[i]))){
+			// console.log(str[i])
+			// result.push(str[i])
+			tmp += str[i];
+		}else{
+			if(tmp){
+				result.push(tmp);
+				tmp = '';
+			}
+		}
+	}
+	if(tmp){
+		result.push(tmp);
+		tmp = '';
+	}
+	console.log(result);
+	console.log(str.match(/\d+/g));// 正则：匹配字符串的规则
+</script>
+</html>

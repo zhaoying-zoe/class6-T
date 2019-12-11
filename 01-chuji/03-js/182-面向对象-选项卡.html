@@ -79,19 +79,19 @@
 </body>
 <script>
 	/*
-	var aBtn = document.querySelectorAll('.btn-item');
-	var aContetn = document.querySelectorAll('.content-item');
-	for(var i=0;i<aBtn.length;i++){
-		aBtn[i].index = i;//存i值
-		aBtn[i].onclick = function(){
-			for(var j=0;j<aBtn.length;j++){//清空操作
-				aBtn[j].className = 'btn-item';
-				aContetn[j].style.display = 'none';
+		var aBtn = document.querySelectorAll('.btn-item');
+		var aContetn = document.querySelectorAll('.content-item');
+		for(var i=0;i<aBtn.length;i++){
+			aBtn[i].index = i;//存i值
+			aBtn[i].onclick = function(){
+				for(var j=0;j<aBtn.length;j++){//清空操作
+					aBtn[j].className = 'btn-item';
+					aContetn[j].style.display = 'none';
+				}
+				this.className = 'active btn-item';
+				aContetn[this.index].style.display = 'block';
 			}
-			this.className = 'active btn-item';
-			aContetn[this.index].style.display = 'block';
 		}
-	}
 	*/
 	function Tab(aBtnSelector,aContentSelector){
 		//1.罗列属性

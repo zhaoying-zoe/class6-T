@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>185-创建正则.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// (构造函数): new RegExp(规则,修正模式) 如:var reg = new RegExp('a','g')
+	// (字面量): /规则/修正模式 如:var reg = /a/g
+	var str = 'asd afa ffg';// a将被代替
+	var reg = new RegExp('a','g');// 'a':代表要被代替的字符串名字
+	var reg2 = /a/g;
+	console.log(str.replace(reg,'888'));// 把'a'转换成'888'
+	console.log(str.replace(reg2,'888'));
+
+</script>
+</html>
