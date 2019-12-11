@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>171-对象-数组去重.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 先把重复数组放在一个空对象内,根据对象的'唯一'特点去重,再把对象内的值放入空数组(采用隐式转换,转换成数字)
+	var arr = new Array(1,2,3,6,4,1,2,5,9,2,1,2);
+	function newArry(){
+		var result = [];// 定义空数组
+		var arry = {};// 定义空对象
+		for(var i = 0;i < arr.length;i++){
+			arry[arr[i]]='';// 
+		}
+		// console.log(arry);
+		for(var attr in arry){
+			result.push(attr*1);
+		}
+		return result;
+	}
+	// newArry();
+	console.log(newArry())
+</script>
+</html>

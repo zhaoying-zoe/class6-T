@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>168-自定义事件.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 1.创建事件对象: var 事件对象 = new Event(自定义事件类型)
+	var newEvent = new Event();
+	// 2.监听事件 dom.addEventListener(自定义事件类型,function(){})
+	newEvent.addEventListener(onclick,function(){
+		console.log(23333)
+	},false)
+	// 3.触发事件dom.dispatchEvent(事件对象)
+	document.body.dispatchEvent(newEvent)
+</script>
+</html>

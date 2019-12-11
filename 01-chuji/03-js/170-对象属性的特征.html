@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>170-对象属性的特征.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var obj = {
+		// name:'tom',// 无序:虽然name写在前面,但是对象的排序是根据字母排序的
+		name:'bob',// 唯一:虽然写了两个name,但是后面的name会把前面的name覆盖掉
+		age:18,
+		sayHi:function(){
+			console.log(this);// 函数在调用时属于谁,this就指代谁
+			console.log('hi' + this.name);
+		},// 每个属性之间千万不能忘记,号 ！！！！
+		friends:['bob','jone','mike']// 对象内可以添加数组
+	}
+	console.log(obj);
+	obj.sayHi();
+	function hi(){
+		console.log(this);
+	}
+	hi();// 没有调用的 代表window上的函数
+	window.hi();
+</script>
+</html>

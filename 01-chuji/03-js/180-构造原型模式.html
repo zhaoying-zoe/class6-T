@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>180-构造原型模式.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 可以在原型对象prototype添加共用的属性或者方法
+	// 变化的属性和方法写在构造器中
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log("I am "+this.name+" , I have "+this.LEGS + " legs");
+	}
+	Person.prototype.showAge = function(){
+		console.log("I am "+this.age + " years old");
+	}
+	var person1 = new Person('bob',18);
+	console.log(person1);
+	person1.showName();
+	person1.showAge();
+	var person2 = new Person('mike',48);
+	console.log(person2);
+	person2.showName();
+	person2.showAge();
+	console.log(person1.showName == person2.showName);// false 方法不能共享
+</script>
+</html>

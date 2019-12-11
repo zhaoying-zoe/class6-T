@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>163-事件委托.html</title>
+</head>
+<body>
+	<button id="btn">生成元素</button>
+	<ul id="ul1">
+		<li>1<a href="javascript:;" class="del">删除</a></li>
+		<li>2<a href="javascript:;" class="del">删除</a></li>
+		<li>3<a href="javascript:;" class="del">删除</a></li>
+		<li>4<a href="javascript:;" class="del">删除</a></li>
+		<li>5<a href="javascript:;" class="del">删除</a></li>
+		<li>6<a href="javascript:;" class="del">删除</a></li>
+		<li>7<a href="javascript:;" class="del">删除</a></li>
+		<li>8<a href="javascript:;" class="del">删除</a></li>
+		<li>9<a href="javascript:;" class="del">删除</a></li>
+		<li>10<a href="javascript:;" class="del">删除</a></li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var oUl = document.getElementById('ul1');
+	var oBtn = document.getElementById('btn');
+	var oLi = document.querySelectorAll('li');
+	oUl.onclick = function(ev){
+		if(ev.target.className == 'del'){
+			oUl.removeChild(ev.target.parentNode);
+		}
+		console.log(ev.currentTarget)//  绑定事件的对象
+		console.log(ev.target)//  事件源对象,即触发事件的对象
+		console.log(ev.type)//  现在的事件类型是什么
+		// console.log(ev.target.parentNode);
+	}
+	oBtn.onclick = function(){
+		var oLi = document.createElement('li');
+		var aA = document.createElement('a');
+		oLi.innerHTML = '新生成的元素';
+		aA.innerHTML = '删除';
+		aA.href = 'javascript:;';
+		aA.className = 'del';
+		oUl.appendChild(oLi);
+		oLi.appendChild(aA);
+	}
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>165-事件属性-target,event.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script type="text/javascript">
+	var oBox = document.getElementById('box');
+	oBox.onmouseover = function(ev){
+
+		this.style.background = 'green';
+		console.log(ev.currentTarget)//  绑定事件的对象
+		console.log(ev.target)//  事件源对象,即触发事件的对象
+		console.log(ev.type)//  现在的事件类型是什么
+	}
+	oBox.onclick = function(ev){
+
+		this.style.background = 'blue';
+		console.log(ev.currentTarget)//  绑定事件的对象
+		console.log(ev.target)//  事件源对象,即触发事件的对象
+		console.log(ev.type)//  现在的事件类型是什么
+	}
+</script>
+</html>

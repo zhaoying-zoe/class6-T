@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>172-JSON和JS对象的区别及转换.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var json = '{"name":"tom","age":12}';// json中不能存在函数
+	var obj = {
+		name:'tom',
+		age:12,
+		"@":181818,// 变量名一定要合法
+		hi:function(){
+			console.log(2333)
+		}
+	}
+	console.log(obj);
+	console.log(obj.name);
+	console.log(json);
+	console.log(json.name);// 字符串无法读取属性
+	var jsonTojs = JSON.parse(json)// json转js对象:JSON.parse(json)
+	var jsToJson = JSON.stringify(obj)// js对象转json:JSON.stringify(js对象)
+	console.log(jsonTojs);
+	console.log(jsToJson);
+</script>
+</html>

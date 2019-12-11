@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>166-鼠标事件属性.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	document.onclick = function{
+		console.log('event.clientY/event.clientX',ev.clientY,ev.clientX) // 可视区(浏览器)的内沿到鼠标的距离
+		console.log('event.pageY/event.pageX',ev.pageY,ev.pageX) // 可视区(浏览器)的内沿加滚动距离到鼠标的距离
+		console.log('event.screenY/event.screenX',ev.screenY,ev.screenX) // 显示器屏幕内沿到鼠标的距离
+	}
+</script>
+</html>
