@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>186-正则-原子集合.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// . 除了回车和换行外的任意字符 等价[^\r\n]
+	// \d 任意数字,等价[0-9], \D 任意非数字 等价[^0-9]
+	// \w 任意数字,字母,下划线 等价[0-9a-zA-Z_],\W 任意非数字,字母,下划线 等价[^0-9a-zA-Z_]
+	// \s 空白符 等价于[\t\n\f\r],\S 非空白符 等价于[^\t\n\f\r]
+	var str = 'saf2 f gggrg	454';
+	var reg = /[0-9]/g;
+	var reg2 = /[\d]/g;
+	var reg3 = /[^0-9]/g;
+	var reg4 = /[\D]/g;
+	var reg5 = /[a-z0-9_]/g;
+	var reg6 = /[\w]/g;
+	var reg7 = /[^a-z0-9_]/g;
+	var reg8 = /[/W]/g;
+	var reg9 = /[\t\n\f\r]/g;
+	var reg10 = /\s/g;
+	var reg11 = /[^\t\n\f\r]/g;
+	var reg12 = /\S/g;
+	console.log(str.replace(reg,'*'));
+	console.log(str.replace(reg2,'*'));
+	console.log(str.replace(reg3,'*'));
+	console.log(str.replace(reg4,'*'));
+	console.log(str.replace(reg5,'*'));
+	console.log(str.replace(reg6,'*'));
+	console.log(str.replace(reg7,'*'));
+	console.log(str.replace(reg8,'*'));
+	console.log(str.replace(reg9,'*'));
+	console.log(str.replace(reg10,'*'));
+	console.log(str.replace(reg11,'*'));
+	console.log(str.replace(reg12,'*'));
+</script>
+</html>

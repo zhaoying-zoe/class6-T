@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>201-正则.修正模式.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 	i(ignoreCase) 忽略大小写,默认区分大小写,可以通过正则对象上的ignoreCase属性查看
+	// g(global) 匹配所有的,默认只找到第一个,可以通过正则对象上的global属性查看
+	var str = 'aA dD ggg 45Gg54gag 5gDgr g4rg';
+	var reg1 = /[a-z]/;
+	var reg2 = /[a-z]/i;
+	var reg3 = /[a-z]/g;
+	
+	console.log(str.replace(reg1,'*'));
+	console.log(str.replace(reg2,'*'));
+	console.log(str.replace(reg3,'*'));
+	console.log(reg1.ignoreCase);
+	console.log(reg2.ignoreCase);
+	console.log(reg3.ignoreCase);
+	console.log(reg1.global);
+	console.log(reg2.global);
+	console.log(reg3.global);
+</script>
+</html>

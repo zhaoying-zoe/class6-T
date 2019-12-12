@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>193-正则-合法年份.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">检测</button>
+</body>
+<script type="text/javascript">
+	// 合法年份(公元1000年至公元2999年):/^[1-2]\d{3}$/.test(str)
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		var val = oTxt.value;
+		//1000年至公元2999年
+		var reg = /^[1|2]\d{1,3}$/;
+		// console.log(reg.test(val))
+		if(reg.test(val)){
+			alert('合法')
+		}else{
+			alert('不合法')
+		}
+	}
+</script>
+</html>

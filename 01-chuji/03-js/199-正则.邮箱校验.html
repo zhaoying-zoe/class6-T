@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>199-正则-邮箱校验.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">检测</button>
+</body>
+<script type="text/javascript">
+	// 邮箱校验:/^\w+@\w+\.[a-z]{2,5}$/.test(str)
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		var val = oTxt.value;
+		//1130051785@qq.com
+		//1130057184@163.com
+		//5456ksahfj@163.com
+		var reg = /^\w{6,10}@\w{2,3}\.com$/;
+		// console.log(reg.test(val))
+		if(reg.test(val)){
+			alert('合法')
+		}else{
+			alert('不合法')
+		}
+	}
+</script>
+</html>

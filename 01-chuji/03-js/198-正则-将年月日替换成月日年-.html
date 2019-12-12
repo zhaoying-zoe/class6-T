@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>198-正则-将年月日替换成月日年-.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var str = '2019-12-12';
+	var reg = /(\d{4})-(\d{2})-(\d{2})/;// 括号内的为$1 $2 $3
+	console.log(str);
+	console.log(str.replace(reg,'$3-$2-$1'));// 将年月日换成月日年
+</script>
+</html>
