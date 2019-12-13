@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>206-字符串处理方法-上.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	//1. str.search(reg)
+	/*var str = 'abcdefg';
+	console.log(str.search('c'));//查询 被查 字符串的下标
+	*/
+	// str.match(reg):找到字符串中的所有匹配的字符串,如果没有匹配的话返回null,有的话返回一个数组
+	/*
+	var str = 'a2019-12-13b2019-06-10c'
+	var reg1 = /(?<years>\d{4})-(?<month>\d{2})-(?<date>\d{2})/g;
+	var reg2 = /(?<years>\d{4})-(?<month>\d{2})-(?<date>\d{2})/;
+	console.log(str.match(reg1));
+	console.log(str.match(reg2));
+	*/
+	// str.split(reg):根据正则匹配的内容把字符串分隔成数组
+	/*
+	var str = 'a b c d e f ';
+	var reg = / /;
+	console.log(str.split())
+	*/
+	// str.replace(reg,function(匹配结果,index,原值)):把字符串中匹配到正则的子串传递到回调函数进一步处理,用函数的返回值来替换匹配项
+	var str = 'a1b2c3d4'.replace(/\d/g,function(match,index,origin){
+	    return parseInt(match)*10;
+	})
+	console.log(str);//a10b20c30d40
+</script>
+</html>

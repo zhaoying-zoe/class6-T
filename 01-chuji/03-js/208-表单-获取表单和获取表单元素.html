@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>208-表单-获取表单和获取表单元素.html</title>
+</head>
+<body>
+	<form method="get" action="">
+		<input type="text" name="username">
+		<input type="password" name="password">
+		<input type="radio" name="sex">男
+		<input type="radio" name="sex">女
+	</form>
+	<!-- <form method="get" action=""></form> -->
+</body>
+<script type="text/javascript">
+	// document.forms 代表页面所有的表单集合 document.forms[0]页面中的第一个表单
+	// 获取表单 👇
+	var Form = document.forms;
+	console.log(Form);// 获得一个表单数组
+	console.log(Form[0]);// 
+	// 获取表单元素 👇
+	console.log(Form[0].elements);// 表单.elements代表了表单中的所有表单元素集合,必须在单个表单中
+	console.log(Form[0].elements[0]); // 表单元素集合[下标]
+	console.log(Form[0].elements['password']); // 表单元素集合["元素名称"]
+	console.log(Form[0].elements.password); // 表单元素集合.元素名称
+	console.log(Form[0].password); // 表单.元素名称
+	console.log(Form[0].sex); // 同名的表单元素返回一个节点集合
+	console.log(Form[0].elements[0].form); // 表单元素.form 代表表单元素所在的form
+</script>
+</html>
