@@ -34,19 +34,43 @@
 		<div>
 			<input type="submit" value="input提交"></input>
 			<input type="image" src="images/0.png"></input>
-			<button type="submit">submit提交</button>
+			<button type="submit">button提交</button>
+			<input type="reset" value="reset重置"></input>
+			<button type="reset">reset重置</button>
 		</div>
 	</form>
 	<div>
-		<button type="button" id="btn1">html提交</button>
-		<button type="reset" id="btn2">html重置</button>
+		<button type="button" id="btn1">submit提交</button>
+		<button type="reset" id="btn2">submit重置</button>
 	</div>
 </body>
 <script type="text/javascript">
+	// 表单里的元素的提交：👇
+	// input type="submit"
+	// input type="image"
+	// button type="submit"
+	
+	// 表单提交：👇
+	// form的submit()方法提交
+	// form的submit()方法不会触发form.onsubmit事件
 	var Form = document.forms;
 	var oBtn1 = document.getElementById('btn1');
 	var oBtn2 = document.getElementById('btn2');
-	Form[0].username.focus();
-	Form[0].username.blur();
+	oBtn1.onclick = function(){
+		Form[0].submit();// 表单元素的submit
+	}
+	Form[0].onsubmit = function(){
+		console.log('on submit....');// 表单里的元素会触发on submit事件
+		// form的submit()方法不会触发form.onsubmit事件、
+		return false;
+	}
+	// form的reset()方法会触发form.onrest事件
+	oBtn2.onclick = function(){
+		Form[0].reset();// 表单元素的submit
+	}
+	Form[0].onreset = function(){
+		console.log('on onrest....');// 表单里的元素会触发on onreset事件
+		// form的submit()方法会触发form.onreset事件、
+	}
 </script>
 </html>

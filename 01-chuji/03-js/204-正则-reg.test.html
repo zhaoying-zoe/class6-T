@@ -7,4 +7,17 @@
 <body>
 	
 </body>
+<script type="text/javascript">
+	// 举例
+	// test方法测试'test里的字符串'是否有匹配到正则的字符串,有返回true,没有返回false 
+	var str = 'a1b2';
+	var reg = /[a-z]/g;
+	console.log(reg.lastIndex);//0
+	console.log(reg.test(str));//true 从下标0开始匹配到a
+	console.log(reg.lastIndex);//a的下一个位置是1
+	console.log(reg.test(str));//true 从下标1开始匹配到b
+	console.log(reg.lastIndex);//b的下一个位置是3
+	console.log(reg.test(str));//false 从下标3开始匹配,没有字符
+	console.log(reg.lastIndex);//匹配结束,lastIndex重置为0	
+</script>
 </html>
