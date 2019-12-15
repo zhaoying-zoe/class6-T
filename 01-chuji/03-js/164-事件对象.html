@@ -3,8 +3,45 @@
 <head>
 	<meta charset="UTF-8">
 	<title>164-事件对象.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box1{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+		#box2{
+			width: 200px;
+			height: 200px;
+			background-color: blue
+		}
+		#box1{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
 </head>
 <body>
-	
+	<div id="box1"></div>
+	<div id="box2"></div>
+	<input type="text" id="txt">
 </body>
+<script type="text/javascript">
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var oTxt = document.getElementById('txt');
+	oBox1.onclick = function(ev){// 鼠标事件:可以查到clintX之类的鼠标事件
+		console.log(ev)
+	}
+	oBox2.onmouseover = function(ev){//鼠标事件:可以查到clintX之类的鼠标事件
+		console.log(ev)
+	}
+	oTxt.onkeydown = function(ev){// 键盘事件:查不到clintX之类的鼠标事件
+		console.log(ev)
+	}
+</script>
 </html>

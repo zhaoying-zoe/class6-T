@@ -6,12 +6,12 @@
 </head>
 <body>
 	<ul id="box">
-		<li class="box"></li>
-		<li></li>
-		<li class="box"></li>
-		<li class="box"></li>
-		<li></li>
-		<li></li>
+		<li class="box">1</li>
+		<li>2</li>
+		<li class="box">3</li>
+		<li class="box">4</li>
+		<li>5</li>
+		<li>6</li>
 	</ul>
 </body>
 <script type="text/javascript">
@@ -25,7 +25,7 @@
 		for(var i = 0;i < aLi.length;i++){
 			console.log(aLi[i].className)
 			if(aLi[i].className==oName){
-				aEle.push(aLi[i]);
+				aEle.push(aLi[i]);// 把生成的li添加到aEle中
 			}
 		}
 		return aEle;

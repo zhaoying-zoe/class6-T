@@ -20,19 +20,24 @@
 </body>
 <script type="text/javascript">
 	var oBox = document.getElementById('box');
+	function eventBox(type){
+		if(type == 'click'){
+			oBox.style.background = 'green';
+		}else if(type == 'mouseover'){
+			oBox.style.background = 'blue';
+		}
+	}
 	oBox.onmouseover = function(ev){
-
-		this.style.background = 'green';
 		console.log(ev.currentTarget)//  绑定事件的对象
 		console.log(ev.target)//  事件源对象,即触发事件的对象
 		console.log(ev.type)//  现在的事件类型是什么
+		eventBox(ev.type);
 	}
 	oBox.onclick = function(ev){
-
-		this.style.background = 'blue';
 		console.log(ev.currentTarget)//  绑定事件的对象
 		console.log(ev.target)//  事件源对象,即触发事件的对象
 		console.log(ev.type)//  现在的事件类型是什么
+		eventBox(ev.type);
 	}
 </script>
 </html>

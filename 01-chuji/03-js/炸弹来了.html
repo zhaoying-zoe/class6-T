@@ -17,15 +17,25 @@
 			color: #fff;
 			font-size: 60px;
 		}
+		.box{
+			width: 500px;
+			height: 400px;
+			margin-left: -250px;
+			background-image: url(images/zhadam.gif);
+			background-repeat: no-repeat;
+			position: absolute;
+			left: 50%;
+			opacity: 0.5;
+			margin-top: -100px;
+		}
 	</style>
 </head>
 <body>
-	<div id="timer">
-		
-	</div>
+	<div class="box"></div>
+	<div id="timer"></div>
 </body>
 <script type="text/javascript">
-	function toStr(attr){//判断时间如果是个位数,就在前面加0
+	function toStr(attr){// 判断时间如果是个位数,就在前面加0
 		if(attr<10){
 			return '0'+attr;
 		}else{
@@ -33,24 +43,24 @@
 		}
 	}
 	var endTimer;
-	var oTimer = document.getElementById('timer');//获取div元素
-	var oDate = new Date('2020/01/25 00:00:00').getTime();//定义目标时间
-	function getTime(){//定义函数(0)
-		var oToday = Date.now();//定义当前时间
+	var oTimer = document.getElementById('timer');// 获取div元素
+	var oDate = new Date('2020/01/25 00:00:00').getTime();// 定义目标时间
+	function getTime(){// 定义函数(0)
+		var oToday = Date.now();// 定义当前时间
 		var oOtime = parseInt((oDate - oToday)/1000);//目标时间和当前时间的差(把毫秒转换成秒数并转换成整数秒)
 		if(oOtime<=0){
-			oOtime = 0;//当目标时间小于0时,把目标时间变成0,防止显示负数
-			clearInterval(endTimer);//关闭计时器
+			oOtime = 0;// 当目标时间小于0时,把目标时间变成0,防止显示负数
+			clearInterval(endTimer);// 关闭计时器
 		}
 		// console.log(oToday);
 		// console.log(oDate);
-		console.log(oOtime);//检查时间差
-		var iHour = parseInt(oOtime/3600);//把毫秒数转换成小时
-		var iMinute = parseInt((oOtime%3600)/60);//把毫秒数转换成分钟
-		var iSecond = parseInt((oOtime%3600)%60);//把毫秒数转换成秒数
+		console.log(oOtime);// 检查时间差
+		var iHour = parseInt(oOtime/3600);// 把毫秒数转换成小时
+		var iMinute = parseInt((oOtime%3600)/60);// 把毫秒数转换成分钟
+		var iSecond = parseInt((oOtime%3600)%60);// 把毫秒数转换成秒数
 		oTimer.innerHTML = '距离炸弹爆炸还有'+toStr(iHour)+'时'+toStr(iMinute)+'分'+toStr(iSecond)+'秒'+'请战斗队员做好准备!!!';//改变div的内容
 	}
-	endTimer = setInterval(getTime,1000)//开启定时器,给定时器加endTimer
-	getTime();//调用函数(0)
+	endTimer = setInterval(getTime,1000)// 开启定时器,给定时器加endTimer
+	getTime();// 调用函数(0)
 </script>
 </html>

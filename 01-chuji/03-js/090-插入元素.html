@@ -6,12 +6,22 @@
 </head>
 <body>
 	<ul id="ul1">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
 	</ul>
-	<input type="button" name="">
+	<input type="button" id="btn" value="点击">
 </body>
+<script type="text/javascript">
+	var oUl = document.getElementById('ul1');
+	var oBtn = document.getElementById('btn');
+	oBtn.addEventListener('click',fn,false)
+	function fn(){
+		var oLi = document.createElement('li');
+		oUl.insertBefore(oLi,oUl.firstChild);
+		oLi.innerHTML = '冒蓝火的加特林哒哒哒';
+	}
+</script>
 </html>
