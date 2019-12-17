@@ -111,7 +111,7 @@
         .msg{
             display: none;
         }
-        .ok {
+        .ok{
             display: inline-block;
             position: relative;
             float: left;
@@ -121,7 +121,7 @@
             padding-left: 20px;
             background: url(images/baidu/reg_icons.png) -80px 0 no-repeat;
         }
-        .err {
+        .err{
             float: left;
             position: relative;
             width: 250px;
@@ -132,7 +132,7 @@
             font-size: 12px;
             color: #fc4343;            
         }
-        .cancel {
+        .cancel{
             position: absolute;
             top: 12px;
             left: 398px;            
@@ -145,7 +145,7 @@
         .cancel:hover {
             background-position: -48px -24px;
         }
-        .tiptext {
+        .tiptext{
             height: 40px;
             line-height: 40px;
             font-size: 12px;
@@ -268,10 +268,10 @@
                     <span class="msg"></span>       
                 </div> 
                 <div id='agree-box'>
-                   <input type="checkbox" name='isAgree'> 
+                   <input type="checkbox" name='isAgree'>
                    <label for="isAgree">阅读并接受</label>
-                   <a href="#">《百度用户协议》</a>及<a href="#">《百度隐私权保护声明》</a>  
-                   <span class="msg" id='agreeErr'>请勾选“阅读并接受百度用户协议”</span>               
+                   <a href="#">《百度用户协议》</a>及<a href="#">《百度隐私权保护声明》</a>
+                   <span class="msg" id='agreeErr'>请勾选“阅读并接受百度用户协议”</span>
                 </div>           
                 <div class="subBtn">
                     <input type="button" value="注册" id="subBtn">
@@ -282,6 +282,19 @@
     </div>
 </body>
 <script type="text/javascript">
+	var Forms = document.forms;
+	var aCancel = document.querySelectorAll('.cancel');
+	console.log(Forms[0].username);
+	console.log(Forms[0].elements);
+	Forms[0].username.oninput = function(){
+		for(var i = 0;i<aCancel.length;i++){
+			aCancel[0].style.display = 'block';
+			aCancel[i].onclick = function(){
+				this.style.display = 'none'; 
+				Forms[0].elements[i].innerHTML = '';
+			}
+		}
+	}
 	
 </script>
 </html>
