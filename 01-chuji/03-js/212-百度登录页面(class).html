@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>仿百度注册页面</title>
-    <style>
+	<meta charset="UTF-8">
+	<title>212-百度注册页面.html</title>
+	<style>
         * {
             margin: 0;
             padding: 0;
@@ -14,22 +14,7 @@
             background-image: url(images/baidu/t.png);
             background-repeat: no-repeat;
             background-position: -150px 0px;
-        } 
-        .top-img{
-            position: absolute;
-            top: 0px;
-            left: -195px;
-        }   
-        .username-tishi{
-            font-size: 12px;
-            color: #999;
-            padding-top: 6px;
-        }  
-        .phone-tishi{
-            font-size: 12px;
-            color: #999;
-            padding-top: 12px;
-        }  
+        }        
         .main{
             width: 990px;
             margin: 50px auto;
@@ -126,7 +111,7 @@
         .msg{
             display: none;
         }
-        .ok {
+        .ok{
             display: inline-block;
             position: relative;
             float: left;
@@ -136,7 +121,7 @@
             padding-left: 20px;
             background: url(images/baidu/reg_icons.png) -80px 0 no-repeat;
         }
-        .err {
+        .err{
             float: left;
             position: relative;
             width: 250px;
@@ -147,7 +132,7 @@
             font-size: 12px;
             color: #fc4343;            
         }
-        .cancel {
+        .cancel{
             position: absolute;
             top: 12px;
             left: 398px;            
@@ -156,10 +141,11 @@
             background: url(images/baidu/reg_icons.png) -32px -24px no-repeat;
             cursor: pointer;
         }
+
         .cancel:hover {
             background-position: -48px -24px;
         }
-        .tiptext {
+        .tiptext{
             height: 40px;
             line-height: 40px;
             font-size: 12px;
@@ -170,7 +156,7 @@
             width: 250px;          
             line-height: 18px;
         }
-      
+
         #pwdChecklist{
             position: absolute;
             top: 0;
@@ -241,35 +227,34 @@
             background-image: url(images/baidu/l.png);
             background-repeat: no-repeat;
         }
-        .cancel{
-            
+        .username-tishi{
+        	display: none;
+        	font-size: 11px;
+        	color: #aaa;
+        	padding-top: 4px;
         }
     </style>
 </head>
 <body>
-    <div class="top-box">
-        <img src="images/t.png" alt="" class="top-img">
-    </div>
+    <div class="top-box"></div>
     <div class="main">
         <div class="reg" id='reg'>
             <form action="https://www.kuazhu.com">
                 <div id="username-box">
                     <label for="username">用户名</label>
-                    <input type="text"  autocomplete="off" name="username" placeholder="请设置用户名" id="username-text">
-                    <span class="username-tishi">设置后不可更改<br>中英文均可,最长14个英文或者7个汉字</span>
+                    <input type="text"  autocomplete="off" name="username" placeholder="请设置用户名">
                     <span class="cancel" style="display: none;"></span>
                     <span class="msg"></span>
                 </div>
                 <div id="phone-box">
                     <label for="phone">手机号</label>
-                    <input type="text" autocomplete="off" name="phone" placeholder="可用于登录和找回密码" id="phone-text">
-                    <span class="phone-tishi" style="display: none">请输入中国大陆手机号,其他用户不可见</span>
+                    <input type="text" autocomplete="off" name="phone" placeholder="可用于登录和找回密码">
                     <span class="cancel" style="display: none;"></span>
                     <span class="msg"></span>
                 </div>
                 <div id="pwd-box" class="pwd-box">
                     <label for="password">密码</label>
-                    <input type="password" autocomplete="off" name="password" placeholder="请设置登录密码" id="password-text">
+                    <input type="password" autocomplete="off" name="password" placeholder="请设置登录密码"/>
                     <span class="cancel"  style="display: none;"></span>
                     <span class="msg"></span>
                     <div id="pwdChecklist" class="pwd-checklist" style="display:none;">
@@ -283,16 +268,16 @@
                 </div>
                 <div id="verify-box">
                     <label for="verify">验证码</label>
-                    <input type="text" autocomplete="off" name="verify" placeholder="请输入验证码" id="verify-text">
+                    <input type="text" autocomplete="off" name="verify" placeholder="请输入验证码">
                     <span class="cancel"  style="display: none;"></span>
                     <input type="button"  id="smsBtn" value="获取短信验证码">
                     <span class="msg"></span>       
                 </div> 
                 <div id='agree-box'>
-                   <input type="checkbox" name='isAgree'> 
+                   <input type="checkbox" name='isAgree'>
                    <label for="isAgree">阅读并接受</label>
-                   <a href="#">《百度用户协议》</a>及<a href="#">《百度隐私权保护声明》</a>  
-                   <span class="msg" id='agreeErr'>请勾选“阅读并接受百度用户协议”</span>               
+                   <a href="#">《百度用户协议》</a>及<a href="#">《百度隐私权保护声明》</a>
+                   <span class="msg" id='agreeErr'>请勾选“阅读并接受百度用户协议”</span>
                 </div>           
                 <div class="subBtn">
                     <input type="button" value="注册" id="subBtn">
@@ -302,55 +287,118 @@
         <div class="left-box"></div>
     </div>
 </body>
-<script>
+<script type="text/javascript">
+    // 全局函数
+    function getLen(str){
+        var reg = /[\u4e00-\u9fa5]/g;
+        return str.replace(reg,'aa').length;
+    }
+    function setErr(oInput,oMsg,sMsg){// 输入错误的函数
+        oInput.className = 'input-err';
+        oMsg.className = 'err';
+        oMsg.innerHTML = sMsg;        
+    }
+    function setOk(oInput,oMsg){// 输入正确的函数
+        oInput.className = '';
+        oMsg.className = 'ok';
+        oMsg.innerHTML = '';         
+    }
+    // 1.获取元素
     var oForm = document.forms[0];
-    var oText = document.getElementById('username-text');
-    var oPhText = document.getElementById('phone-text');
-    var oPwText = document.getElementById('password-text');
-    var oVeText = document.getElementById('verify-text');
-    var oUsTiShi = document.querySelector('.username-tishi');
-    var oPhTiShi = document.querySelector('.phone-tishi');
-    var oPwTiShi = document.querySelector('.pwd-checklist');
-    var oCencel = document.querySelector('.cancel');
-    oForm.username.focus();
-    oText.onfocus = function(ev){
-        oUsTiShi.style.display = 'block';
-        oPhTiShi.style.display = 'none';
-        oPwTiShi.style.display = 'none';
-        ev.stopPropagation()
-        var val = oText.value;
-        // 中英文均可,最长14个英文或者7个汉字,用户名仅支持中英文、数字和下划线,且不能为纯数字
-        // var reg = /^[\u4e00-\u9fa5]{1,7}$|^\w{1,14}[a-zA-Z.]*{1,14}$/
-        var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)\w{1,14}$|^[\u4e00-\u9fa5]{1,7}$/
-        if(reg.test(val)){
-            oCencel.className = 'ok'
-            oCencel.style.display = 'block'
+    var oUsername = oForm.username;
+    var aMsg = document.querySelectorAll('.msg');
+    // 2.初始化处理
+    handleUsername();
+    inte();
+    function inte(){// 初始化函数
+        oUsername.focus();// 刷新页面默认选中第一个input框
+        aMsg[0].className = 'tiptext';
+        aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字';
+    }
+    oForm.onclick = function(ev){
+        var oInput = ev.target;
+        var oCancel = oInput.nextElementSibling;
+        console.log(oInput);
+        console.log(oCancel);
+        if(oInput.value.length > 0){// 判断值的长度
+            oCancel.style.display = 'block';
         }else{
-            oCencel.className = 'err'
+            oCancel.style.display = 'none';
         }
     }
+    // 3.监听事件处理需求
     
-    document.onfocus = function(){
-        oUsTiShi.style.display = 'none';
-        oPhTiShi.style.display = 'none';
-        oPwTiShi.style.display = 'none';
+    //  3.1处理用户名
+    function handleUsername(){
+        // 处理取消按钮
+        var oCancel = oUsername.nextElementSibling;
+        console.log(oCancel);
+        oUsername.oninput = function(){
+            if(oUsername.value.length > 0){// 判断值的长度
+                oCancel.style.display = 'block';
+            }else{
+                oCancel.style.display = 'none';
+            }
+        }
+        oCancel.onclick = function(){// 按钮函数
+            oUsername.value = '';// 清空username的值
+            oCancel.style.display = 'none';// 改变按钮的display
+            oUsername.focus();// 重新获取焦点
+        }
+        // 验证
+        oUsername.onblur = function(){// username失去焦点时的按钮
+        // 失去焦点时需要判断两个东西 1.清空按钮 2.提示信息
+            var sVal = oUsername.value;
+            var reg1 = /^\s+$/;
+            var reg2 = /[^a-z\u4e00-\u9fa5_\d]/i;// 定义 中英文、数字、下划线
+            var reg3 = /^\d+$/i;
+            // 什么都不输入
+            if(sVal == ''){
+                aMsg[0].className = 'msg';
+                // 判断上次错误
+                oUsername.className = '';
+            }
+            // 输入空白格
+            else if(reg1.test(sVal)){
+                /*
+                oUsername.className = 'input-err';
+                aMsg[0].className = 'err';
+                aMsg[0].innerHTML = '请输入用户名';
+                */
+               setErr(oUsername,aMsg[0],'请输入用户名');
+            }
+            // 长度验证用户名长度不能超过7个汉字或14个字符
+            else if(getLen(sVal) > 14){
+                /*
+                oUsername.className = 'input-err';
+                aMsg[0].className = 'err';
+                aMsg[0].innerHTML = '用户名长度不能超过7个汉字或14个字符';
+                */
+               setErr(oUsername,aMsg[0],'用户名长度不能超过7个汉字或14个字符');
+            }
+            // 用户名仅支持中英文、数字、下划线且不能为纯数字
+            else if(reg2.test(sVal) || reg3.test(sVal)){
+                /*
+                oUsername.className = 'input-err';
+                aMsg[0].className = 'err';
+                aMsg[0].innerHTML = '用户名仅支持中英文、数字、下划线且不能为纯数字';
+                */
+               setErr(oUsername,aMsg[0],'用户名仅支持中英文、数字、下划线且不能为纯数字');
+            }else{
+                /*
+                oUsername.className = '';
+                aMsg[0].className = 'ok';
+                aMsg[0].innerHTML = ''; 
+                 */
+                setOk(oUsername,aMsg[0]);
+            }
+        }
+        
     }
-    oPhText.onfocus = function(ev){
-        oPhTiShi.style.display = 'block';
-        oUsTiShi.style.display = 'none';
-        oPwTiShi.style.display = 'none';
-        ev.stopPropagation() 
-    }
-    oPwText.onfocus = function(ev){
-        oPwTiShi.style.display = 'block';
-        oPhTiShi.style.display = 'none';
-        oUsTiShi.style.display = 'none';
-        ev.stopPropagation() 
-    }
-    oVeText.onfocus = function(){
-        oPwTiShi.style.display = 'none';
-        oPhTiShi.style.display = 'none';
-        oUsTiShi.style.display = 'none';
+    // 获取焦点时状态变化
+    oUsername.onfocus = function(){
+        aMsg[0].className = 'tiptext';
+        aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字';
     }
 </script>
 </html>

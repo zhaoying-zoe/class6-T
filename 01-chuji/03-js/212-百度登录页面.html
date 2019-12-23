@@ -227,6 +227,12 @@
             background-image: url(images/baidu/l.png);
             background-repeat: no-repeat;
         }
+        .username-tishi{
+        	display: none;
+        	font-size: 11px;
+        	color: #aaa;
+        	padding-top: 4px;
+        }
     </style>
 </head>
 <body>
@@ -237,20 +243,21 @@
                 <div id="username-box">
                     <label for="username">用户名</label>
                     <input type="text"  autocomplete="off" name="username" placeholder="请设置用户名">
-                    <span class="cancel" style="display: none;"></span>
-                    <span class="msg"></span>
+                    <span class="username-tishi" >设置后不可更改<br>中英文均可，最长14个英文或7个汉字</span>
+                    <span class="cancel cancel1" style="display: none;"></span>
+                    <span class="msg msg1"></span>
                 </div>
                 <div id="phone-box">
                     <label for="phone">手机号</label>
                     <input type="text" autocomplete="off" name="phone" placeholder="可用于登录和找回密码">
-                    <span class="cancel" style="display: none;"></span>
-                    <span class="msg"></span>
+                    <span class="cancel cancel2" style="display: none;"></span>
+                    <span class="msg msg2"></span>
                 </div>
                 <div id="pwd-box" class="pwd-box">
                     <label for="password">密码</label>
                     <input type="password" autocomplete="off" name="password" placeholder="请设置登录密码"/>
-                    <span class="cancel"  style="display: none;"></span>
-                    <span class="msg"></span>
+                    <span class="cancel cancel3"  style="display: none;"></span>
+                    <span class="msg msg3"></span>
                     <div id="pwdChecklist" class="pwd-checklist" style="display:none;">
                         <ul>
                             <li class="pwd-checklist-item">长度为8~14个字符</li>
@@ -283,18 +290,30 @@
 </body>
 <script type="text/javascript">
 	var Forms = document.forms;
-	var aCancel = document.querySelectorAll('.cancel');
+	var oCancel1 = document.querySelector('.cancel1');
+	var oUsertishi = document.querySelector('.username-tishi');
+	var oMsg = document.querySelector('.msg1');
+	var reg = /^[a-z]\w{5,11}$/;
 	console.log(Forms[0].username);
 	console.log(Forms[0].elements);
-	Forms[0].username.oninput = function(){
-		for(var i = 0;i<aCancel.length;i++){
-			aCancel[0].style.display = 'block';
-			aCancel[i].onclick = function(){
-				this.style.display = 'none'; 
-				Forms[0].elements[i].innerHTML = '';
-			}
-		}
+	console.log(oCancel1);
+	Forms[0].username.onfocus = function(){// 用户名获取焦点
+			oUsertishi.style.display = 'block';
 	}
-	
+	Forms[0].username.onblur = function(){// 用户名失去焦点
+			oCancel1.style.display = 'none'; 
+			oUsertishi.style.display = 'none';
+			if(Forms[0].username.value = ''){}
+	}
+	Forms[0].username.oninput = function(){// 用户名输入后触发
+			oCancel1.style.display = 'block';
+	}
+	Forms[0].username.onchange = function(){// 页面内容有改动,失去焦点执行 : 用来判断
+			oMsg.style.display = 'block';
+	} 
+	oCancel1.onclick = function(){
+			this.style.display = 'none'; 
+			Forms[0].username.value = '';
+	}
 </script>
 </html>
