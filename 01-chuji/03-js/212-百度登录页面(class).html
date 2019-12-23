@@ -315,7 +315,7 @@
         aMsg[0].className = 'tiptext';
         aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字';
     }
-    oForm.onclick = function(ev){
+    oForm.oninput = function(ev){
         var oInput = ev.target;
         var oCancel = oInput.nextElementSibling;
         console.log(oInput);
@@ -333,6 +333,7 @@
         // 处理取消按钮
         var oCancel = oUsername.nextElementSibling;
         console.log(oCancel);
+        /*
         oUsername.oninput = function(){
             if(oUsername.value.length > 0){// 判断值的长度
                 oCancel.style.display = 'block';
@@ -340,6 +341,7 @@
                 oCancel.style.display = 'none';
             }
         }
+         */
         oCancel.onclick = function(){// 按钮函数
             oUsername.value = '';// 清空username的值
             oCancel.style.display = 'none';// 改变按钮的display
