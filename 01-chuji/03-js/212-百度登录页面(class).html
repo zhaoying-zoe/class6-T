@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>212-百度注册页面.html</title>
+	<title>212-百度注册页面(class).html</title>
 	<style>
         * {
             margin: 0;
@@ -291,7 +291,17 @@
     // 1.获取元素
     var oForm = document.forms[0];
     var oUsername = oForm.username;
+    var oPhone = oForm.phone;
+    var oPwd = oForm.password;
+    var oVerify = oForm.verify;
+    var oSmsBtn = document.getElementById('smsBtn');
     var aMsg = document.querySelectorAll('.msg');
+    var aCancel = document.querySelectorAll('.cancel');
+    var oPwdCheckList = document.getElementById('pwdChecklist');
+    var aPwdCheckItem = oPwdCheckList.getElementsByTagName('li');
+    var bPhone = false;
+    // console.log(oPwdCheckList);
+    // console.log(aPwdCheckItem);
     // 全局函数
     function getLen(str){
         var reg = /[\u4e00-\u9fa5]/g;
@@ -308,7 +318,6 @@
         oMsg.innerHTML = '';         
     }
     // 2.初始化处理
-    handleUsername();
     inte();
     function inte(){// 初始化函数
         oUsername.focus();// 刷新页面默认选中第一个input框
@@ -345,10 +354,14 @@
         }
     }
     // 3.监听事件处理需求
-    
-    //  3.1处理用户名
+    handleUsername();
+    handlePhone();
+    handlePwd();
+    handleVerify();
+    // 3.1处理用户名
     function handleUsername(){
         // 处理取消按钮
+        var oMsg = aMsg[0];
         var oCancel = oUsername.nextElementSibling;
         console.log(oCancel);
         /*
@@ -374,7 +387,7 @@
             var reg3 = /^\d+$/i;
             // 什么都不输入
             if(sVal == ''){
-                aMsg[0].className = 'msg';
+                oMsg.className = 'msg';
                 // 判断上次错误
                 oUsername.className = '';
             }
@@ -382,44 +395,179 @@
             else if(reg1.test(sVal)){
                 /*
                 oUsername.className = 'input-err';
-                aMsg[0].className = 'err';
-                aMsg[0].innerHTML = '请输入用户名';
+                oMsg.className = 'err';
+                oMsg.innerHTML = '请输入用户名';
                 */
-               setErr(oUsername,aMsg[0],'请输入用户名');
+               setErr(oUsername,oMsg,'请输入用户名');
             }
             // 长度验证用户名长度不能超过7个汉字或14个字符
             else if(getLen(sVal) > 14){
                 /*
                 oUsername.className = 'input-err';
-                aMsg[0].className = 'err';
-                aMsg[0].innerHTML = '用户名长度不能超过7个汉字或14个字符';
+                oMsg.className = 'err';
+                oMsg.innerHTML = '用户名长度不能超过7个汉字或14个字符';
                 */
-               setErr(oUsername,aMsg[0],'用户名长度不能超过7个汉字或14个字符');
+               setErr(oUsername,oMsg,'用户名长度不能超过7个汉字或14个字符');
             }
             // 用户名仅支持中英文、数字、下划线且不能为纯数字
             else if(reg2.test(sVal) || reg3.test(sVal)){
                 /*
                 oUsername.className = 'input-err';
-                aMsg[0].className = 'err';
-                aMsg[0].innerHTML = '用户名仅支持中英文、数字、下划线且不能为纯数字';
+                oMsg.className = 'err';
+                oMsg.innerHTML = '用户名仅支持中英文、数字、下划线且不能为纯数字';
                 */
-               setErr(oUsername,aMsg[0],'用户名仅支持中英文、数字、下划线且不能为纯数字');
+               setErr(oUsername,oMsg,'用户名仅支持中英文、数字、下划线且不能为纯数字');
             }else{
                 /*
                 oUsername.className = '';
-                aMsg[0].className = 'ok';
-                aMsg[0].innerHTML = ''; 
+                oMsg.className = 'ok';
+                oMsg.innerHTML = ''; 
                  */
-                setOk(oUsername,aMsg[0]);
+                setOk(oUsername,oMsg);
             }
         }
-        // 验证phone输入框
-        
+        // 获取焦点时状态变化
+        oUsername.onfocus = function(){
+            aMsg[0].className = 'tiptext';
+            aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字';
+        }
     }
-    // 获取焦点时状态变化
-    oUsername.onfocus = function(){
-        aMsg[0].className = 'tiptext';
-        aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字';
+    // 3.2处理手机号
+    function handlePhone(){
+        // 处理取消按钮
+        var oMsg = aMsg[1];
+        var oCancel = oPhone.nextElementSibling;
+        console.log(oCancel);
+        // 验证username输入框
+        oPhone.onblur = function(){// username失去焦点时的按钮
+            // 失去焦点时需要判断两个东西 1.清空按钮 2.提示信息
+            var sVal = oPhone.value;
+            var reg = /^1[3578]\d{9}$/;
+            // 什么都不输入
+            if(sVal == ''){
+                oMsg.className = 'msg';
+                // 判断上次错误
+                oPhone.className = '';
+                bPhone = false;
+            }else if(!reg.test(sVal)){
+                setErr(oPhone,oMsg,'手机号码格式不正确');
+                bPhone = false;
+            }
+            else{
+                setOk(oPhone,oMsg);
+                bPhone = true;
+            }
+        }
+        // 获取焦点时状态变化
+        oPhone.onfocus = function(){
+            oMsg.className = 'tiptext';
+            oMsg.innerHTML = '请输入中国大陆手机号，其他用户不可见字';
+        }
+        // 输入限制
+        oPhone.onkeydown = function(ev){
+            var code = ev.keyCode;
+            console.log(code);
+            if(
+                (code > 105 || code < 96 || oPhone.value.length > 10)
+                && code != 8
+                && code != 37
+                && code != 39
+                ){
+                return false;
+            }
+        } 
+    }
+    // 3.3处理密码
+    function handlePwd(){
+        // 获取输入框时
+        oPwd.onfocus = function(){
+            oPwdCheckList.style.display = 'block';
+
+        }
+        oPwd.onblur = function(){
+            oPwdCheckList.style.display = 'none';
+        }
+        // 实时判断
+        oPwd.oninput = function(){
+            var oErr = 'pwd-checklist-item-error pwd-checklist-item';
+            var oSuc = 'pwd-checklist-item-success pwd-checklist-item';
+            var sVal = oPwd.value;
+            var reg = /^.{8,14}$/;
+            var reg1 = /[0-9a-z!@#]/i;
+            var reg2 = /\s/;
+            // 长度为8~14个字符
+            if(!reg.test(sVal)){
+                aPwdCheckItem[0].className = oErr;
+            }else{
+                aPwdCheckItem[0].className = oSuc;
+            }
+            // 支持数字,大小写字母和标点符号
+            if(!reg1.test(sVal)){
+                aPwdCheckItem[1].className = oErr;
+            }else{
+                aPwdCheckItem[1].className = oSuc;
+            }
+            // 不允许有空格 
+            if(reg2.test(sVal)){
+                aPwdCheckItem[2].className = oErr;
+            }else{
+                aPwdCheckItem[2].className = oSuc;
+            }
+        }
+        // 取消的特殊处理
+        aCancel[2].onclick = function(){
+            aPwdCheckItem[0].className = 'pwd-checklist-item';
+            aPwdCheckItem[1].className = 'pwd-checklist-item';
+            aPwdCheckItem[2].className = 'pwd-checklist-item';
+        }
+        // 失去焦点时的验证
+        oPwd.onblur = function(){
+            // 1.什么都不输入
+            if(oPwd.value == ''){
+                oPwdCheckList.style.display = 'none';
+                aPwdCheckItem[0].className = 'pwd-checklist-item';
+                aPwdCheckItem[1].className = 'pwd-checklist-item';
+                aPwdCheckItem[2].className = 'pwd-checklist-item';                
+            }
+            // 2.错误输入
+            
+            // 3.正确输入        
+            
+        }
+    }
+    // 3.4处理验证码
+    function handleVerify(){
+        var oMsg = aMsg[3];
+        oSmsBtn.onclick = function(){
+            if(oPhone.value == ''){
+                setErr(oPhone,aMsg[1],'请输入手机号');                
+                return false;
+            }else if(!bPhone){
+                setErr(oPhone,aMsg[1],'请输入正确手机号');
+                return false;
+            }
+            alert('获取验证码');
+        }
+        oVerify.onblur = function(){// username失去焦点时的按钮
+            // 失去焦点时需要判断两个东西 1.清空按钮 2.提示信息
+            var sVal = oVerify.value;
+            var reg = /^\d{6}$/;
+            // 什么都不输入
+            if(sVal == ''){
+                oMsg.className = 'msg';
+                // 判断上次错误
+                oVerify.className = '';
+            }else if(!reg.test(sVal)){
+                setErr(oVerify,oMsg,'验证码格式不正确');
+            }
+            else{
+                setOk(oVerify,oMsg);
+            }
+        }
+        // 获取焦点时状态变化
+        oVerify.onfocus = function(){
+            oMsg.className = 'msg';
+        }
     }
 </script>
 </html>
