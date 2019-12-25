@@ -32,7 +32,15 @@
 				<li class="nav-item"><a href="#">Select Location</a></li>
 			</ul>
 			<div class="cart">
-				<i class="iconfont">&#xe60c;</i>购物车(<span class="mun">0</span>)
+				<a href="javascript:;">
+					<i class="iconfont">&#xe60c;</i>
+					<span class="cart-text">购物车</span>
+					(<span class="mun">0</span>)
+				</a>
+			</div>
+			<div class="cart-content">
+				<div class="loader"></div>
+				<span class="empty-cart">购物车种还没有商品,赶紧来购买吧</span>
 			</div>
 			<ul class="user-info">
 				<li class="nav-item"><a href="#">登录</a><span class="shuxian">|</span></li>
@@ -984,4 +992,6 @@
 		</div>
 <!-- 底部内容结束 -->
 </body>
+<script type="text/javascript" src="js/index.js"></script>
+<script src="js/util.js"></script>
 </html>
