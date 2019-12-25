@@ -479,18 +479,17 @@
     }
     // 3.3处理密码
     function handlePwd(){
-        // 获取输入框时
+        var oErr = 'pwd-checklist-item-error pwd-checklist-item';
+        var oSuc = 'pwd-checklist-item-success pwd-checklist-item';
+        var bPwd1 = false,bPwd2 = false,bPwd3 = false;
+        var oMsg = aMsg[2];
+        // 获取焦点时
         oPwd.onfocus = function(){
             oPwdCheckList.style.display = 'block';
-
-        }
-        oPwd.onblur = function(){
-            oPwdCheckList.style.display = 'none';
+            oMsg.className = 'msg';
         }
         // 实时判断
         oPwd.oninput = function(){
-            var oErr = 'pwd-checklist-item-error pwd-checklist-item';
-            var oSuc = 'pwd-checklist-item-success pwd-checklist-item';
             var sVal = oPwd.value;
             var reg = /^.{8,14}$/;
             var reg1 = /[0-9a-z!@#]/i;
@@ -498,20 +497,26 @@
             // 长度为8~14个字符
             if(!reg.test(sVal)){
                 aPwdCheckItem[0].className = oErr;
+                bPwd1 = false;
             }else{
                 aPwdCheckItem[0].className = oSuc;
+                bPwd1 = true;
             }
             // 支持数字,大小写字母和标点符号
             if(!reg1.test(sVal)){
                 aPwdCheckItem[1].className = oErr;
+                bPwd2 = false;
             }else{
                 aPwdCheckItem[1].className = oSuc;
+                bPwd2 = true;
             }
             // 不允许有空格 
             if(reg2.test(sVal)){
                 aPwdCheckItem[2].className = oErr;
+                bPwd3 = false;
             }else{
                 aPwdCheckItem[2].className = oSuc;
+                bPwd3 = true;
             }
         }
         // 取消的特殊处理
@@ -522,17 +527,17 @@
         }
         // 失去焦点时的验证
         oPwd.onblur = function(){
+            var sVal = oPwd.value;
             // 1.什么都不输入
-            if(oPwd.value == ''){
+            if(sVal == ''){
                 oPwdCheckList.style.display = 'none';
-                aPwdCheckItem[0].className = 'pwd-checklist-item';
-                aPwdCheckItem[1].className = 'pwd-checklist-item';
-                aPwdCheckItem[2].className = 'pwd-checklist-item';                
+                // aPwdCheckItem[0].className = 'pwd-checklist-item';
+                // aPwdCheckItem[1].className = 'pwd-checklist-item';
+                // aPwdCheckItem[2].className = 'pwd-checklist-item';                
+            }else if(bPwd1 && bPwd2 && bPwd3){// 2.正确输入// 3.错误输入
+                setOk(oPwd,oMsg);
+                oPwdCheckList.style.display = 'none';
             }
-            // 2.错误输入
-            
-            // 3.正确输入        
-            
         }
     }
     // 3.4处理验证码
