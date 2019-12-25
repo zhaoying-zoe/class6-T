@@ -475,7 +475,7 @@
                 ){
                 return false;
             }
-        } 
+        }
     }
     // 3.3处理密码
     function handlePwd(){
@@ -572,6 +572,19 @@
         // 获取焦点时状态变化
         oVerify.onfocus = function(){
             oMsg.className = 'msg';
+        }
+        // 输入限制
+        oVerify.onkeydown = function(ev){
+            var code = ev.keyCode;
+            console.log(code);
+            if(
+                (code > 105 || code < 96 || oVerify.value.length > 5)
+                && code != 8
+                && code != 37
+                && code != 39
+                ){
+                return false;
+            }
         }
     }
 </script>
