@@ -134,14 +134,16 @@ function handleCate(){
 		var data = aCateLIstDate[index];
 		console.log(data);
 		var html = '<ul>'
+		for(var i = 0;i < data.length;i++){
 			html +=    '<li>'
 			html +=        '<a href="'+data[i].url+'">'
-			html +=             '<i+data[i].image+="images/p1.jpg" alt="">'
+			html +=             '<img src="'+data[i].image+'" alt="">'
 			html +=				'<span>'+data[i].name+'</span>'
 			html +=        '</a>'
 			html +=    '</li>'
-			html +='</ul>'
-			oCartContent.innerHTML = html;
+		}
+		html +='</ul>'
+		oCateContent.innerHTML = html;		
 	}
 }
 
