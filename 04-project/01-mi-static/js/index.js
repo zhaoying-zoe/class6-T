@@ -1,6 +1,9 @@
 
 handleCart();
 handleNav();
+handleCarousel();
+handleCate();
+handleTime()
 
 // 购物车处理
 function handleCart(){
@@ -45,36 +48,139 @@ function handleNav(){
 	// 1.获取元素
 	var aNavItem = document.querySelectorAll('.header .header-nav-item');
 	var oNavContent = document.querySelector('.header .header-nav-content');
-	var oContainer = document.querySelector('.header-nav-content .container');
+	var oNavContainer = oNavContent.querySelector('.header-nav-content .container');
 	var hiderTimer = 0;
 	var dataTimer = 1;
 	// 2.遍历添加事件
 	for(var i = 0;i < aNavItem.length - 2;i++){
 		// 2.1鼠标移入
 		aNavItem[i].onmouseenter = function(){
-			oContainer.innerHTML = '<div class="loader"></div>';
-			oContainer.style.borderTop = '1px solid #ccc';
+			clearTimeout(hiderTimer);
+			oNavContainer.innerHTML = '<div class="loader"></div>';
+			oNavContent.style.borderTop = '1px solid #ccc';
+			oNavContent.style.overflow = 'visible';
 			animate(oNavContent,{height:180},true,function(){
-				
 			})
+			// 模拟数据加载
+			clearTimeout(dataTimer);
+			dataTimer = setTimeout(function(){
+				loadDate();
+			},1000)
 		}
 		// 2.2鼠标移出
 		aNavItem[i].onmouseleave = function(){
-			oContainer.innerHTML = '';
-			animate(oNavContent,{height:0},true,function(){
-				
-			})
+			hideoNavContent();
 		}
-		var hiderTimer = setTimeout(function(){
-			aNavItem[i].onmouseleave = function(){
-				oContainer.innerHTML = '';
-				animate(oNavContent,{height:0},true,function(){
-					
-				})
-			}		
-		},500)
-		var dataTimer = setTimeout(function(){
-			console.log(data)
-		},1000)
 	}
+	function hideoNavContent(){
+		hiderTimer = setTimeout(function(){
+			animate(oNavContent,{height:0},true,function(){
+				oNavContent.style.borderTop = 'none';
+				oNavContent.style.overflow = 'hidden';
+			})			
+		},500)
+	}
+	oNavContent.onmouseenter = function(){
+		clearTimeout(hiderTimer);
+	}
+	oNavContent.onmouseleave = function(){
+		hideoNavContent();
+	}
+	function loadDate(){
+		console.log(aNavListData)
+	}
+}
+// 处理首页轮播图
+function handleCarousel(){
+	new Carousel({
+			id:'carousel',
+			aImg:['images/b1.jpg','images/b2.jpg','images/b3.jpg'],
+			width:1226,
+			height:460,
+			playDuration:5000
+		})
+}
+// 处理分类面板
+function handleCate(){
+	// 获取元素
+	var oCateBox = document.querySelector('.cate-box');
+	var aCateItem = oCateBox.querySelectorAll('.cate-item');
+	var oCateContent = document.querySelector('.cate-content');
+
+	// 遍历
+	for(var i = 0;i < aCateItem.length;i++){
+		aCateItem[i].index = i;
+		// 1.分类项目样式的切换
+		aCateItem[i].onmouseenter = function(){
+			for(var j = 0;j < aCateItem.length;j++){
+				aCateItem[j].className = 'cate-item';
+			}
+			this.className = 'cate-item active';
+			// 2.显示分类面板
+			oCateContent.style.display = 'block';
+			loadCate(this.index);
+		}
+		// 3.离开分类项目和分类面板时隐藏分类面板，恢复分类项目的样式
+		
+	}
+	oCateBox.onmouseleave = function(){
+			oCateContent.style.display = 'none';
+			for(var j = 0;j < aCateItem.length;j++){
+				aCateItem[j].className = 'cate-item';
+			}
+		}
+	// 4.加载功能
+	function loadCate(index){
+		var data = aCateLIstDate[index];
+		console.log(data);
+		var html = '<ul>'
+			html +=    '<li>'
+			html +=        '<a href="'+data[i].url+'">'
+			html +=             '<i+data[i].image+="images/p1.jpg" alt="">'
+			html +=				'<span>'+data[i].name+'</span>'
+			html +=        '</a>'
+			html +=    '</li>'
+			html +='</ul>'
+			oCartContent.innerHTML = html;
+	}
+}
+
+// 处理倒计时功能
+function handleTime(){
+	var aTime = document.querySelectorAll('.flash .timer-num');
+	var oTimer = 0;
+	function toStr(attr){//判断时间如果是个位数,就在前面加0
+		if(attr<10){
+			return '0'+attr;
+		}else{
+			return ''+attr;
+		}
+	}
+	handleTimer();
+	function handleTimer(){
+		// 1.获取结束时间转换为毫秒
+		var date = new Date('2019/12/29 20:51:10');
+		var endTime = date.getTime();
+		// console.log(endTime)
+		// 2.获取当前时间转换为毫秒
+		var today = Date.now();
+		// console.log(today)
+		// 3.计算目标时间的毫秒和当前时间的毫秒的差，转换为时分秒
+		
+		var allMinutes = date - today;
+		if(allMinutes < 0){
+			allMinutes = 0;
+		}
+		// console.log(allMinutes);
+		var iallSeconds = allMinutes / 1000;
+		var iHour = parseInt(iallSeconds / 3600);
+		var iMinutes = parseInt((iallSeconds % 3600)/60);
+		var iSeconds = parseInt((iallSeconds % 3600)%60);		
+		// console.log(iSeconds);		
+		// 4.显示转换后的时分秒
+		aTime[0].innerHTML = toStr(iHour);
+		aTime[1].innerHTML = toStr(iMinutes);
+		aTime[2].innerHTML = toStr(iSeconds);
+	}
+	setInterval(handleTimer,1000);
 }

@@ -294,12 +294,15 @@
     var oPhone = oForm.phone;
     var oPwd = oForm.password;
     var oVerify = oForm.verify;
+    var oAgree = oForm.isAgree;
     var oSmsBtn = document.getElementById('smsBtn');
+    var oSubBtn = document.getElementById('subBtn');
+    var oAgreeErr = document.getElementById('agreeErr');
     var aMsg = document.querySelectorAll('.msg');
     var aCancel = document.querySelectorAll('.cancel');
     var oPwdCheckList = document.getElementById('pwdChecklist');
     var aPwdCheckItem = oPwdCheckList.getElementsByTagName('li');
-    var bPhone = false;
+    var bPhone = false , bUsername = false , bPwd = false , bVerify = false;
     // console.log(oPwdCheckList);
     // console.log(aPwdCheckItem);
     // 全局函数
@@ -358,6 +361,7 @@
     handlePhone();
     handlePwd();
     handleVerify();
+    handleSubmit();
     // 3.1处理用户名
     function handleUsername(){
         // 处理取消按钮
@@ -389,6 +393,7 @@
             if(sVal == ''){
                 oMsg.className = 'msg';
                 // 判断上次错误
+                bUsername = false;
                 oUsername.className = '';
             }
             // 输入空白格
@@ -398,7 +403,8 @@
                 oMsg.className = 'err';
                 oMsg.innerHTML = '请输入用户名';
                 */
-               setErr(oUsername,oMsg,'请输入用户名');
+                setErr(oUsername,oMsg,'请输入用户名');
+                bUsername = false;
             }
             // 长度验证用户名长度不能超过7个汉字或14个字符
             else if(getLen(sVal) > 14){
@@ -407,7 +413,8 @@
                 oMsg.className = 'err';
                 oMsg.innerHTML = '用户名长度不能超过7个汉字或14个字符';
                 */
-               setErr(oUsername,oMsg,'用户名长度不能超过7个汉字或14个字符');
+                setErr(oUsername,oMsg,'用户名长度不能超过7个汉字或14个字符');
+                bUsername = false;
             }
             // 用户名仅支持中英文、数字、下划线且不能为纯数字
             else if(reg2.test(sVal) || reg3.test(sVal)){
@@ -416,7 +423,8 @@
                 oMsg.className = 'err';
                 oMsg.innerHTML = '用户名仅支持中英文、数字、下划线且不能为纯数字';
                 */
-               setErr(oUsername,oMsg,'用户名仅支持中英文、数字、下划线且不能为纯数字');
+                setErr(oUsername,oMsg,'用户名仅支持中英文、数字、下划线且不能为纯数字');
+                bUsername = false;
             }else{
                 /*
                 oUsername.className = '';
@@ -424,6 +432,7 @@
                 oMsg.innerHTML = ''; 
                  */
                 setOk(oUsername,oMsg);
+                bUsername = true;
             }
         }
         // 获取焦点时状态变化
@@ -531,12 +540,16 @@
             // 1.什么都不输入
             if(sVal == ''){
                 oPwdCheckList.style.display = 'none';
+                bPwd = false;
                 // aPwdCheckItem[0].className = 'pwd-checklist-item';
                 // aPwdCheckItem[1].className = 'pwd-checklist-item';
                 // aPwdCheckItem[2].className = 'pwd-checklist-item';                
             }else if(bPwd1 && bPwd2 && bPwd3){// 2.正确输入// 3.错误输入
+                bPwd = true;
                 setOk(oPwd,oMsg);
                 oPwdCheckList.style.display = 'none';
+            }else{
+                bPwd = false;
             }
         }
     }
@@ -561,12 +574,14 @@
             if(sVal == ''){
                 oMsg.className = 'msg';
                 // 判断上次错误
+                bVerify = false;
                 oVerify.className = '';
             }else if(!reg.test(sVal)){
                 setErr(oVerify,oMsg,'验证码格式不正确');
-            }
-            else{
+                bVerify = false;
+            }else{
                 setOk(oVerify,oMsg);
+                bVerify = true;
             }
         }
         // 获取焦点时状态变化
@@ -587,5 +602,33 @@
             }
         }
     }
+    // 3.5处理注册
+    function handleSubmit(){
+        oSubBtn.onclick = function(){
+            // 什么都不输入或输入错误
+            if(oUsername.value == ''){
+               setErr(oUsername,aMsg[0],'请输入用户名');
+            }
+            if(oPhone.value == ''){
+                setErr(oPhone,aMsg[1],'请输入手机号')
+            }
+            if(oPwd.value == ''){
+                setErr(oPwd,aMsg[2],'请输入密码')
+            }
+            if(oVerify.value == ''){
+                setErr(oVerify,aMsg[3],'请输入验证码')
+            }
+            if(!oAgree.checked){
+                oAgreeErr.style.display = 'inline';
+            }else{
+                oAgreeErr.style.display = 'none'; 
+            }
+            // 输入正确
+            if(bUsername && bPhone && bPwd && bVerify && oAgree.checked){
+                oForm.submit();
+            }
+        }        
+    }
+
 </script>
 </html>
