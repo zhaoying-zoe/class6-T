@@ -527,6 +527,12 @@
                 aPwdCheckItem[2].className = oSuc;
                 bPwd3 = true;
             }
+            //
+            if(sVal == ''){
+                aPwdCheckItem[0].className = 'pwd-checklist-item';
+                aPwdCheckItem[1].className = 'pwd-checklist-item';
+                aPwdCheckItem[2].className = 'pwd-checklist-item';                
+            }
         }
         // 取消的特殊处理
         aCancel[2].onclick = function(){
