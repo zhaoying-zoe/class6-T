@@ -25,6 +25,51 @@ var aNavListData = [
 			price:'3299',
 			tag:'新品'
 		}
+	],
+	[
+		{
+			url:'http://www.baidu.com',
+			src:'images/p1.jpg',
+			name:'小米MX3',
+			price:'3299',
+			tag:'新品'
+		}
+	],
+	[
+		{
+			url:'http://www.baidu.com',
+			src:'images/p1.jpg',
+			name:'小米MX3',
+			price:'3299',
+			tag:'新品'
+		}
+	],
+	[
+		{
+			url:'http://www.baidu.com',
+			src:'images/p1.jpg',
+			name:'小米MX3',
+			price:'3299',
+			tag:'新品'
+		}
+	],
+	[
+		{
+			url:'http://www.baidu.com',
+			src:'images/p1.jpg',
+			name:'小米MX3',
+			price:'3299',
+			tag:'新品'
+		}
+	],
+	[
+		{
+			url:'http://www.baidu.com',
+			src:'images/p1.jpg',
+			name:'小米MX3',
+			price:'3299',
+			tag:'新品'
+		}
 	]
 ]
 var aCateLIstDate = [

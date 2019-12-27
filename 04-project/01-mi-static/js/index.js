@@ -3,7 +3,8 @@ handleCart();
 handleNav();
 handleCarousel();
 handleCate();
-handleTime()
+handleTime();
+handleFlash();
 
 // 购物车处理
 function handleCart(){
@@ -54,6 +55,8 @@ function handleNav(){
 	// 2.遍历添加事件
 	for(var i = 0;i < aNavItem.length - 2;i++){
 		// 2.1鼠标移入
+		// 存i值
+		aNavItem[i].index = i;
 		aNavItem[i].onmouseenter = function(){
 			clearTimeout(hiderTimer);
 			oNavContainer.innerHTML = '<div class="loader"></div>';
@@ -63,8 +66,9 @@ function handleNav(){
 			})
 			// 模拟数据加载
 			clearTimeout(dataTimer);
+			var index = this.index;
 			dataTimer = setTimeout(function(){
-				loadDate();
+				loadDate(index);
 			},1000)
 		}
 		// 2.2鼠标移出
@@ -74,9 +78,9 @@ function handleNav(){
 	}
 	function hideoNavContent(){
 		hiderTimer = setTimeout(function(){
+			oNavContent.style.overflow = 'hidden';
 			animate(oNavContent,{height:0},true,function(){
 				oNavContent.style.borderTop = 'none';
-				oNavContent.style.overflow = 'hidden';
 			})			
 		},500)
 	}
@@ -86,8 +90,27 @@ function handleNav(){
 	oNavContent.onmouseleave = function(){
 		hideoNavContent();
 	}
-	function loadDate(){
-		console.log(aNavListData)
+	function loadDate(index){
+		var data = aNavListData[index];
+		console.log(data);
+		// 把data添加到html中,
+		var html = '<ul>'
+		for(var i = 0;i < data.length;i++){
+			html +=		'<li>'
+			html +=			'<div class="img-box">'
+			html +=				'<a href="'+data[i].url+'">'
+			html +=					'<img src="'+data[i].src+'" alt="">'
+			html +=				'</a>'
+			html +=			'</div>'
+			html +=			'<p class="product-name">'+data[i].name+'</p>'
+			html +=			'<p class="product-price">'+data[i].price+'元起</p>'
+			if(data[i].tag){
+				html +=			'<span class="tag">新品</span>'
+			}
+			html +=		'</li>'
+		}
+		html +=		'</ul>'
+		oNavContainer.innerHTML = html;
 	}
 }
 // 处理首页轮播图
@@ -185,4 +208,19 @@ function handleTime(){
 		aTime[2].innerHTML = toStr(iSeconds);
 	}
 	setInterval(handleTimer,1000);
+}
+
+// 处理闪购商品切换
+function handleFlash(){
+	// 1.获取元素
+	var aMove = document.querySelectorAll('.flash .move a');
+	var oProductList = document.querySelector('.flash .bd .product-list');
+	console.log(oProductList)
+	// 2.添加事件
+	aMove[1].onclick = function(){
+		oProductList.style.marginRight = '978'+'px';
+	}
+	aMove[0].onclick = function(){
+		oProductList.style.marginRight = '0'+'px';
+	}
 }
