@@ -218,9 +218,16 @@ function handleFlash(){
 	console.log(oProductList)
 	// 2.添加事件
 	aMove[1].onclick = function(){
-		oProductList.style.marginRight = '978'+'px';
+		oProductList.style.marginLeft = '-978'+'px';
+		// if(oProductList.marginLeft == '0px'){
+		// 	oProductList.style.marginLeft = '-978px';
+		// 	console.log(0);
+		// }else{
+		// 	oProductList.style.marginLeft = '0px';
+		// 	console.log(1);
+		// }	
 	}
 	aMove[0].onclick = function(){
-		oProductList.style.marginRight = '0'+'px';
+		oProductList.style.marginLeft = '0px';
 	}
 }
