@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-语法错误(SyntaxError).html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 注意点 控制台中的错误提示中一个token就是指JS中的一个符号,例如分号,var关键字等
+	// 中文输入指令 
+	// var i = 0；// Uncaught SyntaxError: Invalid or unexpected token
+
+	// 少打,漏打,多打
+	// var b = ;// Uncaught SyntaxError: Unexpected token ;
+	// if(true){{}// Uncaught SyntaxError: Unexpected end of input
+	
+	// 变量名不合法
+	// var class = 'abc';//Uncaught SyntaxError: Unexpected token =
+	
+	// 语句写错 
+	functionn test(){//Uncaught SyntaxError: Unexpected identifier
+		
+	}
+</script>
+</html>

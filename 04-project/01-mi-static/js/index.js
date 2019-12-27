@@ -5,6 +5,7 @@ handleCarousel();
 handleCate();
 handleTime();
 handleFlash();
+handleElec();
 
 // 购物车处理
 function handleCart(){
@@ -229,5 +230,51 @@ function handleFlash(){
 	}
 	aMove[0].onclick = function(){
 		oProductList.style.marginLeft = '0px';
+	}
+}
+
+// 处理家电部分的切换
+function handleElec(){
+	// 1.获取元素
+	var aElecItem = document.querySelectorAll('.elec .tab-item');
+	var oElecProduct = document.querySelector('.elec .elec-product');
+	// 2.添加事件
+	for(var i = 0;i < aElecItem.length;i++){
+		aElecItem[i].index = i;
+		// 清除所有的选中状态
+		aElecItem[i].onmouseenter = function(){
+			for(var j = 0;j < aElecItem.length;j++){
+				aElecItem[j].className = 'tab-item';
+			}
+			// 把当前的选项选中
+			this.className = 'tab-item tab-item-active';
+			loadDate(this.index);
+		}
+		function loadDate(index){
+			var data = aElecListData[index];
+			console.log(data);
+			var html = '';
+			for(var i = 0;i < data.length;i++){
+				html += '<li class="product-item product-item-m">'
+				html += 	'<a href="#">'
+				html += 		'<img src="images/p1.jpg" alt="" class="product-img">'
+				html += 	'</a>'
+				html += 	'<h3 class="product-name">小米MX2 8GB+128GB 黑bbbbbbbbbb</h3>'
+				html += 	'<p class="product-desc">Unibody 全陶瓷</p>'
+				html += 	'<p class="product-price">'
+				html += 		'<strong>3699</strong><span>&nbsp;元</span>'
+				html += 		'<del>4699元</del>'
+				html += 	'</p>'
+				html += 	'<span class="flag off-flag">减800元</span>'
+				html += 	'<div class="view">'
+				html += 		'<p class="recommend">我不是来评价的电视的我是来拉仇恨的,哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>'
+				html += 		'<p class="author">'
+				html += 			'来自于<span>kauzhu<span>的评价'
+				html += 		'</p>'
+				html += 	'</div>'
+				html += '</li>'				
+			}
+
+		}
 	}
 }
