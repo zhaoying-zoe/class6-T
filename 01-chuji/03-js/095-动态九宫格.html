@@ -11,10 +11,10 @@
 		#box{
 			position: relative;
 		}
-		.box{
+		.son{
 			position: absolute;
-			width: 200px;
-			height: 200px;
+			width: 100px;
+			height: 100px;
 			background: #ff6700;
 		}
 	</style>
@@ -22,24 +22,38 @@
 <body>
 	<input type="button" id="btn" value="插入">
 	<div id="box">
-		<div class="box"></div>
-		<div class="box"></div>
-		<div class="box"></div>
-		<div class="box"></div>
-		<div class="box"></div>
-		<div class="box"></div>
-		<div class="box"></div>
-		<div class="box"></div>
-		<div class="box"></div>
+		<div class="son"></div>
 	</div>
 </body>
 <script type="text/javascript">
+	// 1.获取元素
+	// 2.定义高度、宽度、边距的值
+	// 3.点击按钮克隆元素
+	// 4.把克隆的元素添加到div中
+	// 5.for循环给每个div设置属性值
+		// 1.行数与i值和3的商有关（/）
+		// 2.列数与i值和3的模有关（%）
+	// 6.定义iPos用来计算几列几行
 	var oBtn = document.getElementById('btn');
 	var oBox = document.getElementById('box');
-	var aDiv = document.querySelectorAll('.box');
-	var 
-	for(var i = 0;i < aDiv.length;i++){
-
+	// var aDiv = document.getElementsByClassName('son');// 不是动态获取,不能用！没法用for循环
+	var aDiv = document.querySelectorAll('.son');
+	console.log(aDiv);
+	// var aDiv = oBox.children;
+	var iMargin = 15;
+	var iHeight = 100;
+	var iWidth = 100;
+	var iPos = 5;
+	oBtn.onclick = function(){
+		var oDiv = aDiv[0].cloneNode();//克隆div中第一个元素
+		oBox.appendChild(oDiv);
+		for(var i = 0;i < aDiv.length;i++){
+			var iRow = parseInt(i / iPos);
+			var iCol = i % iPos;
+			aDiv[i].style.top = iRow * (iHeight + iMargin) + 'px';
+			aDiv[i].style.left = iCol * (iWidth + iMargin) + 'px';
+		}
 	}
+	
 </script>
 </html>
