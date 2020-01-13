@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-数组的操作.html</title>
+	<script type="text/javascript">
+		var arr = new Array(1,2,3,4,5);
+		console.log('未操作',arr);
+		/*
+		var arr1 = arr.push(2);// 在数组末尾添加元素
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 返回数组添加长度
+		
+		var arr1 = arr.pop();// 删除数组末尾元素
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 返回删除的元素
+		
+		var arr1 = arr.shift();// 删除数组第一个元素
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 返回删除的元素
+		
+		// 删除,数组.splice(起始下标,删除个数)
+		// 插入,数组.splice(起始下标,0,插入值1,插入值2...)
+		// 替换,数组.splice(起始下标,删除个数,插入值1,插入值2...)
+		var arr1 = arr.splice(0,2);// 删除,数组.splice(起始下标,删除个数)
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 返回删除的元素
+		
+		var arr1 = arr.splice(0,0,1,2,3,4);// 插入,数组.splice(起始下标,0,插入值1,插入值2...)
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 没有删除则返回 空数组
+		
+		var arr1 = arr.splice(0,4,1,2,3,4);// 替换,数组.splice(起始下标,删除个数,插入值1,插入值2...)
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 返回删除的数组
+		
+		var arr1 = arr.join('-');// 用指定的字符把数组的每一项连接成字符串并返回,原数组不变
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 返回改变后的数据
+		
+		var arr2 = [9,8,7,6,5]
+		var arr1 = arr.concat(arr2);//  把数组1和数组2合并生成一个新的数组并返回,原数组不变
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 返回改变后的数组
+		
+		var arr1 = arr.slice(0,3);//  数组.slice(起始下标,结束下标) 基于当前数组创建一个新数组(包含起始数据,不包含结束数据)并返回,原数组不变
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 返回改变后的数组
+		
+		var arr1 = arr.indexOf(3,0);// 数组.indexOf(查找项,起始下标) 从数组头部开始向后查找,如果没有找到返回-1
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 返回查找到全等匹配的数据的下标
+		*/
+		var arr1 = arr.lastIndexOf(3,4);// 数组.lastIndexOf(查找项,起始下标) 从数组未部开始向前查找,如果没有找到返回-1
+		console.log('原数组',arr);
+		console.log('返回结果',arr1);// 返回查找到全等匹配的数组的下标
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
