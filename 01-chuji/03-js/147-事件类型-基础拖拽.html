@@ -32,8 +32,8 @@
 			oBox.style.top = ev.clientY - divY + 'px';
 		}
 		document.onmouseup = function(ev){
-			document.onmousemove = null;
-			document.onmouseup = null;
+			document.onmousemove = null;// 使点击onmousedown事件失效
+			document.onmouseup = null;// 使点击onmouseup事件失效
 		}
 	}
 </script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-动态九宫格.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			position: relative;
+			margin-top: 50px;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="插入" id="btn">
+	<div class="father">
+		<div class="box"></div>		
+	</div>
+</body>
+<script type="text/javascript">
+	// 1.获取元素
+	// 2.设置固定高度、宽度、边距
+	// 3.点击按钮时克隆元素并且把克隆元素添加到父元素中
+	var aBox = document.getElementsByClassName('box');
+	var oBtn = document.getElementById('btn');
+	var aFather = document.getElementsByClassName('father');
+	var iHeight = 100;
+	var iWidth = 100;
+	var iMargin = 15;
+	var iZoe = 10;
+	oBtn.onclick = function(){
+		var oBox = aBox[0].cloneNode(true);
+		console.log(oBox);
+		aFather[0].appendChild(oBox);
+		for(var i = 0;i < aBox.length;i++){
+			var iCol = i % iZoe;//列数
+			var iRow = parseInt(i / iZoe);//行数
+			aBox[i].style.top = iRow*(iWidth + iMargin) + 'px';
+			aBox[i].style.left = iCol*(iWidth + iMargin) + 'px';
+		}		
+	}
+</script>
+</html>

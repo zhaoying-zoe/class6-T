@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-获取元素总结.html</title>
+	<style>
+		div{
+			width: 100%;
+			height: 30px;
+			background-color: red;
+			margin-top: 5px;
+		}
+		span{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">通过id</div>
+	<div>通过TagName(类名)</div>
+	<div class="div1">通过className</div>
+	<div class="div2">通过querySelector</div>
+	<p>总结：</p>
+	<span>1.id获取的是一个元素(获取多个元素可以设置Elemnets)</span>
+	<span>2.TagName获取的是一个数组</span>
+	<span>3.querySelector获取的是一个元素(获取多个元素可以用querySelectorAll)</span>
+	<span>4.ClassName获取的是一个数组</span>
+</body>
+<script type="text/javascript">
+	var oBox1 = document.getElementById('div1');
+	var oBox2 = document.getElementsByTagName('div');
+	var oBox3 = document.querySelector('.div2');
+	var oBox4 = document.querySelectorAll('.div2');
+	var oBox5 = document.getElementsByClassName('div1');
+	console.log('ById',oBox1);
+	console.log('ByTagName',oBox2);
+	console.log('querySelector',oBox3);
+	console.log('querySelectorAll',oBox4);
+	console.log('ClassName',oBox5);
+</script>
+</html>
