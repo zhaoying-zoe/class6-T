@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>075-数组去重.html</title>
+	<title>007-数组去重.html</title>
 	<script type="text/javascript">
-		var arr = new Array(1,2,5,6,8,4,2,6,5);
-		function uniqueArray(arr){
+		// 1.准备一个空数组
+		// 2.遍历原数组
+		// 3.让原数组与空数组的每一项进行比较
+		// 4.如果空数组中的每一项与原数组不同则把原数组的那项添加到空数组中
+		var arr = [1,2,3,5,4,6,1,2,3,8,5];
+		function uniqueArr(arr){
 			var result = [];
 			for(var i = 0;i < arr.length;i++){
 				var isDup = false;
-				//console.log(arr[i]);
 				for(var j = 0;j < result.length;j++){
 					if(arr[i] == result[j]){
 						isDup = true;
@@ -22,9 +25,9 @@
 			}
 			return result;
 		}
-		var res = uniqueArray(arr);
+		result = uniqueArr(arr);
 		console.log(arr);
-		console.log(res);
+		console.log(result);
 	</script>
 </head>
 <body>

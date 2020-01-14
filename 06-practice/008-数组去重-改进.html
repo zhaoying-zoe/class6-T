@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-数组去重-改进.html</title>
+	<script type="text/javascript">
+		// 1.准备一个空数组
+		// 2.遍历原数组
+		// 3.在空数组中查找原数组的每一项,如果空数组中没有则把这项添加到空数组中
+		var arr = [1,2,3,5,4,6,1,2,3,8,5];
+		function uniqueArr(arr){
+			var result = [];
+			for(var i = 0;i < arr.length;i++){
+				if(result.indexOf(arr[i]) == -1){
+					result.push(arr[i]);
+				}
+			}
+			return result;
+		}
+		result = uniqueArr(arr);
+		console.log(arr);
+		console.log(result);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

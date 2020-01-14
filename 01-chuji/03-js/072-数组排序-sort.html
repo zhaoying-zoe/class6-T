@@ -6,10 +6,12 @@
 	<script type="text/javascript">
 		var arr = new Array(1,26,36,45,268,36,98,2,4,6,58,789);
 		console.log(arr);
-		arr.sort();
+		var result = arr.sort();//在原数组基础上对其进行排序(先把原数组转换为字符串)
 		console.log(arr);
-		var arr1 = arr.sort();
-		console.log(arr1);
+		console.log(result);
+		result.push(0);// 检查sort方法是否是在原数组基础上进行的排序
+		console.log(arr);
+		console.log(result);
 	</script>
 </head>
 <body>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-sort-数组排序.html</title>
+	<script type="text/javascript">
+		var arr = new Array(1,2,4,8,7,23,68,12,23);
+		console.log(arr);
+		var result = arr.sort(function(n1,n2){
+			// if(n1 < n2){// n1指的是2 n2指的是1
+			// 	return -1;// 定义好的规则,直接用就成
+			// }else if(n1 > n2){
+			// 	return 1;// 定义好的规则,直接用就成
+			// }else{
+			// 	return 0;// 定义好的规则,直接用就成
+			// }
+			return n1 - n2;// 如果n1小于n2,就返回负数,n1就排在n2的前面; 如果n1大于n2,就返回正数,n1就排在n2的后面
+		});
+		console.log(arr);
+		console.log(result);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
