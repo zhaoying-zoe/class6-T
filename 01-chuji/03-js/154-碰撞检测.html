@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>154-碰撞检测.html</title>
-<style>
+<style type="text/css">
 		*{
 			margin: 0;
 			padding: 0;
@@ -17,12 +17,12 @@
 			left: 0px;
 		}
 		#box1{
+			position: absolute;
+			top: 200px;
+			left: 500px;
 			width: 300px;
 			height: 300px;
-			background: gray;
-			position: absolute;
-			top:180px;
-			left: 400px;
+			background-color: #ccc;
 		}
 	</style>
 </head>
@@ -30,35 +30,37 @@
 	<div id="box"></div>
 	<div id="box1"></div>
 </body>
-<script>
-	function checkBump(obj1,obj2){
-		if(obj1.offsetLeft + obj1.offsetWidth > obj2.offsetLeft
-			&& obj1.offsetTop + obj1.offsetHeight > obj2.offsetTop
-			&& obj2.offsetLeft + obj2.offsetWidth > obj1.offsetLeft
-			&& obj2.offsetTop + obj2.offsetHeight > obj1.offsetTop
-		){
+<script type="text/javascript">
+	// 封装检测函数
+	function checkBuom(obj1,obj2){// 传入参数 obj1,obj2
+		if((obj1.offsetLeft + obj1.offsetWidth) > obj2.offsetLeft
+			&&(obj1.offsetTop + obj1.offsetHeight) > obj2.offsetTop
+			&&(obj2.offsetLeft + obj2.offsetWidth) > obj1.offsetLeft
+			&&(obj2.offsetTop + obj2.offsetHeight) > obj1.offsetTop
+			){
 			return true;
 		}else{
 			return false;
-		}
+		}		
 	}
 	var oBox = document.getElementById('box');
 	var oBox1 = document.getElementById('box1');
-	oBox.onmousedown = function(ev){
-		var disX = ev.clientX - oBox.offsetLeft;
-		var disY = ev.clientY - oBox.offsetTop;
-		document.onmousemove = function(ev){
-			oBox.style.left = ev.clientX - disX + 'px';
-			oBox.style.top = ev.clientY- disY + 'px';
-			if(checkBump(oBox,oBox1)){
-				oBox1.style.background = 'blue';
+	oBox.onmousedown = function(ev){// oBox在鼠标点击时定义函数
+		var divX = ev.clientX - oBox.offsetLeft;//鼠标左距离-oBox的左距离
+		var divY = ev.clientY - oBox.offsetTop;//鼠标上距离-oBox的上距离
+		console.log(divX,divY);
+		document.onmousemove = function(ev){// 鼠标移动是如果速度过快,鼠标会出盒子,所以把oBox改成document
+			oBox.style.left = ev.clientX - divX + 'px';
+			oBox.style.top = ev.clientY - divY + 'px';
+			if(checkBuom(oBox,oBox1)){
+				oBox1.style.backgroundColor = 'blue';
 			}else{
-				oBox1.style.background = 'gray';
+				oBox1.style.backgroundColor = '#ccc';
 			}
 		}
-		document.onmouseup = function(){
-			document.onmousemove = null;
-			document.onmouseup = null;
+		document.onmouseup = function(ev){
+			document.onmousemove = null;// 使点击onmousedown事件失效
+			document.onmouseup = null;// 使点击onmouseup事件失效
 		}
 	}
 </script>
