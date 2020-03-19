@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-清除浮动-伪类(常用).html</title>
+	<style type="text/css">
+		.clearfix:after{
+			content: '';/*伪类 必不可少的属性*/
+			display: block;/*块状元素才能充当一堵墙*/
+			clear: both;/*清除浮动的属性*/
+			height: 0px;/*墙的高的设为0px*/
+			visibility: hidden;/*隐藏使其不可见*/
+		}
+		.clearfix{
+			*zoom: 1; /*兼容IE浏览器*/
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-css3-过渡的基本条件.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background: red;
+			transition-property: width;/*过渡必备条件1:过渡属性*/
+			transition-duration: 500ms;/*过渡必备条件2:过渡时间*/
+		}
+		.box:hover{/*过渡必备条件3:触发事件*/
+			width: 500px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<!-- 添加过渡的必要条件
+			1.给需要过渡的元素添加transition-property属性来指定那个属性需要过渡,如果有多个属性同时变化,将多个属性用逗号隔开即可
+			2.给需要过渡的元素添加transition-duration属性来指定过渡的执行时间,如果有多个属性同时变化,将过渡的执行时间用逗号隔开即可
+			3.给需要过渡的元素添加一个触发事件(通常是hover),在事件中指定需要过渡的属性的变化值 -->
+</body>
+</html>
