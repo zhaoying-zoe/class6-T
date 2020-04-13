@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-过渡基本条件.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background: red;
+			transition-property: width;/*元素要过渡的属性*/
+			transition-duration: 1s;/*元素过渡的时间*/
+		}
+		.box:hover{
+			width: 500px;/*元素过渡的触发条件*/
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

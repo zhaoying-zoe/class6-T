@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-css3-2d转换(总结).html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin: 200px auto;
+			position: relative;
+		}
+		li{
+			list-style: none;
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			/*transform-origin: 50px 50px;*/
+			/*transform-origin: 100px 100px;*/
+			transform-origin: 100% 100%;
+		}
+		li:nth-child(1){
+			background: red;
+			transform: rotate(10deg);
+		}
+		li:nth-child(2){
+			background: blue;
+			transform: rotate(20deg);
+		}
+		li:nth-child(3){
+			background: green;
+			transform: rotate(30deg);
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<!-- 注意点
+			1.旋转基点就是以哪个点为参考点进行旋转
+			2.默认情况下所有的元素都是以自己的中心点作为参考来旋转的
+			3.移动距离可以是具体的像素,百分比,和关键字,关键字在水平方向上有left center right,在垂直方向上有top center bottom
+			4.移动基点的参考点是元素的左上角顶点 -->
+	</ul>
+</body>
+</html>

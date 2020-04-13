@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-css3-过渡案例-手风琴.html</title>
+	<style type="text/css">
+		/*1.在网页放一个大盒子(里面放5个li和5个图片\li的width默认为200px)*/
+		/*2.设置好样式(图片只设置高度、浮动li、隐藏超出部分)*/
+		/*3.放在ul上使li的width为100px*/
+		/*4.放在单独的li上使其width变为600px*/
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 1000px;
+			height: 400px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		.box ul li{
+			list-style: none;
+			width: 200px;
+			height: 400px;
+			float: left;
+			transition:width 1s;
+			/* overflow: hidden; */
+		}
+		li img{
+			height: 100%;
+		}
+		.box ul li:hover{/*加入.box是提高优先级*/
+			width: 600px;
+		}
+		ul:hover li{
+			/*两个都是给li添加效果,如果优先级一样,则下面的会生效(就近)*/
+			width: 100px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li><img src="img/ad1.jpg"></li>
+			<li><img src="img/ad2.jpg"></li>
+			<li><img src="img/ad3.jpg"></li>
+			<li><img src="img/ad4.png"></li>
+			<li><img src="img/ad5.jpg"></li>
+		</ul>
+	</div>
+</body>
+</html>
