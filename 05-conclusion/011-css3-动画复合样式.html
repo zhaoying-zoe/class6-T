@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-css3-动画复合样式.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background: red;
+			/*animation: sport 1s linear 1s infinite alternate;*/
+			animation: sport 1s;/*常用*/
+		}
+		@keyframes sport{
+			from{
+				width: 200px;
+			}
+			to{
+				width: 600px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+		<!-- 
+		1.animation:动画的名称 动画的执行时间 动画的速度 延迟时间 动画的执行次数:infinite(无限循环) 是否执行往返动画:alternate(执行往返动画);
+		2.动画名称和执行时间不可以省略 -->
+</body>
+</html>
