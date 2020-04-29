@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-css3-百分比动画.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 600px;
+			height: 600px;
+			border: 1px solid #000;
+			margin: 50px auto;
+		}
+		.son{
+			width: 200px;
+			height: 200px;
+			background: red;
+			animation: sport 4s;
+			position: relative;
+			top: 0px;
+			left: 0px;
+		}
+		@keyframes sport{
+			0%{
+				top: 0px;
+				left: 0px;
+			}
+			25%{
+				top: 0px;
+				left: 400px;
+			}
+			50%{
+				top: 400px;
+				left: 400px;
+			}
+			75%{
+				top: 400px;
+				left: 0px;
+			}
+			100%{/*推荐写100%*/
+				top: 0px;
+				left: 0px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>
