@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-面向对象高级-原型.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		// new 的作用:1,this = {}   2,return this
+		this.name = name;
+		this.age = age;
+	}
+
+	// 用户可以在原型对象(构造函数.prototype)上添加自己的方法和属性，这些方法和属性会被所有的实例共享
+	Person.prototype.showNane = function(){
+		console.log('I am' + this.name)
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age +'years old')
+	}
+
+	Person.prototype.LEGS = 2;
+	console.log('Person.prototype',Person.prototype);//构造函数的原型
+	console.log('Person.prototype.constructor',Person.prototype.constructor);//构造函数的原型中的构造器对象(constructor也叫构造函数)
+	console.log('Person.prototype.constructor === Person',Person.prototype.constructor === Person);// true
+	console.log('Person.prototype.__proto__',Person.prototype.__proto__);// 原型上的另外一个对象:__proto__(prototype.__proto__)
+	console.log('Object.prototype',Object.prototype);// (系统自带的)obj对象的 原型
+	console.log('Person.prototype.__proto__ === Object.prototype',Person.prototype.__proto__ === Object.prototype);// true
+	console.log('Object.prototype.constructor',Object.prototype.constructor);
+	console.log('Object.prototype.constructor === Object',Object.prototype.constructor === Object);// true
+	console.log('Object.prototype.__proto__',Object.prototype.__proto__);//__proto__对象指向null
+
+	// var P1 = Person('Tom',18);// 相当于在window里定义了name
+	// console.log(window.name);
+	
+	var p1 = new Person('Tom', 18)
+	console.log(p1);
+	p1.showNane();// 调用原型上的方法
+	p1.showAge();// 调用原型上的方法
+	console.log(p1.LEGS);// 调用原型上的属性
+
+	var p2 = new Person('Leo', 88)
+	console.log(p2);
+	p2.showNane();// 调用原型上的方法
+	p2.showAge();// 调用原型上的方法
+	console.log(p2.LEGS);// 调用原型上的属性
+
+	console.log('p2.__proto__',p2.__proto__);
+	console.log('p2.__proto__ === Person.prototype',p2.__proto__ === Person.prototype);
+</script>
+</html>

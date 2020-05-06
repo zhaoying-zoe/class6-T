@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-属性的删除.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showNane = function(){
+		console.log('I am' + this.name)
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age +'years old')
+	}
+	Person.prototype.LEGS = 2;
+
+	var p1 = new Person('Tom',18);
+	console.log('delete p1.name',delete p1.name);// 通过delete 删除属性
+	console.log('delete p1.sex',delete p1.sex);// 删除实质是判断有没有该属性，如果有删除返回真，若没有，直接返回真
+	console.log('delete Person.prototype.LEGS',delete Person.prototype.LEGS)// 如果删除了原型上的属性，所有实例都访问不到该属性
+	console.log(p1);
+	
+	var p2 = new Person;
+	console.log(p2);
+
+</script>
+</html>

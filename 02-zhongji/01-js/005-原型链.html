@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-原型链.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		this.name = name;// 给构造函数添加一个属性
+		this.age = age;// 给构造函数添加一个属性
+		this.showNane = function(){// 给构造函数添加一个方法
+			console.log('I am' + this.name + '000')
+		}
+	}
+	Person.prototype.showNane = function(){// 给原型添加一个函数
+		console.log('I am' + this.name)
+	}
+	Person.prototype.showAge = function(){// 给原型添加一个函数
+		console.log('I am' + this.age +'years old')
+	}
+	Person.prototype.LEGS = 2;// 给原型添加一个属性
+	var p1 = new Person('Tom',18);// 令p1为构造函数
+	console.log(p1);// 打印p1
+	p1.showNane();// 调用原型上的方法:showNane
+	console.log('p1.toString',p1.toString);
+	// p1.test();// 自身以及上级都没有这个方法，会报错
+	p1.showAge();// 调用原型上的方法:showAge
+	console.log(p1.LEGS);// 打印p1.LEGS
+
+	var p2 = new Person('Tom',18);
+	console.log(p2);
+	p2.showNane();
+	console.log('p2.toString',p2.toString);
+	p2.showAge();
+	console.log(p2.LEGS);
+</script>
+</html>

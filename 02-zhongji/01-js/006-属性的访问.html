@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-属性的访问.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 当用对象的实例去访问一个属性时,首先去查找对象自身是否有该属性,如果没有去对象的原型链上查找,如果整个原型链上都没有该属性值则该属性是undefined
+	
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showNane = function(){
+		console.log('I am' + this.name)
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age +'years old')
+	}
+	Person.prototype.LEGS = 2;
+
+	var p1 = new Person('Tom',18);
+	// {name:Tom,age:18}
+	p1.showNane = function(){
+		console.log('I am' + this.name+'000')
+	};
+	p1.showNane();
+	p1.showAge();
+	console.log(p1.LEGS);
+
+	var p2 = new Person('Leo',88);
+	// {name:Leo,age:88}
+	p2.showNane();
+	p2.showAge();
+	console.log(p2.LEGS);
+
+	console.log('p1.__proto__ === p2.__proto__',p1.__proto__ === p2.__proto__)// 
+</script>
+</html>
