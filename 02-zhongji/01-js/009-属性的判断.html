@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-属性的判断.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showNane = function(){
+		console.log('I am' + this.name)
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age +'years old')
+	}
+	Person.prototype.LEGS = 2;
+
+	var p1 = new Person('Tom',18);
+
+	// if(p1.name){
+	// 	console.log(2333)
+	// }else{
+	// 	alert(2333)
+	// }
+	
+	// console.log(p1.name);
+	// console.log(p1.age);
+	// console.log(p1.LEGS);
+	 
+	// 判断对象实例上是否有指定的属性 obj1.hasOwnProperty('name')
+	// console.log(Object.prototype);//检查Obj的原型 里面有一个方法是hasOwnProperty('name')
+	console.log(p1);
+	console.log(p1.hasOwnProperty('name'));// true
+	console.log(p1.hasOwnProperty('age'));// true
+	console.log(p1.hasOwnProperty('LEGS'));// false
+
+	// 判断对象实例的原型链上是否有指定的属性,如"LEGS" in obj1;
+	p1.sex = 'male';// 给实例添加一个属性,不在原型链上
+	console.log('name' in p1);// true
+	console.log('age' in p1);// true
+	console.log('LEGS' in p1);// true
+	console.log('male' in p1);// false
+	
+	// 判断属性只在原型链上有而不在实例上 return !obj.hasOwnProperty(name) && (name in obj);
+	function isInProperty(attr,obj){
+		return !obj.hasOwnProperty(attr) && (attr in obj);
+	}
+	console.log(isInProperty('LEGS',p1));// true
+	console.log(isInProperty('name',p1));// false
+	console.log(isInProperty('age',p1));// false
+</script>
+</html>

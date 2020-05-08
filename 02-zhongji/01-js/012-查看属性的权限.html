@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-查看属性的权限.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showNane = function(){// 给原型添加一个函数
+		console.log('I am' + this.name)
+	}
+	Person.prototype.showAge = function(){// 给原型添加一个函数
+		console.log('I am' + this.age + 'years old')
+	}
+	Person.prototype.LEGS = 2;// 给原型添加一个属性
+
+	var p1 = new Person('Tom',18);
+	//定义多个属性
+	Object.defineProperties(p1,{
+		'EARS':{// 添加的属性可以写引号 也可不写
+			value:2,
+			enumerable:true,
+			writable:true,
+			configurable:true
+		},
+		EYES:{
+			value:2,
+			enumerable:true,
+			writable:true,
+			configurable:true
+		},
+		HANDS:{
+			value:2,
+			enumerable:true,
+			writable:false,
+			configurable:true
+		}
+	})
+	console.log(Object.getOwnPropertyDescriptor(p1,'EARS'));// 访问实例上的EARS属性
+	console.log(Object.getOwnPropertyDescriptor(p1,'EYES'));// 访问实例上的EYES属性
+	console.log(Object.getOwnPropertyDescriptor(p1,'HANDS'));// 访问实例上的HANDS属性
+	console.log(Object.getOwnPropertyDescriptor(p1,'LEGS'));// 只能访问实例上的属性，原型链上的属性访问不到
+
+	console.log(p1);
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-属性的定义-定义单个属性.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showNane = function(){
+		console.log('I am' + this.name)
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age +'years old')
+	}
+	Person.prototype.LEGS = 2;
+
+	var p1 = new Person('Tom',18);
+
+	// p1.sex = 'male';
+	// p1.sex = 'famale';
+	// p1.__proto__ = '233';
+	// console.log(p1);
+	// for(attr in p1){// 枚举p1的属性
+	// 	console.log('attr',attr)
+	// }
+	
+	// 给实例添加单个属性
+	Object.defineProperty(p1,'sex',{
+		value:'male',
+		enumerable:true,//是否可以枚举,默认是false
+		writable:true,//是否可写(赋值),默认是false
+		configurable:true//是否可删除,是否可以修改属性的权限，默认是false
+	});
+	p1.sex = 'famale';// 重新给p1的sex属性赋值
+
+	for(attr in p1){// 枚举p1的属性
+		console.log('attr',attr)
+	}
+	console.log(p1);
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-初探继承.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showNane = function(){
+		console.log('I am' + this.name)
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age + 'years old')
+	}
+	Person.prototype.LEGS = 2;
+
+	var p1 = new Person('Tom',18);
+	console.log(p1);
+	p1.showNane();
+	p1.showAge();
+
+	function Student(name,age,major){
+		this.name = name;
+		this.age = age;
+		this.major = major;
+	}
+	Student.prototype.showNane = function(){
+		console.log('I am' + this.name)
+	}
+	Student.prototype.showAge = function(){
+		console.log('I am' + this.age + 'years old')
+	}
+	Student.prototype.showMajor = function(){
+		console.log('I am from' + this.major)
+	}
+
+	var p2 = new Student('Leo',88,'computer');
+	console.log(p2);
+	p2.showNane();
+	p2.showAge();
+	p2.showMajor();
+</script>
+</html>

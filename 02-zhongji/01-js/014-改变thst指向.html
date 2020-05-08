@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-改变thst指向.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	/*
+	function show(){
+		console.log(this)
+	}
+	// show();// window
+	// window.show();// window
+	// show.call();// window
+	 */
+	
+	// call改变this指向
+	/*
+	function show(n1,n2){
+		console.log(this,n1,n2)
+	}
+	show(1,2);// this指向window
+	show.call(1,2);// this指向1 n2为undefined
+	show.call(1,2,3);// this指向1 
+	show.call({name:'tom'},2,3);// this指向{name:'tom'}
+	show.call(null,2,3);// this指向window
+	*/
+
+	/*
+	function show(n1,n2){
+		console.log(this,n1,n2)
+	}
+	show(1,2);// this指向window
+	show.apply(1,[2]);// this指向1 n2为undefined
+	show.apply(1,[2,3]);// this指向1 
+	show.apply(null,[2,3]);// this指向window
+	*/
+
+	function show(n1,n2){
+		console.log(this,n1,n2)
+	}
+	show(1,2);
+	show.bind({name:'tom'})(1,2)
+</script>
+</html>
