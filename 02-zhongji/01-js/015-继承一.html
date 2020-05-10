@@ -12,7 +12,7 @@
 		this.name = name;
 		this.age = age;
 	}
-	Person.prototype.showNane = function(){
+	Person.prototype.showName = function(){
 		console.log('I am' + this.name)
 	}
 	Person.prototype.showAge = function(){
@@ -26,7 +26,7 @@
 		this.major = major;
 		// 属性继承
 		// console.log(this);// this指向Student
-		Person.call(this,'Tom',18);
+		Person.call(this,name,age);
 		// Person.apply(this,['Tom',18]);
 		// Person.bind(this)('Tom',18);
 	}
@@ -38,7 +38,7 @@
 
 	var p2 = new Student('Leo',88,'computer');
 	console.log(p2);
-	p2.showNane();
+	p2.showName();
 	p2.showAge();
 	p2.showMajor();
 

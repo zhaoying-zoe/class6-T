@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-循环中直接找到元素的索引.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+			width: 100px;
+			height: 60px;
+			background: red;
+			float: left;
+			margin-left: 40px;
+		}
+		.active{
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var aLi = document.getElementsByTagName('li');
+	var lastIndex = 0;// 自定义i值得变量
+	for(var i = 0;i < aLi.length;i++){
+		aLi[i].index = i;// for循环执行完后会储存每一个i值,当哪个li触发事件时,此时的i就值就会作为参数传入事件
+		/*
+		aLi[i].onmouseenter = function(){
+			
+				// for(var j = 0;j <aLi.length;j++){
+				// 	aLi[j].className = '';
+				// }
+			 
+			aLi[lastIndex].className = '';
+			this.className = 'active';
+			lastIndex = this.index;
+		}
+		*/
+		(function(i){// 创建私有空间
+			aLi[i].onmouseenter = function(){
+				aLi[lastIndex].className = '';// 重置第一个li的类名
+				this.className = 'active';// 给目标li添加类名
+				lastIndex = i;// 重新给lastIndex赋值
+			}
+		})(i);
+	}
+</script>
+</html>

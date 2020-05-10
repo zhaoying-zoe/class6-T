@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>026-小括号的语义.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	/*
+	function show(){
+		console.log(2333)
+	}
+	show();
+
+	function (){
+		console.log(23)
+	}();
+	*/
+	// 小括号的作用
+	//1.和一些语句联合使用以达到某些限定作用,如与if、while后的()
+	if(true){
+		console.log(2333)
+	}
+	for(var i = 0;i < 5;i++){
+		console.log(i)
+	}
+	// 2.提高运算的优先级
+	var str = '1' + (2 + 3) + '4';
+	console.log(str);
+	// 3.函数声明时参数表
+	function show(name){
+		console.log(name)
+	}
+	// 4.函数调用和传参
+	show('tom');
+
+	// 5.强制表达式运算
+	(function(){
+		console.log(2333)
+	}())// 两个小闭包间用; + - 来间隔
+	;(function(){
+		console.log(2333)
+	}())
+	+(function(){
+		console.log(2333)
+	}())
+	-(function(){
+		console.log(2333)
+	}())
+
+
+</script>
+</html>

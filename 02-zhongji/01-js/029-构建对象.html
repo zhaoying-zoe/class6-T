@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029-构建对象.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	(function(w){
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		/*
+		Person.prototype.showName = function(){
+			console.log('I am' + this.name)
+		}
+		Person.prototype.showAge = function(){
+			console.log('I am' + this.age + 'years old')
+		}
+		Person.prototype.LEGS = 2;
+		*/
+		// 归纳对象
+		Person.prototype = {
+			showName:function(){
+				console.log('I am' + this.name)
+			},
+			showAge:function(){
+				console.log('I am' + this.age + 'years old')
+			},
+			LEGS:2
+		}
+		w.Person = Person;// 把window传入函数内,给window添加一个属性(方法),使封闭空间可在全局内使用
+		Person.prototype.constructor = Person;
+	})(window);
+	
+	(function(w){
+		function Student(name,age,major){
+			this.name = name;
+			this.age = age;
+			this.major = major;
+		}
+		/*
+		Student.prototype.showName = function(){
+			console.log('I am' + this.name)
+		}
+		Student.prototype.showAge = function(){
+			console.log('I am' + this.age + 'years old')
+		}
+		Student.prototype.showMajor = function(){
+			console.log('I am from' + this.major)
+		}
+		*/
+		Student.prototype = {
+			showName:function(){
+				console.log('I am' + this.name)
+			},
+			showAge:function(){
+				console.log('I am' + this.age + 'years old')
+			},
+			showMajor:function(){
+				console.log('I am from' + this.major)				
+			}
+		}
+		w.Student = Student;
+		Student.prototype.constructor = Student;
+	})(window)
+
+
+	var p2 = new Student('Leo',88,'computer');
+	console.log(p2);
+	p2.showName();
+	p2.showAge();
+	p2.showMajor();
+
+	var p1 = new Person('Tom',18);
+	console.log(p1.LEGS);
+	p1.showName();
+	p1.showAge();
+</script>
+
+</html>

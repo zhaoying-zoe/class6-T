@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-创建私有作用域.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 创建私有作用域,不会污染全局变量
+	var a = 23;
+	(function (){
+		var a = 0;
+		console.log(a);
+	})();
+	(function (){
+		var a = 1;
+		console.log(a);
+	})();
+	(function (){
+		var a = 3;
+		console.log(a);
+	})();
+	(function (){
+		var a = 4;
+		console.log(a);
+	})();
+	console.log(a);
+</script>
+</html>

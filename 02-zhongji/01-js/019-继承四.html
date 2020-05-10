@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>017-继承三.html</title>
+	<title>019-继承四.html</title>
 </head>
 <body>
 	
@@ -28,14 +28,9 @@
 	}
 	Person.prototype.LEGS = 2;
 
-	/*
-	for(attr in Person.prototype){// 枚举Person.prototype中的方法
-		Student.prototype[attr] = Person.prototype[attr];
-	}
-	*/
-	var obj = new Person();
-	Student.prototype = obj;
-	Student.prototype.constrcutor = Student;
+	Student.prototype = Object.create(Person.prototype);// 利用Object创建对象的方法:使Student的原型指向Person的原型
+	Student.prototype.constrcutor = Student;// 给Student.prototype添加constructor
+	console.log(Student.prototype);
 
 	function Student(name,age,major){
 		this.major = major;
