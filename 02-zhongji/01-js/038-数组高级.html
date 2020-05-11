@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-数组高级.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var arr = [1,56,3,2,56,2656,126];
+	// 遍历  遍历不会生成新的数组,没有返回值
+	arr.forEach(function(value,index){
+	    console.log(value);
+	})
+
+	/*
+	// 映射  遍历数组,把函数的每一次返回值映射成新的数组并返回
+	var newArr = arr.map(function(value,index){
+	    return value*10;
+	})
+	*/
+	/*
+	console.log(newArr);
+	// 过滤  遍历数组,把函数的每一次返回值为真的原数组中的值组成新的数组并返回
+	var newArr = arr.filter(function(value,index){
+	    return value > 10;
+	})
+	console.log(newArr);
+	*/
+
+	// 全真判断  遍历数组,所有值为真的情况下返回真,否则返回假
+	var bRes = arr.every(function(value,index){
+	    return value > 10;
+	})
+	console.log(bRes);
+
+	// 有真判断  遍历数组,有一个值为真的情况下返回真,否则返回假
+	var bRes = arr.some(function(value,index){
+	    return value > 10;
+	})
+	console.log(bRes);
+
+</script>
+</html>

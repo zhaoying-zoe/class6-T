@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>030-内存.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function fn1(){
+		var a = 0;
+		add = function(){
+			a++;
+		}
+		return function fn2(){// 返回函数
+			console.log(a)
+		}
+	}
+	var res = fn1();// 接收函数
+	res();// 调用函数
+	add();
+	res();
+</script>
+</html>

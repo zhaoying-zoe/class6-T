@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>034-观察者模式(发布订阅者模式).html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 1.创建老师函数和学生函数(小闭包)
+	// 2.添加属性(name等)
+	// 3.定义数组来保存学生
+	// 4.把学生添加到老师的数组中
+	// 5.让学生函数调用老师方法
+	
+	(function(w){
+		function Teacher(name){
+			this.name = name;
+			// 定义数组用来保存学生
+			this.students = []
+		}
+			Teacher.prototype = {
+				constructor:Teacher,
+				register:function(student){// 2.给Teacher添加方法 将学生添加到老师的数组中
+					this.students.push(student)// 方法二 1 this指代老师(对象 陈老师) 调用数组的push方法
+				},
+				publish:function(msg){
+					for(var i = 0;i < this.students.length;i++){
+						this.students[i].listen(msg);
+					}
+				}
+			}
+
+		w.Teacher = Teacher;
+	})(window);
+
+	(function(w){
+		function Student(name,teacher){
+			this.name = name;
+			// 2.在Student中调用数组的push方法将 将学生添加到老师的数组中 this指代学生(对象 赵明)
+			// teacher.students.push(this);// 方法一 :直接暴力
+			
+			teacher.register(this);// this指代学生(对象 赵明)	
+		}
+		Student.prototype = {
+				constructor:Student,
+				listen:function(msg){
+					console.log(this.name + 'got msg' + msg )
+				}
+		}
+		w.Student = Student;
+	})(window);
+
+	var t1 = new Teacher('陈老师');
+	var s1 = new Student('赵明',t1);// 把s1传入数组 Students
+	var s2 = new Student('刘璐',t1);// 把s2传入数组 Students
+	t1.publish('hello everyone');
+	console.log(t1);
+	console.log(s1);
+	console.log(s2);
+</script>
+</html>

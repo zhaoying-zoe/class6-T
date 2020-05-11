@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-引用计数.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	/*
+	var obj = {// 定义对象,堆内存内产生一块空间
+		name:'tom'
+	}
+	var obj = {// 重定义对象,堆内存之前的那块空间被释放(因为没有变量引用)
+		name:'loe'
+	}
+	*/
+	var obj = {
+		name:'tom'
+	}
+	var obj2 = {
+		name:'loe'
+	}
+
+	obj.obj1 = obj2;// 两个对象相互引用,使内存中的空间无法释放,致使 内存泄漏
+	console.log(obj);
+
+	obj2.obj1 = obj;// 两个对象相互引用,使内存中的空间无法释放,致使 内存泄漏
+	console.log(obj2);
+</script>
+</html>

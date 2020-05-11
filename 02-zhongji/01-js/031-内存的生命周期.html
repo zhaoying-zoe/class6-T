@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>031-内存的生命周期.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 内存生命周期
+	// 分配你所需要的内存
+	// 使用分配到的内存（读、写）
+	// 不需要时将其释放\归还
+	var obj1 = {// 堆内存的obj1 指向栈内存中储存的一个对象
+		name:'Tom'
+	}
+
+	var obj1 = {// 堆内存的obj1 指向栈内存中储存的令一个对象  前一个对象被释放(消失)
+		name:'Leo'
+	}
+	console.log(obj1);
+</script>
+</html>

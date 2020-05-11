@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>033-引用计数案例.html</title>
+</head>
+<body>
+	<button id="btn">按钮</button>
+</body>
+<script type="text/javascript">
+	// 案例会造成内存泄漏 👇
+	/*
+	bindEvent();
+	function bindEvent(){
+		var oBtn = document.getElementById('btn');
+		oBtn.onclick = function(){
+			alert(oBtn.id)
+		}
+	}
+	*/
+	// 改进案例 👇
+	bindEvent();
+	function bindEvent(){
+		var oBtn = document.getElementById('btn');
+		var id = oBtn.id
+		oBtn.onclick = function(){
+			alert(id)
+		}
+		oBtn = null;
+	}
+</script>
+</html>
