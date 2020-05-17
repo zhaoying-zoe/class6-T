@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-静态方法和动态方法.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	// 构造函数直接调用自身的方法————静态方法
+	// 油构造函数的实例调用的方法————动态方法
+	// $(function(){});
+	var date = Date.now();// 静态方法
+	var num = Math.random();// 静态方法
+	var arr = new Array(1,2,3,4);
+	console.log(arr.sort());// 动态方法
+</script>
+</html>

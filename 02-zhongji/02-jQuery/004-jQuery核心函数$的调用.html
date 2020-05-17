@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-jQuery核心函数的调用.html</title>
+</head>
+<body>
+	<div>1</div>
+	<div class="div1">2</div>
+	<div id="div1">3</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// var oDiv = document.getElementById('div1')
+		// console.log($('div'));// 字符串为选择器时,返回一个包含了DOM元素的jQuery对象
+		// console.log($('#div'));
+		// console.log($('.div'));
+		// console.log($('<h1>标题来了</h1>'));// 字符串为HTML代码片段时,返回一个包含了DOM元素的jQ对象
+		// console.log($(oDiv));// 接收dom元素 dom对象无法调用jQuery方法
+		// $(oDiv).css('color','red')// jq对象调用jQuery方法 把div字体变为红色
+
+		//打印布尔值 0(返回空对象)
+		console.log($(''))
+		console.log($(0))
+		console.log($(false))
+		console.log($(null))
+		console.log($(undefined))
+		console.log($(NaN))
+	})
+</script>
+</html>

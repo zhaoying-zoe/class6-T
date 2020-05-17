@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-$静态方法-each.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var arr = [1,2,3,4,5,6,7,8,9];
+		var likeArr = {0:'aa',1:'b',3:'c',length:3};
+
+		/*
+		var res = $.map(arr,function(value,index){
+			console.log(index,value);
+			return value;
+		})
+		console.log(res == arr);
+		*/
+	
+		/*会报错 伪数组没有数组的方法
+		likeArr.map(function(value,index){
+			console.log(value,index)
+			return value;
+		});
+		*/
+
+		var res = $.map(likeArr,function(){
+			console.log(value,index)
+			return value;
+		})
+		console.log(res === likeArr);
+		console.log(res);
+	})
+</script>
+</html>

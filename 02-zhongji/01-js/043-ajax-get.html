@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-ajax-get.html</title>
+</head>
+<body>
+	<input type="button" value="请求数据" id="btn">
+</body>
+<script type="text/javascript">
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		// 1.生成ajax对象(购买电话)
+		var oAjax = new XMLHttpRequest();
+		// console.log(oAjax);
+		
+		// 2.建立连接(打电话建立连接)
+		oAjax.open('GET','http://127.0.0.1:3000/043-data.json',true)// GET方法,IP地址,true:异步 false:同步
+
+		// 3.发送请求(问问题)
+		oAjax.send();
+
+		// 4.等待服务器返回数据(等待老板应答)
+		oAjax.onreadystatechange = function(){// 监听事件
+			// console.log(oAjax.readyState)
+			if(oAjax.readyState == 4){// 数据完全返回
+				// console.log(oAjax.responseText)// 返回的字符串
+				// console.log(oAjax.status)// 返回的200
+				if(oAjax.status == 200){
+					try{// 容错处理
+						var data = oAjax.responseText;
+						var jsonToObj = JSON.parse(data);// 字符串 转 对象
+						console.log(jsonToObj)
+					}catch(err){// 容错处理
+						console.log(err)
+					}
+					
+				}else{
+					console.log("resquest failed ,status code " +oAjax.status)
+				}
+			}
+		}
+	}
+</script>
+</html>

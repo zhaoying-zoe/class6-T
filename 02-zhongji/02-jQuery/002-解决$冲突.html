@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-解决$冲突.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	(function(w){
+		function $(){
+			console.log('test $');			
+		}
+		w.$ = $;
+	})(window);
+</script>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	/*
+	jQuery.noConflict();//解决方法一: 释放掉引入的jQuery
+	console.log($);
+	jQuery(function(){// 接方法一,$被释放掉了,可以用字母来继续用jQuery
+		console.log('haha');
+	})
+	*/
+
+	var kz = jQuery.noConflict();// 方法二:在使用jQuery前释放jQuery的$使用权的同时自定义自己的符号,用自定义符号来代替$
+
+    kz(function(){
+    	console.log('hahah')
+    });
+</script>
+</html>

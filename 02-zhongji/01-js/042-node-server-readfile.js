@@ -10,6 +10,7 @@ var server = http.createServer(function(req,res){
 	var filePath = './' + req.url;// ./ 是当前文件夹
 	fs.readFile(filePath,function(err,data){
 		if(err){// 如果页面访问错误
+			res.statusCode = 404;// 200状态码
 			res.end('Not Found')
 		}else{// 页面访问成功
 			res.end(data);

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-jQuery对象.html</title>
+</head>
+<body>
+	<div>1</div>
+	<div id="div2">2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<div>6</div>
+	<div>7</div>
+	<div>8</div>
+	<div>9</div>
+	<div>10</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// console.log($('div'));// jQuery对象是 伪数组
+		// console.log([1,2,3,4,5]);// 定义真数组作对比
+		// console.log($('div'))// 打印出jQuery对象
+		// console.log($('div')[2])// 1.jQuery对象转dom对象(获取对应下标的DOM元素)
+		
+		// var oDiv = document.getElementById('div2');
+		// console.log(oDiv);// 打印出dom对象
+		// console.log($(oDiv));// 2|dom对象转jQuery对象
+		
+		console.log($('div').get(9));// 2.jQuery对象转dom对象(获取对应下标的DOM元素)
+		console.log($('div').get(5));// 2.jQuery对象转dom对象(获取对应下标的DOM元素)
+	})
+</script>
+</html>
