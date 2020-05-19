@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-筛选元素-筛选性过滤.html</title>
+	<style type="text/css">
+		.div3{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="hidden" name="">
+	<input type="text" name="">
+	<div class="div1">1</div>
+	<div class="div2">2</div>
+	<div class="div3">3</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// $('选择器:hidden')匹配所有不可见元素
+		console.log($('input:hidden'))
+		// 
+		// $('选择器:visible')匹配所有可见元素
+		console.log($('div:visible'))
+	})
+</script>
+</html>

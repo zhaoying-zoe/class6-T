@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-操作属性-操作位置.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1"></div>
+	<div class="div2"></div>
+	<div class="div3"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//1. 设置或获取元素的宽高jQuery对象.width([val]) jQuery对象.height([val])
+		$('.div1').width('200');
+		$('.div1').height('200');
+		console.log($('.div1').width());// 返回div1的width的值
+		console.log($('.div1').height('200'));// 返回div1的对象
+
+		//2. 设置或获取元素的宽高,包含内边距jQuery对象.innerWidth([val]) jQuery对象.innerHeight([val])
+		$('.div2').innerWidth('300');
+		$('.div2').innerHeight('300');
+		console.log($('.div2').innerWidth());// 返回div2的width的值
+		console.log($('.div2').innerHeight('300'));// 返回div2的对象
+
+		//3. 设置或获取元素的宽高,包含边框和内边距jQuery对象.outerWidth([val]) jQuery对象.outerHeight([val])
+		
+		$('.div3').outerWidth('300');
+		$('.div3').outerHeight('300');
+		console.log($('.div3').outerWidth());// 返回div3的width的值
+		console.log($('.div3').outerHeight('300'));// 返回div3的对象
+
+	})
+</script>
+</html>

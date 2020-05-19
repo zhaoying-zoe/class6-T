@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-筛选元素-过滤方法.html</title>
+</head>
+<body>
+	<div class="div1">1</div>
+	<div class="div2">2</div>
+	<div class="div3" id="class3">3</div>
+	<div class="div4">4</div>
+	<div class="div5">5</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		console.log($('div'));
+		// jQuery对象.eq(index)选择索引对应的DOM元素
+		console.log($('div').eq(2));
+		console.log($('div').eq(-1));
+
+		// jQuery对象.siblings()jQuery对象中包含元素之外的兄弟元素
+		console.log($('.div3').siblings())// 选中1 2 4 5加两个script标签 (浏览器在解析的时候吧script标签解析到body里)
+	})
+</script>
+</html>

@@ -5,35 +5,65 @@
 	<title>007-$静态方法-each.html</title>
 </head>
 <body>
-	
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
 </body>
 <script src="js/jquery-1.12.4.js"></script>
 <script>
 	$(function(){
-		var arr = [1,2,3,4,5,6,7,8,9];
+		var arr = new Array(1,2,3,4,5,6);
 		var likeArr = {0:'aa',1:'b',3:'c',length:3};
-
+		var aDiv = document.querySelectorAll('div')
 		/*
-		var res = $.map(arr,function(value,index){
+		// 数组的方法
+		arr.forEach(function(index,value){
 			console.log(index,value);
-			return value;
 		})
-		console.log(res == arr);
+		
+		// jQ方法 遍历后会返回原数组
+		var res = $.each(arr,function(index,value){
+			console.log(index,value);
+		})
+		console.log(res);
+		*/
+		
+		/*
+		// 伪数组没有数组的方法 会报错
+		likeArr.forEach(function(value,index){
+			console.log(index,value);
+		})
+		
+		var res = $.each(likeArr,function(index,value){
+			console.log(index,value);
+		})
+		console.log(res);
+		console.log(res === likeArr); //true
 		*/
 	
-		/*会报错 伪数组没有数组的方法
-		likeArr.map(function(value,index){
-			console.log(value,index)
-			return value;
-		});
-		*/
-
-		var res = $.map(likeArr,function(){
-			console.log(value,index)
-			return value;
+		console.log(aDiv);// 不是数组 (伪数组)
+		var res = $.each(aDiv,function(index,value){
+			console.log(index,value);
 		})
-		console.log(res === likeArr);
 		console.log(res);
 	})
+
 </script>
 </html>

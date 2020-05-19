@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-阻止事件默认行为.html</title>
+</head>
+<body>
+	<p>
+		我是段落
+		<a href="www.baidu.com">跳转到百度</a>
+	</p>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('a').on('click',function(ev){
+			// ev.preventDefault();
+			console.log('a click');// 既阻止默认行为 又阻止事件冒泡
+			return false;
+		})
+
+		$('p').on('click',function(){
+			console.log('p click')
+		})
+	})
+</script>
+</html>

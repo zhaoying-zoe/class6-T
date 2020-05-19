@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-操作属性-操作尺寸.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.div1{
+			width: 100px;
+			height: 100px;
+			margin :20px;
+			padding: 20px;
+			background: green;
+			border: 20px solid #000;
+		}
+		.div2{
+			margin: 10px;
+			padding: 10px;
+			width: 200px;
+			height: 200px;
+			background: red;
+			border: 20px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1"></div>
+	<div class="div2"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//1. 设置或获取元素的宽高jQuery对象.width([val]) jQuery对象.height([val])
+		// console.log($('div').css('width'));// 获取div的宽度 带px
+		// console.log($('div').width());// 获取div的宽度 不带px
+		// $('div').width('200px');// 设置div1 的width为200px
+		// $('div:eq(1)').width('300px');// 设置div2 的width为300px
+
+		//2. 设置或获取元素的宽高,包含内边距jQuery对象.innerWidth([val]) jQuery对象.innerHeight([val])
+		console.log($('div:eq(0)').innerWidth());// 140 = 100(文本) + 20(padding) +20(padding)
+		console.log($('div:eq(0)').innerHeight());// 140 = 100(文本) + 20(padding) +20(padding)
+		$('.div1').innerHeight('200px');// 200 = 160(文本) + 20(padding) + 20(padding)
+		console.log($('div:eq(0)').innerHeight());
+
+/*
+		//3. 设置或获取元素的宽高,包含边框和内边距jQuery对象.outerWidth([val])
+		
+		console.log($('.div3').outerWidth('300'));// div内容的宽度
+		console.log($('.div3').outerHeight('300'));// div内容的高度
+		console.log($('.div3').outerWidth());// 返回div3的width的值
+		console.log($('.div3').outerHeight('300'));// 返回div3的对象
+
+*/
+	})
+</script>
+</html>

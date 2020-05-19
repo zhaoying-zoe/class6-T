@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-操作属性.html</title>
+</head>
+<body>
+	<input type="text" name="aaa" value="111">
+	<input type="text" name="bbb" value="222">
+	<input type="checkbox" name="ccc" checked="checked">
+</body>	
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+		$(function(){
+			// 1.获取
+			// jQuery对象.attr("属性节点名称")jQuery对象.prop("属性节点名称")
+			// jQuery对象.prop("属性节点名称")
+					
+			// console.log($('input').attr('name'));
+			// console.log($('input').eq(1).attr('name'));
+			// console.log($('input').prop('name'));
+			// console.log($('input:eq(1)').prop('name'));
+
+			// console.log($('input').eq(2).attr('checked'));// checked(undefined)
+			// console.log($('input').eq(2).prop('checked'));// true(false)
+			
+			// 2.设置
+			// jQuery对象.attr("属性节点名称","值1 值2...")
+			// jQuery对象.prop("属性节点名称","值1 值2")
+			
+			console.log($('input').eq(2).attr('name','2333'))
+			// console.log($('input').eq(2).attr('checked',true));
+			console.log($('input').eq(2).prop('checked',false))// input的checked属性只能传布尔值 涉及布尔值的属性一般用prop
+
+			// 3.删除
+			// jQuery对象.removeAttr("属性节点名称")
+			// jQuery对象.removeProp("属性节点名称")
+			
+			// console.log($('input').eq(1).removeAttr('name'));//删除第二个input的name
+			// console.log($('input').removeAttr('name'));// 删除所有name
+
+			console.log($('input:eq(1)').removeProp('name'));
+			console.log($('input').removeProp('name'));
+			
+			// 4.attr和prop的区别
+			// 属性节点的值具有true和false时(如checked,selected,disabled),如果没有添加该属性时,attr会返回undefined,prop返回true,
+			// 因此,属性节点的值具有true和false时用prop,其他的用attr
+		})
+</script>
+</html>

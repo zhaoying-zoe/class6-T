@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>026-阻止事件冒泡.html</title>
+	<style type="text/css">
+		.gf{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			background: green;
+			margin: 200px auto;
+		}
+		.f{
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+			background: red;
+			margin: 50px auto;
+		}
+		.s{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			background: blue;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="gf">
+		<div class="f">
+			<div class="s"></div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('.gf').on('click',function(){
+			console.log('gf click')
+		})
+
+		$('.f').on('click',function(ev){
+			// ev.stopPropagation();// 阻止冒泡行为
+			console.log('f click');
+			return false;// 阻止冒泡行为 
+
+		})
+
+		$('.s').on('click',function(ev){
+			// ev.stopPropagation();// 阻止冒泡行为
+			console.log('s click');
+			return false;// 阻止冒泡行为 
+
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-筛选元素-查找.html</title>
+</head>
+<body>
+	<ul class="item1">
+		<li class="list1">list1</li>
+		<li class="list1">list1</li>
+		<li class="list1">list1</li>
+		<li class="list1">list1</li>
+		<li class="list1">list1</li>
+		<li class="list2">list2</li>
+		<li class="list2">list2</li>
+		<li class="list2">list2</li>
+		<li class="list2">list2</li>
+		<li class="list2">list2</li>
+	</ul>
+	<ul class="item2">
+		<li class="list1">list1</li>
+		<li class="list1">list1</li>
+		<li class="list1">list1</li>
+		<li class="list1">list1</li>
+		<li class="list1">list1</li>
+		<li class="list2">list2</li>
+		<li class="list2">list2</li>
+		<li class="list2">list2</li>
+		<li class="list2">list2</li>
+		<li class="list2">list2</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// jQuery对象.find('CSS选择器')查找jQuery对象中DOM元素的后代中符合选择器规则的元素
+		
+		// 1.查找 class:list1 的对象
+		console.log($('.item1 .list1'));
+		console.log($('.item1>.list1'));
+		console.log($('.item1').find('.list1'));// 
+
+
+
+		// 2.查找 class:list2 的对象
+		console.log($('.item2 .list2'));
+		console.log($('.item2').find('.list2'));// 有问题	
+	})
+</script>
+</html>

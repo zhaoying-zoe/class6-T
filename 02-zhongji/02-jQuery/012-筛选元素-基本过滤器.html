@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-筛选元素-基本过滤器.html</title>
+</head>
+<body>
+	<div class="div1">div1</div>
+	<div class="div2">div2</div>
+	<div class="div3">div3</div>
+	<div class="div4">div4</div>
+	<div class="div5">div5</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// $('选择器:eq(index)')选择索引对应的DOM元素,索引可以是负数
+		
+		console.log($('div'));
+		console.log($('div:eq(2)'));
+		console.log($('div:eq(4)'));
+		console.log($('div:eq(5)'));// 如果没有下标为5的 则返回空对象
+		console.log($('div:eq(-1)'));// 选中倒数第一个
+	})
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-$对象常见方法-动态方法.html</title>
+</head>
+<body>
+	<div class="div1">01</div>
+	<div class="div2">02</div>
+	<div class="div3" data-kuazhu="kuazhu-test">03</div>
+	<div class="div4">04</div>
+	<div class="div5">05</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//1. jQuery对象.index(),获取当前jQuery对象的 !索引
+		console.log($('div'));
+		console.log($('div').index());// 下标为0
+		console.log($('div').index(document.querySelector('.div3')));// 下标为2
+		console.log($('div').index($('.div2')));// 下标为1
+
+		//2. jQuery对象.each(function(index,element){}),遍历jQuery对象中的DOM元素,注意回调函数中的this是DOM对象
+		
+		$.each($('div'),function(index,value){// 静态方法
+			console.log(index,value);
+			console.log(this);
+		})
+		$('div').each(function(index,value){// 动态方法
+			console.log(index,value);
+			console.log(this);
+		})
+
+		//3. jQuery对象.data([key],[value])
+		
+		console.log($('div:eq(2)').data());// 返回data的对象
+		console.log($('div:eq(2)').data('kuazhu'));// 返回data的名字
+		console.log($('div:eq(2)').data('kuazhu','kuazhu'));// 把data的值改变并返回data的对象 
+		console.log($('div:eq(2)').data('kuazhu'));// 检查是否改值成功
+
+		//4. jQuery对象.is(选择器) ,检测jQuery对象中是否有匹配元素(非检测后代元素)
+		
+		console.log($('div').is($('.div1')));// true
+		console.log($('div').is($('.div6')));// false
+		console.log($('div').is($('p')));// false
+	})
+</script>
+</html>

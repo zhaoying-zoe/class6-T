@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-事件的绑定.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;			
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+
+		function fn(){
+			console.log('click fn...')
+		}
+
+		// 1.方法一 jQuery对象.事件名(function(){})
+		// $('div').click(function(){
+		// 	console.log('click1')
+		// })
+		
+		// 2.方法二 jQuery对象.on('事件名',function(){});绑定一个可以多次执行的事件处理函数,如:
+		$('div').on('click',function(){
+			console.log('click2');
+		})
+		$('div').on('click',fn);// 不会覆盖匿名函数的点击事件
+
+
+		// 3.jQuery对象.one('事件名',function(){});绑定一个一次性的事件处理函数,
+		// $('div').one('click',function(){// 事件 只执行一次
+		// 	console.log('click3')
+		// })
+		
+		// hover事件 jQuery对象.hover(鼠标移入时执行函数,鼠标移出时执行函数)
+		
+		$('div').hover(function(){
+			console.log('move in..')
+		},function(){
+			console.log('move out..')
+		})
+	})
+</script>
+</html>
