@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>040-动画-动画的延迟.html</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<button>开始动画</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//1. jQuery对象.delay(时长);
+		//2. 注意点,延迟动画只对后面的动画起作用
+		$('button:eq(0)').on('click',function(){
+			$('div').delay(1000).animate({width:300},2000);// 通常这样写
+			// $('div').delay(1000);// 只延迟后面的动画
+			$('div').animate({height:300},2000);
+			$('div').animate({opacity:0.4},2000);
+		})
+
+	})
+</script>
+</html>

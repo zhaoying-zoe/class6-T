@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>031-事件自动触发-关于a标签.html</title>
+</head>
+<body>
+	<p>
+		我是段落
+		<a href="http://www.baidu.com">
+			跳转到百度
+			<span>我是span</span>
+		</a>
+
+	</p>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('a').on('click',function(){
+			console.log('a click');
+		})
+
+		$('p').on('click',function(){
+			console.log('p click')
+		})
+		// $('a').trigger('click');// 阻止默认行为  不阻止冒泡事件
+		$('span').trigger('click');// 用span的冒泡行为 使a标签可以自动跳转到指定网页
+	})
+</script>
+</html>

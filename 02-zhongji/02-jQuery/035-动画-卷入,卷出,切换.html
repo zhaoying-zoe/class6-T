@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-动画-卷入,卷出,切换.html</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<button>切换</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//1. jQuery对象.slideDown(时长,回调)
+		$('button').eq(0).on('click',function(){
+			$('div').slideDown(1000,function(){
+				console.log('div slideDown')
+			})
+		})
+		//2. jQuery对象.slideUp(时长,回调)
+		$('button').eq(1).on('click',function(){
+			$('div').slideUp(1000,function(){
+				console.log('div slideUp')
+			})
+		})
+		//3. jQuery对象.slideToggle(时长,回调)
+		$('button').eq(2).on('click',function(){
+			$('div').slideToggle(1000,function(){
+				console.log('div slideToggle')
+			})
+		})	
+		
+	})
+</script>
+</html>

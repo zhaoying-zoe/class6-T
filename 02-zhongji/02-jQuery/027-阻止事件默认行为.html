@@ -7,7 +7,7 @@
 <body>
 	<p>
 		我是段落
-		<a href="www.baidu.com">跳转到百度</a>
+		<a href="http://www.baidu.com">跳转到百度</a>
 	</p>
 	
 </body>
@@ -16,8 +16,8 @@
 	$(function(){
 		$('a').on('click',function(ev){
 			// ev.preventDefault();
-			console.log('a click');// 既阻止默认行为 又阻止事件冒泡
-			return false;
+			console.log('a click');
+			return false;// 既阻止默认行为 又阻止事件冒泡
 		})
 
 		$('p').on('click',function(){

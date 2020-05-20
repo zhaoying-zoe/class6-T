@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>034-动画-显示,隐藏,切换.html</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<button>切换</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		
+		
+		
+		//1.显示 jQuery对象.show(时长,回调) 
+		$('button').eq(0).on('click',function(){
+			$('div').show(1000,function(){
+				console.log('div show')
+			})
+		})
+		//2.隐藏 jQuery对象.hide(时长,回调)
+		$('button').eq(1).on('click',function(){
+			$('div').hide(1000,function(){
+				console.log('div hide')
+			})
+		})
+		//3.切换 jQuery对象.toggle(时长,回调)
+		$('button').eq(2).on('click',function(){// 显示和隐藏之间来回切换
+			$('div').toggle(1000,function(){
+				console.log('div toggle')
+			})
+		})
+	})
+</script>
+</html>

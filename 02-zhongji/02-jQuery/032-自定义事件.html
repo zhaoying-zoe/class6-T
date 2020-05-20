@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-自定义事件.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<button>事件触发</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// $('div').on('click',function(){
+		// 	console.log('div click');
+		// })
+		
+		//1. 用jQuery对象.on('自定义事件名',function(envent,参数){})绑定一个自定义事件
+		//2. 用jQuery对象.trigger('自定义事件名',参数)来触发自定义的事件 
+
+		$('div').on('test',function(ev,arr){// 想要接收参数 第一个参数必须传ev
+			console.log('div test');
+			console.log(arr);
+		})
+		// $('div').trigger('test');// 通过代码使事件自动触发 以达到自定义事件
+		
+		$('button').on('click',function(){// 通过添加点击按钮使事件自动触发
+			$('div').trigger('test','arr');// 触发自动事件 第二个传参数
+		})
+		
+	})
+</script>
+</html>

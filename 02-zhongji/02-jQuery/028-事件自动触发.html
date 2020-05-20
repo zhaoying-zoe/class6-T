@@ -3,8 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>028-事件自动触发.html</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
 </head>
 <body>
-	
+	<div></div>
 </body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('div').on('click',function(){
+			console.log('click...')
+		})
+		$('div').on('mouseover',function(){
+			console.log('mouseouer...')
+		})
+		$('div').trigger('click');// 传入事件的名字 不阻止事件冒泡和默认行为
+		$('div').triggerHandler('mouseover')// 阻止事件冒泡和默认行为
+	})
+</script>
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-动画-自定义动画.html</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="执行">
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('input').on('click',function(){
+			// jQuery对象.animate(需要动画的属性对象,时长,回调)
+			// $('div').animate({width:300},2000,function(){
+			// 	console.log('animate finished')
+			// })
+			
+			/*
+			$('div').animate(
+				{
+					width:300,
+					height:300,
+					opacity:0.5
+				},
+				2000,
+				function(){
+				console.log('animate finished')
+			})
+			*/
+			// 需要动画的属性对象可以使用累加 累减动画 +=300(累加300) 必须写引号
+			$('div').animate(
+				{
+					width:'+=300',
+					height:'+=300',
+					opacity:0.5
+				},
+				2000,
+				function(){
+				console.log('animate finished')
+			})
+		})
+	})
+</script>
+</html>

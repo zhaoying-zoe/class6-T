@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>033-事件委托.html</title>
+</head>
+<body>
+	<button>生成元素</button>
+	<ul>
+		<li>01</li>
+		<li>02</li>
+		<li>03</li>
+		<li>04</li>
+		<li>05</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		/*
+		$('li').on('click',function(){
+			console.log(this);
+		})
+		*/
+
+		// 方式一:$('父元素选择器').delegate('子元素选择器','事件名', 回调函数)
+		// $('ul').delegate('li','click',function(){
+		// 	console.log(this);
+		// })
+		
+		// 方式二:$('父元素选择器').on('事件名','子元素选择器', 回调函数)
+		$('ul').on('click','li',function(){// 页面中动态增加的元素需要通过事件委托的方式来添加事件
+			console.log(this);
+		})
+
+		$('button').on('click',function(){
+			var oLi = document.createElement('li');// 生成新的li
+			oLi.innerHTML = '我是新生成的li';// 新的li添加内容
+			$('ul')[0].appendChild(oLi);// 把新生成的li添加到网页里
+		})
+	})
+</script>
+</html>

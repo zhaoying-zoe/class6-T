@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-动画-自定义动画-队列动画.html</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="执行">
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		
+		$('input').on('click',function(){
+		// 1.方法一
+			/*
+			$('div').animate({width:300},2000,function(){})
+				$('div').animate({height:300},2000,function(){})
+					$('div').animate({opacity:0.4},2000,function(){
+						console.log('animate down')	
+					})
+			*/
+		// 方法二
+			/*
+			$('div').animate({width:300},2000,function(){
+				$('div').animate({height:300},2000,function(){
+					$('div').animate({opacity:0.4},2000,function(){
+						console.log('animate down')	
+					})
+				})
+			})
+			*/
+		// 方法三
+			$('div').animate({width:300},2000)
+				.animate({height:300},2000)
+					.animate({opacity:0.4},2000)
+		})
+	})
+</script>
+</html>
