@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>053-原型解析-传入布尔值和参数.html</title>
+</head>
+<body>
+	
+</body>
+<!-- <script src="js/jquery-1.12.4.js"></script> -->
+<script src="js/kQuery-1.0.0.js"></script>
+<script>
+	// 1.传入布尔值为false
+		// console.log($(''))
+		// console.log($(0))
+		// console.log($(false))
+		// console.log($(null))
+		// console.log($(undefined))
+		// console.log($(NaN))
+
+		/*
+		console.log($()function(){
+			console.log('aaa')
+		})
+		*/
+		window.onload = function(){// 页面加载完毕
+			console.log('onload')
+		}
+		$(function(){
+			console.log('aaa')
+		})
+		$(function(){
+			console.log('bbb')
+		})
+		window.addEventListener('DOMContentLoaded',function(){// dom节点加载完毕
+			console.log('DOMContentLoaded')
+		})
+
+</script>
+</html>

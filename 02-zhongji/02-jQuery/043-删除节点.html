@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-删除节点.html</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<button>删除节点01</button>
+	<button>删除节点02</button>
+	<button>删除节点03</button>
+	<div>
+		<p>我是内容</p>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('div').on('click',function(){
+			console.log('div click');
+		})
+		//1. Query对象.remove() 删除jQuery对象中的节点同时删除事件
+		$('button').eq(0).on('click',function(){
+			var oDiv1 = $('div').remove();// 删除节点同时删除事件
+			$('body').append(oDiv1);// 把删除的div再添加到页面
+		})
+
+		//2. jQuery对象.empty() 清空jQuery对象中节点的内容
+		$('button').eq(1).on('click',function(){
+			$('div').empty();// 清空节点的内容
+		})
+		//3. jQuery对象.detach() 删除jQuery对象中的节点但保留事件
+		$('button:eq(2)').on('click',function(){
+			var oDiv2 = $('div').detach();// 删除节点但保留事件
+			$('body').append(oDiv2);
+		})
+	})
+</script>
+</html>

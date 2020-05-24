@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>050-扩展自己的插件一.html</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<button>测试</button>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$.prototype.setColor = function(options){
+		// console.log('sss');// 测试是否能进入原型
+		// console.log(this);// 查看this指向谁(jq对象)
+		var DEFAULTS = {background:'red'}
+		options = $.extend({},DEFAULTS,options);
+		return this.each(function(index,elem){// 可以不传arr参数
+			console.log(index,elem);
+			elem.style.background = options.background;
+		});
+	}
+</script>
+<script>
+	/*
+	1.定义新的插件(setColor)
+	2.去原型里添加方法供实例享用
+	3.查看this指向
+	4.遍历this(each方法)
+	5.定义新的对象用来储存默认属性
+	6.给setColor传入参数(原型上需接收参数options 否则会出现undefined)
+	7.合并默认属性和传入的参数($.extend方法)
+	8.让函数在调用setColor方法后可以继续调用其他方法(返回一个setColor对象)
+	9.在调用this.each方法后把this return 出去
+	 */
+
+	$(function(){
+		$('button').on('click',function(){
+			// $('div').setColor();
+			// $('div').setColor({background:'blue'});
+			$('div').setColor({background:'blue'}).animate({height:300});
+		})
+	})
+</script>
+</html>

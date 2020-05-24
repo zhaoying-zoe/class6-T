@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>051-扩展自己的插件二.html</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<button>测试</button>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	console.log($.prototype === $.fn);// true
+	(function(){
+		$.fn.extend({
+			'setColor' : function(options){
+				// console.log('sss');// 测试是否能进入原型
+				// console.log(this);// 查看this指向谁(jq对象)
+				var DEFAULTS = {background:'red'}
+				options = $.extend({},DEFAULTS,options);
+				return this.each(function(index,elem){// 可以不传arr参数
+					console.log(index,elem);
+					elem.style.background = options.background;
+				});
+			}
+		})
+	})()
+</script>
+<script>
+	$(function(){
+		$('button').on('click',function(){
+			// $('div').setColor();
+			// $('div').setColor({background:'blue'});
+			$('div').setColor({background:'blue'}).animate({height:300});
+		})
+	})
+</script>
+</html>

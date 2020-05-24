@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-操作属性-操作滚动位置.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			position: relative;
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			margin: 20px auto;
+			overflow: auto;
+		}
+		.son{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 3000px;
+			height: 3000px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<button>按钮</button>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// 3. jQuery对象.scrollTop([val]) 4. jQuery对象.scrollLeft([val])
+		$('button').on('click',function(){
+			console.log($('.father').scrollTop());// 查看父元素滚动距离
+			console.log($('.father').scrollLeft());// 查看父元素滚动距离
+			console.log($('.father').scrollTop(100));// 设置滚动距离
+			console.log($('.father').scrollLeft(100));// 设置滚动距离
+		})
+	})
+</script>
+</html>

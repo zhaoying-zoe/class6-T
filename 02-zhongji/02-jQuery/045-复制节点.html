@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>045-复制节点.html</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<button>复制节点1</button>
+	<button>复制节点2</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('div').on('click',function(){
+			console.log('div click')
+		})
+		// jQuery对象.clone(false|true) 复制一个节点,默认是false不会复制事件,true会复制事件
+		$('button:eq(0)').on('click',function(){
+			var $oDiv1 = $('div').clone(false);// 不会复制事件
+			$('body').append($oDiv1);
+		})
+		$('button:eq(1)').on('click',function(){
+			var $oDiv2 = $('div').clone(true);// 会复制事件
+			$('body').append($oDiv2);
+		})
+	})
+</script>
+</html>
