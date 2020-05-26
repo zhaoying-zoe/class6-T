@@ -62,14 +62,58 @@
 				}
 		},
 		get:function(index){
-
-			if(){
+			// 传入参数
+			if(index || index == 0){
+				// 传入数字
+				if(kQuery.isNumber){
+					if(index >= 0){
+						return this[index];
+					}else{
+						return this[index + this.length];
+					}
+				}
+				// 不是数字
 				
+			}
+			// 不传参数
+			else{
+				var arr = [];
+				for(var i = 0;i<this.length;i++){
+					arr[i] = this[i];
+				}
+				return arr;
 			}
 		}
 	}
 
+	kQuery.extend = kQuery.prototype.extend = function(options){
+		for(key in options){
+			this[key] = options[key];
+		}
+	}
+
 	// 定义静态方法
+	
+
+	kQuery.extend({
+		isFunction:function(str){
+			return typeof str == 'function';
+		},
+		isString:function(str){
+			return typeof str == 'string';
+		},
+		isHtml:function(str){
+			return /<[^<>]>+/.test(str);
+		},
+		isArray:function(str){
+			return typeof str == 'object' && length in str;
+		},
+		isNumber:function(str){
+			return typeof str == 'number';
+		}
+	})
+
+	/*
 	kQuery.isFunction = function(str){
 		return typeof str == 'function';
 	}
@@ -82,6 +126,10 @@
 	kQuery.isArray = function(str){
 		return typeof str == 'object' && length in str;
 	}
+	kQuery.isNumber = function(str){
+		return typeof str == 'number';
+	}
+	*/
 
 	kQuery.fn.inte.prototype = kQuery.fn;// 给inte定义新的原型
 
