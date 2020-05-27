@@ -42,3 +42,14 @@
 		transition: all 0.5s;
 	}
 /*i标签相关结束*/
+
+/*下拉菜单共通开始*/
+	.dropdown{
+		position: relative;
+	}
+	.dropdown-layer{
+		display: none;
+		position: absolute;
+		z-index: 999;
+	}
+/*下拉菜单共通结束*/

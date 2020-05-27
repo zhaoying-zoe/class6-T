@@ -31,12 +31,12 @@
 			console.log(this);
 		})
 
-		//3. jQuery对象.data([key],[value])
+		//3. jQuery对象.data([key],[value]) key是data-key 绑定的名称
 		
 		console.log($('div:eq(2)').data());// 返回data的对象
 		console.log($('div:eq(2)').data('kuazhu'));// 返回data的名字
 		console.log($('div:eq(2)').data('kuazhu','kuazhu'));// 把data的值改变并返回data的对象 
-		console.log($('div:eq(2)').data('kuazhu'));// 检查是否改值成功
+		console.log($('div:eq(2)').data('kuazhu'));// 检查是否改值成功 接38的修改
 
 		//4. jQuery对象.is(选择器) ,检测jQuery对象中是否有匹配元素(非检测后代元素)
 		
