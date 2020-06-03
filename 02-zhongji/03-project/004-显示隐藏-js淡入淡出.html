@@ -74,7 +74,9 @@
 					if($box.data('status') == 'shown') return;
 					if($box.data('status') == 'show') return;
 					$box.trigger('show').data('status','show');
-					$box.fadeIn( function() {
+					$box.
+					.stop()
+					fadeIn( function() {
 						$box.trigger('shown').data('status','shown');
 					});
 				},
@@ -83,7 +85,9 @@
 					if($box.data('status') == 'hidden') return;
 					if($box.data('status') == 'hide') return;
 					$box.trigger('hide').data('status','hide');
-					$box.fadeOut( function() {
+					$box.
+					.stop()
+					fadeOut( function() {
 						$box.trigger('hidden').data('status','hidden');
 					});
 				}
