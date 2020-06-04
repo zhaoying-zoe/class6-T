@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-原型.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function Person(name,age,sex){
+		this.name= name;
+		this.age = age;
+		this.sex = sex;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am'+this.name)
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am'+this.age+'years old')
+	}
+	// delete Person.name;
+	Object.defineProperty(Person,'sex',{
+		value:'male',
+		writable:true,
+		enumerable:true,
+		configurable:true
+	})
+	console.log(Person.sex);
+
+	var p1 = new Person('tom',18,'famale');
+	// delete p1.name;
+	console.log(p1);
+	console.log(p1.hasOwnProperty('name'));
+	console.log(Object.getOwnPropertyDescriptor(Person,'name'));// 查看属性权限
+	console.log('name' in Person);
+</script>
+</html>
