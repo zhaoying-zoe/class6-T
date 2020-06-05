@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-jQuery.html</title>
+</head>
+<body>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<div>6</div>
+	<div>7</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var oDiv = document.getElementsByTagNameNS('div')
+		// $(function(){
+		// 	console.log('tom')
+		// })
+		// jQuery(document).ready(function(){
+		// 	console.log('red')
+		// });
+		// window.onload = function(){
+		// 	console.log($.on('click',function(){
+		// 		alert(2333)
+		// 	}))
+		// }
+		// $('div').on('click',function(){
+		// 		alert(2333)
+		// })
+
+		// console.log($('div')[1]);
+		// console.log($('div').get(5));
+		// console.log($('div'));
+		console.log($());
+		console.log($('div'));
+		console.log($('<div></div>'));
+		console.log($('<div></div>'));
+	})
+</script>
+</html>

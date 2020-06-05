@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020-ajax-get.html</title>
+</head>
+<body>
+	<button id="btn">请求数据</button>
+</body>
+<script type="text/javascript">
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		//1. 生成ajax对象
+		var oAjax = new XMLHttpRequest();
+		// console.log(oAjax);
+		// 2. 建立连接(open)
+		oAjax.open('get','http://127.0.0.1:3000/020-data.json','true');
+
+		// 3. send
+		oAjax.send();
+		// 4. onreadystatechange
+		oAjax.onreadystatechange = function(){
+			// console.log(oAjax.readyState);
+			if(oAjax.readyState == 4){
+				// console.log(oAjax.responseText);
+				// console.log(oAjax.status);
+				if(oAjax.status == 200){
+					try{
+						console.log(JSON.parse(oAjax.responseText));
+					}catch(err){
+						console.log(err)
+					}
+				}else{
+					console.log("resquest failed ,status code " +oAjax.status)
+				}
+			}
+		}
+	}
+</script>
+</html>
