@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>043-ajax-get.html</title>
+	<title>044-ajax-post.html</title>
 </head>
 <body>
 	<input type="button" value="请求数据" id="btn">
@@ -15,12 +15,13 @@
 		// console.log(oAjax);
 		
 		// 2.建立连接(打电话建立连接)
-		oAjax.open('GET','http://127.0.0.1:3000/043-data.json',true)// GET方法,IP地址,true:异步 false:同步
+		oAjax.open('POST','http://127.0.0.1:3000',true)// GET方法,IP地址,true:异步 false:同步
 
 		//设置ajax请求头
 		oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
 		// 3.发送请求(问问题)
-		oAjax.send();
+		// 请求数据{name:tom,age:18}
+		oAjax.send('{"name":"tom","age":18}');
 
 		// 4.等待服务器返回数据(等待老板应答)
 		oAjax.onreadystatechange = function(){// 监听事件
