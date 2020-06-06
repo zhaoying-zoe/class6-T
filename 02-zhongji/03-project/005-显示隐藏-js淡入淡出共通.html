@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>004-显示隐藏-js淡入淡出.html</title>
+	<title>005-显示隐藏-js淡入淡出共通.html</title>
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<style type="text/css">
 		*{
@@ -33,63 +33,74 @@
 <script>
 	$(function(){
 		var $box = $('div');
+		
+		function inte($box){
+			$box.removeClass('transition');
+			if($box.is(':hidden')){
+				$box.data('status','hidden');
+			}else{
+				$box.data('status','shown');
+			}
+		}
+		function show($box,callBack){
+			// 监听$box的状态
+			if($box.data('status') == 'shown') return;
+			if($box.data('status') == 'show') return;
+			$box.trigger('show').data('status','show');
+			callBack();
+		}
+		function hide($box,callBack){
+			if($box.data('status') == 'hidden') return;
+			if($box.data('status') == 'hide') return;
+			$box.trigger('hide').data('status','hide');
+			callBack();
+		}
+
 		var slient = {
 			inte:function($box){
-				if($box.is(':hidden')){
-					$box.data('status','hidden');
-				}else{
-					$box.data('status','shown');
-				}
+				inte($box);
 			},
 			show:function($box){
 				// 监听$box的状态
-				if($box.data('status') == 'shown') return;
-				if($box.data('status') == 'show') return;
-				$box.trigger('show').data('status','show');
-				$box.show();
-				$box.trigger('shown').data('status','shown');
+				show($box,function(){
+					$box.show();
+					$box.trigger('shown').data('status','shown');					
+				});
 			},
 			hide:function($box){
 				// 监听$box的状态
-				if($box.data('status') == 'hidden') return;
-				if($box.data('status') == 'hide') return;
-				$box.trigger('hide').data('status','hide');
-				$box.hide();
-				$box.trigger('hidden').data('status','hidden');
+				hide($box,function(){
+					$box.hide();
+					$box.trigger('hidden').data('status','hidden');
+				});
 			}
 		}
 
 		var js={
 			fade:{
 				inte:function($box){
-					$box.removeClass('transition');
-					if($box.is(':hidden')){
-						$box.data('status','hidden');
-					}else{
-						$box.data('status','shown');
-					}
+					inte($box);
 				},
 				show:function($box){
 					// 监听$box的状态
-					if($box.data('status') == 'shown') return;
-					if($box.data('status') == 'show') return;
-					$box.trigger('show').data('status','show');
-					$box
-					.stop()
-					.fadeIn( function() {
-						$box.trigger('shown').data('status','shown');
+					show($box,function(){
+						$box
+						.stop()
+						.fadeIn( function() {
+							$box.trigger('shown').data('status','shown');
+						});						
 					});
 				},
 				hide:function($box){
 					// 监听$box的状态
-					if($box.data('status') == 'hidden') return;
-					if($box.data('status') == 'hide') return;
-					$box.trigger('hide').data('status','hide');
-					$box
-					.stop()
-					.fadeOut( function() {
-						$box.trigger('hidden').data('status','hidden');
+					hide($box,function(){
+						$box
+						.stop()
+						.fadeOut( function() {
+							$box.trigger('hidden').data('status','hidden');
+						});						
 					});
+
 				}
 			}
 		}

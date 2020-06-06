@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-显示隐藏-js卷入卷出.html</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			border: 10px solid #000;
+			background-color: red;
+			display: none;
+		}
+		button{
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div class="transition"></div>
+	<!-- <div>$box.trigger('shown').data('status','shown');$box.trigger('hidden').data('status','hidden');</div> -->
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var $box = $('div');
+
+		function inte($box){
+			$box.removeClass('transition');
+			if($box.is(':hidden')){
+				$box.data('status','hidden');
+			}else{
+				$box.data('status','shown');
+			}
+		}
+		function show($box,callBack){
+			// 监听$box的状态
+			if($box.data('status') == 'shown') return;
+			if($box.data('status') == 'show') return;
+			$box.trigger('show').data('status','show');
+			callBack();
+		}
+		function hide($box,callBack){
+			if($box.data('status') == 'hidden') return;
+			if($box.data('status') == 'hide') return;
+			$box.trigger('hide').data('status','hide');
+			callBack();
+		}
+
+		var slient = {
+			inte:function($box){
+				inte($box);
+			},
+			show:function($box){
+				// 监听$box的状态
+				show($box,function(){
+					$box.show();
+					$box.trigger('shown').data('status','shown');					
+				});
+			},
+			hide:function($box){
+				// 监听$box的状态
+				hide($box,function(){
+					$box.hide();
+					$box.trigger('hidden').data('status','hidden');
+				});
+			}
+		}
+
+		var js={
+			fade:{
+				inte:function($box){
+					inte($box);
+				},
+				show:function($box){
+					// 监听$box的状态
+					show($box,function(){
+						$box
+						.stop()
+						.fadeIn( function() {
+							$box.trigger('shown').data('status','shown');
+						});						
+					});
+				},
+				hide:function($box){
+					// 监听$box的状态
+					hide($box,function(){
+						$box
+						.stop()
+						.fadeOut( function() {
+							$box.trigger('hidden').data('status','hidden');
+						});						
+					});
+				}
+			},
+			slideDownUp:{
+				inte:function($box){
+					inte($box);
+				},
+				show:function($box){
+					// 监听$box的状态
+					show($box,function(){
+						$box
+						.stop()
+						.slideDown( function() {
+							$box.trigger('shown').data('status','shown');
+						});						
+					});
+				},
+				hide:function($box){
+					// 监听$box的状态
+					hide($box,function(){
+						$box
+						.stop()
+						.slideUp( function() {
+							$box.trigger('hidden').data('status','hidden');
+						});						
+					});
+				}
+			}
+		}
+
+
+
+		// 监听自定义事件
+		$('div').on('show shown hide hidden',function(ev){
+			// console.log(ev.type);
+			if(ev.type == 'show'){
+				console.log('show...');
+			}else if(ev.type == 'shown'){
+				console.log('shown...');
+			}else if(ev.type == 'hide'){
+				console.log('hide...');
+			}else if(ev.type == 'hidden'){
+				console.log('hidden...');
+			}
+		})
+
+		/*
+		js.fade.inte($box);
+		$('button:eq(0)').on('click',function(){
+			js.fade.show($('div'));
+		})
+		$('button:eq(1)').on('click',function(){
+			js.fade.hide($('div'));
+		})
+		*/
+			js.slideDownUp.inte($box);
+			$('button:eq(0)').on('click',function(){
+				js.slideDownUp.show($('div'));
+			})
+			$('button:eq(1)').on('click',function(){
+				js.slideDownUp.hide($('div'));
+			})
+	})
+</script>
+</html>
