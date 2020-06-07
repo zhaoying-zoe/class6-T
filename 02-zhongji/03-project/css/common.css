@@ -47,6 +47,12 @@
 	.dropdown{
 		position: relative;
 	}
+	.dropdown-left{
+		left: 0px;
+	}
+	.dropdown-right{
+		right: 0px;
+	}
 	.dropdown-layer{
 		display: none;
 		position: absolute;

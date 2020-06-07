@@ -23,11 +23,16 @@
 	.top .top-right .menu-active .dropdown-toggle{
 		background-color: #fff;
 	}
+	/*
 	.top .top-right .menu-active .dropdown-layer{
 		display: block;
 	}
+	*/
 	.top .top-right .menu-active .dropdown-icon{
 		transform: rotateZ(180deg);
+	}
+	.top .dropdown{
+		margin-left: 10px;
 	}
 	.top .top-right .dropdown-toggle{
 		display: block;
@@ -38,7 +43,7 @@
 	}
 	.top .top-right .dropdown-layer{
 		top: 44px;
-		left: 0px;
+		/*left: 0px;*/
 		white-space: nowrap;
 		background-color: #f4f5f7;
 		border: 1px solid #f4f5f7;

@@ -79,10 +79,14 @@
 		var js={
 			fade:{
 				inte:function($box){
+					/*
 					inte($box);
+					*/
+					js._inte($box);
 				},
 				show:function($box){
 					// 监听$box的状态
+					/*
 					show($box,function(){
 						$box
 						.stop()
@@ -90,9 +94,12 @@
 							$box.trigger('shown').data('status','shown');
 						});						
 					});
+					*/
+					js._show($box,'fadeIn')
 				},
 				hide:function($box){
 					// 监听$box的状态
+					/*
 					hide($box,function(){
 						$box
 						.stop()
@@ -100,14 +107,20 @@
 							$box.trigger('hidden').data('status','hidden');
 						});						
 					});
+					*/
+					js._hide($box,'fadeOut')
 				}
 			},
 			slideDownUp:{
 				inte:function($box){
+					/*
 					inte($box);
+					*/
+					js._inte($box);
 				},
 				show:function($box){
 					// 监听$box的状态
+					/*
 					show($box,function(){
 						$box
 						.stop()
@@ -115,9 +128,12 @@
 							$box.trigger('shown').data('status','shown');
 						});						
 					});
+					*/
+					js._show($box,'slideDown')
 				},
 				hide:function($box){
 					// 监听$box的状态
+					/*
 					hide($box,function(){
 						$box
 						.stop()
@@ -125,6 +141,8 @@
 							$box.trigger('hidden').data('status','hidden');
 						});						
 					});
+					*/
+					js._hide($box,'slideUp')
 				}
 			}
 		}
@@ -138,6 +156,15 @@
 				.stop()
 				[method]( function() {
 					$box.trigger('shown').data('status','shown');
+				});						
+			});
+		}
+		js._hide = function($box,method){
+			hide($box,function(){
+				$box
+				.stop()
+				[method]( function() {
+					$box.trigger('hidden').data('status','hidden');
 				});						
 			});
 		}
@@ -166,13 +193,17 @@
 			js.fade.hide($('div'));
 		})
 		*/
-			js.slideDownUp.inte($box);
-			$('button:eq(0)').on('click',function(){
-				js.slideDownUp.show($('div'));
-			})
-			$('button:eq(1)').on('click',function(){
-				js.slideDownUp.hide($('div'));
-			})
+		
+	
+		
+		js.slideDownUp.inte($box);
+		$('button:eq(0)').on('click',function(){
+			js.slideDownUp.show($('div'));
+		})
+		$('button:eq(1)').on('click',function(){
+			js.slideDownUp.hide($('div'));
+		})
+		
 	})
 </script>
 </html>

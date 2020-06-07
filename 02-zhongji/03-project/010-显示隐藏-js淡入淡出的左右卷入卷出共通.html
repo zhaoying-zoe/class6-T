@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-显示隐藏-js淡入淡出的左右卷入卷出共通.html</title>
+	<link rel="stylesheet" href="css/common.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin-top: 10px;
+			padding: 50px;
+			border: 50px solid #000;
+			display: none;
+		}
+		button{
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div class="transition"></div>
+	<!-- <div></div> -->
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	function inte($box,hiddenCallback){
+		$box.removeClass('transition');
+		if($box.is(':hidden')){
+			$box.data('status','hidden');
+			//处理元素是隐藏状态时将其水平方向值全部归零,为左右卷入卷出动画准备
+			typeof hiddenCallback == 'function' && hiddenCallback()
+		}else{
+			$box.data('status','shown');
+		}
+	}
+	function show($box,callBack){
+		//获取元素的显示隐藏状态信息
+		if($box.data('status') == 'shown') return ;
+		if($box.data('status') == 'show') return ;
+		$box.trigger('show').data('status','show');
+		callBack();
+	}
+	function hide($box,callBack){
+		//获取元素的显示隐藏状态信息
+		if($box.data('status') == 'hidden') return ;
+		if($box.data('status') == 'hide') return ;
+		$box.trigger('hide').data('status','hide');
+		callBack()
+	}
+
+
+
+	var slient = {
+		inte:function($box){
+			inte($box);
+		},
+		show:function($box){
+			show($box,function(){
+				$box.show();
+				$box.trigger('shown').data('status','shown');
+			})
+		},
+		hide:function($box,){
+			hide($box,function(){
+				$box.hide();
+				$box.trigger('hidden').data('status','hidden');
+			})
+		}
+	}
+	var js = {
+		fade:{
+			inte:function($box){
+				js._inte($box)
+			},
+			show:function($box){
+				js._show($box,'fadeIn')
+			},
+			hide:function($box,){
+				js._hide($box,'fadeOut');
+			}
+		},
+		slideDownUp:{
+			inte:function($box){
+				js._inte($box)
+			},
+			show:function($box){
+				js._show($box,'slideDown')
+			},
+			hide:function($box,){
+				js._hide($box,'slideUp');
+			}
+		},
+		slideLeftRight:{
+			inte:function($box){
+				/*
+				//1.获取元素的水平方向的目标值,并且存在元素上
+				var style = {
+					borderLeftWidth:$box.css('borderLeftWidth'),
+					paddingLeft:$box.css('paddingLeft'),
+					width:$box.css('width'),
+					paddingRight:$box.css('paddingRight'),
+					borderRightWidth:$box.css('borderRightWidth')
+				}
+				$box.data('style',style);
+				// console.log(style)
+				//2.如果元素是隐藏状态则把水平方向上值全部归0
+				inte($box,function(){
+					$box.css({
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0
+					})
+				})
+				*/
+				js._custominte($box,{
+					borderLeftWidth:0,
+					paddingLeft:0,
+					width:0,
+					paddingRight:0,
+					borderRightWidth:0
+				})
+			},
+			show:function($box){
+				/*
+				show($box,function(){
+					$box.show();//display:block
+					var style = $box.data('style');
+					$box
+					.stop()
+					.animate(style,function(){
+						$box.trigger('shown').data('status','shown');
+					})
+				})
+				*/
+				js._customShow($box);
+			},
+			hide:function($box){
+				/*
+				hide($box,function(){
+					$box
+					.stop()
+					.animate({
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0
+					},function(){
+						$box.hide();//display:none
+						$box.trigger('hidden').data('status','hidden');
+					})
+				})
+				*/
+				js._customHide($box,{
+					borderLeftWidth:0,
+					paddingLeft:0,
+					width:0,
+					paddingRight:0,
+					borderRightWidth:0
+				})
+			}
+		},
+		fadeSlideLeftRight:{
+			inte:function($box){
+				/*
+				//1.获取元素的水平方向的目标值,并且存在元素上
+				var style = {
+					borderLeftWidth:$box.css('borderLeftWidth'),
+					paddingLeft:$box.css('paddingLeft'),
+					width:$box.css('width'),
+					paddingRight:$box.css('paddingRight'),
+					borderRightWidth:$box.css('borderRightWidth'),
+					opacity:$box.css('opacity')
+				}
+				$box.data('style',style);
+				// console.log(style)
+				//2.如果元素是隐藏状态则把水平方向上值全部归0
+				inte($box,function(){
+					$box.css({
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0,
+						opacity:0
+					})
+				})
+				*/
+				js._custominte($box,{
+					borderLeftWidth:0,
+					paddingLeft:0,
+					width:0,
+					paddingRight:0,
+					borderRightWidth:0,
+					opacity:0
+				})
+			},
+			show:function($box){
+				/*
+				show($box,function(){
+					$box.show();//display:block
+					var style = $box.data('style');
+					$box
+					.stop()
+					.animate(style,function(){
+						$box.trigger('shown').data('status','shown');
+					})
+				})
+				*/
+				js._customShow($box);
+			},
+			hide:function($box){
+				/*
+				hide($box,function(){
+					$box
+					.stop()
+					.animate({
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0,
+						opacity:0
+					},function(){
+						$box.hide();//display:none
+						$box.trigger('hidden').data('status','hidden');
+					})
+				})
+				*/
+				js._customHide($box,{
+					borderLeftWidth:0,
+					paddingLeft:0,
+					width:0,
+					paddingRight:0,
+					borderRightWidth:0,
+					opacity:0
+				})
+			}
+		}
+	}
+
+	js._inte = function($box){
+		inte($box);
+	}
+	js._show = function($box,mode){
+		show($box,function(){
+			$box
+			.stop()
+			[mode](function(){
+				$box.trigger('shown').data('status','shown');
+			});
+		})
+	}
+	js._hide = function($box,mode){
+		hide($box,function(){
+			$box
+			.stop()
+			[mode](function(){
+				$box.trigger('hidden').data('status','hidden');
+			});
+		})
+	}
+
+	js._custominte = function($box,options){
+		//1.获取元素的水平方向的目标值,并且存在元素上
+		var style = {}
+		for(key in options){
+			style[key] = $box.css(key)
+		}
+		$box.data('style',style);
+		// console.log(style)
+		//2.如果元素是隐藏状态则把水平方向上值全部归0
+		inte($box,function(){
+			$box.css(options)
+		})
+	}
+	js._customShow = function($box){
+		show($box,function(){
+			$box.show();//display:block
+			var style = $box.data('style');
+			$box
+			.stop()
+			.animate(style,function(){
+				$box.trigger('shown').data('status','shown');
+			})
+		})
+	}
+	js._customHide = function($box,options){
+		hide($box,function(){
+			$box
+			.stop()
+			.animate(options,function(){
+				$box.hide();//display:none
+				$box.trigger('hidden').data('status','hidden');
+			})
+		})
+	}
+
+
+
+	var $box = $('div');
+	//监听自定义时间
+	$box.on('show shown hide hidden',function(ev){
+		if(ev.type == 'show'){
+			console.log('show...')
+		}else if(ev.type == 'shown'){
+			console.log('shown...')
+		}else if(ev.type == 'hide'){
+			console.log('hide...')
+		}else if(ev.type == 'hidden'){
+			console.log('hidden...')
+		}
+	});
+	js.slideLeftRight.inte($box);
+	$('button').eq(0).on('click',function(){
+		js.slideLeftRight.show($box);
+	});
+	$('button').eq(1).on('click',function(){
+		js.slideLeftRight.hide($box);
+	});
+
+	/*
+	js.fadeSlideLeftRight.inte($box);
+	$('button').eq(0).on('click',function(){
+		js.fadeSlideLeftRight.show($box);
+	});
+	$('button').eq(1).on('click',function(){
+		js.fadeSlideLeftRight.hide($box);
+	});
+	*/
+	
+</script>
+</html>
