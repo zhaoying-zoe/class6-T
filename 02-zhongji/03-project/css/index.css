@@ -11,7 +11,8 @@
 	.top .top-left .link-a{
 		color: #e6a6a4;
 	}
-/*	.top .top-right .dropdown:hover .dropdown-toggle{
+	/*	
+	.top .top-right .dropdown:hover .dropdown-toggle{
 		background-color: #fff;
 	}
 	.top .top-right .dropdown:hover .dropdown-layer{
@@ -20,15 +21,15 @@
 	.top .top-right .dropdown:hover .dropdown-icon{
 		transform: rotateZ(180deg);
 	}*/
-	.top .top-right .menu-active .dropdown-toggle{
+	.menu-active .dropdown-toggle{
 		background-color: #fff;
 	}
 	/*
-	.top .top-right .menu-active .dropdown-layer{
+	.menu-active .dropdown-layer{
 		display: block;
 	}
 	*/
-	.top .top-right .menu-active .dropdown-icon{
+	.menu-active .dropdown-icon{
 		transform: rotateZ(180deg);
 	}
 	.top .dropdown{
