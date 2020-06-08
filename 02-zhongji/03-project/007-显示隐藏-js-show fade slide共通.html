@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>006-显示隐藏-js卷入卷出.html</title>
+	<title>007-显示隐藏-js-show fade slide共通.html</title>
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<style type="text/css">
 		*{
@@ -80,10 +80,14 @@
 		var js={
 			fade:{
 				init:function($elem){
+					/*
 					init($elem);
+					*/
+					js._init($elem);
 				},
 				show:function($elem){
 					// 监听$elem的状态
+					/*
 					show($elem,function(){
 						$elem
 						.stop()
@@ -91,9 +95,12 @@
 							$elem.trigger('shown').data('status','shown');
 						});						
 					});
+					*/
+					js._show($elem,'fadeIn')
 				},
 				hide:function($elem){
 					// 监听$elem的状态
+					/*
 					hide($elem,function(){
 						$elem
 						.stop()
@@ -101,14 +108,20 @@
 							$elem.trigger('hidden').data('status','hidden');
 						});						
 					});
+					*/
+					js._hide($elem,'fadeOut')
 				}
 			},
 			slideDownUp:{
 				init:function($elem){
+					/*
 					init($elem);
+					*/
+					js._init($elem);
 				},
 				show:function($elem){
 					// 监听$elem的状态
+					/*
 					show($elem,function(){
 						$elem
 						.stop()
@@ -116,9 +129,12 @@
 							$elem.trigger('shown').data('status','shown');
 						});						
 					});
+					*/
+					js._show($elem,'slideDown')
 				},
 				hide:function($elem){
 					// 监听$elem的状态
+					/*
 					hide($elem,function(){
 						$elem
 						.stop()
@@ -126,10 +142,34 @@
 							$elem.trigger('hidden').data('status','hidden');
 						});						
 					});
+					*/
+					js._hide($elem,'slideUp')
 				}
 			}
 		}
 
+		// 显示隐藏共通方法(show fade slide)
+		js._init = function($elem){
+			init($elem);
+		}
+		js._show = function($elem,method){
+			show($elem,function(){
+				$elem
+				.stop()
+				[method]( function() {
+					$elem.trigger('shown').data('status','shown');
+				});						
+			});
+		}
+		js._hide = function($elem,method){
+			hide($elem,function(){
+				$elem
+				.stop()
+				[method]( function() {
+					$elem.trigger('hidden').data('status','hidden');
+				});						
+			});
+		}
 
 
 		// 监听自定义事件
@@ -155,13 +195,17 @@
 			js.fade.hide($('div'));
 		})
 		*/
-			js.slideDownUp.init($elem);
-			$('button:eq(0)').on('click',function(){
-				js.slideDownUp.show($('div'));
-			})
-			$('button:eq(1)').on('click',function(){
-				js.slideDownUp.hide($('div'));
-			})
+		
+	
+		
+		js.slideDownUp.init($elem);
+		$('button:eq(0)').on('click',function(){
+			js.slideDownUp.show($('div'));
+		})
+		$('button:eq(1)').on('click',function(){
+			js.slideDownUp.hide($('div'));
+		})
+		
 	})
 </script>
 </html>

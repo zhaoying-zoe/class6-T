@@ -31,30 +31,30 @@
 <script src="js/jquery-1.12.4.js"></script>
 <script>
 	$(function(){
-		var $box = $('div');
+		var $elem = $('div');
 		var slient = {
-			inte:function($box){
-				if($box.is(':hidden')){
-					$box.data('status','hidden');
+			init:function($elem){
+				if($elem.is(':hidden')){
+					$elem.data('status','hidden');
 				}else{
-					$box.data('status','shown');
+					$elem.data('status','shown');
 				}
 			},
-			show:function($box){
-				// 监听$box的状态
-				if($box.data('status') == 'shown') return;
-				if($box.data('status') == 'show') return;
-				$box.trigger('show').data('status','show');
-				$box.show();
-				$box.trigger('shown').data('status','shown');
+			show:function($elem){
+				// 监听$elem的状态
+				if($elem.data('status') == 'shown') return;
+				if($elem.data('status') == 'show') return;
+				$elem.trigger('show').data('status','show');// 执行淡入淡出函数之前  防止无效点击
+				$elem.show();
+				$elem.trigger('shown').data('status','shown');
 			},
-			hide:function($box){
-				// 监听$box的状态
-				if($box.data('status') == 'hidden') return;
-				if($box.data('status') == 'hide') return;
-				$box.trigger('hide').data('status','hide');
-				$box.hide();
-				$box.trigger('hidden').data('status','hidden');
+			hide:function($elem){
+				// 监听$elem的状态
+				if($elem.data('status') == 'hidden') return;
+				if($elem.data('status') == 'hide') return;
+				$elem.trigger('hide').data('status','hide');// 执行淡入淡出函数之前  防止无效点击
+				$elem.hide();
+				$elem.trigger('hidden').data('status','hidden');
 			}
 		}
 
@@ -71,7 +71,7 @@
 				console.log('hidden...');
 			}
 		})
-		slient.inte($box);
+		slient.init($elem);
 
 		$('button:eq(0)').on('click',function(){
 			slient.show($('div'));
