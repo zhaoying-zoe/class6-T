@@ -150,6 +150,7 @@
 			},
 			slideLeftRight:{
 				init:function($elem){
+					/*
 					// 1.获取元素的水平目标值
 					var style = {
 						borderLeftWidth:$elem.css('borderLeftWidth'),
@@ -169,8 +170,17 @@
 						borderRightWidth:0
 						})
 					})
+					*/
+					js._custominit($elem,{
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0
+					});
 				},
 				show:function($elem){
+					/*
 					show($elem,function(){
 						$elem.show();// 把$elem的状态变为block
 						var style = $elem.data('style');// 1.把$elem的data存为一个对象
@@ -180,8 +190,11 @@
 							$elem.trigger('shown').data('status','shown');
 						})
 					});
+					*/
+					js._customShow($elem);
 				},
 				hide:function($elem){
+					/*
 					hide($elem,function(){
 						$elem
 						.stop()
@@ -196,10 +209,19 @@
 							$elem.trigger('hidden').data('status','hidden')
 						})
 					})
+					*/
+					js._customHide($elem,{
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0
+					});
 				}
 			},
 			fadeSlideLeftRight:{
 				init:function($elem){
+					/*
 					// 1.获取元素的水平目标值
 					var style = {
 						borderLeftWidth:$elem.css('borderLeftWidth'),
@@ -221,8 +243,18 @@
 						opacity:0
 						})
 					})
+					*/
+					js._custominit($elem,{
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0,
+						opacity:0
+					});
 				},
 				show:function($elem){
+					/*
 					show($elem,function(){
 						$elem.show();// 把$elem的状态变为block
 						var style = $elem.data('style');// 1.把$elem的data存为一个对象
@@ -232,8 +264,11 @@
 							$elem.trigger('shown').data('status','shown');
 						})
 					});
+					*/
+					js._customShow($elem);
 				},
 				hide:function($elem){
+					/*
 					hide($elem,function(){
 						$elem
 						.stop()
@@ -249,6 +284,15 @@
 							$elem.trigger('hidden').data('status','hidden')
 						})
 					})
+					*/
+					js._customHide($elem,{
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0,
+						opacity:0
+					});
 				}
 			}
 		}
@@ -287,9 +331,31 @@
 			$elem.data('style',style);
 			console.log(style);
 			// 2.把隐藏状态的元素在水平方向上值全部归0
-			
+			init($elem,function(){
+				$elem.css(options);
+			})
 		}
-
+		js._customShow = function($elem){
+			show($elem,function(){
+				$elem.show();//display:block
+				var style = $elem.data('style');
+				$elem
+				.stop()
+				.animate(style,function(){
+					$elem.trigger('shown').data('status','shown');
+				})
+			})
+		}
+		js._customHide = function($elem,options){
+			hide($elem,function(){
+				$elem
+				.stop()
+				.animate(options,function(){
+					$elem.hide();
+					$elem.trigger('hidden').data('status','hidden')
+				})
+			})
+		}
 
 		// 监听自定义事件
 		$('div').on('show shown hide hidden',function(ev){
