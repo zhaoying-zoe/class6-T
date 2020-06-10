@@ -34,7 +34,6 @@
 <script>
 	$(function(){
 		var $elem = $('div');
-
 		// 显示隐藏共通方法(show fade)
 		function init($elem,hiddenCallback){
 			$elem.removeClass('transition');
@@ -58,7 +57,6 @@
 			$elem.trigger('hide').data('status','hide');
 			callBack();
 		}
-
 		var slient = {
 			init:function($elem){
 				init($elem);
@@ -78,7 +76,6 @@
 				});
 			}
 		}
-
 		var js={
 			fade:{
 				init:function($elem){
@@ -150,6 +147,7 @@
 			},
 			slideLeftRight:{
 				init:function($elem){
+					/*
 					// 1.获取元素的水平目标值
 					var style = {
 						borderLeftWidth:$elem.css('borderLeftWidth'),
@@ -169,8 +167,17 @@
 						borderRightWidth:0
 						})
 					})
+					*/
+					js._custominit($elem,{
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0
+					});
 				},
 				show:function($elem){
+					/*
 					show($elem,function(){
 						$elem.show();// 把$elem的状态变为block
 						var style = $elem.data('style');// 1.把$elem的data存为一个对象
@@ -180,8 +187,11 @@
 							$elem.trigger('shown').data('status','shown');
 						})
 					});
+					*/
+					js._customShow($elem);
 				},
 				hide:function($elem){
+					/*
 					hide($elem,function(){
 						$elem
 						.stop()
@@ -196,10 +206,19 @@
 							$elem.trigger('hidden').data('status','hidden')
 						})
 					})
+					*/
+					js._customHide($elem,{
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0
+					});
 				}
 			},
 			fadeSlideLeftRight:{
 				init:function($elem){
+					/*
 					// 1.获取元素的水平目标值
 					var style = {
 						borderLeftWidth:$elem.css('borderLeftWidth'),
@@ -221,8 +240,18 @@
 						opacity:0
 						})
 					})
+					*/
+					js._custominit($elem,{
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0,
+						opacity:0
+					});
 				},
 				show:function($elem){
+					/*
 					show($elem,function(){
 						$elem.show();// 把$elem的状态变为block
 						var style = $elem.data('style');// 1.把$elem的data存为一个对象
@@ -232,8 +261,11 @@
 							$elem.trigger('shown').data('status','shown');
 						})
 					});
+					*/
+					js._customShow($elem);
 				},
 				hide:function($elem){
+					/*
 					hide($elem,function(){
 						$elem
 						.stop()
@@ -249,12 +281,18 @@
 							$elem.trigger('hidden').data('status','hidden')
 						})
 					})
+					*/
+					js._customHide($elem,{
+						borderLeftWidth:0,
+						paddingLeft:0,
+						width:0,
+						paddingRight:0,
+						borderRightWidth:0,
+						opacity:0
+					});
 				}
 			}
 		}
-
-
-
 		// 显示隐藏共通方法(show fade slide)
 		js._init = function($elem){
 			init($elem);
@@ -277,7 +315,6 @@
 				});						
 			});
 		}
-
 		js._custominit = function($elem,options){
 			//1.获取元素的水平方向的目标值,并且存在元素上
 			var style = {};
@@ -287,7 +324,31 @@
 			$elem.data('style',style);
 			console.log(style);
 			// 2.把隐藏状态的元素在水平方向上值全部归0
-			
+
+			init($elem,function(){
+				$elem.css(options);
+			})
+		}
+		js._customShow = function($elem){
+			show($elem,function(){
+				$elem.show();//display:block
+				var style = $elem.data('style');
+				$elem
+				.stop()
+				.animate(style,function(){
+					$elem.trigger('shown').data('status','shown');
+				})
+			})
+		}
+		js._customHide = function($elem,options){
+			hide($elem,function(){
+				$elem
+				.stop()
+				.animate(options,function(){
+					$elem.hide();
+					$elem.trigger('hidden').data('status','hidden')
+				})
+			})
 		}
 
 
@@ -304,7 +365,6 @@
 				console.log('hidden...');
 			}
 		})
-
 		/*
 		js.fade.init($elem);
 		$('button:eq(0)').on('click',function(){
