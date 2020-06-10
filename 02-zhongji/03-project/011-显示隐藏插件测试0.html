@@ -29,10 +29,10 @@
 	<button>显示</button>
 	<button>隐藏</button>
 	<div class="transition"></div>
-	<div></div>
+	<!-- <div></div> -->
 </body>
 <script src="js/jquery-1.12.4.js"></script>
-<script src="js/showhide.js"></script>
+<script src="js/showhide0.js"></script>
 <script>
 	
 	var $box = $('div');
@@ -41,15 +41,15 @@
 		console.log(ev.type);
 	});
 
-	//第一次调用是初始化显示隐藏插件
+	//1.初始化调用函数
 	$box.showHide({
-		js:true,
-		mode:'fade'
+		js:true,        // 调用js里的方法
+		mode:'slideDownUp'     // 传入方法
 	})
 
 	//第二次调用则是调用显示隐藏方法
 	$('button').eq(0).on('click',function(){
-		$box.showHide('show').css('width',400);
+		$box.showHide('show').css('width','300');
 	});
 	$('button').eq(1).on('click',function(){
 		$box.showHide('hide');

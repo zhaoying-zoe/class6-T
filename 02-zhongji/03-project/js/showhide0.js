@@ -170,18 +170,19 @@
 		})
 	}
 
+	// 定义默认显示隐藏方法
 	var DEFAULT = {
 		js:true,
 		mode:'fade'
 	}
 
-	//获取显示隐藏方法
+	// 获取显示隐藏的方法
 	function getShowHide($elem,options){
-		var showHideFn = slient;
-		if(options.js){
-			showHideFn = js[options.mode];
+		var showHhideFn = slient;// 定义默认方法为slient对象
+		if(options.js){// 如果options里js为true
+			showHideFn = js[options.mode];// 给默认方法赋值为目标方法对象
 		}
-		//初始化
+		// 初始化
 		showHideFn.init($elem);
 		return {
 			show:showHideFn.show,
@@ -189,26 +190,34 @@
 		}
 	}
 
+	// 给原型添加显示隐藏方法
 	$.fn.extend({
 		showHide:function(options){
-			//1.实现隐士迭代和链式调用
+			//1. 实现隐式迭代(for循环有关)
 			return this.each(function(){
+				// 获取元素
+				// console.log(this);
 				var $elem = $(this);
-				var showHideObj = $elem.data('showHideObj');
-				//单例模式
-				if(!showHideObj){// 第一次调用能进来
-					options = $.extend({},DEFAULT,options);
-					//2.获取显示隐藏的方法
+				var showHideObj = $elem.data('showHideObj');// 给元素本身绑定一个名字
+				// 单例模式
+				if(!showHideObj){// 第一次判断$elem上是否有绑定值
+					options = $.extend({},DEFAULT,options);// 给options合并方法
+					//2. 获取显示隐藏的方法
 					var showHideObj = getShowHide($elem,options);
 					//将显示隐藏方法存到当前dom节点上
 					$elem.data('showHideObj',showHideObj);
 				}
 				//判断当传入的参数是方法时,则调用该方法
 				if(typeof showHideObj[options] == 'function'){
+					// console.log(showHideObj[options]);
 					//调用显示隐藏方法时必须传入jQuery对象
 					showHideObj[options]($elem);
 				}
+
 			})
+
+
 		}
 	})
+
 })(jQuery);

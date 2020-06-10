@@ -5,8 +5,6 @@
 		this.options = options;
 		this.$layer = this.$elem.find('.dropdown-layer');
 		this.active = this.$elem.data('active') + '-active';
-
-		this.Timer = null;
 		//2.初始化
 		this.init()
 	}
@@ -20,30 +18,14 @@
 				this.$elem.trigger('dropdown-'+ev.type)
 			}.bind(this));
 			//3.绑定事件
-
-			// 处理点击事件
-			if(this.options.eventName == 'click'){
-				this.$elem.on('click',function(ev){
-					// 阻止事件冒泡
-					ev.stopPropagation();
-					this.show();
-				}.bind(this));
-				$(document).on('click',function(){
-					this.hide();
-				}.bind(this));
-			}else{
-				this.$elem.hover($.proxy(this.show,this),$.proxy(this.hide,this));				
-			}
+			this.$elem.hover($.proxy(this.show,this),$.proxy(this.hide,this));
 		},
 		show:function(){
-			this.Timer = setTimeout(function(){
-				this.$layer.showHide('show');
-				//显示时添加类
-				this.$elem.addClass(this.active);			
-			}.bind(this),this.options.delay);
+			this.$layer.showHide('show');
+			//显示时添加类
+			this.$elem.addClass(this.active);
 		},
 		hide:function(){
-			clearTimeout(this.Timer);
 			this.$layer.showHide('hide');
 			//隐藏时删除类
 			this.$elem.removeClass(this.active);
@@ -52,9 +34,7 @@
 
 	Dropdown.DEFAULT = {
 		js:true,
-		mode:'fade',
-		delay:200,
-		eventName:''
+		mode:'fade'
 	}
 
 

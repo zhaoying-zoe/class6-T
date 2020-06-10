@@ -63,57 +63,7 @@
 /*头部搜索开始*/
 	.header{
 		height: 100px;
-		background-color: #fff;
-	}
-	.header .search{
-		position: relative;
-	}
-	.header .header-logo{
-		width: 248px;
-		height: 70px;
-		display: block;
-		background-image: url(../image/header-logo.png);
-		background-repeat: no-repeat;
-		/*background-position: ;*/
-		margin: 15px;
-	}
-	.header .search-input{
-		width: 500px;
-		height: 40px;
-		outline: none;
-		margin: 30px 0px;
-		margin-left: 100px;
-		box-sizing: border-box;
-		padding: 5px;
-	}
-	.header .search-btn{
-		width: 80px;
-		height: 40px;
-		margin: 30px 0px;
-		background-color: #000;
-		color: #fff;
-		cursor: pointer;
-		font-size: 17px;
-	}
-	.header .search-layer{
-		position: absolute;
-		top: 70px;
-		left: 378px;
-		width: 568px;
-		border: 1px solid #000;
-		border-top: none;
-		padding: 5px;
-		background-color: #ccc;
-		/*display: none;*/
-		z-index: 999;
-	}
-	.header .search-layer li{
-		line-height: 30px;
-		/*background-color: #ccc;*/
-	}
-	.header .search-layer li:hover{
-		cursor: pointer;
-		background-color: #f4f5f6;
+		background-color: green;
 	}
 /*头部搜索结束*/
 
