@@ -22,7 +22,7 @@
 		init:function(){
 			//监听提交数据事件
 			this.$searchBtn.on('click',$.proxy(this.submit,this));
-			this.$searchBtn.on('click',this.submit);
+			// this.$searchBtn.on('click',this.submit);
 
 		},
 		submit:function(){
