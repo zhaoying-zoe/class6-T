@@ -178,7 +178,7 @@
 
 	// 获取显示隐藏的方法
 	function getShowHide($elem,options){
-		var showHhideFn = slient;// 定义默认方法为slient对象
+		var showHideFn = slient;// 定义默认方法为slient对象
 		if(options.js){// 如果options里js为true
 			showHideFn = js[options.mode];// 给默认方法赋值为目标方法对象
 		}
@@ -203,7 +203,7 @@
 				if(!showHideObj){// 第一次判断$elem上是否有绑定值
 					options = $.extend({},DEFAULT,options);// 给options合并方法
 					//2. 获取显示隐藏的方法
-					var showHideObj = getShowHide($elem,options);
+					showHideObj = getShowHide($elem,options);
 					//将显示隐藏方法存到当前dom节点上
 					$elem.data('showHideObj',showHideObj);
 				}

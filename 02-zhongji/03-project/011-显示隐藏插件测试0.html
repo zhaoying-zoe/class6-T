@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>011-显示隐藏插件测试.html</title>
+	<title>011-显示隐藏插件测试0.html</title>
 	<link rel="stylesheet" href="css/common.css">
 	<style>
 		*{
@@ -32,7 +32,7 @@
 	<!-- <div></div> -->
 </body>
 <script src="js/jquery-1.12.4.js"></script>
-<script src="js/showhide0.js"></script>
+<script src="js/showhide.js"></script>
 <script>
 	
 	var $box = $('div');
@@ -41,15 +41,15 @@
 		console.log(ev.type);
 	});
 
-	//1.初始化调用函数
+	//第一次调用是初始化显示隐藏插件
 	$box.showHide({
-		js:true,        // 调用js里的方法
-		mode:'slideDownUp'     // 传入方法
+		js:true,
+		mode:'fade'
 	})
 
 	//第二次调用则是调用显示隐藏方法
 	$('button').eq(0).on('click',function(){
-		$box.showHide('show').css('width','300');
+		$box.showHide('show').css('width',400);
 	});
 	$('button').eq(1).on('click',function(){
 		$box.showHide('hide');

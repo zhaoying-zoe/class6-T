@@ -58,6 +58,14 @@
 	.top .top-right .dropdown-layer li:hover{
 		background-color: #fff;
 	}
+	.dropdown-loading{
+		width: 32px;
+		height: 32px;
+		margin: 14px;
+		background-image: url(../image/loading.gif);
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
 /*顶部导航结束*/
 /*头部搜索开始*/
 	.header{
@@ -66,6 +74,8 @@
 	}
 	.header .search{
 		position: relative;
+		margin-left: 200px;
+		/*margin-top: 20px;*/
 	}
 	.header .header-logo{
 		width: 248px;
@@ -74,45 +84,55 @@
 		background-image: url(../image/header-logo.png);
 		background-repeat: no-repeat;
 		/*background-position: ;*/
-		margin: 15px;
+		margin-top: 15px;
 	}
 	.header .search-input{
-		width: 500px;
+		width: 400px;
 		height: 40px;
 		outline: none;
 		margin: 30px 0px;
-		margin-left: 100px;
+		padding-left: 10px;
 		box-sizing: border-box;
-		padding: 5px;
+		/*padding: 5px;*/
 	}
 	.header .search-btn{
 		width: 80px;
 		height: 40px;
+		line-height: 40px;
 		margin: 30px 0px;
 		background-color: #000;
 		color: #fff;
+		outline: none;
 		cursor: pointer;
-		font-size: 17px;
+		border: none;
+		font-size: 18px;
+		box-sizing: border-box;
 	}
-	.header .search-layer{
+	.header .search .search-layer{
 		position: absolute;
 		top: 70px;
-		left: 378px;
-		width: 568px;
+		left: 0px;
+		width: 100%;
 		border: 1px solid #000;
 		border-top: none;
 		padding: 5px;
-		background-color: #ccc;
-		/*display: none;*/
+		box-sizing: border-box;
+		background-color: #fff;
 		z-index: 999;
+		/*display: none;*/
 	}
 	.header .search-layer li{
+		width: 100%;
+		height: 30px;
 		line-height: 30px;
-		/*background-color: #ccc;*/
+		box-sizing: border-box;
+		padding-left: 10px;
+		font-size: 16px;
+		cursor: pointer;
 	}
 	.header .search-layer li:hover{
 		cursor: pointer;
-		background-color: #f4f5f6;
+		background-color: #f3f5f7;
 	}
 /*头部搜索结束*/
 
