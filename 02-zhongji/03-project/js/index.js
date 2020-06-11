@@ -46,6 +46,9 @@
 
 /*搜索区域逻辑------开始*/
 	var $search = $('.header .search');
-	$search.search({});
+	$search.search({
+		js:true,
+		mode:'slideDownUp'
+	});
 /*搜索区域逻辑------结束*/
 })(jQuery);

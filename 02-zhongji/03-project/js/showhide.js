@@ -199,7 +199,7 @@
 				if(!showHideObj){// 第一次调用能进来
 					options = $.extend({},DEFAULT,options);
 					//2.获取显示隐藏的方法
-					var showHideObj = getShowHide($elem,options);
+					showHideObj = getShowHide($elem,options);
 					//将显示隐藏方法存到当前dom节点上
 					$elem.data('showHideObj',showHideObj);
 				}

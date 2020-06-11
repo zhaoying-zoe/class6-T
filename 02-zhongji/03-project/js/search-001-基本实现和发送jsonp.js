@@ -6,9 +6,6 @@
 		this.$searchForm = this.$elem.find('.search');
 		this.$searchInput = this.$elem.find('.search-input');
 		this.$searchBtn = this.$elem.find('.search-btn');
-		this.$searchLayer = this.$elem.find('.search-layer');
-
-		this.isLoadedHTML = false;
 		
 		// console.log(this);
 
@@ -23,27 +20,10 @@
 	Search.prototype = {
 		constructor:Search,
 		init:function(){
-			// 1.初始化显示隐藏插件
-			this.$searchLayer.showHide(this.options);
-			// 2.监听提交数据事件
+			//监听提交数据事件
 			this.$searchBtn.on('click',$.proxy(this.submit,this));
 			// this.$searchBtn.on('click',this.submit);
-			// 3.监听点击页面空白部分隐藏搜索下拉层
-			$(document).on('click',function(){
-				// 隐藏搜索下拉层
-				this.hideLayer();
-			}.bind(this))
-			// 4.点击搜索框阻止事件冒泡
-			this.$searchInput.on('click',function(ev){
-				ev.stopPropagation();
-			})
-			// 5.监听获取焦点显示下拉层
-			this.$searchInput.on('focus',function(){
-				// 判断输入框中是否有值
-				if(this.getInputVal()){
-					this.showLayer();					
-				}
-			}.bind(this))
+
 		},
 		submit:function(){
 			// console.log(this)
@@ -52,7 +32,7 @@
 				return false;
 			}
 			// 数据合法则提交表单数据
-			this.$searchForm.trigger('submit')
+			this.$searchBtn.trigger('submit')
 		},
 		getInputVal:function(){
 			// 获取输入框中的值的函数
@@ -65,8 +45,6 @@
 		getData:function(){
 			// 如果输入框中的值是空则不发送
 			if(!this.getInputVal()){
-				// 如果输入框没数据则隐藏下拉层
-				this.hideLayer();
 				return false;
 			}
 			// 发送请求获取数据
@@ -76,45 +54,17 @@
 				jsonp:'callback'
 			})
 			.done(function(data){
-				// console.log(data);
-				// 1.生成html结构
-				var html = '';
-				for(var i = 0;i<data.result.length;i++){
-					html += '<li>' + data.result[i][0] + '</li>';
-				}
-				// console.log(html);
-				
-				// 2.把html结构添加到下拉层
-				this.appendHtml(html);
-				// 3.显示下拉层
-				if(this.isLoadedHTML == ''){
-					this.hideLayer();
-				}else{
-					this.showLayer();
-				}
-			}.bind(this))
+				console.log(data);
+			})
 			.fail(function(err){
 				console.log(err);
 			})
-		},
-		appendHtml:function(html){
-			// 插入html内容
-			this.$searchLayer.html(html);
-			// 双非:把html定义为布尔值(有值则为true 无值则为false)
-			this.isLoadedHTML = !!html;
-		},
-		showLayer:function(){
-			if(!this.isLoadedHTML) return;
-			this.$searchLayer.showHide('show');
-		},
-		hideLayer:function(){
-			this.$searchLayer.showHide('hide');
 		}
 	}
 
 	// 如果不传递参数则使用默认配置信息
 	Search.DEFAULT = {
-		autocomplete:true,// 是否显示下拉层
+		autocomplete:true,
 		url:'https://suggest.taobao.com/sug?q='
 	}
 	// https://search.jd.com/Search?keyword=s&enc=utf-8&pvid=3b09d7d7d42148d2a2c64a9cbc7e5f1a
