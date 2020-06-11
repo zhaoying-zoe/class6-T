@@ -90,6 +90,7 @@
 		width: 400px;
 		height: 40px;
 		outline: none;
+		border:1px solid #ccc;
 		margin: 30px 0px;
 		padding-left: 10px;
 		box-sizing: border-box;
@@ -119,7 +120,7 @@
 		box-sizing: border-box;
 		background-color: #fff;
 		z-index: 999;
-		/*display: none;*/
+		display: none;
 	}
 	.header .search-layer li{
 		width: 100%;
@@ -127,7 +128,7 @@
 		line-height: 30px;
 		box-sizing: border-box;
 		padding-left: 10px;
-		font-size: 16px;
+		font-size: 14px;
 		cursor: pointer;
 	}
 	.header .search-layer li:hover{

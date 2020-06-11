@@ -34,14 +34,18 @@
 
 		}
 	})
-	// 懒加载
+
 	/*
-	// dropdown 插件测试
+	// dropdown 暴露事件插件测试
 	$('#btn').on('click',function(ev){
 		ev.stopPropagation();
 		$dropdown.dropdown('show');
 	})
 	*/
-
 /*顶部导航逻辑------结束*/
+
+/*搜索区域逻辑------开始*/
+	var $search = $('.header .search');
+	$search.search({});
+/*搜索区域逻辑------结束*/
 })(jQuery);
