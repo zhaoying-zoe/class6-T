@@ -44,12 +44,6 @@
 					this.showLayer();					
 				}
 			}.bind(this))
-			// 6.(事件代理形式监听事件)点击每一项提交数据
-			this.$elem.on('click','.search-item',function(){
-				// 1.获取当前点击项的值
-				// 2.把值赋给输入框
-				// 3.提交数据
-			})
 		},
 		submit:function(){
 			// console.log(this)

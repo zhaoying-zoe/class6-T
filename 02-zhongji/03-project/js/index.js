@@ -50,5 +50,44 @@
 		js:true,
 		mode:'slideDownUp'
 	});
+	// 自定义显示下拉层事件
+	$search.on('getSearchData',function(ev,data){
+		var $elem = $(this);
+		// console.log(ev)
+		// console.log('data'); // 测试函数是否被调用
+		// 1.生成html结构
+		/*
+		var html = '';
+		for(var i = 0;i<data.result.length;i++){
+			html += '<li>' + data.result[i][0] + '</li>';
+		}
+		*/
+		// console.log(html);
+		
+		var html = getSearchData(data,5);
+		// 2.把html结构添加到下拉层
+		$elem.search('appendHtml',html);
+		// 3.显示下拉层
+		if($elem.isLoadedHTML == ''){
+			$elem.search('hideLayer');
+		}else{
+			$elem.search('showLayer');
+		}
+	})
+	$search.on('getNoSearchData',function(){
+		$elem.search('appendHtml','');
+		$elem.search('hideLayer');
+	})
+
+	// 生成下拉层结构数据函数并且可以控制长度
+	function getSearchData(data,max){
+		var html = '';
+		for(var i = 0;i<data.result.length;i++){
+			if (i >= max) break;
+			html += '<li class="search-item">' + data.result[i][0] + '</li>';
+		}
+
+		return html;
+	}
 /*搜索区域逻辑------结束*/
 })(jQuery);

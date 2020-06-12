@@ -32,7 +32,7 @@
 		text-decoration: none;
 		color: #4a4f52;
 	}
-	.link:hover{
+	a.link:hover{
 		color: #e6a6a4;
 	}
 /*a链接相关结束*/
