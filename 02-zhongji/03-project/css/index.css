@@ -159,9 +159,10 @@
 /*主导航结束*/
 
 /*焦点区域开始*/
-	.focus{
+	.nav-focus{
 		height: 504px;
 		background: #f7f7f7;
+		/*background: blue;*/
 		margin-bottom: 10px;
 	}
 	.category{
@@ -329,7 +330,7 @@
 		left:100%;
 	}
 	/*轮播图区域结束*/
-
+	
 /*焦点区域结束*/
 
 /*今日热销开始*/

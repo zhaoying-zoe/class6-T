@@ -18,7 +18,7 @@
 		//1.罗列属性
 		this.$elem = $elem;
 		this.options = options;
-		this.$searchForm = this.$elem.find('.search');
+		this.$searchForm = this.$elem.find('.search-form');
 		this.$searchInput = this.$elem.find('.search-input');
 		this.$searchBtn = this.$elem.find('.search-btn');
 		this.$searchLayer = this.$elem.find('.search-layer');
@@ -44,14 +44,15 @@
 			this.$searchBtn.on('click',$.proxy(this.submit,this));
 		},
 		submit:function(){
-			// console.log(this)
+			console.log(this.$searchForm)
 			// 如果输入框的值是空则不提交数据
 			if(!this.getInputVal()){
 				return false;
 			}
 			// 数据合法则提交表单数据
 			// console.log(233)// 测试
-			this.$searchForm.trigger('submit')
+			// this.$searchBtn.trigger('click');
+			this.$searchForm.trigger('submit');
 			// console.log(233)// 测试
 		},
 		getInputVal:function(){
@@ -113,6 +114,14 @@
 			if(this.jqXHR){
 				this.jqXHR.abort();
 			}
+			// 判断是否有之前的缓存
+			if(cache.getData(this.getInputVal())){
+				var cacheData = cache.getData(this.getInputVal());
+				this.$elem.trigger('getSearchData',[cacheData]);
+				return ;
+			}
+			// console.log(2333)// 检查本地是否有缓存数据
+
 			// 发送请求获取数据
 			this.jqXHR = $.ajax({
 				url:this.options.url+this.getInputVal(),

@@ -33,9 +33,7 @@
 				return false;
 			}
 			// 数据合法则提交表单数据
-			// console.log(233)// 测试
 			this.$searchForm.trigger('submit')
-			// console.log(233)// 测试
 		},
 		getInputVal:function(){
 			// 获取输入框中的值的函数
