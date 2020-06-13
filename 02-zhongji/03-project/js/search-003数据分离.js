@@ -23,11 +23,27 @@
 	Search.prototype = {
 		constructor:Search,
 		init:function(){
+			// 监听提交数据事件
+			this.$searchBtn.on('click',$.proxy(this.submit,this));
+		},
+		submit:function(){
+			// console.log(this)
+			// 如果输入框的值是空则不提交数据
+			if(!this.getInputVal()){
+				return false;
+			}
+			// 数据合法则提交表单数据
+			this.$searchForm.trigger('submit')
+		},
+		getInputVal:function(){
+			// 获取输入框中的值的函数
+			return $.trim(this.$searchInput.val());// 返回输入框中的值
+		},
+		autocomplete:function(){
 			// 1.初始化显示隐藏插件
 			this.$searchLayer.showHide(this.options);
-			// 2.监听提交数据事件
-			this.$searchBtn.on('click',$.proxy(this.submit,this));
-			// this.$searchBtn.on('click',this.submit);
+			// 2.监听输入框的输入事件
+			this.$searchInput.on('input',$.proxy(this.getData,this));
 			// 3.监听点击页面空白部分隐藏搜索下拉层
 			$(document).on('click',function(){
 				// 隐藏搜索下拉层
@@ -44,23 +60,6 @@
 					this.showLayer();					
 				}
 			}.bind(this))
-		},
-		submit:function(){
-			// console.log(this)
-			// 如果输入框的值是空则不提交数据
-			if(!this.getInputVal()){
-				return false;
-			}
-			// 数据合法则提交表单数据
-			this.$searchForm.trigger('submit')
-		},
-		getInputVal:function(){
-			// 获取输入框中的值的函数
-			return $.trim(this.$searchInput.val());// 返回输入框中的值
-		},
-		autocomplete:function(){
-			// 监听输入框的输入事件
-			this.$searchInput.on('input',$.proxy(this.getData,this));
 		},
 		getData:function(){
 			// 如果输入框中的值是空则不发送

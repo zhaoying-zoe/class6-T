@@ -1,19 +1,4 @@
 ;(function($){
-	// 缓存
-	cache = {
-		data:{},
-		count:0,
-		addData:function(key,val){
-			this.data[key] = val;
-			this.count++;
-		},
-		getData:function(key){
-			return this.data[key];
-		}
-	}
-
-
-
 	function Search($elem,options){
 		//1.罗列属性
 		this.$elem = $elem;
@@ -120,9 +105,25 @@
 				jsonp:'callback'
 			})
 			.done(function(data){
+				// console.log(data);
 				this.$elem.trigger('getSearchData',[data]);
-				// 将获取的数据缓存下来
-				cache.addData(this.getInputVal(),data)
+				/*
+				// 1.生成html结构
+				var html = '';
+				for(var i = 0;i<data.result.length;i++){
+					html += '<li>' + data.result[i][0] + '</li>';
+				}
+				// console.log(html);
+				
+				// 2.把html结构添加到下拉层
+				this.appendHtml(html);
+				// 3.显示下拉层
+				if(this.isLoadedHTML == ''){
+					this.hideLayer();
+				}else{
+					this.showLayer();
+				}
+				*/
 			}.bind(this))
 			.fail(function(err){
 				this.$elem.trigger('getNoSearchData');

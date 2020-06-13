@@ -1,19 +1,4 @@
 ;(function($){
-	// 缓存
-	cache = {
-		data:{},
-		count:0,
-		addData:function(key,val){
-			this.data[key] = val;
-			this.count++;
-		},
-		getData:function(key){
-			return this.data[key];
-		}
-	}
-
-
-
 	function Search($elem,options){
 		//1.罗列属性
 		this.$elem = $elem;
@@ -24,8 +9,6 @@
 		this.$searchLayer = this.$elem.find('.search-layer');
 
 		this.isLoadedHTML = false;
-		this.timer = null;
-		var jqXHR = null;
 		
 		// console.log(this);
 
@@ -62,17 +45,7 @@
 			// 1.初始化显示隐藏插件
 			this.$searchLayer.showHide(this.options);
 			// 2.监听输入框的输入事件
-			this.$searchInput.on('input',function(options){
-				if(this.options.delayGetData){
-					clearTimeout(this.timer);
-					this.timer = setTimeout(function(){
-						// console.log(233);
-						this.getData();
-					}.bind(this),this.options.delayGetData)
-				}else{
-					this.getData()
-				}
-			}.bind(this));
+			this.$searchInput.on('input',$.proxy(this.getData,this));
 			// this.$searchBtn.on('click',this.submit);
 			// 3.监听点击页面空白部分隐藏搜索下拉层
 			$(document).on('click',function(){
@@ -109,27 +82,35 @@
 				this.hideLayer();
 				return false;
 			}
-			//终止之前的请求,获取最新数据
-			if(this.jqXHR){
-				this.jqXHR.abort();
-			}
 			// 发送请求获取数据
-			this.jqXHR = $.ajax({
+			$.ajax({
 				url:this.options.url+this.getInputVal(),
 				dataType:'jsonp',
 				jsonp:'callback'
 			})
 			.done(function(data){
+				// console.log(data);
 				this.$elem.trigger('getSearchData',[data]);
-				// 将获取的数据缓存下来
-				cache.addData(this.getInputVal(),data)
+				/*
+				// 1.生成html结构
+				var html = '';
+				for(var i = 0;i<data.result.length;i++){
+					html += '<li>' + data.result[i][0] + '</li>';
+				}
+				// console.log(html);
+				
+				// 2.把html结构添加到下拉层
+				this.appendHtml(html);
+				// 3.显示下拉层
+				if(this.isLoadedHTML == ''){
+					this.hideLayer();
+				}else{
+					this.showLayer();
+				}
+				*/
 			}.bind(this))
 			.fail(function(err){
 				this.$elem.trigger('getNoSearchData');
-			})
-			.always(function(){
-				// 把XHR置空
-				this.jqXHR = null;
 			})
 		},
 		appendHtml:function(html){
@@ -153,8 +134,7 @@
 	// 如果不传递参数则使用默认配置信息
 	Search.DEFAULT = {
 		autocomplete:true,// 是否显示下拉层
-		url:'https://suggest.taobao.com/sug?q=',
-		delayGetData:200
+		url:'https://suggest.taobao.com/sug?q='
 	}
 	// https://search.jd.com/Search?keyword=s&enc=utf-8&pvid=3b09d7d7d42148d2a2c64a9cbc7e5f1a
 	// url:'https://suggest.taobao.com/sug?code=utf-8&_ksTS=1528889766600_556&k=1&area=c2c&bucketid=17&q='
