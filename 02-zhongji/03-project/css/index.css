@@ -263,13 +263,13 @@
 	}
 
 	/*轮播图区域开始*/
-	.focus .carousel-wrap,
-	.focus .carousel-wrap .carousel-item img {
+	.nav-focus .carousel-wrap,
+	.nav-focus .carousel-wrap .carousel-item img {
 		width: 728px;
 		height: 504px;
 	}
-	.focus .carousel-wrap,
-	.focus .carousel-wrap .carousel-item img {
+	.nav-focus .carousel-wrap,
+	.nav-focus .carousel-wrap .carousel-item img {
 		width: 728px;
 		height: 504px;
 	}
@@ -330,6 +330,7 @@
 		left:100%;
 	}
 	/*轮播图区域结束*/
+
 	
 /*焦点区域结束*/
 

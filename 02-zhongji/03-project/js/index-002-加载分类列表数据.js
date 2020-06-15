@@ -25,34 +25,6 @@
 	});
 	//监听显示隐藏事件
 	$dropdown.on('dropdown-show dropdown-shown dropdown-hide dropdown-hidden',function(ev){
-		// console.log(ev.type);
-		/*
-		if(ev.type == 'dropdown-show'){
-			var $this = $(this);
-			var dropdownLayer = $this.find('.dropdown-layer');
-			var url = $this.data('load');
-
-			// 如果没有数据地址则不加载请求
-			if(!url) return;
-			if(!$this.data('isLoaded')){
-				$.getJSON(url,function(data){
-					// console.log(2333);// 判断数据是否重复加载
-					var html = '';
-					// 动态加载数据
-					for(var i = 0;i<data.length;i++){
-						html += '<li><a href="'+ data[i].url +'">'+data[i].name+'</a></li>'
-					}
-					// 模拟网络延迟加载功能
-					setTimeout(function(){
-						dropdownLayer.html(html);
-						// 数据已经加载完成
-						$this.data('isLoaded',true)
-					},300)
-				});
-			}
-
-		}
-		*/
 		loadHtmlOnce($(this),buildTopLayer)
 	})
 		
@@ -88,17 +60,6 @@
 	// 自定义显示下拉层事件
 	$search.on('getSearchData',function(ev,data){
 		var $elem = $(this);
-		// console.log(ev)
-		// console.log('data'); // 测试函数是否被调用
-		// 1.生成html结构
-		/*
-		var html = '';
-		for(var i = 0;i<data.result.length;i++){
-			html += '<li>' + data.result[i][0] + '</li>';
-		}
-		*/
-		// console.log(html);
-		
 		var html = getSearchData(data,5);
 		// 2.把html结构添加到下拉层
 		$elem.search('appendHtml',html);
@@ -137,39 +98,6 @@
 	$categoryDropdown.on('dropdown-show dropdown-shown dropdown-hide dropdown-hidden',function(ev){
 		// console.log(ev.type);
 		if(ev.type == 'dropdown-show'){
-		/*
-			var $this = $(this);
-			var dropdownLayer = $this.find('.dropdown-layer');
-			var url = $this.data('load');
-
-			// 如果没有数据地址则不加载请求
-			if(!url) return;
-			if(!$this.data('isLoaded')){
-				$.getJSON(url,function(data){
-					// console.log(2333);// 判断数据是否重复加载
-					var html = '';
-					// 动态加载数据
-					for(var i = 0;i<data.length;i++){
-						html += '<dl class="category-details">'
-						html +=	'		<dt class="category-details-title fl">'
-						html +=	'			<a href="#" class="category-details-title-link">'+ data[i].title +'</a>'
-						html +=	'		</dt>'
-						html +=	'		<dd class="category-details-item fl">'
-						for(var j = 0;j<data[i].items.length;j++){
-							html +=	'			<a href="#" class="link">'+ data[i].items[j] +'</a>'	
-						}
-						html +=	'		</dd>'
-						html +=	'	</dl>'
-					}
-					// 模拟网络延迟加载功能
-					setTimeout(function(){
-						dropdownLayer.html(html);
-						// 数据已经加载完成
-						$this.data('isLoaded',true)
-					},300)
-				});
-			}
-		*/
 			loadHtmlOnce($(this),buildCategoryLayer)
 		}
 	})
@@ -196,12 +124,5 @@
 			$elem.data('isLoaded',true)
 		},300)
 	}
-/*焦点区域分类列表逻辑------结束*/
-
-/*焦点区域分类列表逻辑------结束*/
-	var $coursel = $('.nav-focus .carousel-wrap');
-	$coursel.coursel({
-
-	});
 /*焦点区域分类列表逻辑------结束*/
 })(jQuery);
