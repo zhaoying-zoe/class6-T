@@ -15,7 +15,7 @@
 	Coursel.prototype = {
 		constructor:Coursel,
 		init:function(){
-			var _this = $(this);
+			var _this = this;
 			if(this.options.slide){// 动画切换进行划入划出
 
 			}else{// 动画切换进行淡入淡出
@@ -35,7 +35,6 @@
 				//4.(事件代理)监听点击左右按钮实现动画切换
 				this.$elem.on('click','.control',function(){
 					var $this = $(this);
-					console.log($this);
 					if($this.hasClass('control-left')){
 						console.log($this);
 					}else if($this.hasClass('control-right')){
@@ -50,7 +49,7 @@
 			// 2.显示下一张图片
 			this.$courselItems.eq(index).showHide('show');
 			// 3.更新底部按钮状态
-			this.$courselBtns.eq(this.now).reClass('active');
+			this.$courselBtns.eq(this.now).removeClass('active');
 			this.$courselBtns.eq(index).addClass('active');
 			// 4.更新索引
 			this.now = index;
