@@ -6,8 +6,10 @@
 		this.$courselItems = this.$elem.find('.carousel-item');
 		this.$courselBtns = this.$elem.find('.btn-item');
 		this.$courselControls = this.$elem.find('.control');
+		this.itemLength = this._getCorrectIndex(this.$courselItems.length);
 
 		this.now = this.options.activeIndex;
+		this.timer = null;
 		//2.初始化
 		this.init();
 	}
@@ -36,14 +38,29 @@
 				this.$elem.on('click','.control',function(){
 					var $this = $(this);
 					if($this.hasClass('control-left')){
-						console.log($this);
+						_this._fade(_this._getCorrectIndex(_this.now-1));
 					}else if($this.hasClass('control-right')){
-						_this._fade(_this.now+1);
+						_this._fade(_this._getCorrectIndex(_this.now+1));
 					}
 				})
+				//6.自动轮播
+				if(this.options.autotime){
+					this.autoplay();
+					// 监听事件 移入移出事件
+					this.$elem.hover($.proxy(this.pased,this),$.proxy(this.autoplay,this))
+				}
+				// 7.底部按钮点击事件
+				this.$courselBtns.on('click',function(){
+					// 获取当前按钮下标
+					var index = _this.$courselBtns.index($(this));
+					_this._fade(index);
+				});
 			}
 		},
 		_fade:function(index){
+			// 5.当前显示和将要显示的下标一致时则不切换
+			if(this.now == index) return;
+			console.log(233)
 			// 1.隐藏当前图片
 			this.$courselItems.eq(this.now).showHide('hide');
 			// 2.显示下一张图片
@@ -53,6 +70,23 @@
 			this.$courselBtns.eq(index).addClass('active');
 			// 4.更新索引
 			this.now = index;
+		},
+		_getCorrectIndex:function(num){
+			if(num > (this.itemLength - 1)){
+				num = 0;
+			}
+			if(num < 0){
+				num = this.itemLength - 1;
+			}
+			return num;
+		},
+		autoplay:function(){
+			this.timer = setInterval(function(){
+				 this.$courselControls.eq(1).trigger('click');
+			}.bind(this),this.options.autotime)
+		},
+		pased:function(){
+			clearTimeout(this.timer);
 		}
 	}
 
@@ -61,7 +95,8 @@
 		slide:false,
 		activeIndex:0,
 		js:true,
-		mode:'fade'
+		mode:'fade',
+		autotime:2000
 	}
 
 
