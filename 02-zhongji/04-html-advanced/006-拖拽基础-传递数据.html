@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-拖拽基础-传递数据.html</title>
+	<style type="text/css">
+		#container{
+			width: 500px;
+			height: 500px;
+			background-color: red;
+		}
+		#drag{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<div id="drag" draggable=true></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('#drag')
+		.on('dragstart',function(ev){
+			console.log(ev.target.id)
+			//ondragstart 当元素开始拖动时触发
+			// console.log(ev.originalEvent.dataTransfer.setData('dragId',ev.target.id));
+			ev.originalEvent.dataTransfer.setData('dragId',ev.target.id);
+		})
+
+		$('#container')
+		.on('drop',function(ev){
+			// ondrag 被拖动元素拖动时触发
+			// $('#container').append($('#target'));
+			var targetId = ev.originalEvent.dataTransfer.getData('dragId');
+			console.log(targetId)
+			$('#container').append($('#'+targetId));
+			
+		})
+		.on('dragover',function(ev){
+			// ondragend 拖拽时松开鼠标时触发
+			ev.preventDefault();
+			
+		})
+	})
+</script>
+</html>

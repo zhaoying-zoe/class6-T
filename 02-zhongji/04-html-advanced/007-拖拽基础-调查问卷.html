@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-拖拽基础-调查问卷.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			width: 1000px;
+			height: 1000px;
+			float: left;
+			text-align: center;
+		}
+		.drag-list{
+			width: 400px;
+			height: 400px;
+			float: left;
+			margin-top: 50px;
+			border-left: 1px dashed #ccc;
+			padding: 40px;
+		}
+		.box{
+			width: 300px;
+			height: 60px;
+			border: 1px solid #000;
+			margin-top: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<div class="container">
+			<h2>调查问卷</h2>
+		</div>
+		<div class="drag-list">
+			<div class="box" draggable=true>
+				<label for="">姓名:</label>
+				<input type="text" name="username">
+			</div>
+			<div class="box" draggable=true>
+				<label for="">年龄:</label>
+				<input type="text" name="age">
+			</div>
+			<div class="box" draggable=true>
+				<label for="">爱好:</label>
+				篮球<input type="checkbox">
+				足球<input type="checkbox">
+				排球<input type="checkbox">
+				羽毛球<input type="checkbox">
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var Dom = null;
+		// 事件委托
+		$('.drag-list')
+		.on('dragstart','.box',function(ev){
+			// console.log(this);
+			Dom = this;
+		})
+
+		$('.container')
+		.on('drop',function(ev){
+
+			$('.container').append($(Dom).clone());
+			
+		})
+		.on('dragover',function(ev){
+			ev.preventDefault();
+			
+		})
+	})
+</script>
+</html>

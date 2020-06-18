@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-拖拽基础-拖拽事件.html</title>
+	<style type="text/css">
+		#container{
+			width: 500px;
+			height: 500px;
+			background-color: red;
+		}
+		#drag{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<div id="drag" draggable = "true"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('#drag')
+		.on('dragstart',function(){
+			console.log('qaa');
+		})
+		.on('drag',function(){
+			console.log('qaa');
+
+		})
+		.on('dragend',function(){
+			$('#container').append($('#drag'));
+		})
+	})
+</script> 
+</html>
