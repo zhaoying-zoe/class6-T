@@ -1,0 +1,64 @@
+p {
+  color: red;
+}
+/* 注释二 */
+/*语法*/
+/*混合(Mixin)*/
+.bd {
+  width: 100px;
+  height: 100px;
+  background-color: #ff6700;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  -o-border-radius: 10px;
+  -o-webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+}
+.box1 {
+  width: 100px;
+  height: 100px;
+  background-color: #ff6700;
+  margin-bottom: 10px;
+}
+.box2 {
+  width: 100px;
+  height: 100px;
+  background-color: #ff6700;
+  margin-bottom: 10px;
+}
+.box3 {
+  width: 100px;
+  height: 100px;
+  background-color: #ff6700;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  -o-border-radius: 10px;
+  -o-webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+}
+.box4 {
+  border-radius: 10px;
+  -o-border-radius: 10px;
+  -o-webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: #ff6700;
+  margin-bottom: 10px;
+}
+/*匹配模式*/
+.box5 {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  /*
+	width: 0;
+	height: 0;
+	border-style: solid;
+	*/
+  border-width: 50px;
+  border-color: transparent #cccccc transparent transparent;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-css-像素.html</title>
+	<style type="text/css">
+		p{
+			font-size: 40px;
+		}
+		div{
+			font-size: 30px;
+		}
+		.div1{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<p>啦啦啦</p>
+	<p>
+		<div>物理像素</div>
+		<div class="div1">1.任何设备的物理像素是固定的,例如电脑屏幕的分辨率是1366 X 768,表示在电脑屏幕上有1366 X 768个小格子,一个小格子代表一个物理像素</div>
+
+		<div>CSS像素</div>
+		<div class="div1">1.又称逻辑像素,是为WEB开发者创造出来的一个抽象层</div>
+		<div class="div1">2.只有在页面不缩放的情况下,一个CSS像素才等于一个物理像素</div>
+		<div class="div1">3.如果页面放大,根据放大的比例,多个物理像素合成一个CSS像素</div>
+		<div class="div1">4.如果页面缩小,根据缩小的比例,一个物理像素分成多个CSS像素</div>
+		<div class="div1">5.因为像素的合成,当网页放大或缩小后,CSS定义的像素并没有改变,但是视觉效果上变大或变小了</div>
+	</p>
+</body>
+</html>

@@ -1,0 +1,94 @@
+p{
+	color: red;
+}
+
+//  注释一  ！这样的注释会被删除
+/* 注释二 */
+
+/*语法*/
+@w:100px;
+@h:100px;
+@bgc:#ff6700;
+// @br:10px;
+
+/*混合(Mixin)*/
+.bd{
+	.box1;
+	border-radius: 10px;
+	-o-border-radius: 10px;
+	-o-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+}
+.box1{
+	width:@w;
+	height:@h;
+	background-color: @bgc;
+	margin-bottom: 10px;
+}
+.box2{
+	.box1;
+}
+.box3{
+	.box1;
+	.bd;
+}
+.bd(@br){
+	.box1;
+	border-radius: @br;
+	-o-border-radius: @br;
+	-o-webkit-border-radius: @br;
+	-moz-border-radius: @br;
+	-ms-border-radius: @br;
+}
+.box4{
+	.bd(10px);
+	.box1;
+}
+
+.trangle(@_,@w,@b){
+	width: 0;
+	height: 0;
+	border-style: solid;
+}
+
+/*匹配模式*/
+.trangle(top,@w,@b){
+	/*
+	width: 0;
+	height: 0;
+	border-style: solid;
+	*/
+	border-width: @w;
+	border-color: @b transparent transparent transparent;
+}
+.trangle(bottom,@w,@b,@w,@b){
+	/*
+	width: 0;
+	height: 0;
+	border-style: solid;
+	*/
+	border-width: @w;
+	border-color: transparent transparent @b transparent;
+}
+.trangle(right,@w,@b){
+	/*
+	width: 0;
+	height: 0;
+	border-style: solid;
+	*/
+	border-width: @w;
+	border-color: transparent @b transparent transparent;
+}
+.trangle(left,@w,@b){
+	/*
+	width: 0;
+	height: 0;
+	border-style: solid;
+	*/
+	border-width: @w;
+	border-color: transparent transparent transparent @b;
+}
+.box5{
+	.trangle(right,50px,#ccc);
+}

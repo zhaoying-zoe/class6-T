@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-移动端适配-em.html</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-size: 16px;
+		}
+		img{
+			float: left;
+			width: 20em;
+		}
+		p{
+			font-size: 2em;
+		}
+	</style>
+</head>
+<body>
+	<img src="img/loading1.gif">
+	<p>我是内容 啦啦啦</p>
+	<p>em
+	当前元素字体的大小,1em=当前元素的font-size
+	可以根据不同的屏幕来设置元素的font-size,再利用em来适配,但是元素的font-size可以被继承,同时js和css经常会修改font-size,如果用em来适配的话容易造成混乱</p>
+</body>
+</html>
