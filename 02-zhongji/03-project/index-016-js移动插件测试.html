@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index-016-js移动插件测试.html</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin-top: 20px;
+			position: absolute;
+			left: 0px;
+			top: 100px;
+		}
+		button{
+			width: 80px;
+			height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<button>还原</button>
+	<button>移动</button>
+	<div class="transition"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/move.js"></script>
+<script>
+	$(function(){
+		var $box = $('div');
+		var move = $box.move({
+			js:true,
+		})
+
+		$box.on('move moved',function(ev){
+			console.log(ev.type); 
+		})
+
+		$('button:eq(0)').on('click',function(){
+			move.move('to',0,100);
+		})
+		$('button:eq(1)').on('click',function(){
+			move.move('to',200,100);
+		})
+	})
+</script>
+</html>
