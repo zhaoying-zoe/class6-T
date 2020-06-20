@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>033-弹性布局-作业三(单页布局).html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		header{
+			background-color: red;
+		}
+		nav{
+			background-color: blue;
+		}
+		.main{
+			background-color: green;
+		}
+		aside{
+			background-color: purple;
+		}
+		footer{
+			background-color: yellow;
+		}
+		body{
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
+		}
+		header,footer{
+			height: 10vh;
+		}
+		section{
+			flex-grow: 1;
+			display: flex;
+			width: 100vw;
+
+		}
+		nav,aside{
+			flex: 0 0 10vw;
+		}
+		.main{
+			flex-grow: 1;
+		}
+	</style>
+</head>
+<body>
+	<header>header</header>
+	<section>
+		<nav>nav</nav>
+		<div class="main">main</div>
+		<aside>aside</aside>
+	</section>
+	<footer>footer</footer>
+</body>
+</html>

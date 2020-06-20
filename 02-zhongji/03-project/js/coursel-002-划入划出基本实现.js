@@ -24,6 +24,16 @@
 				this.$courselItems.eq(this.now).css({left:0});
 				// 获取当前图片的宽度
 				this.itemWidth = this.$courselItems.eq(this.now).width();
+				// 2.底部按钮显示状态
+				this.$courselBtns.eq(this.now).addClass('active');
+				// 3.监听事件显示左右点击按钮
+				this.$elem.hover(function(){
+					this.$courselControls.show();
+				}.bind(this),function(){
+					this.$courselControls.hide();
+				}.bind(this))
+				// 5.初始化移动插件
+				this.$courselItems.move(this.options);
 				// 4.(事件代理)监听点击左右按钮实现动画切换
 				this.$elem.on('click','.control',function(){
 					var $this = $(this);
@@ -33,11 +43,32 @@
 						_this._slide(_this._getCorrectIndex(_this.now+1),1);
 					}
 				})
-				
+				// 6.自动轮播
+				if(this.options.autotime){
+					this.autoplay();
+					// 监听事件 移入移出事件
+					this.$elem.hover($.proxy(this.pased,this),$.proxy(this.autoplay,this))
+				}
+				// 7.底部按钮点击事件
+				this.$courselBtns.on('click',function(){
+					// 获取当前按钮下标
+					var index = _this.$courselBtns.index($(this));
+					_this._slide(index);
+				});
 			}else{// 动画切换进行淡入淡出
 				//1.隐藏所有图片显示当前图片
 				this.$elem.addClass('fade');
 				this.$courselItems.eq(this.now).show();
+				//2.底部按钮显示状态
+				this.$courselBtns.eq(this.now).addClass('active');
+				//3.监听事件显示左右点击按钮
+				this.$elem.hover(function(){
+					this.$courselControls.show();
+				}.bind(this),function(){
+					this.$courselControls.hide();
+				}.bind(this))
+				//5.初始化显示隐藏插件
+				this.$courselItems.showHide(this.options);
 				//4.(事件代理)监听点击左右按钮实现动画切换
 				this.$elem.on('click','.control',function(){
 					var $this = $(this);
@@ -47,30 +78,19 @@
 						_this._fade(_this._getCorrectIndex(_this.now+1));
 					}
 				})
+				//6.自动轮播
+				if(this.options.autotime){
+					this.autoplay();
+					// 监听事件 移入移出事件
+					this.$elem.hover($.proxy(this.pased,this),$.proxy(this.autoplay,this))
+				}
+				// 7.底部按钮点击事件
+				this.$courselBtns.on('click',function(){
+					// 获取当前按钮下标
+					var index = _this.$courselBtns.index($(this));
+					_this._fade(index);
+				});
 			}
-			// 淡入淡出和划入划出代码共通
-			// 2.底部按钮显示状态
-			this.$courselBtns.eq(this.now).addClass('active');
-			// 3.监听事件显示左右点击按钮
-			this.$elem.hover(function(){
-				this.$courselControls.show();
-			}.bind(this),function(){
-				this.$courselControls.hide();
-			}.bind(this))
-			// 5.初始化移动插件
-			this.$courselItems.move(this.options);
-			// 6.自动轮播
-			if(this.options.autotime){
-				this.autoplay();
-				// 监听事件 移入移出事件
-				this.$elem.hover($.proxy(this.pased,this),$.proxy(this.autoplay,this))
-			}
-			// 7.底部按钮点击事件
-			this.$courselBtns.on('click',function(){
-				// 获取当前按钮下标
-				var index = _this.$courselBtns.index($(this));
-				_this._slide(index);
-			});
 		},
 		_fade:function(index){
 			// 5.当前显示和将要显示的下标一致时则不切换
@@ -129,7 +149,7 @@
 
 	// 如果不传递参数则使用默认配置信息
 	Coursel.DEFAULT = {
-		slide:false,
+		slide:true,
 		activeIndex:0,
 		js:true,
 		mode:'fade',
