@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-弹性布局-容器属性二.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			display: flex;
+			/*flex-wrap: nowrap;*/
+			/*flex-wrap: wrap;*/
+			flex-wrap: wrap-reverse;
+			width: 1000px;
+			border: 1px solid #000;
+			margin: 100px auto;
+		}
+		.son1{
+			width: 200px;
+			height: 50px;
+			background-color: red;
+		}
+		.son2{
+			width: 400px;
+			height: 50px;
+			background-color: blue;
+		}
+		.son3{
+			width: 500px;
+			height: 50px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">nowrap(默认值):不换行,元素的宽度按照指定宽的的比例从新计算</div>
+		<div class="son2">wrap:换行,第一行在上方</div>
+		<div class="son3">wrap-reverse:换行,第一行在下方</div>
+	</div>
+</body>
+</html>

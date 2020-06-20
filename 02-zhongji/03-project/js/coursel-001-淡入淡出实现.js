@@ -19,42 +19,7 @@
 		init:function(){
 			var _this = this;
 			if(this.options.slide){// 动画切换进行划入划出
-				// 1.隐藏所有图片显示当前图片
-				this.$elem.addClass('slide');
-				this.$courselItems.eq(this.now).css({left:0});
-				// // 获取当前图片的宽度
-				// this.itemWidth = this.$courselItems.eq(this.now).width();
-				// 2.底部按钮显示状态
-				this.$courselBtns.eq(this.now).addClass('active');
-				// 3.监听事件显示左右点击按钮
-				this.$elem.hover(function(){
-					this.$courselControls.show();
-				}.bind(this),function(){
-					this.$courselControls.hide();
-				}.bind(this))
-				// 5.初始化移动插件
-				this.$courselItems.move(this.options);
-				// 4.(事件代理)监听点击左右按钮实现动画切换
-				this.$elem.on('click','.control',function(){
-					var $this = $(this);
-					if($this.hasClass('control-left')){
-						_this._slide(_this._getCorrectIndex(_this.now-1),-1);
-					}else if($this.hasClass('control-right')){
-						_this._slide(_this._getCorrectIndex(_this.now+1),1);
-					}
-				})
-				// 6.自动轮播
-				if(this.options.autotime){
-					this.autoplay();
-					// 监听事件 移入移出事件
-					this.$elem.hover($.proxy(this.pased,this),$.proxy(this.autoplay,this))
-				}
-				// 7.底部按钮点击事件
-				this.$courselBtns.on('click',function(){
-					// 获取当前按钮下标
-					var index = _this.$courselBtns.index($(this));
-					_this._slide(index);
-				});
+
 			}else{// 动画切换进行淡入淡出
 				//1.隐藏所有图片显示当前图片
 				this.$elem.addClass('fade');
@@ -95,6 +60,7 @@
 		_fade:function(index){
 			// 5.当前显示和将要显示的下标一致时则不切换
 			if(this.now == index) return;
+			console.log(233)
 			// 1.隐藏当前图片
 			this.$courselItems.eq(this.now).showHide('hide');
 			// 2.显示下一张图片
@@ -104,29 +70,6 @@
 			this.$courselBtns.eq(index).addClass('active');
 			// 4.更新索引
 			this.now = index;
-		},
-		_slide:function(index,direction){
-			// index表示将要显示的下标
-			// direction表示移动的正方向
-			if(index > this.now){
-				direction = 1;
-			}else{
-				direction = -1;
-			}
-			// 5.当前显示和将要显示的下标一致时则不切换
-			if(this.now == index) return;
-			// 将将要显示的图片放到指定位置
-			this.$courselItems.eq(index).css('left',direction*this.itemWidth);
-			// 1.隐藏当前图片
-			this.$courselItems.eq(this.now).move('x',-1*direction*this.itemWidth);
-			// 2.显示下一张图片
-			this.$courselItems.eq(index).move('x',0);
-			// 3.更新底部按钮状态
-			this.$courselBtns.eq(this.now).removeClass('active');
-			this.$courselBtns.eq(index).addClass('active');
-			// 4.更新索引
-			this.now = index;
-			// console.log(this.now);
 		},
 		_getCorrectIndex:function(num){
 			if(num > (this.itemLength - 1)){
@@ -149,11 +92,11 @@
 
 	// 如果不传递参数则使用默认配置信息
 	Coursel.DEFAULT = {
-		slide:true,
+		slide:false,
 		activeIndex:0,
 		js:true,
 		mode:'fade',
-		autotime:0
+		autotime:2000
 	}
 
 
