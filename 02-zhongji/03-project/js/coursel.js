@@ -22,8 +22,8 @@
 				// 1.隐藏所有图片显示当前图片
 				this.$elem.addClass('slide');
 				this.$courselItems.eq(this.now).css({left:0});
-				// // 获取当前图片的宽度
-				// this.itemWidth = this.$courselItems.eq(this.now).width();
+				// 获取当前图片的宽度
+				this.itemWidth = this.$courselItems.eq(this.now).width();
 				// 2.底部按钮显示状态
 				this.$courselBtns.eq(this.now).addClass('active');
 				// 3.监听事件显示左右点击按钮
@@ -153,7 +153,7 @@
 		activeIndex:0,
 		js:true,
 		mode:'fade',
-		autotime:0
+		autotime:2000
 	}
 
 
