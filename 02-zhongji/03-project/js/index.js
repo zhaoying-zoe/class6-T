@@ -129,7 +129,7 @@
 /*焦点区域轮播图逻辑------开始*/
 	var $coursel = $('.nav-focus .carousel-wrap');
 	$coursel.coursel({
-
+		
 	});
 /*焦点区域轮播图逻辑------结束*/
 })(jQuery);

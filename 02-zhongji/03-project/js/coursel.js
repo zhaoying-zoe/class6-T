@@ -25,29 +25,16 @@
 				// 获取当前图片的宽度
 				this.itemWidth = this.$courselItems.eq(this.now).width();
 				// 4.(事件代理)监听点击左右按钮实现动画切换
-				this.$elem.on('click','.control',function(){
-					var $this = $(this);
-					if($this.hasClass('control-left')){
-						_this._slide(_this._getCorrectIndex(_this.now-1),-1);
-					}else if($this.hasClass('control-right')){
-						_this._slide(_this._getCorrectIndex(_this.now+1),1);
-					}
-				})
+				this._tab = this._slide;
 				
 			}else{// 动画切换进行淡入淡出
 				//1.隐藏所有图片显示当前图片
 				this.$elem.addClass('fade');
 				this.$courselItems.eq(this.now).show();
-				//4.(事件代理)监听点击左右按钮实现动画切换
-				this.$elem.on('click','.control',function(){
-					var $this = $(this);
-					if($this.hasClass('control-left')){
-						_this._fade(_this._getCorrectIndex(_this.now-1));
-					}else if($this.hasClass('control-right')){
-						_this._fade(_this._getCorrectIndex(_this.now+1));
-					}
-				})
+				// 4.
+				this._tab = this._fade;
 			}
+
 			// 淡入淡出和划入划出代码共通
 			// 2.底部按钮显示状态
 			this.$courselBtns.eq(this.now).addClass('active');
@@ -57,6 +44,15 @@
 			}.bind(this),function(){
 				this.$courselControls.hide();
 			}.bind(this))
+			//4.(事件代理)监听点击左右按钮实现动画切换
+			this.$elem.on('click','.control',function(){
+				var $this = $(this);
+				if($this.hasClass('control-left')){
+					_this._tab(_this._getCorrectIndex(_this.now-1));
+				}else if($this.hasClass('control-right')){
+					_this._tab(_this._getCorrectIndex(_this.now+1));
+				}
+			})
 			// 5.初始化移动插件
 			this.$courselItems.move(this.options);
 			// 6.自动轮播
