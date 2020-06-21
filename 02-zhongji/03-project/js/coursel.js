@@ -147,7 +147,7 @@
 		activeIndex:1,
 		js:true,
 		mode:'fade',
-		autotime:0
+		autotime:5000
 	}
 
 	$.fn.extend({

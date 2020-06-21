@@ -194,7 +194,7 @@
 /*焦点区域分类列表逻辑--------------------结束*/
 
 /*焦点区域轮播图逻辑--------------------开始*/
-	var $coursel = $('.focus .carousel-wrap');
+	var $coursel = $('.nav-focus .carousel-wrap');
 	lazyLoad({
 		$elem:$coursel,
 		totalNum:$coursel.find('.carousel-img').length,
