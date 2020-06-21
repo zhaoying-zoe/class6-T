@@ -182,6 +182,41 @@
 	}
 	var $coursel = $('.nav-focus .carousel-wrap');
 	carouselLazyLoad($coursel);
+	/*
+	$coursel.item = [];
+	$coursel.totalLoadedNum = 0;
+	$coursel.totalNum = $coursel.find('.carousel-img').length;
+	$coursel.fnLoad = null;
+	// 1.开始加载
+	$coursel.on('courselShow',$coursel.fnLoad = function(ev,index,elem){
+		if(!$coursel.item[index]){
+			$coursel.trigger('coursel-load',[index,elem]);
+		}
+	});
+	// 2.执行加载
+	$coursel.on('coursel-load',function(ev,index,elem){
+		var $elem = $(elem);
+		var $image = $elem.find('.carousel-img');
+		var imageUrl = $image.data('src');
+		loadImg(imageUrl,function(imageUrl){
+			$image.attr('src',imageUrl);
+		},function(){
+			$image.attr('src','image/focus-carousel/placeholder.png');
+		})
+
+		// 图片加载完毕
+		$coursel.item[index] = 'loaded';
+		$coursel.totalLoadedNum++;
+		// 判断是否所有图片加载完毕,如果加载完毕,移除监听事件
+		if($coursel.totalLoadedNum == $coursel.totalNum){
+			$coursel.trigger('coursel-loaded');
+		}
+	})
+	// 3.加载完毕
+	$coursel.on('coursel-loaded',function(){
+		$coursel.off('courselShow',$coursel.fnLoad);
+	});
+	*/
 	$coursel.coursel({});
 /*焦点区域轮播图逻辑------结束*/
 

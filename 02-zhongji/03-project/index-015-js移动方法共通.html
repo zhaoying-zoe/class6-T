@@ -39,8 +39,8 @@
 		//每次移动前判断是是否到达目标值
 		if(this.currentX == x && this.currentY == y) return;
 		typeof callback == 'function' && callback();
-		// // 移动前监听事件
-		// this.$elem.trigger('move');
+		// 移动前监听事件
+		this.$elem.trigger('move');
 		// this.$elem.css({
 		// 	left: x,
 		// 	top: y

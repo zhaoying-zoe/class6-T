@@ -141,53 +141,83 @@
 /*焦点区域分类列表逻辑------结束*/
 
 /*焦点区域轮播图逻辑------开始*/
-	function carouselLazyLoad($elem){
-		$elem.item = [];
-		$elem.totalLoadedNum = 0;
-		$elem.totalNum = $coursel.find('.carousel-img').length;
-		$elem.fnLoad = null;
-		// 1.开始加载
-		$elem.on('courselShow',$elem.fnLoad = function(ev,index,elem){
-			if(!$elem.item[index]){
-				$elem.trigger('coursel-load',[index,elem]);
-			}
-		});
-		// 2.执行加载
-		$elem.on('coursel-load',function(ev,index,elem){
-			var $this = $(elem);
-			var $images = $this.find('.carousel-img');
-			$images.each(function(){
-				var $image = $(this);
-				var imageUrl = $image.data('src');
-				loadImg(imageUrl,function(imageUrl){
-					$image.attr('src',imageUrl);
-				},function(){
-					$image.attr('src','image/focus-carousel/placeholder.png');
-				})
-
-				// 图片加载完毕
-				$elem.item[index] = 'loaded';
-				$elem.totalLoadedNum++;
-				// 判断是否所有图片加载完毕,如果加载完毕,移除监听事件
-				if($elem.totalLoadedNum == $elem.totalNum){
-					$elem.trigger('coursel-loaded');
-				}
-			})
-			
-		})
-		// 3.加载完毕
-		$elem.on('coursel-loaded',function(){
-			$coursel.off('courselShow',$elem.fnLoad);
-		});
-	}
 	var $coursel = $('.nav-focus .carousel-wrap');
-	carouselLazyLoad($coursel);
+	$coursel.item = [];
+	$coursel.totalLoadedNum = 0;
+	$coursel.totalNum = $coursel.find('.carousel-img').length;
+	$coursel.fnLoad = null;
+	// 1.开始加载
+	$coursel.on('courselShow',$coursel.fnLoad = function(ev,index,elem){
+		if(!$coursel.item[index]){
+			$coursel.trigger('coursel-load',[index,elem]);
+		}
+	});
+	// 2.执行加载
+	$coursel.on('coursel-load',function(ev,index,elem){
+		var $elem = $(elem);
+		var $image = $elem.find('.carousel-img');
+		var imageUrl = $image.data('src');
+		loadImg(imageUrl,function(imageUrl){
+			$image.attr('src',imageUrl);
+		},function(){
+			$image.attr('src','image/focus-carousel/placeholder.png');
+		})
+
+		// 图片加载完毕
+		$coursel.item[index] = 'loaded';
+		$coursel.totalLoadedNum++;
+		// 判断是否所有图片加载完毕,如果加载完毕,移除监听事件
+		if($coursel.totalLoadedNum == $coursel.totalNum){
+			$coursel.trigger('coursel-loaded');
+		}
+	})
+	// 3.加载完毕
+	$coursel.on('coursel-loaded',function(){
+		$coursel.off('courselShow',$coursel.fnLoad);
+	});
 	$coursel.coursel({});
 /*焦点区域轮播图逻辑------结束*/
 
 /*今日热销逻辑------开始*/
 	var $todaysCoursel = $('.todays .carousel-wrap');
-	carouselLazyLoad($todaysCoursel);
+	$todaysCoursel.item = [];
+	$todaysCoursel.totalLoadedNum = 0;
+	$todaysCoursel.totalNum = $coursel.find('.carousel-img').length;
+	$todaysCoursel.fnLoad = null;
+	// 1.开始加载
+	$todaysCoursel.on('courselShow',$todaysCoursel.fnLoad = function(ev,index,elem){
+		if(!$todaysCoursel.item[index]){
+			$todaysCoursel.trigger('coursel-load',[index,elem]);
+		}
+	});
+	// 2.执行加载
+	$todaysCoursel.on('coursel-load',function(ev,index,elem){
+		var $elem = $(elem);
+		var $images = $elem.find('.carousel-img');
+		console.log($images);
+		$images.each(function(){
+			var $image = $(this);
+			var imageUrl = $image.data('src');
+			loadImg(imageUrl,function(imageUrl){
+				$image.attr('src',imageUrl);
+			},function(){
+				$image.attr('src','image/focus-carousel/placeholder.png');
+			})
+
+			// 图片加载完毕
+			$todaysCoursel.item[index] = 'loaded';
+			$todaysCoursel.totalLoadedNum++;
+			// 判断是否所有图片加载完毕,如果加载完毕,移除监听事件
+			if($todaysCoursel.totalLoadedNum == $todaysCoursel.totalNum){
+				$todaysCoursel.trigger('coursel-loaded');
+			}
+		})
+		
+	})
+	// 3.加载完毕
+	$todaysCoursel.on('coursel-loaded',function(){
+		$coursel.off('courselShow',$todaysCoursel.fnLoad);
+	});
 	$todaysCoursel.coursel({});
 /*今日热销逻辑------结束*/
 })(jQuery);

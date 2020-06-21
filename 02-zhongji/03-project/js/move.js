@@ -11,6 +11,8 @@
 		y = (typeof y == 'number')? y: this.currentY;
 		//每次移动前判断是是否到达目标值
 		if(this.currentX == x && this.currentY == y) return;
+		//移动前执行事件
+		this.$elem.trigger('move');
 		typeof callback == 'function' && callback();
 		//更新坐标值
 		this.currentX = x;
@@ -53,7 +55,7 @@
 					left:x,
 					top:y
 				},function(){
-					// 移动后监听事件
+					// 移动后执行事件
 					this.$elem.trigger('moved');
 				}.bind(this))
 			}.bind(this))

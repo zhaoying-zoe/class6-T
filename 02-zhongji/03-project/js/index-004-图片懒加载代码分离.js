@@ -141,53 +141,67 @@
 /*焦点区域分类列表逻辑------结束*/
 
 /*焦点区域轮播图逻辑------开始*/
-	function carouselLazyLoad($elem){
-		$elem.item = [];
-		$elem.totalLoadedNum = 0;
-		$elem.totalNum = $coursel.find('.carousel-img').length;
-		$elem.fnLoad = null;
-		// 1.开始加载
-		$elem.on('courselShow',$elem.fnLoad = function(ev,index,elem){
-			if(!$elem.item[index]){
-				$elem.trigger('coursel-load',[index,elem]);
-			}
-		});
-		// 2.执行加载
-		$elem.on('coursel-load',function(ev,index,elem){
-			var $this = $(elem);
-			var $images = $this.find('.carousel-img');
-			$images.each(function(){
-				var $image = $(this);
-				var imageUrl = $image.data('src');
-				loadImg(imageUrl,function(imageUrl){
-					$image.attr('src',imageUrl);
-				},function(){
-					$image.attr('src','image/focus-carousel/placeholder.png');
-				})
-
-				// 图片加载完毕
-				$elem.item[index] = 'loaded';
-				$elem.totalLoadedNum++;
-				// 判断是否所有图片加载完毕,如果加载完毕,移除监听事件
-				if($elem.totalLoadedNum == $elem.totalNum){
-					$elem.trigger('coursel-loaded');
-				}
-			})
-			
-		})
-		// 3.加载完毕
-		$elem.on('coursel-loaded',function(){
-			$coursel.off('courselShow',$elem.fnLoad);
-		});
-	}
 	var $coursel = $('.nav-focus .carousel-wrap');
-	carouselLazyLoad($coursel);
-	$coursel.coursel({});
-/*焦点区域轮播图逻辑------结束*/
+	var item = [];
+	var totalLoadedNum = 0;
+	var totalNum = $coursel.find('.carousel-img').length;
+	var fnLoad = null;
+	// 1.开始加载
+	$coursel.on('courselShow',fnLoad = function(ev,index,elem){
+		console.log(233)
+		if(!item[index]){
+			$coursel.trigger('coursel-load',[index,elem]);
+		}
+	});
+	// 2.执行加载
+	$coursel.on('coursel-load',function(ev,index,elem){
+		var $elem = $(elem);
+		var $image = $elem.find('.carousel-img');
+		var imageUrl = $image.data('src');
+		loadImg(imageUrl,function(imageUrl){
+			$image.attr('src',imageUrl);
+		},function(){
+			$image.attr('src','image/focus-carousel/placeholder.png');
+		})
 
-/*今日热销逻辑------开始*/
-	var $todaysCoursel = $('.todays .carousel-wrap');
-	carouselLazyLoad($todaysCoursel);
-	$todaysCoursel.coursel({});
-/*今日热销逻辑------结束*/
+		// 图片加载完毕
+		item[index] = 'loaded';
+		totalLoadedNum++;
+		// 判断是否所有图片加载完毕,如果加载完毕,移除监听事件
+		if(totalLoadedNum == totalNum){
+			$coursel.trigger('coursel-loaded');
+		}
+	})
+	// 3.加载完毕
+	$coursel.on('coursel-loaded',function(){
+		$coursel.off('courselShow',fnLoad);
+	});
+
+	/*
+	$coursel.on('courselShow',fnLoad = function(ev,index,elem){
+		if(!item[index]){
+			var $elem = $(elem);
+			var $image = $elem.find('.carousel-img');
+			var imageUrl = $image.data('src');
+			loadImg(imageUrl,function(imageUrl){
+				$image.attr('src',imageUrl);
+			},function(){
+				$image.attr('src','image/focus-carousel/placeholder.png');
+			})
+
+			// 图片加载完毕
+			item[index] = 'loaded';
+			totalLoadedNum++;
+			// 判断是否所有图片加载完毕,如果加载完毕,移除监听事件
+			if(totalLoadedNum == totalNum){
+				$coursel.off('courselShow',fnLoad);
+			}
+		}
+
+	})
+	*/
+	$coursel.coursel({
+		
+	});
+/*焦点区域轮播图逻辑------结束*/
 })(jQuery);
