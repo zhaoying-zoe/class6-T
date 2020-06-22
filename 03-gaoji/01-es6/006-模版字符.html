@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-模版字符.html</title>
+</head>
+<body>
+	<button id="btn">添加</button>
+	<ul id="list">
+		
+	</ul>
+</body>
+<script type="text/javascript">
+	let a = ['1','2','3','4','5'];
+	let oBtn = document.getElementById('btn');
+	let oList = document.getElementById('list');
+
+	oBtn.onclick = function(){
+		var html = '';
+		for(let i = 0;i<a.length;i++){
+			// html += '<li>'+ a[i] +'</li>';
+			html += `<li> ${a[i]} </li>`;// 模版字符 语法:`字符 ${javascript表达式}`
+		}
+		oList.innerHTML = html;
+	}
+</script>
+</html>

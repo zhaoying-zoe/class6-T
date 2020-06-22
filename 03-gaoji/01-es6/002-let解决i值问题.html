@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-let解决i值问题.html</title>
+</head>
+<body>
+	<button>按钮01</button>
+	<button>按钮02</button>
+	<button>按钮03</button>
+	<button>按钮04</button>
+	<button>按钮05</button>
+</body>
+<script type="text/javascript">
+	var aBtn = document.getElementsByTagName('button');
+	/*
+	for(var i = 0;i<aBtn.length;i++){
+		aBtn[i].onclick = function(){
+			console.log(i);// i值增长到5 无法进入循环 所以打印的是5 可采用存值的方法获取到想要的i值
+		}
+	}
+	*/
+
+	/*
+	// 将i作为参数传入小闭包,解决拿不到i值得问题
+	for(var i = 0;i<aBtn.length;i++){
+		;(function(i){
+			aBtn[i].onclick = function(){
+				console.log(i);
+			}
+		})(i);
+	}
+	*/
+
+	// {}: 块级作用域 
+	// for循环后i进入块级作用域 此时能得到想要的i值
+	for(let i = 0;i<aBtn.length;i++){
+		aBtn[i].onclick = function(){
+			console.log(i);
+		}
+	}
+</script>
+</html>

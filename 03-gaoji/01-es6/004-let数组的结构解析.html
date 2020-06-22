@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-let数组的结构解析.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	let a = 0,b = 1,c = 2;
+	console.log(a,b,c);
+
+	let [d,e,f] = [4,5,6];
+	console.log(d,e,f);
+
+	let [g,[h,i],j] = [7,[8,9],10];
+	console.log(g,h,i,j)
+
+	let [k,l=0,m=1,n] = [11,12,undefined,undefined];
+	console.log(k,l,m,n);// 等号左边数组中设置默认值时,右边位置的值是undefined(或者没有)时默认值会生效
+
+	let [o,p,q] = 0;
+	console.log(o,p,q);// 如果等号的右边不是数组,会报错
+</script>
+</html>

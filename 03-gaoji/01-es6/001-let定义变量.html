@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-let定义变量.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 1.let定义过的变量不能再定义,var定义过的变量可以重新定义
+	// 2.let定义的变量不会声明提升,var定义的变量会发生声明提升 
+	// 3.let定义的变量在let命令所在的代码块内有效,var定义的变量在函数范围内有效
+	/*
+	var a = 0;// 在全局定义一个变量(定义到window上)
+	var a = 1;// 会把上一个a给重置
+	console.log(window);
+	console.log(a);
+	console.log(window.a);
+	*/
+	/*
+	let a = 0;
+	// let a = 2;// 会报错 因为一个变量let只能定义一次
+	console.log(a);
+	console.log(window);// let定义的变量不会存在到window里
+	*/
+
+	/*
+	console.log(a);// undefined var定义的变量会发生声明提升
+	console.log(b);// 报错 let定义的变量不会声明提升
+	var a = 1;
+	let b = 2;
+	*/
+
+	// let定义的变量在let命令所在的代码块内有效,var定义的变量在函数范围内有效
+	
+	function fn(){
+		var a = 0;
+		let b = 1;
+		console.log(a);// 0
+		console.log(b);// 1
+		function show(){
+			console.log(a);// 0
+			console.log(b);// 1
+		}
+		show();
+	}
+	fn();
+</script>
+</html>
