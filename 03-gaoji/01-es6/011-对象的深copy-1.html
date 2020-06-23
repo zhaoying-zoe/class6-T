@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-对象的深copy-1.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	let obj1 = {
+		name:'tom',
+		age:2333,
+		friend:{name:'jack',age:56},
+		pets:['dog','cat']
+	}
+	// 判断传入的参数 的方法
+	function isArrayObj(data){
+		// 1.判断传入的参数的类型
+		if(data instanceof Array){
+			return 'array';
+		}else if(data instanceof Object){
+			return 'object';
+		}
+	}
+
+	// 深copy传入的参数 的方法
+	function deepCopy(data){
+		let type = isArrayObj(data);// 返回结果为字符串 
+		let result ;
+		// 1.判断传入参数的类型
+		if(type == 'array'){// 传入的参数如果为数组
+			result = [];
+		}else if(type == 'object'){// 传入的参数如果为对象
+			result = {};
+		}else{// 传入的参数如果 非对象||数组
+			return data;
+		}
+		
+		// 2.循环遍历传入的参数,并把参数进行 深copy
+		for(let key in data){
+			// 判断传入参数的类型
+			if(isArrayObj(data[key]) == 'array' || isArrayObj(data[key]) == 'object'){
+				result[key] = deepCopy(data[key]);
+			}else{
+				result[key] = data[key];
+			}
+		}
+		// console.log(data);
+		return result;
+	}
+	let obj2 = deepCopy(obj1);
+	console.log(obj2);
+</script>
+</html>

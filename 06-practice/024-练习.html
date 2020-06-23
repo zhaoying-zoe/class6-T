@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-练习.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var fun1 = function(){
+		this.name = 'peter';
+		return {// 优先return 
+			name:'jack'
+		}
+	}
+	var p1 = new fun1();
+	console.log(p1.name);
+
+	var a = 10;
+	function test(){
+		a = 100;
+		console.log(a);// 100 : a的声明变量提升 并且前面赋值了100
+		console.log(this);// window
+		console.log(this.a);// 10: window里的a是10,
+		var a;
+		console.log(a);//100: a的声明变量提升 并且前面赋值了100
+	}
+
+	test();
+
+	var res = 0;
+	for(var i = 0;i<101;i++){
+		if(i%2 == 0){
+			res += i;
+		};
+	}
+	console.log(res);// 2550
+</script>
+</html>

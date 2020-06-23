@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-对象的浅copy.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	/*
+	let obj1 = {
+		name:'tom',
+		age:2333,
+		friend:{name:'jack',age:56},
+		pets:['dog','cat']
+	}
+	let obj2 = obj1;
+	console.log(obj1);
+	console.log(obj2);
+	console.log(obj1 === obj2);// true
+	*/
+
+	let obj1 = {
+		name:'tom',
+		age:2333,
+		friend:{name:'jack',age:56},
+		pets:['dog','cat']
+	}
+	let obj2 = {...obj1};
+	obj1.name = 'jerry';
+	obj1.friend.age = 1000;
+	obj1.pets.push('penguen');
+	console.log(obj1);
+	console.log(obj2);
+	console.log(obj1 === obj2);// false
+</script>
+</html>

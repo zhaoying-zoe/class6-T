@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-Set的用法一.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	let arr = [1,2,3,4,5];
+	// var s = new Set();// 创建Set的实例方法1
+	var s = new Set(arr);// 创建Set的实例方法2
+	console.log(s);
+	console.log(s.size);// 返回实例的总个数 5
+
+	// 1.add(value):添加某个值,返回 Set 结构本身
+	console.log(s.add(6));
+
+	// 2.delete(value):删除某个值,返回一个布尔值,表示删除是否成功
+	console.log(s.delete(6));// true
+
+	// 3.has(value):返回一个布尔值,表示该值是否为Set的成员
+	console.log(s.has(6));// false 后添加上去的6不是Set的成员
+	console.log(s.has(1));// true
+
+	// 4.clear():清除所有值,没有返回值
+	console.log(s.clear());// undefined 没有返回值
+	
+</script>
+</html>

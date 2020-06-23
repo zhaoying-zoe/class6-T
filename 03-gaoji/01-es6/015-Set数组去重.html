@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-Set数组去重.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var arr1 = [1,2,3,4,3,4,5,6,6];
+	var arr2 = new Set(arr1);
+	console.log([...arr2])
+
+	function uniqueArr1(arr){// 1.查找去重
+		let result = [];
+		for(var i = 0;i<arr.length;i++){
+			if(result.indexOf(arr[i]) == -1){// 在原数组查找 如果没有则返回-1;
+				result.push(arr[i]);
+			}
+		}
+		return result;
+	}
+	console.log(uniqueArr1(arr1));
+
+	function uniqueArr2(arr){// 2.双循环去重
+		let result = [];
+		for(var i = 0;i<arr.length;i++){
+			var correct = false;
+			for(var j = 0;j<result.length;j++){
+				if(arr[i] == result[j]){
+					correct = true;
+					break;
+				}
+			}
+			if(!correct){
+				result.push(arr[i]);
+			}
+		}
+		return result;
+	}
+	console.log(uniqueArr2(arr1));
+
+	let arr3 = {};
+	for(key in arr1){
+		arr3[key].push(arr1[key]);
+	}
+
+	console.log(arr3);
+</script>
+</html>

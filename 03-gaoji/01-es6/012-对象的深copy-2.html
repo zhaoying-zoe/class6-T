@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-对象的深copy-2.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	// 方法一
+	/*
+	let obj1 = {
+		name:'tom',
+		age:2333,
+		friend:{name:'jack',age:56},
+		pets:['dog','cat']
+	}
+
+	let obj2 = JSON.parse(JSON.stringify(obj1));// 转字符串再转对象
+	console.log(obj2);
+	*/
+
+	// 方法二
+	let obj1 = {
+		name:'tom',
+		age:2333,
+		friend:{name:'jack',age:56},
+		pets:['dog','cat']
+	}
+	
+	console.log($.extend(true,{},obj1));// true代表深copy
+</script>
+</html>

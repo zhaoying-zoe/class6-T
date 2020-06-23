@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-数组的扩展运算.html</title>
+</head>
+<body>
+	<ul id="list">
+		<li>01</li>
+		<li>02</li>
+		<li>03</li>
+		<li>04</li>
+		<li>05</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	/*
+	var arr = [1,2,3,4,5];
+	for(let i = 0;i<arr.length;i++){
+		console.log(arr[i]);
+	}
+	console.log(...arr); // 数组的扩展运算就是将一个数组转为用逗号分隔的参数序列
+	*/
+
+	// 1.函数调用时使用把数组转换为参数列表
+	/*
+	function fn(n1,n2){
+		return n1+n2;
+	}
+	console.log(fn(12,12));
+	var arr = [1,2];
+	console.log(fn(...arr));
+	*/
+
+	// 2.函数定义时使用把参数列表转换为数组
+	// function add(...arr){
+	// 	let result = 0;
+	// 	for(let i = 0;i<arr.length;i++){
+	// 		result += arr[i];
+	// 	}
+	// 	return result;
+	// }
+	// console.log(add(12,34))
+	
+	// 3.求数组的最大数
+	var arr = [1,2,3,4,5];
+	// var arr1 = Math.max.apply(null,arr);// 5
+	var arr1 = Math.max(...arr);// 5
+	console.log(arr1);
+
+	// 4.可以用数组的扩展运算来把伪数组转换伪真数组 let arr = [...伪数组]
+	var aList = document.getElementsByTagName('li');
+	for(var i = 0;i<aList.length;i++){
+		console.log(aList[i]);
+	}
+	console.log([...aList]);// 数组 __proto__指向array
+</script>
+</html>

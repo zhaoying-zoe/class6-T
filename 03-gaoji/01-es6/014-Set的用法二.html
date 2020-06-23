@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-Set的用法二.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// keys():返回键名的遍历器
+	// values():返回键值的遍历器
+	// entries():返回键值对的遍历器
+	// forEach(function(value,key){}):使用回调函数遍历
+	
+
+	let a = [1,2,3];
+	let s = new Set(a);
+	/*
+	for(key in a){
+		console.log(key);// 下标
+	}
+	*/
+	/*
+	for(key of s.keys()){
+		console.log(key);
+	}
+	*/
+
+	for(key of s.values()){
+		console.log(key);
+	}
+
+	for(key of s.entries()){
+		console.log(key);
+	}
+
+	s.forEach(function(value,index){
+		console.log(value,index);
+	})
+	console.log(s);
+
+	var arr1 = [1,2,3,4,3,4,5];
+	var arr2 = new Set(arr1);
+	console.log([...arr2])
+</script>
+</html>
