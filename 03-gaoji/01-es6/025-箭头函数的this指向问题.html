@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-箭头函数的this指向问题.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 1.普通函数this: 谁调用this就指向谁
+	var a = 90;
+	function Fn1(){
+		this.a = 50;
+		setTimeout(function(){
+			console.log(this)// this 指向 window
+			console.log(this.a);// 90
+		},200)
+	}
+	let fn1 = new Fn1();
+
+
+	// 2.箭头函数this: 定义在哪里 this就指向哪里
+	setTimeout(()=>{
+		console.log(this);// window
+		console.log(this.a);// 90
+	})
+	function Fn2(){
+		this.a = 50;
+		setTimeout(()=>{
+			console.log(this);// Fn2的实例
+			console.log(this.a);// 50
+		})
+	}
+	let fn2 = new Fn2;
+</script>
+</html>

@@ -41,11 +41,17 @@
 	}
 	console.log(uniqueArr2(arr1));
 
-	let arr3 = {};
-	for(key in arr1){
-		arr3[key].push(arr1[key]);
+	function uniqueArr3(arr){// 3.对象去重
+		let result = [];
+		let obj = {};
+		for(let i = 0;i<arr.length;i++){
+			obj[arr[i]] = arr[i];
+		}
+		for(key in obj){
+			result.push(obj[key])
+		}
+		return result;
 	}
-
-	console.log(arr3);
+	console.log(uniqueArr3(arr1));
 </script>
 </html>

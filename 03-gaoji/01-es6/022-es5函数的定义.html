@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-es5函数的定义.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 1.函数声明
+	fn1();// 声明提升 在函数前面可以调用函数
+	function fn1(){
+		console.log('aa')
+	}
+	fn1();
+	// 2.函数表达式
+	fn2();// 声明未提升 在函数前无法调用
+	var fn2 = function(){
+		console.log('bb')
+	}
+	fn2();
+</script>
+</html>

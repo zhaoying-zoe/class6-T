@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-箭头函数.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	/*
+	let show = function(){
+		console.log('a')
+	}
+
+	show();
+	*/
+
+	// 1.箭头函数的基本用法
+	let show = (x,y)=>{
+		console.log(x,y);
+	}
+	show(1,2);
+
+	/*
+	let fn = function(x,y){
+		return console.log(x + y);
+	}
+	fn(1,2);
+	*/
+
+	// 2.如果函数体只有返回值,函数体的花括号和return语句可以省略,简写
+	let show1 = (x,y)=> x + y;
+	console.log(show1(10,20));// 30
+
+	/*
+	let fn = function(x){
+		console.log(x);
+		return x + 10;
+	}
+	console.log(fn(10));
+	*/
+
+	// 3.如果只有一个参数,圆括号可以省略,简写:
+	let show3 = x => {
+		console.log(x);// 10
+		return x + 10;
+	}
+	console.log(show3(10));// 20
+</script>
+</html>

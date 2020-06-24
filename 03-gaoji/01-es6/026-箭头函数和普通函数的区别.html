@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>026-箭头函数和普通函数的区别.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function Fn1(a){
+		console.log(a);
+	}
+	let fn1 = new Fn1(1);
+	
+	// 1.箭头函数没有原型对象,所以不能用箭头函数来定义构造函数
+	let Fn2 = ()=>{
+		console.log('a');
+	}
+	// let fn2 = new Fn2;// 报错
+	
+	// 2.箭头函数中没有arguments
+	function fn3(a,b,c){
+		console.log(arguments);
+	}
+	fn3(1,2,3);
+
+	let fn4 = (a,b,c)=>{
+		console.log(arguments);// 报错
+	}
+	// fn4(1,2,3);
+
+	// 3.如果定义有名称的箭头函数,需要把箭头函数赋值给变量,所以箭头函数不存在声明的提升
+
+	let fn5 = ()=>{
+		console.log(this);
+	}
+	fn5();
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-Symbol.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// let s = new Symbol();// 错误的
+	let s = Symbol();
+	console.log(s);
+
+	//1. Symbol函数可以接受一个字符串作为参数,表示对Symbol实例的描述
+	let s1 = Symbol('jack');
+	let s2 = Symbol('bob');
+	console.log(s1);
+	console.log(s2);
+	//2. Symbol是一种新的数据类型,表示独一无二的值
+	console.log(s1 === s2);// false
+
+	//3. Symbol的主要作用是用来表示对象的属性名
+	let obj = {
+		'name':'jj'
+	}
+	// 4. Symbol值作为对象属性名时,不能用点运算符,在对象的内部也不可以
+	// obj.s1 = 'xf0001';
+	// obj.s2 = 'xf0002';
+	
+	obj[s1] = 'xf0001';
+	obj[s2] = 'xf0002';
+	console.log(obj);
+
+	// 5. Symbol值作为对象属性时是不可枚举的,可以利用Reflect.ownKeys(obj)获取对象上的所有key来遍历
+	/*for(let i = 0 ;i<obj.length;i++){// 错的
+		console.log(obj[i]);
+	}*/
+	let keys = Reflect.ownKeys(obj);
+	console.log(keys);// obj的值得数组
+	for(let key in keys){
+		// console.log(keys[key]);
+		console.log(obj[keys[key]]);
+	}
+</script>
+</html>

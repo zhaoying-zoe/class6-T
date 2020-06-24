@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-Map遍历方法.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	let obj1 = {id:'xf00001'};
+	let obj2 = {id:'xf00002'};
+	let m = new Map();
+	m.set('name','tom');
+	m.set(obj1,'hello');
+	m.set(obj2,'world');
+	console.log(m);
+
+
+	// keys():返回键名的遍历器
+	// values():返回键值的遍历器
+	// entries():返回键值对的遍历器
+	// forEach(function(value,key){}):使用回调函数遍历
+	
+	for(let key of m.set()){
+		console.log(key);
+	}
+</script>
+</html>

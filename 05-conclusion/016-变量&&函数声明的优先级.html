@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-变量&&函数声明的优先级.html</title>
+</head>
+<body>
+	<div>
+		同一标识符下,如果函数名(a)会覆盖变量名(a),如果变量赋值了,则变量名(a)会覆盖函数名(a);
+	</div>
+</body>
+<script type="text/javascript">
+	var a;
+	function a(){
+		console.log('a');
+	}
+	console.log(a);
+	console.log(a());
+</script>
+</html>

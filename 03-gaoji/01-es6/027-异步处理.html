@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-异步处理.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	// 异步处理中: 请求数据是看网络的,网络好的话加载的就快,否则就慢
+	// 1.ajax
+	$.getJSON('http://https://api.github.com/users/zhaoying-zoe',function(data){
+		console.log(data);
+	})
+	console.log('ajax load');
+
+	// 2.Dom事件
+	let img = new Image();
+	img.onload = function(){
+		console.log('img success');
+	}
+	img.onerror = function(){
+		console.log('img error');
+	}
+	img.src = '';
+	console.log('img load');
+
+	// 3.定时器
+	setTimeout(function(){
+		console.log('setTimeout');
+	})
+	console.log('Timer');
+</script>
+</html>
