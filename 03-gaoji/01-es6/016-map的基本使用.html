@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-map的基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	let obj = {'name':'tom'};
+	obj.age = 18;
+	let m1 = new Map();
+	obj[m1] = 'hello';// 把生成的Map实例添加为obj的键 错误做法!
+	// console.log(obj);
+	m1.set('name','tom');// "name" => "tom"
+	console.log(m1);
+</script>
+</html>

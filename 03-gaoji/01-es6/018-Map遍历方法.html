@@ -17,13 +17,24 @@
 	console.log(m);
 
 
-	// keys():返回键名的遍历器
-	// values():返回键值的遍历器
-	// entries():返回键值对的遍历器
-	// forEach(function(value,key){}):使用回调函数遍历
-	
-	for(let key of m.set()){
-		console.log(key);
+	// 1.keys():返回键名的遍历器
+	for(let key of m.keys()){
+		console.log('键',key);
+	}	
+	// 2.values():返回键值的遍历器
+	for(let key of m.values()){
+		console.log('值',key);
+	}	
+	// 3.entries():返回键值对的遍历器
+	for(let key of m.entries()){
+		console.log('键值对',key);
 	}
+	// 4.forEach(function(value,key){}):使用回调函数遍历
+	m.forEach(function(value,key){
+		console.log('forEach循环:值',value)
+		console.log('forEach循环:键',key)
+	})
+
+	console.log(m.size);// 3对 键值对
 </script>
 </html>
