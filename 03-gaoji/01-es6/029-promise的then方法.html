@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029-promise的then方法.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	const promise = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			resolve('get promise ok')
+		},200)
+	})
+
+	// promise调动then方法后会返回一个新的promise实例
+	// 新的promise调用then方法中成功回调函数中的data数据是上一个promise调用then方法成功的回调函数
+	
+	/*let p1 = promise.then((data)=>{
+		// console.log(data);
+		return 'p1';
+	})
+	console.log(p1);
+
+	p1.then((data)=>{
+		console.log(data)
+	})
+	*/
+
+	// 如果promise在调用then函数时生成一个新的promise实例,那么这个实例的resolve方法的参数会作为新生成的promise的调用then方法的成功的回调函数中的值
+	let p2;
+	let p1 = promise.then(()=>{
+		p2 = new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				resolve(233);
+			},200)
+		})
+		return p2;
+	})
+	
+	p1
+	.then((data)=>{
+		console.log(data);
+		console.log('p1:::',p1);
+		console.log('p2:::',p2);
+		console.log(p1 === p2);// false
+	})
+
+</script>
+</html>

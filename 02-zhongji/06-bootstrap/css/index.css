@@ -1,0 +1,138 @@
+/*顶部导航开始*/
+	body{
+		background-color: #f1f1f1;
+	}
+	.navbar .navbar-nav{
+		background-color: #f6f6f6;
+		margin-left: -30px;
+
+	}
+	.navbar .navbar-nav li:hover a{
+		color: #F00;
+	}
+	.navbar .navbar-nav .nav-active{
+		color: #f00;
+	}
+/*顶部导航结束*/
+
+/*轮播图开始*/
+	.carousel-inner .item img,#carousel-example-generic{
+		width: 750px;
+		height: 520px;
+	}
+	#carousel-example-generic{
+		float: left;
+	}
+	.form-horizontal{
+		width: 360px;
+		height: 400px;
+		float: right;
+		border: 1px solid #dedede;
+		border-radius: 8px;
+		background-color: #fff;
+	}
+	.form-horizontal .form-group label{
+		margin-left: 20px;
+		margin-top: 28px;
+		width: 100px;
+		text-align: center;
+		/*border: 1px solid #000;*/
+	}
+	.form-horizontal .form-group input,button{
+		width: 165px;
+		height: 45px;
+		margin-top: 22px;
+	}
+	.form-horizontal .form-group button{
+		margin-left: 120px;
+		background-color: #336e98;
+		color: #fff;
+	}
+	.form-horizontal .form-group .before{
+		display: block;
+		font-size: 14px;
+		margin-top: 13px;
+		margin-left: 190px;
+		color: #4b7196;
+	}
+/*轮播图结束*/
+
+/*内容区域结束*/
+	.container .row .col-md-8{
+		width: 750px;
+		height: 190px;
+		border: 1px solid #dedede;
+		background-color: #fff;
+		margin-top: 25px;
+		box-sizing: border-box;
+		padding: 0px;
+		margin-left: 15px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.container .row .col-md-8 h3{
+		font-size: 16px;
+		font-weight: bolder;
+	}
+	.container .row .col-md-8:before{
+		content:'';
+		width: 2px;
+		height: 20px;
+		background-color: #fd5890;
+		display: inline-block;
+		vertical-align: middle;
+		float: left;
+		position: relative;
+		top: 18px;
+		left: -16px;
+	}
+	.container .row .col-md-8 .describe{
+		margin-top: 20px;
+		font-size: 14px;
+	}
+	.container .row div .icon{
+		display: inline-block;
+		margin-right: 10px;
+	}
+	.container .row div .glyphicon{
+		display: inline-block;
+		margin: 20px 22px 14px 0px;
+	}
+	.container .row div span:nth-child(1){
+		margin-left: 25px;
+	}
+	.container .row .col-md-4 img{
+		width: 360px;
+		height: 200px;
+		margin-left: 15px;
+		margin-top: -100px;
+	}
+	.container .row .col-md-4 .panel{
+		width: 360px;
+		height: 170px;
+		border: 1px solid #dedede;
+		margin-top: -95px;
+		margin-left: 15px;
+		background-color: #f7f7f7;
+	}
+	.container .row .col-md-4 .panel .panel-heading{
+		background-color: #fff;
+	}
+	.container .row .col-md-4 .panel .panel-body img{
+		width: 100px;
+		height: 100px;
+		margin-top: -40px;
+		margin-left: 0px;
+	}
+	.container .row .col-md-4 .panel .panel-body .describe-name{
+		height: 100px;
+	}
+	.container .row .col-md-4 .panel .panel-body .describe-body{
+		width: 200px;
+		margin-top: 0px;
+		display: inline-block;
+		margin-left: 15px;
+
+	}
+/*内容区域结束*/
+
