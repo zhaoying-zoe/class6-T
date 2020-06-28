@@ -21,11 +21,25 @@
 	/*a链接样式 ::: 结束; */
 /*顶部导航结束*/
 
-/*轮播图开始*/
+/*轮播图开始 form w340+h300*/
 	.container .row{
-		border: 1px solid #000;
+		/*border: 1px solid #000;*/
 		/*padding: 0px;*/
 		/*width: 970px;*/
+	}
+	.container .row .col-md-8{
+		box-sizing: border-box;
+		padding: 0px;
+		border: 1px solid #c6c8c7;
+	}
+	.container .row .col-md-8 .item img{
+		width: 710px;
+		height: 400px;
+	}
+	.container .row .col-md-4{
+		width: 340px;
+		height: 300px;
+		border: 1px solid #ff6700;
 	}
 /*轮播图结束*/
 
