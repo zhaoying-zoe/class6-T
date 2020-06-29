@@ -1,7 +1,13 @@
 /*顶部导航开始*/
+	body{
+		background-color: #f1f1f1;
+	}
 	.navbar-default{
 		background-color: #f6f6f6!important;
 
+	}
+	.navbar .container{
+		padding: 0px;
 	}
 	.navbar .container .container-fluid{
 		font-size: 14px;
@@ -22,24 +28,40 @@
 /*顶部导航结束*/
 
 /*轮播图开始 form w340+h300*/
-	.container .row{
+	.row .container{
+		box-sizing: border-box;
 		/*border: 1px solid #000;*/
 		/*padding: 0px;*/
 		/*width: 970px;*/
 	}
-	.container .row .col-md-8{
+	.row .container .col-md-8{
 		box-sizing: border-box;
 		padding: 0px;
-		border: 1px solid #c6c8c7;
+		/*border: 1px solid #c6c8c7;*/
 	}
-	.container .row .col-md-8 .item img{
-		width: 710px;
-		height: 400px;
+	.row .container .col-md-8 .item img{
+		width: 750px;
+		height: 420px;
 	}
-	.container .row .col-md-4{
-		width: 340px;
+	.row .container .col-md-4{
+		margin-left: 20px;
+		padding: 0px;
+		width: 360px;
 		height: 300px;
-		border: 1px solid #ff6700;
+		border: 1px solid #dedede;
+		border-radius: 5px;
+		box-sizing: border-box;
+		background-color: #fff;
+	}
+	.row .container .col-md-4 .col-sm-2{
+		/*width: 70px;*/
+		padding: 0px;
+	}
+	.col-md-4 .form-horizontal .form-control{
+		width: 165px;
+		height: 34px;
+		border: 1px solid #c8c8c8;
+		box-sizing: border-box;
 	}
 /*轮播图结束*/
 

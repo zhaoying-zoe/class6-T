@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-Generator函数.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 1.function关键字与函数名之间有一个星号
+	// 2.遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值
+	function * fn(){
+		console.log('gen start');
+		yield 'data 1';
+		console.log('gen continue');
+		yield 'data 2';
+		console.log('gen end');
+	}
+	// 3.next方法处理流程
+	// 3.1 遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值
+	// 3.2 下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式
+	// 3.3 如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值
+	// 3.4 如果该函数没有return语句，则返回的对象的value属性值为undefined
+	fn1 = fn();
+	// console.log(fn1);
+	console.log(fn1.next());// {value: "data 1", done: false}
+	console.log(fn1.next());// {value: "data 1", done: false}
+	console.log(fn1.next());// {value: undefined, done: true}
+</script>
+</html>

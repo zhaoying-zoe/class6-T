@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-promise的静态方法-race.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 接受一个Promise实例数组作为参数,返回执行最快的那个promise对象
+	function getTimerData(delay){
+		return new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				resolve('get data '+ delay +' ok')
+			},delay)
+		})
+	}
+	const p1 = getTimerData(800);
+	const p2 = getTimerData(400);
+	const p3 = getTimerData(200);
+	const p4 = new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				reject('get data '+ 0 +' ok')
+			},0)
+		})
+	const promise = Promise.race([p1,p2,p3,p4]);
+
+	promise
+	.then((data)=>{
+		console.log(data);
+	})
+	.catch(err=>{
+		console.log(err)
+	})
+</script>
+</html>

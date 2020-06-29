@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-promise处理ajax.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	function getDataPromise(url){
+		return new Promise((resolve,reject)=>{
+			$.ajax({
+				url:url,
+				success:(data)=>{
+					console.log(data);
+					resolve('get data ok!');
+				},
+				error:(jqXHR,statusMsg)=>{
+					reject(statusMsg);
+				}
+			})
+		})
+	}
+
+	const p1 = getDataPromise('https://api.github.com/users/zhaoying-zoe');
+
+	p1
+	.then((data)=>{
+		console.log(data);
+		return getDataPromise('http://https://api.github.com/users/zhaoying-zoe');
+	})
+	.then((data)=>{
+		console.log(data[0].followers_url);
+	})
+	.catch((err)=>{
+		console.log(err);
+	})
+</script>
+</html>

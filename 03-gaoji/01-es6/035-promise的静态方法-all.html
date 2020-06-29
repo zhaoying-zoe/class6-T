@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-promise的静态方法-all.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 接受一个Promise实例数组作为参数,返回一个新Promise实例
+	// 当数组中的所有Promise实例的状态都变成fulfilled时,Promise实例的状态才会变成fulfilled,此时,返回值组成一个数组传递给新Promise实例的回调函数
+	// 当数组中有一个Promise实例被rejected,新Promise实例的状态就变成rejected,此时第一个被reject的实例的返回值会传递给新Promise实例的回调函数
+	
+	const p1 = new Promise('aaa');
+	const p2 = new Promise('aaa');
+	const p3 = new Promise('aaa');
+	const p4 = new Promise('aaa');
+	const p5 = new Promise('aaa');
+
+	Promise.all();
+</script>
+</html>

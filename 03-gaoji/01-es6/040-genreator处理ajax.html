@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>040-genreator处理ajax.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	function getDataPromise(url){
+		return new Promise((resolve,reject)=>{
+			$.ajax({
+				url:url,
+				success:(data)=>{
+					console.log(data);
+					resolve('get data ok!');
+				},
+				error:(jqXHR,statusMsg)=>{
+					reject(statusMsg);
+				}
+			})
+		})
+	}
+
+	function * getAjax(url){
+		const fn1 = yield getDataPromise(url); // fn1为返回值,第一次没有返回值
+		yield getDataPromise(url); // 作为返回值
+	}
+	const g = getAjax('https://api.github.com/users/zhaoying-zoe');
+	
+	// console.log(g.next());// {value: Promise, done: false}
+	
+	g.next().value.then(data=>{
+		console.log(data);
+	})
+</script>
+</html>
