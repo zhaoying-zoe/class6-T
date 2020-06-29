@@ -14,8 +14,7 @@
 			$.ajax({
 				url:url,
 				success:(data)=>{
-					console.log(data);
-					resolve('get data ok!');
+					resolve(data);
 				},
 				error:(jqXHR,statusMsg)=>{
 					reject(statusMsg);
