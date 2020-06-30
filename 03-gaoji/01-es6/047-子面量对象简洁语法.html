@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>047-子面量对象简洁语法.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	let username = 'tom';
+	let age = 18;
+	/*
+	let obj = {
+		username:username, // 属性名字和值一样
+		age:age
+	}
+	*/
+	
+	// 1.
+	/*
+	let obj = {
+		username,// 属性名和值的名字一样 可以简写
+		age,
+		showName:function(){
+			console.log(this.username)
+		},
+		showAge:function(){
+			console.log(this.age)
+		}
+	}
+	 */
+	
+	// 2.
+	/*
+	let obj = {
+		username,
+		age,
+		showName(){
+			console.log(this.username)
+		},
+		showAge(){
+			console.log(this.age)
+		}
+	}
+	*/
+
+	// 3.
+	let obj = {
+		username,
+		age,
+		showName:()=>{
+			console.log(this.username) // 箭头函数的this是在定义时确定的,不是在调用时确定的 undefined
+		},
+		showAge:()=>{
+			console.log(this.age) // 箭头函数的this是在定义时确定的,不是在调用时确定的 undefined
+		}
+	}
+	console.log(obj);
+	obj.showName();
+	obj.showAge();
+</script>
+</html>

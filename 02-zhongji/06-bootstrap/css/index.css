@@ -39,6 +39,9 @@
 		padding: 0px;
 		/*border: 1px solid #c6c8c7;*/
 	}
+	.row .container .col-md-8{
+		padding-left: 0px;
+	}
 	.row .container .col-md-8 .carousel{
 		width: 750px;
 	}
@@ -46,7 +49,6 @@
 		width: 750px;
 		height: 420px;
 	}
-
 /*轮播图结束*/
 
 /*表单区域开始*/
@@ -98,13 +100,38 @@
 	}
 /*表单区域结束*/
 
-/*内容区域结束*/
+/*广告区域结束*/
+	.row .container .col-md-4 .img{
+		width: 360px;
+		height: 200px;
+		margin-left: 20px;
+	}
 	.row .container .col-md-4 .img img{
 		width: 360px;
 		height: 200px;
-		margin-top: 20px;
+		margin-top: 30px;
 	}
-	.row .container .col-md-4 .img .img-1 img{
+	.row .container .col-md-4 .img-1 img{
 		margin-top: 10px;
 	}
-/*内容区域结束*/
+/*广告区域结束*/
+
+/*文本区域开始*/
+	.row .container .col-md-8 .panel{
+		box-sizing: border-box;
+		margin-top: 20px;
+		width: 750px;
+		height: 190px;
+	}
+	.row .container .col-md-8 .panel .glyphicon{
+		margin-left: 24px;
+	}
+	.row .container .col-md-8 .panel .glyphicon:nth-child(1){
+		margin-left: 14px;
+	}
+	.row .container .col-md-8 .panel .panel-footer a{
+		color: #272b14;
+		margin-left: 5px;
+		text-decoration: none;
+	}
+/*文本区域结束*/
