@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>044-async处理ajax.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	function getDataPromise(url){
+		return new Promise((resolve,reject)=>{
+			$.ajax({
+				url:url,
+				success:(data)=>{
+					resolve(data);
+				},
+				error:(jqXHR,statusMsg)=>{
+					reject(statusMsg);
+				}
+			})
+		})
+	}
+	async function fn(uel){
+		const data1 = await getDataPromise('https://api.github.com/users/zhaoying-zoe');
+		console.log(data1);
+		const data2 = await getDataPromise(data1.followers_url);
+		console.log(data2);
+		const data3 = await getDataPromise(data2[0].followers_url);
+		console.log(data3);
+		return data3;
+	}
+	const promise = fn()
+	promise
+	.then((data)=>{
+		console.log(data);
+	})
+</script>
+</html>

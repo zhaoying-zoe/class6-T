@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>042-async函数await基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// await只能放到async函数体中
+	/*
+	async function fn(){
+		const data1 = await 'data1 ok!'; // 0
+		console.log(data1);
+		const data2 = await 'data2 ok!';
+		console.log(data2);
+		return data2;// async 的return值是promise的then方法的data数据
+	}
+	// fn();
+
+	const promise = fn();
+	promise
+	.then((data)=>{
+		console.log(data)
+	})
+	*/
+
+	const promise = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			// resolve('timer ok');
+			reject('timer err');
+		},200)
+	})
+	async function fn(){
+		// await表示后面的处理需要等待,通常await后面是一个 Promise 对象，返回该对象的结果。 👆0
+		// 如果不是 Promise 对象，就直接返回对应的值。 👇1
+
+		// 为了防止出错导致终止程序,把await语句放在try...catch代码块之中。
+		try{
+			const data1 = await promise; // 1
+			console.log(data1);
+			return data1;
+		}
+		catch(err){
+			console.log(err);
+		}
+		
+	}
+
+	const p = fn();
+	
+	p
+	.then((data)=>{
+		console.log(data);
+	})
+	// .catch(err=>{
+	// 	console.log(err);
+	// })
+
+</script>
+</html>

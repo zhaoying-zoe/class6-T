@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>045-基于面向对象高级的继承.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype = {
+		constructor:Person,
+		showName:function(){
+			console.log('I am '+ this.name );
+		},
+		showAge:function(){
+			console.log('I am '+ this.age+ 'years old');
+		}
+	}
+
+	// const p1 = new Person('tom',19);
+	// console.log(p1);
+	// p1.showName();
+	// p1.showAge();
+
+	function Student(name,age,major){
+		this.major = major;
+		Person.call(this,name,age);// 继承属性
+	}
+
+	Student.prototype = Object.create(Person.prototype);// 方法的继承
+	Student.prototype.constructor = Student;
+	Student.prototype.showMajor = function(){
+		console.log('I am major in' + this.major);
+	}
+
+	const p1 = new Student('tom',19,'math');
+	console.log(p1);
+	p1.showName();
+	p1.showAge();
+	p1.showMajor();
+	
+</script>
+</html>

@@ -34,7 +34,7 @@
 		/*padding: 0px;*/
 		/*width: 970px;*/
 	}
-	.row .container .col-md-8{
+	.row .container .carousel{
 		box-sizing: border-box;
 		padding: 0px;
 		/*border: 1px solid #c6c8c7;*/
@@ -50,7 +50,7 @@
 /*轮播图结束*/
 
 /*表单区域开始*/
-	.row .container .col-md-4{
+	.row .container .col-md-4 .form-horizontal{
 		margin-left: 20px;
 		padding: 0px;
 		width: 360px;
@@ -90,14 +90,21 @@
 		background-color: #2f79c0;
 		border: 1px solid #4a697d;
 	}
-		.row .container .col-md-4 .form-group .already{
-			text-align: center;
-			font-size: 14px;
-			color: #2579a9;
-			margin-left: 45px;
-		}
+	.row .container .col-md-4 .form-group .already{
+		text-align: center;
+		font-size: 14px;
+		color: #2579a9;
+		margin-left: 45px;
+	}
 /*表单区域结束*/
 
 /*内容区域结束*/
-	
+	.row .container .col-md-4 .img img{
+		width: 360px;
+		height: 200px;
+		margin-top: 20px;
+	}
+	.row .container .col-md-4 .img .img-1 img{
+		margin-top: 10px;
+	}
 /*内容区域结束*/

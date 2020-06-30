@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-async函数基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	/*
+	// async function表示这个函数里面有异步处理
+	async function fn(){
+		console.log('async 函数');
+		return 'aaa';// async函数的return值 是promise then方法的data数据
+	}
+
+	// console.log(fn());// async函数返回一个Promise对象，可以使用then方法添加回调函数。
+	const promise = fn();
+	promise
+	.then((data)=>{
+		console.log(data);
+	})
+	*/
+
+	async function fn(){
+		return fn2 = new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				resolve('async');
+			})
+		})
+	}
+	const promise = fn();
+	console.log('promise:::',promise);
+	console.log('fn():::',fn());
+	console.log(promise === fn());// false
+</script>
+</html>

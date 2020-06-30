@@ -31,7 +31,7 @@
 	function Student(name,age,major){
 		this.major = major;
 		// 属性继承
-		Person.call(this,name,age);
+		Person.call(this,name,age);// 属性的继承
 	}
 	Student.prototype.showMajor = function(){
 		console.log('I am from' + this.major)
