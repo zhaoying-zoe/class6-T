@@ -105,13 +105,13 @@
 		width: 360px;
 		height: 200px;
 		margin-left: 20px;
+		margin-top: 20px;
 	}
 	.row .container .col-md-4 .img img{
 		width: 360px;
 		height: 200px;
-		margin-top: 30px;
 	}
-	.row .container .col-md-4 .img-1 img{
+	.row .container .col-md-4 .img-1{
 		margin-top: 10px;
 	}
 /*广告区域结束*/
@@ -135,3 +135,22 @@
 		text-decoration: none;
 	}
 /*文本区域结束*/
+
+/*博主介绍区域结束*/
+.col-md-4 .panel{
+	margin-top: 20px;
+	margin-left: 20px;
+	width: 360px;
+	height: 170px;
+	color: #22210c;
+}
+.col-md-4 .panel .panel-body .img-logo{
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+}
+.col-md-4 .panel .panel-body .img-logo img{
+	width: 100%;
+	height: 100%;
+}
+/*博主介绍区域结束*/
