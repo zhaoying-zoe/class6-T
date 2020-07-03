@@ -156,9 +156,10 @@
 .col-md-4 .panel .panel-body .panel-name,.panel-des{
 	display: inline-block;
 }
-.col-md-4 .panel .panel-body .panel-name{
-	/*width: 205px;*/
+.col-md-4 .panel .panel-body .panel-male{
+	width: 205px;
 	/*margin-left: 10px;*/
 }
+
 
 /*博主介绍区域结束*/
