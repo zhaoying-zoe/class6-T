@@ -1,4 +1,4 @@
-/*顶部导航开始*/
+顶部导航开始*/
 	body{
 		background-color: #f1f1f1;
 	}
@@ -153,13 +153,13 @@
 	width: 100%;
 	height: 100%;
 }
-.col-md-4 .panel .panel-body .panel-name,.panel-des{
-	display: inline-block;
-}
+/*.col-md-4 .panel .panel-body .panel-name,.panel-des{
+
+}*/
 .col-md-4 .panel .panel-body .panel-male{
-	width: 205px;
-	/*margin-left: 10px;*/
+	display: inline-block;
+	width: 220px;
 }
 
 
-/*博主介绍区域结束*/
+/*博主介绍区域结束
