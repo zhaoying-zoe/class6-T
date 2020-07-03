@@ -1,4 +1,4 @@
-顶部导航开始*/
+/*顶部导航开始*/
 	body{
 		background-color: #f1f1f1;
 	}
@@ -140,9 +140,12 @@
 .col-md-4 .panel{
 	margin-top: 20px;
 	margin-left: 20px;
-	width: 360px;
-	height: 170px;
 	color: #22210c;
+	width: 360px;
+
+}
+.col-md-4 .panel-1{
+	height: 170px;
 }
 .col-md-4 .panel .panel-body .img-logo{
 	width: 100px;
@@ -160,6 +163,21 @@
 	display: inline-block;
 	width: 220px;
 }
-
-
+.col-md-4 .panel .panel-heading{
+	font-size: 16px;
+	font-weight: 600;
+}
+.col-md-4 .panel .panel-body-3{
+	width: 340px;
+	height: 340px;
+}
+.col-md-4 .panel .panel-body-2{
+	line-height: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.col-md-4 .panel .panel-body-3 img{
+	width: 100%;
+	height: 100%;
+}
 /*博主介绍区域结束
