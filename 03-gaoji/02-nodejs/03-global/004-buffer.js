@@ -6,5 +6,5 @@ console.log(buf2);
 console.log(buf2.toString());
 // Buffer.alloc
 // 
-const buf3 = Buffer.alloc('bbb')
+const buf3 = Buffer.alloc(100)
 console.log(buf3);
