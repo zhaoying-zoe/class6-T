@@ -10,12 +10,10 @@
 		<h1>TodoList</h1>
 		<input type="text" name="todoinput" class="todo-input">
 		<ul class="todo-list">
-			<li class="todo-item">爆你狗头</li>
-			<li class="todo-item">爆你狗头</li>
-			<li class="todo-item">爆你狗头</li>
-			<li class="todo-item">爆你狗头</li>
-			<li class="todo-item">爆你狗头</li>
-			<li class="todo-item">爆你狗头</li>
+			{% for item in data %}  <!-- 循环 data是返回的json文件 -->
+									<!-- item是data里的每一个对象 -->
+			<li class="todo-item">{{ item.task }}</li>
+			{% endfor %}
 		</ul>
 	</div>
 	

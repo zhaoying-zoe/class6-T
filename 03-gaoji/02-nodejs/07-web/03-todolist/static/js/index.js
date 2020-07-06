@@ -1,13 +1,22 @@
 ;(function($){
-	$('.todo-input').on('keydown',function(ev){
+	const $input = $('.todo-input');
+	$input.on('keydown',function(ev){
 		if(ev.keyCode == 13){
 			$.ajax({
 				url:'/add',
 				type:'post',
-				data:{task:$('.todo-input').val()},
+				data:{task:$input.val()},
 				dataType:'json',
-				success:function(data){
-					console.log(data);
+				success:function(result){
+					if(result.code == 0){
+						const data = result.data;
+						let $dom = $(`<li class="todo-item">${data.task}</li>`);
+						$('.todo-list').prepend($dom);
+						$input.val('');
+					}else{
+						console.log(data.message);
+					}
+					
 				},
 				error:function(err){
 					console.log(err);
