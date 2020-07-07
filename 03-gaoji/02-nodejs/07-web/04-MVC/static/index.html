@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TodoList</title>
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+</head>
+<body>
+	<div class="container">
+		<h1>TodoList</h1>
+		<input type="text" name="todoinput" class="todo-input">
+		<ul class="todo-list">
+			{% for item in data %}  <!-- 循环 data是返回的json文件 -->
+									<!-- item是data里的每一个对象 -->
+			<li class="todo-item">{{ item.task }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	
+</body>
+<script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./js/index.js"></script>
+</html>

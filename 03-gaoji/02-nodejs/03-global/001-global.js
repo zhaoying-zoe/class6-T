@@ -9,13 +9,13 @@
 
 
 //__dirname 当前模块的文件夹名
-console.log(__dirname);
+console.log('__dirname..',__dirname);
 // __filename 当前模块文件的绝对路径
-console.log(__filename);
+console.log('__filename..',__filename);
 // module 当前的模块信息
-console.log(module);
+console.log('module...',module);
 // exports module.exports对象,用来导出模块
-console.log(exports);
+console.log('exports...',exports);
 // require() 引入模块
-console.log(require);
+console.log('require...',require);
 
