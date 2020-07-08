@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const mime = require('./mime.json');
 const url = require('url');
-const { get,add } = require('./model/item.js');
+const { get,add,del } = require('./model/item.js');
 const swig = require('swig');// 引入页面模板
 const querystring = require('querystring');// 引入字符串数据 转 对象模板
 
@@ -17,7 +17,8 @@ const server = http.createServer((req,res)=>{
 	const parsename = parse.pathname;
 	// console.log('parsename',parsename);
 
-
+	// 根据不同的路由进行不同的处理
+	// 处理请求首页路由
 	if(parsename == '/index.html' || parsename == '/'){
 		get()
 		.then(data=>{
@@ -34,7 +35,9 @@ const server = http.createServer((req,res)=>{
 			res.setHeader('Content-Type', 'text/html;charset=utf-8');
 			res.end('<h1>请求的地址出错啦!</h1>');
 		})
-	}else if(parsename == '/add'){
+	}
+	// 处理ajax路由
+	else if(parsename == '/add'){
 		// 获取前台输入的数据
 		// 1.定义变量存数据
 		let body = '';
@@ -44,6 +47,7 @@ const server = http.createServer((req,res)=>{
 		}))
 		// 3.监听end事件
 		req.on('end',()=>{
+			// 将前台输入框的或者路由里的参数(task=xxx)转化成集合对象
 			const query = querystring.parse(body);
 			// 将任务添加到后台文件中
 			add(query.task)
@@ -61,7 +65,29 @@ const server = http.createServer((req,res)=>{
 				}))
 			})
 		})
-	}else{
+	}
+	//处理删除路由
+	else if(parsename == '/del'){
+		//1.获取参数信息
+		const id = parse.query.id;
+		//2.根据参数信息中的ID删除文件中对应数据
+		del(id)
+		.then(data=>{
+			//3.返回删除信息
+			res.end(JSON.stringify({
+				code:0,
+				message:'删除任务成功'
+			}))
+		})
+		.catch(err=>{
+			res.end(JSON.stringify({
+				code:1,
+				message:'删除任务失败'
+			}))
+		})
+	}
+	// 处理静态资源(css js等)
+	else{
 		const fliename = path.normalize(__dirname+'/static/'+filePath);
 		// console.log('parsename',parsename);
 

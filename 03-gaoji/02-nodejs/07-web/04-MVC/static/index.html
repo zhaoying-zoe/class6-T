@@ -12,7 +12,7 @@
 		<ul class="todo-list">
 			{% for item in data %}  <!-- 循环 data是返回的json文件 -->
 									<!-- item是data里的每一个对象 -->
-			<li class="todo-item">{{ item.task }}</li>
+			<li class="todo-item" data-id="{{ item.id }}">{{ item.task }}</li>
 			{% endfor %}
 		</ul>
 	</div>

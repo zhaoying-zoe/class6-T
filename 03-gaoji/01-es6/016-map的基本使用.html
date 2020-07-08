@@ -8,12 +8,12 @@
 	
 </body>
 <script type="text/javascript">
-	let obj = {'name':'tom'};
-	obj.age = 18;
-	let m1 = new Map();
-	obj[m1] = 'hello';// 把生成的Map实例添加为obj的键 错误做法!
+	// let obj = {'name':'tom'};
+	// obj.age = 18;
+	let m1 = new Map();// 创建Map实例
+	// obj[m1] = 'hello';// 把生成的Map实例添加为obj的键 错误做法!
 	// console.log(obj);
-	m1.set('name','tom');// "name" => "tom"
+	m1.set('name','tom');// 给m1设置键名和对应的值 "name" => "tom"
 	console.log(m1);
 </script>
 </html>

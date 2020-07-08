@@ -39,8 +39,22 @@ async function add(task){
 	return obj;
 }
 // 3.删除数据
+async function del(id){
+	//1.读取数据
+	const data = await readfile(filepath,{flag:'r',encoding:'utf-8'})
+	//2.将数据转化成数组
+	const arr = JSON.parse(data);
+	//3.根据id筛选出数组中的数据
+	const newArr = arr.filter(item=>{
+		return item.id != id;
+	})
+	//4.将更新的数据覆盖写入到文件中
+	await writefile(filepath,JSON.stringify(newArr));
+}
+
 
 module.exports = {
 	get,
 	add,
+	del
 }

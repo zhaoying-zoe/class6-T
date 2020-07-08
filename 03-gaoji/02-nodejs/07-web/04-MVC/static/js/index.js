@@ -10,19 +10,43 @@
 				success:function(result){
 					if(result.code == 0){
 						const data = result.data;
-						let $dom = $(`<li class="todo-item">${data.task}</li>`);
-						$('.todo-list').prepend($dom);
+						let $dom = $(`<li class="todo-item" data-id=${data.id}>${data.task}</li>`);
+						$('.todo-list').append($dom);
 						$input.val('');
 					}else{
 						console.log(data.message);
 					}
-					
 				},
 				error:function(err){
 					console.log(err);
 				}
 			})
 		}
+	})
+	// 由于新生成的li无法触发删除事件,所以采用事件代理的形式绑定事件()
+	$('.todo-list').on('click','.todo-item',function(){
+		var $this = $(this);
+		let id = $this.data('id');
+		// 1.在li上绑定id 
+		// 2.根据独一无二的id删除相应的li
+		$.ajax({
+			url:'del',
+			type:'get',
+			dataType:'json',
+			data:{
+				id:id
+			},
+			success:function(data){
+				if(data.code == 0){
+					$this.remove();
+				}else{
+					console.log(data.message)
+				}
+			},
+			error:function(err){
+				console.log(err);
+			}
+		})
 	})
 })(jQuery);
 
