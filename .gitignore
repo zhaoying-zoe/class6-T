@@ -10,3 +10,4 @@
 *.jpg
 *.png
 *.jpeg
+**/03-mongoDB
