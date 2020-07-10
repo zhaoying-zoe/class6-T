@@ -10,4 +10,6 @@
 *.jpg
 *.png
 *.jpeg
-**/03-mongoDB
+*.jpeg
+*.lock
+# **/03-mongoDB
