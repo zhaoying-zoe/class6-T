@@ -11,5 +11,4 @@
 *.png
 *.jpeg
 *.jpeg
-*.lock
 **/03-mongoDB
