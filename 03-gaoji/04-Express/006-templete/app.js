@@ -43,6 +43,10 @@ app.get('/',(req,res)=>{
 
 app.get('/',(req,res)=>{
 	// 用了模板后直接用render就行
-    res.render('index',{})
+	res.render('index',{})
+})
+app.get('/list',(req,res)=>{
+	// 用了模板后直接用render就行
+	res.render('list',{})
 })
 app.listen(port, () => console.log('server is running in http://127.0.0.1:3000'))

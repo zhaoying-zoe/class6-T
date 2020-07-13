@@ -28,10 +28,12 @@
 			}
 		})
 	})
-	// /user/nameid/123/ageid/456
+
+	// 下面这种方法以后经常用
+	// /nameid/123/ageid/456
 	$('.get2').on('click',function(){
 		$.ajax({
-			url:'/user/nameid/123/ageid/456',
+			url:'/name/123/age/456',
 			type:'get',
 			success:function(data){
 				console.log(data)

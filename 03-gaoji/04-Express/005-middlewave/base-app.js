@@ -1,5 +1,4 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
 
@@ -15,25 +14,20 @@ app.use(express.static('public'));
 // 设置了虚拟路径后,静态资源请求时需要加上虚拟路径
 // app.use('/static', express.static('public'))
 
-//处理post请求的中间件配置
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
-app.use(bodyParser.json())
-
-app.post('/',(req, res) => {
-	/*
-	let body = ''
-	req.on('data',(chunk)=>{
-		body+=chunk
-	})
-	req.on('end',()=>{
-		console.log(body)
-	})
-	*/
-	console.log(req.body)
-
-	res.send('post  response')
+// 中间件
+app.all('',(req,res,next)=>{
+	console.log('always to do something');
+	// 想继续执行代码 必须调用next方法
+	next();
 })
+app.all('',(req,res,next)=>{
+	console.log('always to do something');
+	// 想继续执行代码 必须调用next方法
+})
+
+app.get('/', (req, res) => res.send('Hello World! get'))
+app.post('/', (req, res) => res.send('Hello World! post'))
+app.put('/', (req, res) => res.send('Hello World! put'))
+app.delete('/', (req, res) => res.send('Hello World! delete'))
 
 app.listen(port, () => console.log('server is running in http://127.0.0.1:3000'))

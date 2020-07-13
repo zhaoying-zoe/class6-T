@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>list.html</title>
-</head>
-<body>
-	
-</body>
-</html>
+<!-- 引入父模板 -->
+{% extends './layout.html' %}
+<!-- 写入标题 -->
+{% block title %} 这个网页是列表页 {% endblock %}
+<!-- 写入css文件 -->
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="css/list.css">
+{% endblock %}
+<!-- 写入body里空缺内容 -->
+{% block content %}
+<div>
+	这里是列表页
+</div>
+{% endblock %}
+<!-- 写入js文件 -->
+{% block js %}
+<script type="text/javascript" src="./list.js"></script>
+{% endblock %}
+

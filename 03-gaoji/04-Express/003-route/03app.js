@@ -13,14 +13,24 @@ app.use(express.static('public'));
 
 
 app.get('/',(req,res)=>{
-	const parse = url.parse(req.url,true)
-	console.log(parse.query)
-	console.log(req.query)
+	/*
+	// const parse = url.parse(req.url,true)
+	// console.log(parse.query)
+	*/
+	// req 上有个方法就是 query 专门用来处理get请求
 	console.log(req.query)
 	res.send('Hello World! get');
 })
 
+// /name/123/age/456
+// /name/:nameid/age/:ageid
+app.get('/name/:nameid/age/:ageid',(req,res)=>{
 
-app.post('/', (req, res) => res.send('Hello World! post'))
+	// req 上有个方法就是 params 专门用来处理get请求
+	console.log(req.params)
+	res.send('Hello World! get');
+})
+
+
 
 app.listen(port, () => console.log('server is running in http://127.0.0.1:3000'))
