@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	{% block css %}{% endblock %}
+</head>
+<body>
+	<header>这里是网页的上半部分</header>
+	{% block content %}{% endblock %}
+	<footer>这里是网页的下半部分</footer>
+</body>
+<script type="text/javascript" src="./jquery-1.12.4.js"></script>
+{% block js %}{% endblock %}
+{% include "./javascript.html" %}
+</html>

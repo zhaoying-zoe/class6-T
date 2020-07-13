@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index.html</title>
+</head>
+<body>
+	<h1>这是一个神奇的网页 index.html</h1>
+	<button class="get">get 请求</button>
+	<button class="post">post 请求</button>
+	<button class="put">put 请求</button>
+	<button class="delete">delete 请求</button>
+	<p>
+		<ul>
+			<li>0.后台app.js 里面有处理静态资源:app.use(express.static('public'));</li>
+			<li>1.请求的普通页面就是用的get请求</li>
+			<li>2.第一个按钮也是get请求</li>
+			<li>3.当按下按钮时会发送get请求</li>
+			<li>4.且这个文件夹是index 所以会把页面当做数据发送到前台</li>
+		</ul>
+	</p>
+</body>
+<script type="text/javascript" src="./jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$('.get').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'get',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+	
+	$('.post').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'post',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+
+	$('.put').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'put',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+
+	$('.delete').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'delete',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+</script>
+</html>

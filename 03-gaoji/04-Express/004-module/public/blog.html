@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Blog</title>
+</head>
+<body>
+	<h1>这是一个神奇的网页 Blog</h1>
+	<button class="get">get Blog</button>
+	<button class="post">post Blog</button>
+	<button class="put">put Blog</button>
+	<button class="delete">delete Blog</button>
+</body>
+<script type="text/javascript" src="./jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$('.get').on('click',function(){
+		$.ajax({
+			url:'/blog',
+			type:'get',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+	
+	$('.post').on('click',function(){
+		$.ajax({
+			url:'/blog',
+			type:'post',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+
+	$('.put').on('click',function(){
+		$.ajax({
+			url:'/blog',
+			type:'put',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+
+	$('.delete').on('click',function(){
+		$.ajax({
+			url:'/blog',
+			type:'delete',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+</script>
+</html>

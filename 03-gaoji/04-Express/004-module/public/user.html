@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>User</title>
+</head>
+<body>
+	<h1>这是一个神奇的网页 User</h1>
+	<button class="get">get User</button>
+	<button class="post">post User</button>
+	<button class="put">put User</button>
+	<button class="delete">delete User</button>
+</body>
+<script type="text/javascript" src="./jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$('.get').on('click',function(){
+		$.ajax({
+			url:'/user',
+			type:'get',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+	
+	$('.post').on('click',function(){
+		$.ajax({
+			url:'/user',
+			type:'post',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+
+	$('.put').on('click',function(){
+		$.ajax({
+			url:'/user',
+			type:'put',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+
+	$('.delete').on('click',function(){
+		$.ajax({
+			url:'/user',
+			type:'delete',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-params.html</title>
+</head>
+<body>
+	<h1>params</h1>
+	<button class="get1">get1 请求</button>
+	<button class="get2">get2 请求</button>
+</body>
+<script type="text/javascript" src="./jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	// ?name:'tom'&age:19
+	$('.get1').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'get',
+			data:{
+				name:'tom',
+				age:19
+			},
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+	// /user/nameid/123/ageid/456
+	$('.get2').on('click',function(){
+		$.ajax({
+			url:'/user/nameid/123/ageid/456',
+			type:'get',
+			success:function(data){
+				console.log(data)
+			},
+			err:function(err){
+				console.log(err)
+			}
+		})
+	})
+</script>
+</html>
