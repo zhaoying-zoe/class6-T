@@ -11,7 +11,7 @@ app.use(express.static('public'));
 
 // app.method(path路径,handler方法)
 
-
+// ?name:'tom'&age:19
 app.get('/',(req,res)=>{
 	/*
 	// const parse = url.parse(req.url,true)

@@ -1,0 +1,33 @@
+	body{
+		font-size: 14px;
+	}
+
+/*浮动相关开始*/
+	.fl{
+		float: left;
+	}
+	.fr{
+		float: right;
+	}
+	.clearfix:after{
+		content: "";
+		clear: both;
+		display: block;
+		height: 0;
+		visibility: hidden;
+	}
+	.clearfix{
+		*zoom:1;
+	}
+/*浮动相关结束*/
+
+/*a链接相关开始*/
+	a{
+		font-size: 12px;
+		text-decoration: none;
+		color: #f5bed5;
+	}
+	a.link:hover{
+		color: #f5bed5;
+	}
+/*a链接相关结束*/
