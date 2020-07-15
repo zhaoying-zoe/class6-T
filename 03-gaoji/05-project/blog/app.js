@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const swig = require('swig');
-const rooter = require('./routers/index.js');
+const bodyParser = require('body-parser');
 
 // 处理静态资源
 app.use(express.static('public'));
@@ -14,13 +14,25 @@ mongoose.connect('mongodb://127.0.0.1:27017/blog',{useNewUrlParser:true,useUnifi
 const db = mongoose.connection;
 // 连接db失败
 db.on('error', (err)=>{
-	console.log(err)
+	console.log(err);
+	throw err;// 抛出错误
 });
 // 连接db成功
 db.once('open', ()=> {
   	console.log(" Connected success!");
+
+
 });
 /* --------------配置连接数据库 结束-------------- */
+
+/*-----------------中间件配置开始-------------------*/
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+//配置过后post和put请求的所有参数会被存储在req.body上
+/*-----------------中间件配置结束-------------------*/
 
 /* --------------配置模板引擎 开始-------------- */
 
@@ -44,10 +56,11 @@ app.set('view engine', 'html');
 
 /* --------------配置模板引擎 结束-------------- */
 
-
 /*------------------配置路由开始----------------*/
 
+// 处理主页路由
 app.use('/',require('./routers/index.js'))
+// 处理注册、登录路由
 app.use('/user',require('./routers/user.js'))
 
 /*------------------配置路由结束----------------*/

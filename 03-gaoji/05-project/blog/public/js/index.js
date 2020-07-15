@@ -1,15 +1,19 @@
 ;(function($){
-	var $registered = $('#registered');// 转到注册
+	var $registered = $('#registered');// 转到登录
 	var $login = $('#login');// 转到注册
 	var $registeredForm = $('#registered-form');// 登录表单
 	var $loginForm = $('#login-form');// 注册表单
 
-	var $usernameLogin = $('#username-Login');// 登录用户名输入框
-	var $btnRegistered = $('#btn-registered');// 表单注册按钮
+
+	var $btnLogin = $('#btn-login');// 表单注册按钮
 	var $usernameRegistered = $('#username-Registered');// 注册 用户名输入框
 	var $passwordRegistered = $('#password-registered');// 注册 密码输入框
 	var $repasswordRegistered = $('#repassword-registered'); // 注册 重复密码输入框
 	
+	var $btnRegistered = $('#btn-registered');// 表单登录按钮
+	var $usernameLogin = $('#username-Login');// 登录 用户名输入框
+	var $passwordLogin = $('#password-Login');// 登录 密码输入框
+
 	// 1. 登录 => 注册
 	$registered.on('click',function(){
 		// 隐藏登录页
@@ -46,7 +50,43 @@
 		}else{
 			$.ajax({
 				url:'/user/register',
-				type:'post',
+				type:'POST',
+				datatype:'json',
+				data:{
+					username:username,
+					password:password
+				},
+				success:function(data){
+					if(data.code == 0){// 注册成功
+						$registered.trigger('click');
+						username = '';
+						password = '';
+						repassword = '';
+					}else{
+						alert('注册失败,请重新的输入!')
+					}
+				},
+				err:function(err){
+					alert('您的请求失败啦!请稍后再试!');
+				}
+			})
+		}
+	})
+
+	// 4. 登录信息验证
+	$btnLogin.on('click',function(){
+		var username = $usernameLogin.val();
+		var password = $passwordLogin.val();
+		if(!usernameReg.test(username)){
+			// alert('您好!用户名为3到9位字母开头,包含数字、下划线!')
+			alert('你个菜逼,用户名输错了!');
+		}else if(!passwordReg.test(password)){
+			alert('您好!密码是3到8位包含字母、数字、下划线');
+		}else{
+			$.ajax({
+				url:'/user/login',
+				type:'POST',
+				datatype:'json',
 				data:{
 					username:username,
 					password:password
@@ -55,7 +95,7 @@
 					console.log(data);
 				},
 				err:function(err){
-					console.log(err);
+					alert('您的请求失败啦!请稍后再试!');
 				}
 			})
 		}

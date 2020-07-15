@@ -7,6 +7,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/zhuzhu',{useNewUrlParser:true,useUni
 const db = mongoose.connection;
 db.on('error', (err)=>{
 	console.log(err)
+	throw err;
 });
 
 db.once('open', ()=> {
