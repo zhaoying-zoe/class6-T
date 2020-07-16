@@ -1,8 +1,9 @@
 ;(function($){
 	var $registered = $('#registered');// 转到登录
 	var $login = $('#login');// 转到注册
-	var $registeredForm = $('#registered-form');// 登录表单
-	var $loginForm = $('#login-form');// 注册表单
+	var $registeredForm = $('#registered-form');// 注册表单
+	var $loginForm = $('#login-form');// 登录表单
+	var $user = $('#user');// 注册表单
 
 
 	var $btnLogin = $('#btn-login');// 表单注册按钮
@@ -90,14 +91,40 @@
 				data:{
 					username:username,
 					password:password
-				},
-				success:function(data){
-					console.log(data);
-				},
-				err:function(err){
-					alert('您的请求失败啦!请稍后再试!');
 				}
 			})
+			.done(function(data){
+				if(data.code == 0){// 登录成功
+					/*
+					$user.show();
+					$loginForm.hide();
+					$('user').find('span').html(data.user.username);
+					*/
+					window.location.reload();
+				}else{
+					alert('注册失败,请重新的输入!')
+				}
+			})
+			.fail(function(err){
+				alert('您的请求失败啦!请稍后再试!');
+			})
 		}
+	})
+
+	// 5. 处理退出逻辑
+	$('#logout').on('click',function(){
+		$.ajax({
+			url:'/user/logout',
+			type:'get'
+		})
+		.done(function(data){
+			// 如果cookie被清除了,表示账号退出了,则把首页加载出来
+			if(data.code == 0){
+				window.location.href = '/';
+			}
+		})
+		.fail(function(err){
+			alert('您的退出失败了,请稍候再试!')
+		})
 	})
 })(jQuery);

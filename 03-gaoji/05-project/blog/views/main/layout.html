@@ -47,7 +47,15 @@
 				{% endblock %}
 			</div>
 			<div class="col-md-4">
+				<!-- 表单部分 登录成功面板-->
+				{% if userInfo._id %}
+				<form class="form-horizontal" id="user">
+					<div>登陆成功！</div>
+					<div>欢迎您！<span>{{ userInfo.username }}</span></div>
+					<a href="#" id="logout">退出</a>
+				</form>
 				<!-- 表单部分 登录页面-->
+				{% else %}
 				<form class="form-horizontal" id="login-form" style="display: block;">
 					<div class="form-group">
 					    <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
@@ -70,7 +78,7 @@
 						<div class="login" id="login"><a href="#">没有账号,去注册</a></div>
 					</div>
 				</form>
-
+				{% endif %}
 				<!-- 表单部分 注册页面-->
 				<form class="form-horizontal" id="registered-form" style="display: none;">
 					<div class="form-group">

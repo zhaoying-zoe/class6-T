@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 const swig = require('swig');
 const bodyParser = require('body-parser');
+const Cookies = require('cookies'); // 引入cookies
+const session = require('express-session');// 引入express-session
 
 // 处理静态资源
 app.use(express.static('public'));
@@ -55,6 +57,45 @@ app.set('views', './views');
 app.set('view engine', 'html');
 
 /* --------------配置模板引擎 结束-------------- */
+
+/* --------------Cookies 开始-------------- */
+// 利用express-session
+app.use(session({
+    //设置cookie名称
+    name:'kzid',
+    //用它来对session cookie签名，防止篡改
+    secret:'abc',
+    //强制保存session即使它并没有变化
+    resave: true,
+    //强制将未初始化的session存储
+    saveUninitialized: true, 
+    //如果为true,则每次请求都更新cookie的过期时间
+    rolling:true,
+    //cookie过期时间 1天
+    cookie:{maxAge:1000*60*60*24}
+}))
+/*
+// 利用cookie
+app.use('',(req,res,next)=>{
+	// 在req上生成cookies实例,这样所有的路由都可以通过req操作cookies
+	req.cookies = new Cookies(req,res);
+	// console.log(cookies);// 查看cookies实例
+	// cookies.set('userInfo',JSON.stringify(result.data))
+	
+	// 获取前台cookie并验证
+	// console.log(req.cookies.get('userInfo'));// 字符串
+	let userInfo = {};
+	if(req.cookies.get('userInfo')){
+		userInfo = JSON.parse(req.cookies.get('userInfo'));
+	}
+	// 把前台获取的cookie保存在req.userInfo上,后面的路由可以通过req.userInfo获取前台路由
+	req.userInfo = userInfo;
+
+
+	next();
+})
+*/
+/* --------------Cookies 结束-------------- */
 
 /*------------------配置路由开始----------------*/
 
