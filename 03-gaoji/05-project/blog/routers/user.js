@@ -21,7 +21,7 @@ router.post('/register',(req,res)=>{
 			UserModel.insertMany({
 				username:username,
 				password:hmac(password)
-				// isAdmin:true
+				// isAdmin:true // 注册管理员用
 			})
 			.then(result=>{
 				res.json({

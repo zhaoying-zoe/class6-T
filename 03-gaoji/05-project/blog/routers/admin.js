@@ -19,11 +19,21 @@ router.get('/',(req,res)=>{
         userInfo:req.userInfo
     })
 })
-// 显示用户管理页面
-router.get('/users',(req,res)=>{
-    res.render('admin/user_list',{
-        userInfo:req.userInfo
+// 显示用户列表
+router.get('/user_list',(req,res)=>{
+    // 获取后台数据库的数据
+    UserModel.find({},'-__v -password')
+    .then(users=>{
+        // console.log(users);
+        res.render('admin/user_list',{
+            userInfo:req.userInfo,
+            users:users// 把查询到的users返回到前台
+        })
     })
+    .catch(err=>{
+        console.log(err);
+    })
+
 })
 
 module.exports = router

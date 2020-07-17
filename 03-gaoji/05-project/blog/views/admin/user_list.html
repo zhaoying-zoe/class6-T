@@ -16,11 +16,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>XF-0001</td>
-            <td>Tom</td>
-            <td>是</td>
-        </tr>
+        <!-- 通过for循环把后台返回的数据插入到页面 -->
+        {% for user in users %}
+            <tr>
+                <td>{{ user._id.toString() }}</td>
+                <td>{{ user.username }}</td>
+                {% if user.isAdmin %}
+                   <td>是</td>
+                {% else %}
+                   <td>否</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 </div>

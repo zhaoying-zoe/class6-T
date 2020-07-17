@@ -102,7 +102,7 @@
 					*/
 					window.location.reload();
 				}else{
-					alert('注册失败,请重新的输入!')
+					alert('登陆失败,请稍后再试!')
 				}
 			})
 			.fail(function(err){
