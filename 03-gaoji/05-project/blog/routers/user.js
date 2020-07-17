@@ -21,6 +21,7 @@ router.post('/register',(req,res)=>{
 			UserModel.insertMany({
 				username:username,
 				password:hmac(password)
+				// isAdmin:true
 			})
 			.then(result=>{
 				res.json({
@@ -58,7 +59,11 @@ router.post('/login',(req,res)=>{
 			// 登录成功后把用户信息通过cookie发送到客户端
 			// cookies.set( name, [ value ], [ options ] )
 			// 过期时间是24h
-			req.cookies.set('userInfo',JSON.stringify(user),{maxAge:1000*60*60*24});
+			// req.cookies.set('userInfo',JSON.stringify(user),{maxAge:1000*60*60*24});
+
+			// 在session上添加cookie信息
+			req.session.userInfo = user;
+
 			res.json({
 				code:0,
 				message:'登陆成功!',
@@ -83,7 +88,9 @@ router.post('/login',(req,res)=>{
 //处理用户退出逻辑
 router.get('/logout',(req,res)=>{
 	// 清除cookie
-	req.cookies.set('userInfo',null);
+	// req.cookies.set('userInfo',null);
+	// 销毁session
+	req.session.destroy()
 	res.json({
 		code:0,
 		message:'您的退出成功了!'

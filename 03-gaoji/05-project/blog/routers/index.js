@@ -18,18 +18,21 @@ rooter.get('/', (req, res) => {
 
 
 	res.render('main/index',{
+		// 把cookie信息返回到前台html页面
 		userInfo:req.userInfo
 	});
 })
 //显示列表页 '/list' 代表请求的是列表页
 rooter.get('/list', (req, res) => {
 	res.render('main/list',{
+		// 把cookie信息返回到前台html页面
 		userInfo:req.userInfo
 	});
 })
 //显示详情页 /detail 代表请求的是详情页
 rooter.get('/detail', (req, res) => {
 	res.render('main/detail',{
+		// 把cookie信息返回到前台html页面
 		userInfo:req.userInfo
 	});
 })

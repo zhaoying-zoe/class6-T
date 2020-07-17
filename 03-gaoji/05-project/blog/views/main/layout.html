@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<title>{% block title %} {% endblock %}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="/lib/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/common.css">
 	{% block head %} {% endblock %}
 </head>
 <body>
@@ -52,7 +52,12 @@
 				<form class="form-horizontal" id="user">
 					<div>登陆成功！</div>
 					<div>欢迎您！<span>{{ userInfo.username }}</span></div>
-					<a href="#" id="logout">退出</a>
+					{% if userInfo.isAdmin %}
+					<div><a class="link" href="/admin" id="">进入管理中心</a></div>
+					{% else %}
+					<div><a class="link" href="/home" id="">进入个人中心</a></div>
+					{% endif %}
+					<a href="#" class="link" id="logout">退出</a>
 				</form>
 				<!-- 表单部分 登录页面-->
 				{% else %}
@@ -160,7 +165,8 @@
 <!-- 轮播图部分:::结束 -->
 
 </body>
-<script src="lib/js/jquery-1.12.4.min.js"></script>
-<script src="lib/js/bootstrap.min.js"></script>
+<script src="/lib/js/jquery-1.12.4.min.js"></script>
+<script src="/lib/js/bootstrap.min.js"></script>
+<script src="/js/logout.js"></script>
 {% block footer %} {% endblock %}
 </html>

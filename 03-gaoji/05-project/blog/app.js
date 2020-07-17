@@ -3,8 +3,9 @@ const app = express();
 const mongoose = require('mongoose');
 const swig = require('swig');
 const bodyParser = require('body-parser');
-const Cookies = require('cookies'); // 引入cookies
-const session = require('express-session');// 引入express-session
+const Cookies = require('cookies'); // 引入 cookies
+const session = require('express-session');// 引入 express-session
+const MongoStore = require("connect-mongo")(session); //引入 MongoStore
 
 // 处理静态资源
 app.use(express.static('public'));
@@ -62,9 +63,9 @@ app.set('view engine', 'html');
 // 利用express-session
 app.use(session({
     //设置cookie名称
-    name:'kzid',
+    name:'user',
     //用它来对session cookie签名，防止篡改
-    secret:'abc',
+    secret:'zhuzhu',
     //强制保存session即使它并没有变化
     resave: true,
     //强制将未初始化的session存储
@@ -72,7 +73,9 @@ app.use(session({
     //如果为true,则每次请求都更新cookie的过期时间
     rolling:true,
     //cookie过期时间 1天
-    cookie:{maxAge:1000*60*60*24}
+    cookie:{maxAge:1000*60*60*24},
+    //设置session存储在数据库中
+    store:new MongoStore({ mongooseConnection: mongoose.connection })   
 }))
 /*
 // 利用cookie
@@ -95,6 +98,14 @@ app.use('',(req,res,next)=>{
 	next();
 })
 */
+// 利用session
+app.use('',(req,res,next)=>{
+	// 把前台获取的cookie保存在req.userInfo上,后面的路由可以通过req.userInfo获取前台路由
+	req.userInfo = req.session.userInfo || {};
+
+
+	next();
+})
 /* --------------Cookies 结束-------------- */
 
 /*------------------配置路由开始----------------*/
@@ -103,6 +114,8 @@ app.use('',(req,res,next)=>{
 app.use('/',require('./routers/index.js'))
 // 处理注册、登录路由
 app.use('/user',require('./routers/user.js'))
+// 处理进入管理员页面的路由
+app.use('/admin',require('./routers/admin.js'))
 
 /*------------------配置路由结束----------------*/
 
