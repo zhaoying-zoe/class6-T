@@ -2,3 +2,6 @@
     float: right;
     margin-top: 10px;
 }
+.content{
+    min-height: 400px;
+}

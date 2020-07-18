@@ -117,7 +117,8 @@ app.use('/',require('./routers/index.js'))
 app.use('/user',require('./routers/user.js'))
 // 处理进入管理员页面的路由
 app.use('/admin',require('./routers/admin.js'))
-
+// 处理进入管理员页面的路由
+app.use('/category',require('./routers/category.js'))
 /*------------------配置路由结束----------------*/
 
 
