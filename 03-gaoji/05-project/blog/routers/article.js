@@ -3,6 +3,7 @@ const router = express.Router();
 
 const UserModel = require('../models/user.js');
 const CategoryModel = require('../models/category.js');
+const ArticleModel = require('../models/article.js');
 const hmac = require('../util/hmac.js');
 const pagination = require('../util/pagination.js');
 
@@ -15,24 +16,24 @@ router.use('/',(req,res,next)=>{
     }
 })
 
-// 显示分类管理页面
+// 显示文章管理页
 router.get('/',(req,res)=>{
     const options = {
         page:req.query.page * 1,
-        model:CategoryModel,
+        model:ArticleModel,
         query:{},
         projection:'-__v',
-        sort:{order:1}
+        sort:{_id:1}
     }
     pagination(options)
     .then(result=>{
-        res.render('admin/category_list',{// 把查询到的数据返回到前台
+        res.render('admin/article_list',{// 把查询到的数据返回到前台
             userInfo:req.userInfo,
-            categories:result.docs,
+            articles:result.docs,
             page:result.page,
             list:result.list,
             pages:result.pages,
-            url:'/category'
+            url:'/article'
         })
     })
     .catch(err=>{
@@ -171,6 +172,7 @@ router.post('/edit',(req,res)=>{
 
 // 处理前台删除的数据
 router.get('/delete/:id',(req,res)=>{
+    console.log(123)
     // 1.获取前台发送的数据 id
     const id = req.params.id;
     // 2.通过id查找数据兵删除数据

@@ -3,6 +3,7 @@ const router = express.Router();
 
 const UserModel = require('../models/user.js');
 const hmac = require('../util/hmac.js');
+const pagination = require('../util/pagination.js');
 
 // 利用中间件处理管理员身份
 router.use('/',(req,res,next)=>{
@@ -27,6 +28,7 @@ router.get('/user_list',(req,res)=>{
         limit:2
         约定:skip (page - 1)*limit
     */
+   /*
     let page = req.query.page * 1;
     const limit = 2;
     // console.log(page);
@@ -70,8 +72,28 @@ router.get('/user_list',(req,res)=>{
             console.log(err);
         })
     })
-
-
+    */
+   const options = {
+        page:req.query.page * 1,
+        model:UserModel,
+        query:{},
+        projection:'-__v -password',
+        sort:{_id:1}
+    }
+    pagination(options)
+    .then(result=>{
+        res.render('admin/user_list',{
+            userInfo:req.userInfo,
+            users:result.docs,// 把查询到的users返回到前台
+            page:result.page,
+            list:result.list,
+            pages:result.pages,
+            url:'/admin/user_list'
+        })
+    })
+    .catch(err=>{
+        console.log(err);
+    })
 })
 
 module.exports = router
