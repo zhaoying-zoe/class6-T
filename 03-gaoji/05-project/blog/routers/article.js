@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router();
 
+const multer = require('multer');// 处理图片表单的中间件
+// dest:将上传的图片存到指定的文件夹下
+const upload = multer({dest:'public/uploads/'});// 处理图片表单的中间件
+
 const UserModel = require('../models/user.js');
 const CategoryModel = require('../models/category.js');
 const ArticleModel = require('../models/article.js');
@@ -41,51 +45,93 @@ router.get('/',(req,res)=>{
     })
 })
 
-// 显示新增分类管理页面
+// 显示新增文章管理页面
 router.get('/add',(req,res)=>{
-    res.render('admin/category_add_edit',{
-        userInfo:req.userInfo
+    // 1.获取分类文章返回到 文章管理页面
+    CategoryModel.find({})
+    .then(categories=>{
+        // console.log(categories);
+        res.render('admin/article_add_edit',{
+            userInfo:req.userInfo,
+            categories
+        })
+    })
+    .catch(err=>{
+        res.render('admin/err',{
+            userInfo:req.userInfo,
+            message:'操作数据库失败,请稍后再试'
+        })
+    })
+
+})
+
+// 处理新增文章路由
+router.post('/add',(req,res)=>{
+    // 1.接收前台发送的数据 name order
+    let { category,title,intro,content } = req.body;
+    // console.log(category,title,intro,content);
+    // 2.将文章插入到数据库中
+    ArticleModel.insertMany({
+        category,
+        title,
+        intro,
+        content,
+        user:req.userInfo._id
+    })
+    .then(data=>{
+        res.render('admin/ok',{
+            userInfo:req.userInfo,
+            message:'新增文章成功',
+            url:'/article'
+        })
+    })
+    .catch(err=>{
+        res.render('admin/err',{
+            userInfo:req.userInfo,
+            message:'操作数据库失败,请稍后再试'
+        })
     })
 })
 
-// 处理前台提交的数据
-router.post('/add',(req,res)=>{
-    // 1.获取前台发送的数据 name order
-    let { name,order } = req.body;
-    if(!order){
-        order = 0;
-    }
-    // 2.查询集合进行验证
-    CategoryModel.findOne({name:name})
-    .then(category=>{
-        if(category){// 数据库有该分类名称不能插入
+// 处理上传图片路由
+// upload.single('upload')
+// upload:前台存放图片资源的字段信息
+// 必须和前台传递图片资源字段保持一致
+router.post('/uploadImage',upload.single('upload'),(req,res)=>{
+    // console.log(req.file)
+    const filePath = '/uploads/'+req.file.filename;
+    res.json({
+        uploaded:true,
+        url:filePath
+    })
+})
+
+// 显示编辑文章页面
+router.get('/edit/:id',(req,res)=>{
+    // 通过前台传来的id查找数据(文章id)
+    const id = req.params.id;// 接收前台发送过来的id值  
+    // 获取所有分类
+    CategoryModel.find({})
+    .then(categories=>{
+        // 通过id过去对应文章
+        ArticleModel.findById(id)
+        .then(article=>{
+            res.render('admin/article_add_edit',{
+                userInfo:req.userInfo,
+                categories,
+                article
+            })
+        })
+        .catch(err=>{
+            console.log(err);
             res.render('admin/err',{
                 userInfo:req.userInfo,
-                message:'已有该分类,请更换名称',
-                url:'/category'
+                message:'操作数据库失败,请稍后再试'
             })
-        }else{// 可以插入该名称的分类
-            CategoryModel.insertMany({
-                name,
-                order
-            })
-            // 插入成功会有promise实例,可以继续调用实例上的方法
-            .then(data=>{ 
-                res.render('admin/ok',{
-                    userInfo:req.userInfo,
-                    message:'添加分类成功',
-                    url:'/category'
-                })
-            })
-            .catch(err=>{
-                res.render('admin/err',{
-                    userInfo:req.userInfo,
-                    message:'操作数据库失败,请稍后再试'
-                })
-            })
-        }
+        })
     })
     .catch(err=>{
+        console.log(err);
         res.render('admin/err',{
             userInfo:req.userInfo,
             message:'操作数据库失败,请稍后再试'
@@ -93,74 +139,18 @@ router.post('/add',(req,res)=>{
     })
 })
 
-// 显示编辑分类管理页面
-router.get('/edit/:id',(req,res)=>{
-    const id = req.params.id;// 接收前台发送过来的id值  
-    // 通过前台传来的id查找数据
-    CategoryModel.findById(id)
-    .then(category=>{
-        res.render('admin/category_add_edit',{
-            userInfo:req.userInfo,
-            category
-        })
-    })
-    .catch(err=>{
-        // console.log(err);
-        res.render('admin/err',{
-            userInfo:req.userInfo,
-            message:'操作数据库失败,请稍后再试'
-        })
-    })
-})
-
-// 处理前台编辑的数据
+// 处理编辑文章逻辑
 router.post('/edit',(req,res)=>{
     // 1.获取前台发送的数据 name order
-    let { name,order,id } = req.body;
-    if(!order){
-        order = 0;
-    }
-    // 2.查询集合获取相应数据
-    CategoryModel.findOne({_id:id})
-    .then(category=>{
-        if(category.name == name && category.order == order){// 数据未更改
-            res.render('admin/err',{
-                userInfo:req.userInfo,
-                message:'数据未改动,请更改后再试'
-            })
-        }else{
-            CategoryModel.findOne({name:name,_id:{$ne:id}})
-            .then(result=>{
-                if(result){// 数据库有同名分类,不能更新数据
-                    res.render('admin/err',{
-                        userInfo:req.userInfo,
-                        message:'数据库有该分类,请更换名称'
-                    })
-                }else{// 可以更新数据
-                    CategoryModel.updateOne({_id:id},{name,order})
-                    .then(data=>{ 
-                        res.render('admin/ok',{
-                            userInfo:req.userInfo,
-                            message:'更新分类成功',
-                            url:'/category'
-                        })
-                    })
-                    .catch(err=>{
-                        res.render('admin/err',{
-                            userInfo:req.userInfo,
-                            message:'操作数据库失败,请稍后再试'
-                        })
-                    })
-                }
-            })
-            .catch(err=>{
-                res.render('admin/err',{
-                    userInfo:req.userInfo,
-                    message:'操作数据库失败,请稍后再试'
-                })
-            })
-        }
-
+    let { category,title,intro,content,id } = req.body;
+    // 2.更新文章
+    ArticleModel.updateOne({_id:id},{category,title,intro,content})
+    .then(data=>{ 
+        res.render('admin/ok',{
+            userInfo:req.userInfo,
+            message:'更新文章成功',
+            url:'/article'
+        })
     })
     .catch(err=>{
         res.render('admin/err',{
@@ -170,17 +160,17 @@ router.post('/edit',(req,res)=>{
     })
 })
 
-// 处理前台删除的数据
+// 处理删除文章的路由
 router.get('/delete/:id',(req,res)=>{
     console.log(123)
     // 1.获取前台发送的数据 id
     const id = req.params.id;
-    // 2.通过id查找数据兵删除数据
+    // 2.通过id查找数据并删除数据
     CategoryModel.deleteOne({_id:id})
     .then(data=>{
         res.render('admin/ok',{
             userInfo:req.userInfo,
-            message:'删除分类成功',
+            message:'删除文章成功',
             url:'/category'
         })
     })

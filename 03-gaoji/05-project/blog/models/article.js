@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 //1.生成文档模型
 const ArticleSchema = new mongoose.Schema({
@@ -28,6 +29,12 @@ const ArticleSchema = new mongoose.Schema({
     	type:String
     }
 });
+    // 定义时间虚拟属性
+    ArticleSchema.virtual('createdTime').get(function(){
+        // return this.createdAt.toLocaleString(); // 第二种格式化时间的方式
+        return moment(this.createdAt).format('YYYY - MM - DD HH:mm:ss');
+    })
+
 
 
 //2.根据文档模型生成集合
