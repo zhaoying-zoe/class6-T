@@ -11,12 +11,13 @@
         model:查询集合的名称,
         query:查询条件,
         projection:投影,
-        sort:排序
+        sort:排序,
+        populates:关联查询
     }
     */
    
 async function pagination(options){
-    let { page,model,query,projection,sort } = options;
+    let { page,model,query,projection,sort,populates } = options;
     const limit = 2;
     // console.log(page);
     if(isNaN(page)){
@@ -47,7 +48,17 @@ async function pagination(options){
 
     // 跳过数据的条数
     let skip = (page - 1)*limit;
-    const docs = await model.find(query,projection).skip(skip).limit(limit).sort(sort)
+
+    // 重新定义函数
+    let result = model.find(query,projection);
+    // 关联查询前需判断
+    if(populates){
+        populates.forEach((populate)=>{
+            // 进行关联查询
+            result = result.populate(populate);
+        })
+    }
+    const docs = await result.skip(skip).limit(limit).sort(sort)
     return {
         docs,
         page,

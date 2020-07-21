@@ -2,7 +2,24 @@
 const express = require('express');
 // 引入 express.Router实例化router对象
 const rooter = express.Router();
+const CategoryModel = require('../models/category.js');
+const ArticleModel = require('../models/article.js');
 
+
+
+async function getCommonData(){
+	// 获取顶部分类数据
+	const getCategoriesDataPromise = CategoryModel.find({},'name').sort({_id:1});
+	// 获取点击排行数据
+	const getTopArticlesDataPromise = ArticleModel.find({},'click title').sort({click:-1}).limit(10);
+
+	const categoriesData = await getCategoriesDataPromise;
+	const topArticles = await getTopArticlesDataPromise;
+	return {
+		categoriesData,
+		topArticles
+	}
+}
 
 //显示首页 '/' 代表请求的是根目录
 rooter.get('/', (req, res) => {
@@ -16,11 +33,33 @@ rooter.get('/', (req, res) => {
 	*/
 	// console.log(userInfo);// 用户登录cookie 对象
 
-
-	res.render('main/index',{
-		// 把cookie信息返回到前台html页面
-		userInfo:req.userInfo
-	});
+	ArticleModel.getPaginationData(req)
+	.then(data=>{
+		getCommonData()
+		.then(result=>{
+			// 定义新对象接收参数
+			const { categoriesData,topArticles } = result;
+			// console.log({categoriesData});
+			res.render('main/index',{
+				// 把cookie信息返回到前台html页面
+				userInfo:req.userInfo,
+				categoriesData,
+				topArticles,
+				// 返回分页数据
+	            articles:data.docs,
+	            page:data.page,
+	            list:data.list,
+	            pages:data.pages,
+	            url:'/'
+			})
+		})
+		.catch(err=>{
+			console.log(err);
+		})
+	})
+	.catch(err=>{
+		console.log(err);
+	})
 })
 //显示列表页 '/list' 代表请求的是列表页
 rooter.get('/list', (req, res) => {

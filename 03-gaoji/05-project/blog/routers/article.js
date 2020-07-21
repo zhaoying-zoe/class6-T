@@ -22,14 +22,18 @@ router.use('/',(req,res,next)=>{
 
 // 显示文章管理页
 router.get('/',(req,res)=>{
+    /*
     const options = {
         page:req.query.page * 1,
         model:ArticleModel,
         query:{},
         projection:'-__v',
-        sort:{_id:1}
+        sort:{_id:1},
+        populates:[{path:'user',select:'username'},{path:'category',select:'name'}]
     }
     pagination(options)
+    */
+    ArticleModel.getPaginationData(req)
     .then(result=>{
         res.render('admin/article_list',{// 把查询到的数据返回到前台
             userInfo:req.userInfo,

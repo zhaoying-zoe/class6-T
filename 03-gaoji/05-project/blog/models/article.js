@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
+const pagination = require('../util/pagination.js');
+
 
 //1.生成文档模型
 const ArticleSchema = new mongoose.Schema({
@@ -34,6 +36,20 @@ const ArticleSchema = new mongoose.Schema({
         // return this.createdAt.toLocaleString(); // 第二种格式化时间的方式
         return moment(this.createdAt).format('YYYY - MM - DD HH:mm:ss');
     })
+
+    // 定义获取文章数据分页静态方法
+    ArticleSchema.statics.getPaginationData = function(req,query={}){
+        const options = {
+            page:req.query.page * 1,
+            model:this,
+            query:query,
+            projection:'-__v',
+            sort:{_id:1},
+            populates:[{path:'user',select:'username'},{path:'category',select:'name'}]
+        }
+        return pagination(options)
+    }
+
 
 
 
