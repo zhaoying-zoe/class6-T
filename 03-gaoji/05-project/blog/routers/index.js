@@ -61,6 +61,27 @@ rooter.get('/', (req, res) => {
 		console.log(err);
 	})
 })
+// 处理首页分页ajax
+rooter.get('/articles', (req, res) => {
+	// 获取的数据发送到前台
+	ArticleModel.getPaginationData(req)
+	.then(data=>{
+		res.json({
+			code:0,
+			message:'获取数据成功',
+			data:data
+		})
+	})
+	.catch(err=>{
+		res.json({
+			code:10,
+			message:'获取数据失败'
+		})
+	})
+})
+
+
+
 //显示列表页 '/list' 代表请求的是列表页
 rooter.get('/list', (req, res) => {
 	res.render('main/list',{

@@ -129,4 +129,10 @@
 		})
 	})
 	*/
+
+	// 5.处理主页分页器
+	var $articlePage = $('#article-page');
+	$articlePage.pagination({
+		url:'/articles'
+	})
 })(jQuery);
