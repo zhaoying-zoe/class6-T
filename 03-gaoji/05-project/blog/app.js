@@ -100,7 +100,7 @@ app.use('',(req,res,next)=>{
 })
 */
 // 利用session
-app.use('',(req,res,next)=>{
+app.use('/',(req,res,next)=>{
 	// 把前台获取的cookie保存在req.userInfo上,后面的路由可以通过req.userInfo获取前台路由
 	req.userInfo = req.session.userInfo || {};
 

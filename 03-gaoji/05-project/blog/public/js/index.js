@@ -100,7 +100,7 @@
 					$loginForm.hide();
 					$('user').find('span').html(data.user.username);
 					*/
-					window.location.reload();
+					window.location.reload();// 登陆成功,刷新页面
 				}else{
 					alert('登陆失败,请稍后再试!')
 				}
