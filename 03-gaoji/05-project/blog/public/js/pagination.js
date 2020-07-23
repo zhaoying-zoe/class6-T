@@ -31,8 +31,9 @@
 					dataType:'json'
 				})
 				.done(function(result){
-					if(result.cade == 0){
-						console.log(result.message);
+					if(result.code == 0){
+						// console.log('result')
+						$elem.trigger('get-data',result.data);
 					}
 				})
 				.fail(function(err){

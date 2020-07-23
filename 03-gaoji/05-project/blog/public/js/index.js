@@ -132,6 +132,9 @@
 
 	// 5.处理主页分页器
 	var $articlePage = $('#article-page');
+	$articlePage.on('get-data',function(ev,data){
+		console.log(data);
+	})
 	$articlePage.pagination({
 		url:'/articles'
 	})
