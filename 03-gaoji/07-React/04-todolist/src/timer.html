@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>timer.html</title>
+</head>
+<body>
+	<div id="root">
+		
+	</div>
+</body>
+<script type="text/javascript">
+	var oRoot = document.getElementById('root');
+	function timer(){
+		oRoot.innerHTML = `<h1>这是一个神奇的时间</h1><p>${new Date().toLocaleString()}</p>`
+	}
+	setInterval(timer,1000)
+</script>
+</html>

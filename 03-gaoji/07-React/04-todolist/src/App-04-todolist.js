@@ -1,10 +1,9 @@
 import React,{Component,Fragment} from 'react';
-import Item from './item.js';
-import PropTypes from 'prop-types';
 
 class App extends Component{
 	constructor(props){
 		super(props);
+		// console.log(this.state);
 		this.state = {
 			attr:['吃饭饭','睡觉觉','打豆豆','揍扁你'],
 			list:''
@@ -20,10 +19,10 @@ class App extends Component{
 		// 把存好的输入框中的数据 放到list数组中中
 		list.push(this.state.list);
 		// 给原state重新赋值
-		this.setState((preState)=>({
+		this.setState({
 			attr:list,
 			list:''
-		}))
+		})
 	}
 	handleDel(index){
 		// 定义空数组存放旧数据
@@ -31,10 +30,11 @@ class App extends Component{
 		// 把数组中的数据删除
 		attr.splice(index,1);// index:从下标开始删除,删除一个
 		// 把删除后剩余的数据放入原attr
-		this.setState((preState)=>({
+		this.setState({
 			attr:attr,
 			list:''
-		}))
+		})
+		// console.log(index);// 检查下标
 	}
 	handleChange(ev){
 		// console.log(this); // this 指的是App这个构造函数
@@ -45,16 +45,15 @@ class App extends Component{
 		// console.log(val);
 		
 		// 把输入框中的值存入list
-		this.setState((preState)=>({// 异步
+		this.setState({// 异步
 			list:val
-		}))
+		})
 	}
 	render(){
 		// console.log(this); // this指代App
 		return (
 			<div className="app">
-				<input ref = {(input)=>{this.input = input}}
-					value={this.state.list} className="input" 
+				<input value={this.state.list} className="input" 
 					onChange={this.handleChange.bind(this)}
 				/>
 				<button className="btn"
@@ -66,13 +65,12 @@ class App extends Component{
 					{
 						this.state.attr.map((value,index)=>{
 							return (
-								<Item key={ index }
-									 list={value} 
-									 attr={this.state.attr} 
-									 index={index} 
-									 handleDel={this.handleDel.bind(this,index)}
-								 />
-							)
+										<li 
+										onClick={this.handleDel.bind(this,index)}
+										key={index}>
+											{value}
+										</li>
+									)
 						})
 					}
 				</ul>
