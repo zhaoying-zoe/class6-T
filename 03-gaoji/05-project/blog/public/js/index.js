@@ -132,8 +132,87 @@
 
 	// 5.处理主页分页器
 	var $articlePage = $('#article-page');
+	// 构建首页函数
+	function buildArticleHtml(articles){
+		var html = '';
+		articles.forEach(function(article){
+			var createdTime = moment(article.createdAt).format('YYYY - MM - DD HH:mm:ss');
+			html += `<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a href="/detail/${ article._id.toString() }"></a>${ article.title }
+					</h3>
+				</div>
+				<div class="panel-body">
+					${ article.intro }
+				</div>
+				<div class="panel-footer">
+					<span class="glyphicon glyphicon-user"> ${ article.user.username }</span>
+					<span class="glyphicon glyphicon-th-list"> ${ article.category.name }</span>
+					<span class="glyphicon glyphicon-time"> ${ createdTime }</span>
+					<span class="glyphicon glyphicon-eye-open"> ${ article.click }</span>
+				</div>
+			</div>`
+		})
+
+
+		return html;
+	}
+
+	// 分页器函数
+	function buildPaginationHtml(page,list,pages){
+		var html = '';
+		html += `<ul class="pagination">`
+		if(page == 1){
+			html+= `<li class="disabled">
+				        <a href="javascript:;" aria-label="Previous">
+				            <span aria-hidden="true">&laquo;</span>
+				        </a>
+			        </li>`
+		}else{
+			html+= `<li>
+			            <a href="javascript:;" aria-label="Previous">
+			                <span aria-hidden="true">&laquo;</span>
+			            </a>
+			        </li>`
+		}
+		list.forEach(function(i){
+			if(i == page){
+				html+= `<li class="active"><a href="javascript:;">${ i }</a></li>`
+			}else{
+				html+= `<li><a href="javascript:;">${ i }</a></li>`
+
+			}
+		})
+		if(page == pages){
+				html+= `<li class="disabled">
+				            <a href="javascript:;" aria-label="Next">
+				                <span aria-hidden="true">&raquo;</span>
+				            </a>
+				        </li>`
+		}else{
+				html+= `<li>
+				            <a href="javascript:;" aria-label="Next">
+				                <span aria-hidden="true">&raquo;</span>
+				            </a>
+				        </li>`
+		}
+		html += `</ul>`
+		return html;
+	}
+
+	// 监听事件构建HTML结构
 	$articlePage.on('get-data',function(ev,data){
-		console.log(data);
+		// console.log(data.page);
+		// 构建首页文章列表HTML结构
+		$('#article-wrap').html(buildArticleHtml(data.docs));
+		// 构建分页器
+		if(data.pages > 1){
+			$('#article-page').html(buildPaginationHtml(data.page,data.list,data.pages));
+		}else{
+			$('#article-page').html('');
+
+		}
 	})
 	$articlePage.pagination({
 		url:'/articles'

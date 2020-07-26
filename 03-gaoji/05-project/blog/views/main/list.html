@@ -8,77 +8,7 @@
 {% endblock %}
 <!-- 写入内容 -->
 {% block content %}
-<!-- 轮播图部分:::开始 -->
-	<div class="container">
-		<div class="col-md-8">
-			<!-- 文本部分1 -->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">移动设备由优先</h3>
-				</div>
-				<div class="panel-body">
-					在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。
-				</div>
-				<div class="panel-footer">
-					<span class="glyphicon glyphicon-user"><a href="#">Tom</a></span>
-					<span class="glyphicon glyphicon-th-list"><a href="#">JavaScript</a></span>
-					<span class="glyphicon glyphicon-time"><a href="#">2018-13-32</a></span>
-					<span class="glyphicon glyphicon-eye-open"><a href="#">1已阅读</a></span>
-				</div>
-			</div>
-			<!-- 文本部分2 -->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">移动设备由优先</h3>
-				</div>
-				<div class="panel-body">
-					在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。
-				</div>
-				<div class="panel-footer">
-					<span class="glyphicon glyphicon-user"><a href="#">Tom</a></span>
-					<span class="glyphicon glyphicon-th-list"><a href="#">JavaScript</a></span>
-					<span class="glyphicon glyphicon-time"><a href="#">2018-13-32</a></span>
-					<span class="glyphicon glyphicon-eye-open"><a href="#">1已阅读</a></span>
-				</div>
-			</div>
-			<!-- 文本部分3 -->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">移动设备由优先</h3>
-				</div>
-				<div class="panel-body">
-					在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。
-				</div>
-				<div class="panel-footer">
-					<span class="glyphicon glyphicon-user"><a href="#">Tom</a></span>
-					<span class="glyphicon glyphicon-th-list"><a href="#">JavaScript</a></span>
-					<span class="glyphicon glyphicon-time"><a href="#">2018-13-32</a></span>
-					<span class="glyphicon glyphicon-eye-open"><a href="#">1已阅读</a></span>
-				</div>
-			</div>
-			<!-- 路径导航👇 -->
-			<nav aria-label="Page navigation">
-				<ul class="pagination">
-					<li>
-						<a href="#" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li>
-						<a href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-<!-- 轮播图部分:::结束 -->
+	{% include './article_list.html' %}
 {% endblock %}
 <!-- 写入js样式 -->
 {% block footer %}

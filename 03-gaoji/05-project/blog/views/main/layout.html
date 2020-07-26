@@ -27,9 +27,17 @@
 				    <!-- Collect the nav links, forms,and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					    <ul class="nav navbar-nav">
-							<li class="nav-active"><a href="#">首页</a></li>
+					      {% if currentCategoryId %}
+							<li><a href="/">首页</a></li>
+						  {% else %}
+							<li class="nav-active"><a href="/">首页</a></li>
+						  {% endif %}
 							{% for category in categoriesData %}
-							<li><a href="/list/{{ category._id.toString() }}">{{ category.name }}</a></li>
+							{% if category._id.toString() == currentCategoryId %}
+								<li class="nav-active"><a href="/list/{{ category._id.toString() }}">{{ category.name }}</a></li>
+							{% else %}
+								<li><a href="/list/{{ category._id.toString() }}">{{ category.name }}</a></li>
+							{% endif %}
 							{% endfor %}
 					    </ul>
 			    </div><!-- /.navbar-collapse -->
@@ -114,17 +122,17 @@
 				</form>
 				<!-- 广告部分 -->
 				<div class="img img-1">
-					<img src="image/carousel-23.jpg" alt="">
+					<img src="/image/carousel-23.jpg" alt="">
 				</div>
 				<div class="img">
-					<img src="image/carousel-22.jpg" alt="">
+					<img src="/image/carousel-22.jpg" alt="">
 				</div>
 				<!-- 博主介绍 -->
 				<div class="panel panel-1 panel-default">
 					<div class="panel-heading">博主介绍</div>
 					<div class="panel-body">
 						<div class="img-logo">
-							<img src="image/carousel-logo.jpg" class="img-circle">
+							<img src="/image/carousel-logo.jpg" class="img-circle">
 						</div>
 						<div class="panel-male">
 							<div class="panel-name">欲言又止</div>
@@ -153,7 +161,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">关注我</div>
 					<div class="panel-body panel-body-3">
-						<img src="image/carousel-erweima.jpg">
+						<img src="/image/carousel-erweima.jpg">
 					</div>
 				</div>
 			</div>
@@ -167,6 +175,7 @@
 </body>
 <script src="/lib/js/jquery-1.12.4.min.js"></script>
 <script src="/lib/js/bootstrap.min.js"></script>
+<script src="/lib/moment/moment.js"></script>
 <script src="/js/logout.js"></script>
 <script src="/js/pagination.js"></script>
 {% block footer %} {% endblock %}

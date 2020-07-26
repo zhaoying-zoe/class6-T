@@ -15,24 +15,29 @@
 				// console.log(labelText)
 				
 				var page = 1;
-				if(labelText == 'Previous'){
-					page = currentPage - 1;
-				}else if(labelText == 'Next'){
+				if(labelText == 'Next'){
 					page = currentPage + 1;
+				}else if(labelText == 'Previous'){
+					page = currentPage - 1;
 				}else{
 					page = $this.html()/1;
 				}
 				// console.log(page)
 				
 				// 3.发送ajax
+				var id = $elem.data('id');
+				var url = options.url +'?page='+page;
+				if(id){
+					url = url+'&id='+id;
+				}
 				$.ajax({
-					url:options.url +'?page='+page,
+					url:url,
 					type:'GET',
 					dataType:'json'
 				})
 				.done(function(result){
 					if(result.code == 0){
-						// console.log('result')
+						// console.log(result.data)
 						$elem.trigger('get-data',result.data);
 					}
 				})

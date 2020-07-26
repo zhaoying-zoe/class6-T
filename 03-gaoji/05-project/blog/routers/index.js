@@ -6,7 +6,7 @@ const CategoryModel = require('../models/category.js');
 const ArticleModel = require('../models/article.js');
 
 
-
+// 获取首页数据
 async function getCommonData(){
 	// 获取顶部分类数据
 	const getCategoriesDataPromise = CategoryModel.find({},'name').sort({_id:1});
@@ -49,8 +49,7 @@ rooter.get('/', (req, res) => {
 	            articles:data.docs,
 	            page:data.page,
 	            list:data.list,
-	            pages:data.pages,
-	            url:'/'
+	            pages:data.pages
 			})
 		})
 		.catch(err=>{
@@ -63,8 +62,14 @@ rooter.get('/', (req, res) => {
 })
 // 处理首页分页ajax
 rooter.get('/articles', (req, res) => {
+	const id = req.query.id;
+	let query = {};
+	// 根据对应id获取相关数据
+	if(id){
+		query.category = id;
+	}
 	// 获取的数据发送到前台
-	ArticleModel.getPaginationData(req)
+	ArticleModel.getPaginationData(req,query)
 	.then(data=>{
 		res.json({
 			code:0,
@@ -83,18 +88,91 @@ rooter.get('/articles', (req, res) => {
 
 
 //显示列表页 '/list' 代表请求的是列表页
-rooter.get('/list', (req, res) => {
-	res.render('main/list',{
-		// 把cookie信息返回到前台html页面
-		userInfo:req.userInfo
-	});
+rooter.get('/list/:id', (req, res) => {
+	const id = req.params.id;
+	let query = {};
+	// 根据对应id获取相关数据
+	if(id){
+		query.category = id;
+	}
+	ArticleModel.getPaginationData(req,query)
+	.then(data=>{
+		getCommonData()
+		.then(result=>{
+			// 定义新对象接收参数
+			const { categoriesData,topArticles } = result;
+			// console.log({categoriesData});
+			res.render('main/list',{
+				// 把cookie信息返回到前台html页面
+				userInfo:req.userInfo,
+				categoriesData,
+				topArticles,
+				// 返回分页数据
+	            articles:data.docs,
+	            page:data.page,
+	            list:data.list,
+	            pages:data.pages,
+	            // 回传当前分页ID
+	            currentCategoryId:id
+			})
+		})
+		.catch(err=>{
+			console.log(err);
+		})
+	})
+	.catch(err=>{
+		console.log(err);
+	})
 })
+
+
+
+
+// 获取首页数据
+async function getDetailData(id){
+	// 获取共通数据
+	const getCommonDataPromise = getCommonData();
+
+	const getArticlesDataPromise = ArticleModel.findOneAndUpdate({_id:id},{$inc:{click:1}},{new:true})
+										.populate({path:'user',select:'username'})
+										.populate({path:'category',select:'name'})
+
+	const articleData = await getArticlesDataPromise;
+
+	const commonData = await getCommonDataPromise;
+
+	const { categoriesData,topArticles } = commonData;
+	return {
+		categoriesData,
+		topArticles,
+		articleData
+	}
+
+
+
+}
+
+
+
 //显示详情页 /detail 代表请求的是详情页
-rooter.get('/detail', (req, res) => {
-	res.render('main/detail',{
-		// 把cookie信息返回到前台html页面
-		userInfo:req.userInfo
-	});
+rooter.get('/detail/:id', (req, res) => {
+	const id = req.params.id;
+	getDetailData(id)
+	.then(result=>{
+		// console.log(result);
+		const { categoriesData,topArticles,articleData } = result;
+		res.render('main/detail',{
+			// 把cookie信息返回到前台html页面
+			userInfo:req.userInfo,
+			categoriesData,
+			topArticles,
+			articleData
+		})
+	})
+	.catch(err=>{
+		console.log(err);
+	})
+
 })
 
 
