@@ -18,13 +18,8 @@ class App extends Component{
 		
 		// 👇 把reducer的返回值赋给this.state 
 		this.state = store.getState();// store.getState():获取reducer的返回值
-		this.handleInput = this.handleInput.bind(this);
-		this.handelAdd = this.handelAdd.bind(this);
-
-		store.subscribe(()=>{
-			// console.log(store.getState());
-			this.setState(store.getState());// 将store上的值赋给state
-		})
+		this.handleInput = this.handleInput.bind(this)
+		this.handelAdd = this.handelAdd.bind(this)
 	}
 	handelAdd(){
 		const list = [...this.state.list,this.state.task]
@@ -38,14 +33,9 @@ class App extends Component{
 	handleInput(ev){
 		// 输入框中的值
 		let val = ev.target.value;
-		// 派发action
-		// action must be object
-		const action = {
-			//Actions may not have an undefined "type" property
-			type:'change_item',// 根据type判断 增或者删 事件
-			payload:val// 接收输入框中的值
-		}
-		store.dispatch(action);
+		this.setState((preState)=>({
+			task:val
+		}))
 	}
 	handleDel(index){
 		const list = [...this.state.list]
