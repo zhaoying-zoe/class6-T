@@ -5,43 +5,39 @@ import PropTypes from 'prop-types';
 class App extends Component{
 	// 生命周期函数1:在某个时刻组件会自动执行的函数
 	constructor(props){
+		// console.log('props app');
 		super(props);// 继承属性并改变this指向
+		//this.props = props
 		console.log(props);
+		
 		this.state = {
 			attr:['吃饭饭','睡觉觉','打豆豆','揍扁你'],
 			list:''
 		}
 	}
 
-	// 生命周期函数2:在某个时刻组件会自动执行的函数
+	// 生命周期函数1:在某个时刻组件会自动执行的函数
 	static getDerivedStateFromProps(props, state){
 		console.log('getDerivedStateFromProps');
-		return null;// 调用该函数 必须要有返回值
-	}
-	// 生命周期函数3:在某个时刻组件会自动执行的函数
-	shouldComponentUpdate(nextProps, nextState){
-		console.log('shouldComponent',nextProps, nextState);
-		return true;
-	}
-	getSnapshotBeforeUpdate(prevProps, prevState){
-		// 该方法返回一个值,这个值会随后被传入到 componentDidUpdate 中使用
-		console.log('getSnapshotBeforeUpdate',prevProps, prevState);
+		console.log('getDerivedStateFromProps.props',props);// 其他组件的数据
+		console.log('getDerivedStateFromProps,state',state);// 组件自身的数据
+		/*
 		return {
-			name:'tom',
-			age:23
-		};
-	}
-	componentDidUpdate(prevProps, prevState,snapshot){
-		// 组件更新完成后执行
-		console.log('componentDidUpdate',prevProps, prevState,snapshot)
+			attr:['吃饭饭','睡觉觉','打豆豆','揍扁你'],
+			list:''
+		}
+		return {
+			attr:['吃饭饭','睡觉觉','打豆豆','揍扁你'],
+			list:''
+		}
+		*/
+		return null;// 调用该函数 必须要有返回值
 	}
 	componentDidMount(){
 		// 组件挂载完毕执行,多用于发送ajax获取数据
 		console.log('componentDidMount');
 	}
-	componentWillUnmount(){
-		console.log('componentWillUnmount')
-	}
+
 
 	handleAdd(){
 		// react在调用函数时this会变为undefined,所以需要把this bind一下 

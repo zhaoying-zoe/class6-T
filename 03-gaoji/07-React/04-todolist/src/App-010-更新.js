@@ -39,9 +39,7 @@ class App extends Component{
 		// 组件挂载完毕执行,多用于发送ajax获取数据
 		console.log('componentDidMount');
 	}
-	componentWillUnmount(){
-		console.log('componentWillUnmount')
-	}
+
 
 	handleAdd(){
 		// react在调用函数时this会变为undefined,所以需要把this bind一下 
