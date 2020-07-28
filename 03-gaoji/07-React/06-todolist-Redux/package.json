@@ -30,6 +30,7 @@
     "@ant-design/icons": "^4.2.1",
     "@reduxjs/toolkit": "^1.4.0",
     "antd": "^4.4.3",
+    "axios": "^0.19.2",
     "file-loader": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
