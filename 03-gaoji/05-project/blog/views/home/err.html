@@ -1,0 +1,18 @@
+{% extends './layout.html' %}
+{% block title %}
+    err
+{% endblock %}
+{% block header %}
+    操作失败
+{% endblock %}
+{% block footer %}{% endblock %}
+{% block content %}
+	<div class="alert alert-danger" role="alert">{{ message }}</div>
+	{% if url %}
+		<!-- 根据后台返回的url跳转到指定的页面(/category) -->
+		<a href="{{url}}" class="btn btn-primary">点击跳转</a>
+	{% else %}
+		<!-- 如果添加失败,则调用window上的history方法,返回到上一个页面 -->
+		<a href="JavaScript:window.history.back()" class="btn btn-primary">点击跳转</a>
+	{% endif %}
+{% endblock %}

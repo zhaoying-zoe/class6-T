@@ -145,7 +145,7 @@ router.get('/password',(req,res)=>{
         userInfo:req.userInfo,
     })
 })
-//处理更新密码路由
+// 处理更新密码路由
 router.post('/password',(req,res)=>{
     const { password } = req.body;
     //查询数据库更新密码
