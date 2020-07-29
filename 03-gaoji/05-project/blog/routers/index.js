@@ -4,6 +4,7 @@ const express = require('express');
 const rooter = express.Router();
 const CategoryModel = require('../models/category.js');
 const ArticleModel = require('../models/article.js');
+const CommentModel = require('../models/comment.js');
 
 
 // 获取首页数据
@@ -129,7 +130,8 @@ rooter.get('/list/:id', (req, res) => {
 
 
 // 获取首页数据
-async function getDetailData(id){
+async function getDetailData(req){
+	const id = req.params.id;
 	// 获取共通数据
 	const getCommonDataPromise = getCommonData();
 
@@ -137,36 +139,48 @@ async function getDetailData(id){
 										.populate({path:'user',select:'username'})
 										.populate({path:'category',select:'name'})
 
+
+	//获取评论分页数据
+	const getCommentsDataPromise = CommentModel.getPaginationData(req,{article:id})
+
 	const articleData = await getArticlesDataPromise;
 
 	const commonData = await getCommonDataPromise;
+
+	const commentsData = await getCommentsDataPromise;
 
 	const { categoriesData,topArticles } = commonData;
 	return {
 		categoriesData,
 		topArticles,
-		articleData
+		articleData,
+		commentsData
 	}
 
 
 
 }
 
-
-
 //显示详情页 /detail 代表请求的是详情页
 rooter.get('/detail/:id', (req, res) => {
-	const id = req.params.id;
-	getDetailData(id)
+	// const id = req.params.id;
+	getDetailData(req)
 	.then(result=>{
 		// console.log(result);
-		const { categoriesData,topArticles,articleData } = result;
+		const { categoriesData,topArticles,articleData,commentsData } = result;
 		res.render('main/detail',{
 			// 把cookie信息返回到前台html页面
 			userInfo:req.userInfo,
 			categoriesData,
 			topArticles,
-			articleData
+			articleData,
+			//返回分页数据
+			comments:commentsData.docs,
+			page:commentsData.page,
+			list:commentsData.list,
+			pages:commentsData.pages,
+			//回传分类ID
+			currentCategoryId:articleData.category._id
 		})
 	})
 	.catch(err=>{

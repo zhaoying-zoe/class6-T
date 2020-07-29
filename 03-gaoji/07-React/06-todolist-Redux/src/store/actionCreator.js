@@ -22,3 +22,7 @@ export const getAjaxDataActioin = (data)=>({
 	type:AJAX_DATA,// 根据type判断 增或者删 事件
 	payload:data
 })
+
+export const getRequestDataActioin = ()=>{
+	// 先发送ajax获取数据再
+}

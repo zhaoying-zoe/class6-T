@@ -121,6 +121,8 @@ app.use('/admin',require('./routers/admin.js'))
 app.use('/category',require('./routers/category.js'))
 // 处理进入文章管理的路由
 app.use('/article',require('./routers/article.js'))
+// 引入处理评论的路由
+app.use('/comment',require('./routers/comment.js'));
 /*------------------配置路由结束----------------*/
 
 

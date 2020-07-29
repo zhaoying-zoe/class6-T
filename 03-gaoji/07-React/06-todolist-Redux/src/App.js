@@ -21,14 +21,17 @@ class App extends Component{
 	}
 	// 发送ajax
 	componentDidMount(){
+		/*
 		axios.get('http://127.0.0.1:3000')
 		.then(result=>{
-			// console.log(result.data);
+			// 派发action
 			store.dispatch(getAjaxDataActioin(result.data));
 		})
 		.catch(err=>{
 			console.log(err);
 		})
+		*/
+		store.dispatch(getRequestDataActioin());
 	}
 	handleInput(ev){
 		// 输入框中的值
@@ -45,10 +48,11 @@ class App extends Component{
 		store.dispatch(getDelItemActioin(index));
 	}
 	render(){
+		const { task,list } = this.state;
 		return (
 			<AppUI 
-				task = { this.state.task }
-				list = { this.state.list }
+				task = { task }
+				list = { list }
 				handleInput = { this.handleInput }
 				handleAdd = { this.handleAdd }
 				handleDel = { this.handleDel }
