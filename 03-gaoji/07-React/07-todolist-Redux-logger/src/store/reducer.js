@@ -41,3 +41,4 @@ export default (state=stateDefaultData,action,)=>{
 
 	return state;// 把数据返回给Store
 }
+
