@@ -1,31 +1,32 @@
 import React,{Component,Fragment} from 'react'
+import store from '../../store/index.js';// 引入Store
 import axios from 'axios';
 import { connect } from 'react-redux';
-import './App.css';
+import './index.css';
 import {  DatePicker,Input,Button,Row,Col,List } from 'antd';
 
 
-import { getChangeItemActioin,getAddItemActioin,getDelItemActioin,getAjaxDataActioin,getRequestDataActioin } from './store/actionCreator.js';
+import { actionCreators } from './store/index.js';
 
 // 容器组件
-class App extends Component{
+class Home extends Component{
 	componentDidMount(){
 		this.props.handleInit();
 	}
 	render(){
-		const { task,list,handleInput,handleAdd,handleDel } = this.props;
+		// const { task,list,handleInput,handleAdd,handleDel } = this.props;
 		return (
-			<div className='App'>
+			<div className='Home'>
 			    <Row>
 			      <Col span={22}>
 					<Input 
-						onChange={handleInput}
-						value={task}
+						onChange={this.props.handleInput}
+						value={this.props.task}
 					/>			      
 			      </Col>
 			      <Col span={2}>
 					<Button type="primary"
-						onClick={handleAdd}
+						onClick={this.props.handleAdd}
 					>
 						提交
 					</Button>			      
@@ -34,9 +35,9 @@ class App extends Component{
 			    <List
 				    style={{ marginTop:20 }}
 					bordered
-					dataSource={list}
+					dataSource={this.props.list}
 					renderItem={(item,index)=> (
-				        <List.Item onClick={()=>{handleDel(index)}}>
+				        <List.Item onClick={()=>{this.props.handleDel(index)}}>
 				           {item}
 				        </List.Item>
 					)}
@@ -47,10 +48,9 @@ class App extends Component{
 }
 // 将属性从store映射到组件
 const mapStateToProps = (state)=>{
-	// console.log(state);
 	return {
-		task:state.task,
-		list:state.list
+		task:state.home.task,
+		list:state.home.list
 	}
 }
 // 将属性从store映射到组件
@@ -60,22 +60,22 @@ const mapDispatchToProps = (dispatch)=>{
 			// 输入框中的值
 			let val = ev.target.value;
 			// 派发action
-			dispatch(getChangeItemActioin(val));
+			dispatch(actionCreators.getChangeItemActioin(val));
 		},
 		handleAdd:()=>{
 			// 派送action
-			dispatch(getAddItemActioin());
+			dispatch(actionCreators.getAddItemActioin());
 		},
 		handleDel:(index)=>{
 			// 派送action
-			dispatch(getDelItemActioin(index));
+			dispatch(actionCreators.getDelItemActioin(index));
 		}
 		,handleInit:()=>{
-			dispatch(getRequestDataActioin());
+			dispatch(actionCreators.getRequestDataActioin());
 
 		}
 	}
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(Home);
