@@ -1,10 +1,15 @@
-import { combineReducers } from 'redux';// 引入redux里的combineReducers
-import { reducer as todolistReducer } from 'pages/todolist/store/index.js';// 引入todolist中的reducer
-import { reducer as homeReducer } from 'pages/home/store/index.js';// 引入home中的reducer
-
+/*
+* @Author: Chen
+* @Date:   2019-12-01 17:24:50
+* @Last Modified by:   Chen
+* @Last Modified time: 2019-12-05 16:00:05
+*/
+// import { combineReducers } from 'redux'
+import {combineReducers} from 'redux-immutable'
+import {reducer as todolistReducer} from '../pages/todolist/store/index.js'
+import {reducer as loginReducer} from '../pages/login/store/index.js'
 
 export default combineReducers({
-	// todolist:todolistReducer
 	todolist:todolistReducer,
-	home:homeReducer
+	login:loginReducer
 })

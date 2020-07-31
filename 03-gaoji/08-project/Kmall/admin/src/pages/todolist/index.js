@@ -1,82 +1,82 @@
-import React,{Component,Fragment} from 'react'
-import store from '../../store/index.js';// 引入Store
-import axios from 'axios';
-import { connect } from 'react-redux';
-import './index.css';
-import {  DatePicker,Input,Button,Row,Col,List } from 'antd';
+import React,{Component} from 'react'
+import axios from 'axios'
+import { connect } from 'react-redux'
+import './index.css'
+import { Input,Button,Row,Col,List   } from 'antd'
+
+import {actionCreator} from './store/index.js'
 
 
-import { actionCreators } from './store/index.js';
-
-// 容器组件
-class Todolist extends Component{
+//容器组件
+class TodoList extends Component{
 	componentDidMount(){
-		this.props.handleInit();
+		//发送ajax
+		// this.props.handleInit()
 	}
 	render(){
-		// const { task,list,handleInput,handleAdd,handleDel } = this.props;
-		return (
-			<div className='Todolist'>
-			    <Row>
-			      <Col span={22}>
-					<Input 
-						onChange={this.props.handleInput}
-						value={this.props.task}
-					/>			      
-			      </Col>
-			      <Col span={2}>
-					<Button type="primary"
-						onClick={this.props.handleAdd}
-					>
-						提交
-					</Button>			      
-			      </Col>
-			    </Row>
-			    <List
-				    style={{ marginTop:20 }}
-					bordered
-					dataSource={this.props.list}
-					renderItem={(item,index)=> (
-				        <List.Item onClick={()=>{this.props.handleDel(index)}}>
-				           {item}
+		const { list,task,handleInput,handelAdd,handleDel }= this.props
+		return(
+			<div className='TodoList'>
+				<Row>
+					<Col span={18}>
+						<Input 
+							onChange={handleInput}
+							value={task}
+						/>
+					</Col>
+					<Col span={6}>
+						<Button 
+							type="primary"
+							onClick={handelAdd}
+						>
+							提交
+						</Button>
+					</Col>
+				</Row>
+				<List
+					style={{marginTop:15}}
+			      	bordered
+			      	dataSource={list}
+			      	renderItem={(item,index) => (
+				        <List.Item onClick={()=>{handleDel(index)}}>
+				          {item}
 				        </List.Item>
-					)}
+			      	)}
 			    />
 			</div>	
 		)
 	}
 }
-// 将属性从store映射到组件
+
+
+
+
+//将属性映射到组件中
 const mapStateToProps = (state)=>{
-	// console.log(state);
+	console.log(state)
 	return {
-		task:state.todolist.task,
-		list:state.todolist.list
+		list:state.get('todolist').get('list'),
+		task:state.get('todolist').get('task')
 	}
 }
-// 将属性从store映射到组件
+//将方法映射到组件
 const mapDispatchToProps = (dispatch)=>{
 	return {
 		handleInput:(ev)=>{
-			// 输入框中的值
-			let val = ev.target.value;
-			// 派发action
-			dispatch(actionCreators.getChangeItemActioin(val));
+			const val = ev.target.value
+			dispatch(actionCreator.getChangeItemAction(val))
 		},
-		handleAdd:()=>{
-			// 派送action
-			dispatch(actionCreators.getAddItemActioin());
+		handelAdd:()=>{
+			dispatch(actionCreator.getAddItemAction())
 		},
 		handleDel:(index)=>{
-			// 派送action
-			dispatch(actionCreators.getDelItemActioin(index));
-		}
-		,handleInit:()=>{
-			dispatch(actionCreators.getRequestDataActioin());
-
+			dispatch(actionCreator.getDeleteItemAction(index))
+		},
+		handleInit:()=>{
+			dispatch(actionCreator.getRequestLoadDataAction())
 		}
 	}
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Todolist);
+export default connect(mapStateToProps,mapDispatchToProps)(TodoList)

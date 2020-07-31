@@ -1,21 +1,44 @@
-// 项目总组件
-import React,{Component,Fragment} from 'react';
-import './App.css';
-import Todelist from './pages/todolist/index.js';
-import Home from './pages/home/index.js';
-import { connect } from 'react-redux';
+import React,{Component} from 'react'
+import './App.css'
+import {
+  BrowserRouter as Router,
+  // HashRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
+import TodoList from './pages/todolist/index.js'
+import Login from './pages/login/index.js'
 
-// 容器总组件
 class App extends Component{
+	constructor(props){
+		super(props)
+		this.state = {
+			isAdmin:true
+		}
+	}
 	render(){
-		return (
-			<div>
-				<Todelist />
-				<Home />
-			</div>
+		const ProtectRoute = ({component:Component,...rest})=>{
+			// console.log(rest)
+			return <Route 
+				{...rest}
+				render={(props)=>{
+					return this.state.isAdmin ? <Component {...props} /> : <h2>this is login page</h2>
+				}}
+			/>
+		}
+		return(
+			<Router>
+				<div className='App'>
+					<Route exact path='/' component={TodoList} />
+					<Route path='/login' component={Login} />
+				</div>
+			</Router>
 		)
 	}
 }
-// export default connect(mapStateToProps,mapDispatchToProps)(App);
-export default connect(null,null)(App);
+
+
+
+export default App
