@@ -24,7 +24,7 @@ class App extends Component{
 		}
 	}
 	render(){
-	    const ProtectedRoute = ({ component: Component, ...rest }) => (
+	    const HomeRoute = ({ component: Component, ...rest }) => (
 	      <Route {...rest} render={props => (
 	        window.localStorage.getItem('userInfo') ? (
 	          <Component {...props}/>
