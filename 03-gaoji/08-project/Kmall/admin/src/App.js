@@ -1,15 +1,20 @@
 import React,{Component} from 'react'
 import './App.css'
+// 引入路由组件
 import {
   BrowserRouter as Router,
   // HashRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
+
 
 import TodoList from './pages/todolist/index.js'
 import Login from './pages/login/index.js'
+// 引入错误路由页面的组件
+import Err from '../src/common/err'
 
 class App extends Component{
 	constructor(props){
@@ -19,6 +24,18 @@ class App extends Component{
 		}
 	}
 	render(){
+	    const ProtectedRoute = ({ component: Component, ...rest }) => (
+	      <Route {...rest} render={props => (
+	        window.localStorage.getItem('userInfo') ? (
+	          <Component {...props}/>
+	        ) : (
+	          <Redirect to={{
+	            pathname: '/login'
+	          }}/>
+	        )
+	      )}
+	      />
+	    )
 		const ProtectRoute = ({component:Component,...rest})=>{
 			// console.log(rest)
 			return <Route 
@@ -31,8 +48,11 @@ class App extends Component{
 		return(
 			<Router>
 				<div className='App'>
-					<Route exact path='/' component={TodoList} />
-					<Route path='/login' component={Login} />
+					<Switch>
+						<Route exact path='/' component={TodoList} />
+						<Route path='/login' component={Login} />
+						<Route component={Err} />
+					</Switch>
 				</div>
 			</Router>
 		)

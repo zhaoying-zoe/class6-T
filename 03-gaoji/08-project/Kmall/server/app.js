@@ -77,9 +77,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //处理路由
-app.use("/sessions",require('./routes/sessions.js'));
+app.use("/sessions",require('./routes/sessions.js'));// 登录路由
 app.use("/counts",require('./routes/counts.js'));
-app.use("/users",require('./routes/users.js'));
+app.use("/users",require('./routes/users.js'));// 
 app.use("/categories",require('./routes/categories.js'));
 app.use("/products",require('./routes/products.js'));
 app.use("/orders",require('./routes/orders.js'));

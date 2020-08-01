@@ -11,33 +11,41 @@ import { Form, Icon, Input, Button, Checkbox } from 'antd';
 class NormalLoginForm extends React.Component {
 	constructor(props){
 		super(props);
+		// 把this绑定在handleSubmit上
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
+	// 表单通过验证走这个函数
 	handleSubmit(e){
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
-				console.log('Received values of form: ', values);
+				// console.log('Received values of form: ', values);
+				this.props.handleLogin(values);
 			}
 		});
 	};
 	render() {
+		// getFieldDecorator:定义验证规则👇
 		const { getFieldDecorator } = this.props.form;
 		return (
 			<div className="Login">
-				<Form onSubmit={this.handleSubmit} className="login-form">
+				<Form className="login-form">
 					<Form.Item>
 						{getFieldDecorator('username', {
-							rules: [{ required: true, message: 'Please input your username!' }],
+							rules: [{ required: true, message: '小老弟,请输入你的用户名!' },
+							{ pattern: /^[a-z][a-z,1-9]{2,5}$/i, message: '用户名是字母开头,3到6位的字符!' }],
 						})(
 			            <Input
 							prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-							placeholder="用户名"
+							placeholder="用户名" 
+							autoComplete="off"
 			            />,
 						)}
 					</Form.Item>
 					<Form.Item>
 						{getFieldDecorator('password', {
-							rules: [{ required: true, message: 'Please input your Password!' }],
+							rules: [{ required: true, message: '把你的密码也写上!' },
+							{ pattern: /\w{3,6}/i, message: '密码是3到6位的任意字符!' }],
 						})(
 			            <Input
 							prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -49,8 +57,9 @@ class NormalLoginForm extends React.Component {
 					<Form.Item>
 						<Button 
 							type="primary" 
-							htmlType="submit" 
 							className="login-form-button but-sub-login"
+							onClick={this.handleSubmit}
+							loading={false}
 						>
 						登陆
 						</Button>
@@ -74,7 +83,10 @@ const mapStateToProps = (state)=>{
 //将方法映射到组件
 const mapDispatchToProps = (dispatch)=>{
 	return {
-		
+		handleLogin:(data)=>{
+			// console.log(data);
+			dispatch(actionCreator.getLoginAction(data));
+		}
 	}
 }
 

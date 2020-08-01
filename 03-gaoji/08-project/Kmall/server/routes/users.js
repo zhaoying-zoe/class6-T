@@ -14,6 +14,7 @@ const hmac = require('../util/hmac.js')
 
 const router = Router();
 
+// 管理员注册
 /*
 router.get('/init',(req,res)=>{
 	UserModel.insertMany({
