@@ -12,21 +12,21 @@ import {
 import { getLocalStorage } from 'util';// 获取查看cookie
 
 
-import AdminHome from './pages/home/index.js';
+import TodoList from './pages/todolist/index.js';
 import Login from './pages/login/index.js';
 // 引入错误路由页面的组件
 import Err from '../src/common/err'
 
 class App extends Component{
 	render(){
-		const HomeRoute = ({ component:Component, ...rest }) => {
-			return <Route
-				{...rest}
+		const HomeRoute = ({ component:Component, ...rest }) => (
+			<Route 
+				{...rest} 
 				render={(props) => {
 					return getLocalStorage() ? <Component /> : <Redirect to="/login" />
 				}}
 			/>
-		}
+		)
 		const LoginRoute = ({ component:Component, ...rest }) => (
 			<Route 
 				{...rest} 
@@ -39,7 +39,7 @@ class App extends Component{
 			<Router>
 				<div className='App'>
 					<Switch>
-						<HomeRoute exact path='/' component={AdminHome} />
+						<HomeRoute exact path='/' component={TodoList} />
 						<LoginRoute path='/login' component={Login} />
 						<Route component={Err} />
 					</Switch>

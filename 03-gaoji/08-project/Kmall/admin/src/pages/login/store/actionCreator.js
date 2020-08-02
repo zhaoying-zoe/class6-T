@@ -5,29 +5,25 @@
 * @Last Modified time: 2019-12-03 17:45:26
 */
 import axios from 'axios'
-import * as types from './actionTypes.js'
 import { setLocalStorage } from 'util';
 import { message } from 'antd';// 引入全局提示,直接用
 
-export const getChangeItemAction = (val)=>({
-	type:types.CHANGE_ITEM,
-	payload:val
-})
-export const getAddItemAction = ()=>({
-	type:types.ADD_ITEM
-})
-export const getDeleteItemAction = (index)=>({
-	type:types.DEL_ITEM,
-	payload:index
-})
+import {
+	LOGIN_START_ACTIOIN,
+	LOGIN_DONE_ACTIOIN
+} from './actionTypes.js'
 
-const getLoadInitAction = (data) =>({
-	type:types.LOAD_DATA,
-	payload:data
+const getLoginStartAction = () =>({
+	type:LOGIN_START_ACTIOIN,
+})
+const getLoginDoneAction = () =>({
+	type:LOGIN_DONE_ACTIOIN,
 })
 
 export const getLoginAction = (data)=>{
 	return (dispatch,getState)=>{
+		// 发送ajax前,先派发action改变登录状态
+		dispatch(getLoginStartAction());
 		data.role = 'admin';
 		// 先发送ajax再派送action
 		axios({
@@ -44,7 +40,7 @@ export const getLoginAction = (data)=>{
 				// 1.保存用户状态
 				setLocalStorage(data.data.username)
 				// 2.登录成功,跳转到管理员首页
-				// window.location.href = '/';
+				window.location.href = '/';
 			}else{// 登录失败
 				message.error(data.message);
 			}
@@ -52,6 +48,10 @@ export const getLoginAction = (data)=>{
 		.catch(err=>{
 			console.log(err);
 			message.error('登录失败,请稍候再试!');
+		})
+		.finally(()=>{
+			// 无论请求成功还是失败,取消登陆doading状态
+			dispatch(getLoginDoneAction());
 		})
 	}
 }

@@ -27,6 +27,7 @@ class NormalLoginForm extends React.Component {
 	render() {
 		// getFieldDecorator:定义验证规则👇
 		const { getFieldDecorator } = this.props.form;
+		const { isFetching } = this.props;
 		return (
 			<div className="Login">
 				<Form className="login-form">
@@ -59,7 +60,7 @@ class NormalLoginForm extends React.Component {
 							type="primary" 
 							className="login-form-button but-sub-login"
 							onClick={this.handleSubmit}
-							loading={false}
+							loading={isFetching}
 						>
 						登陆
 						</Button>
@@ -77,7 +78,7 @@ const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLogin
 const mapStateToProps = (state)=>{
 	console.log(state)
 	return {
-		
+		isFetching : state.get('login').get('isFetching'),
 	}
 }
 //将方法映射到组件
