@@ -9,6 +9,7 @@ import {
 
 export default (state=defaultState,action)=>{
 	if(action.type == LOGIN_START_ACTIOIN){
+		// 改变一个数据直接用set
 		return state.set('isFetching',true)
 	}
 	else if(action.type == LOGIN_DONE_ACTIOIN){

@@ -1,15 +1,19 @@
 import React,{Component} from 'react'
 import './index.css'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-
+// 引入路由组件
+import {
+  Link,
+  NavLink
+} from "react-router-dom";
 const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Sider } = Layout;
 
 //容器组件
 class AdminSider extends Component{
 	render(){
 		return(
-			<div className='AdminSider'>
+			<div className='AdminSider' style={{ minHeight: "888px" }}>
 			  <Sider width={200} style={{ background: '#fff' }}>
 		        <Menu
 		          mode="inline"
@@ -17,48 +21,18 @@ class AdminSider extends Component{
 		          defaultOpenKeys={['sub1']}
 		          style={{ height: '100%', borderRight: 0 }}
 		        >
-		          <SubMenu
-		            key="sub1"
-		            title={
-		              <span>
-		                <Icon type="user" />
-		                subnav 1
-		              </span>
-		            }
-		          >
-		            <Menu.Item key="1">option1</Menu.Item>
-		            <Menu.Item key="2">option2</Menu.Item>
-		            <Menu.Item key="3">option3</Menu.Item>
-		            <Menu.Item key="4">option4</Menu.Item>
-		          </SubMenu>
-		          <SubMenu
-		            key="sub2"
-		            title={
-		              <span>
-		                <Icon type="laptop" />
-		                subnav 2
-		              </span>
-		            }
-		          >
-		            <Menu.Item key="5">option5</Menu.Item>
-		            <Menu.Item key="6">option6</Menu.Item>
-		            <Menu.Item key="7">option7</Menu.Item>
-		            <Menu.Item key="8">option8</Menu.Item>
-		          </SubMenu>
-		          <SubMenu
-		            key="sub3"
-		            title={
-		              <span>
-		                <Icon type="notification" />
-		                subnav 3
-		              </span>
-		            }
-		          >
-		            <Menu.Item key="9">option9</Menu.Item>
-		            <Menu.Item key="10">option10</Menu.Item>
-		            <Menu.Item key="11">option11</Menu.Item>
-		            <Menu.Item key="12">option12</Menu.Item>
-		          </SubMenu>
+		          <Menu.Item key="1">
+					<NavLink to="/">
+		              <Icon type="home" />首页
+					</NavLink>
+				   </Menu.Item>
+		          <Menu.Item key="2">
+					<NavLink to="/user">
+		              <Icon type="user" />用户列表
+					</NavLink>
+				   </Menu.Item>
+		          <Menu.Item key="3"><Icon type="shopping" />用户列表1</Menu.Item>
+		          <Menu.Item key="4"><Icon type="windows" theme="filled" />用户列表2</Menu.Item>
 		        </Menu>
 		      </Sider>
 			</div>	

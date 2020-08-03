@@ -4,8 +4,7 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
 import AdminHeader from '../header'
 import AdminSider from '../sider'
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Content } = Layout;
 
 //容器组件
 class AdminLayout extends Component{
