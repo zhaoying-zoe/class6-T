@@ -7,6 +7,7 @@ const defaultState = fromJS({
 		    isAdmin: true,
 		    email: '11300@qq.com',
 		    phone: 123456,
+		    CreatedAt: '2020-8-2 11:11:11',
 		},
 	]		  
 })

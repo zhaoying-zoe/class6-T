@@ -1,9 +1,3 @@
-/*
-* @Author: Chen
-* @Date:   2019-12-02 16:52:50
-* @Last Modified by:   Chen
-* @Last Modified time: 2019-12-03 17:45:26
-*/
 import axios from 'axios'
 import * as types from './actionTypes.js'
 
@@ -18,9 +12,6 @@ export const getDeleteItemAction = (index)=>({
 	type:types.DEL_ITEM,
 	payload:index
 })
-
-
-
 
 const getLoadInitAction = (data) =>({
 	type:types.LOAD_DATA,

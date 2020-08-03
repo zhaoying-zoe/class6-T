@@ -10,6 +10,7 @@ import AdminLayout from '../../common/layout';
 //容器组件
 class User extends Component{
 	render(){
+		const { list } = this.props;
 		const columns = [
 		  {
 		    title: 'UserName',
@@ -33,13 +34,32 @@ class User extends Component{
 		    dataIndex: 'phone',
 		    key: 'phone',
 		  },
+		  {
+		    title: 'CreatedAt',
+		    dataIndex: 'CreatedAt',
+		    key: 'CreatedAt',
+		  },
 		];
+		
+		// console.log(list);
+		// 把immutable对象(数据)转化成数组
+		const dataSource = list.map((item) => {
+			// 1.遍历immutable数据
+			// 2.把遍历后 单独的immutable对象的数据的值提取出来(还是immutable数据)
+			// 3.把返回的 单独的immutable数据(item) 转化成 数组
+			// console.log(item);
+			// console.log(item.get('username'));
+			return {
+			    key: '1',
+			    username: item.get('username'),
+			    isAdmin: item.get('isAdmin'),
+			    email: item.get('email'),
+			    phone: item.get('phone'),
+			    CreatedAt: item.get('CreatedAt'),
+			}
+		}).toJS()
+		// console.log(dataSource);// 数组
 
-		const { dataSource } = this.props;
-		console.log(dataSource)
-		dataSource.map(Item){
-			console.log(Item)
-		}
 		return(
 			<div className='User'>
 			  <AdminLayout>
@@ -50,7 +70,7 @@ class User extends Component{
 			    <div className="content">
 			    	<Table 
 			    		columns={columns} 
-			    		dataSource={[]} 
+			    		dataSource={dataSource} 
 			    	/>
 			    </div>
 			  </AdminLayout>
@@ -62,7 +82,7 @@ class User extends Component{
 //将属性映射到组件中
 const mapStateToProps = (state)=>{
 	return {
-		dataSource:state.get('user').get('list'),
+		list:state.get('user').get('list'),
 	}
 }
 //将方法映射到组件
