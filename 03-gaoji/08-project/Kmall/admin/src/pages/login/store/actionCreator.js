@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { setLocalStorage } from 'util';
 import { message } from 'antd';// 引入全局提示,直接用
-import apiObj from '../../../api/index.js';
+import apiObj from 'api/index.js';
 
 import {
 	LOGIN_START_ACTIOIN,

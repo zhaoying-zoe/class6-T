@@ -1,9 +1,3 @@
-/*
-* @Author: Chen
-* @Date:   2019-12-05 15:11:29
-* @Last Modified by:   Chen
-* @Last Modified time: 2019-12-05 15:57:03
-*/
 import { fromJS } from 'immutable'
 const defaultState = fromJS({
 	list:['吃饭','睡觉','学习'],

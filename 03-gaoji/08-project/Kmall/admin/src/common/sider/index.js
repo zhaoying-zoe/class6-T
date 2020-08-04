@@ -6,7 +6,6 @@ import {
   Link,
   NavLink
 } from "react-router-dom";
-const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 //容器组件
@@ -31,7 +30,11 @@ class AdminSider extends Component{
 		              <Icon type="user" />用户列表
 					</NavLink>
 				   </Menu.Item>
-		          <Menu.Item key="3"><Icon type="shopping" />用户列表1</Menu.Item>
+		          <Menu.Item key="3">
+					<NavLink to="/category">
+		              <Icon type="menu" />分类管理
+					</NavLink>
+				   </Menu.Item>
 		          <Menu.Item key="4"><Icon type="windows" theme="filled" />用户列表2</Menu.Item>
 		        </Menu>
 		      </Sider>

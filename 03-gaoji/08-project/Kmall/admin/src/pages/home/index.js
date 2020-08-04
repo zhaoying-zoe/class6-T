@@ -5,7 +5,7 @@ import './index.css'
 import { Layout, Menu, Breadcrumb, Icon,Card, Col, Row } from 'antd';
 
 import {actionCreator} from './store/index.js'
-import AdminLayout from '../../common/layout'
+import AdminLayout from 'common/layout'
 
 //容器组件
 class AdminHome extends Component{

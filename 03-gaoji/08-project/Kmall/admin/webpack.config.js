@@ -34,8 +34,8 @@ module.exports = {
         alias:{
             pages:path.resolve(__dirname,'./src/pages'),
             util:path.resolve(__dirname,'./src/util'),
-            err:path.resolve(__dirname,'./src/common/err'),
-            api:path.resolve(__dirname,'./src/common/api'),
+            common:path.resolve(__dirname,'./src/common'),
+            api:path.resolve(__dirname,'./src/api'),
         }
     },
 	module: {

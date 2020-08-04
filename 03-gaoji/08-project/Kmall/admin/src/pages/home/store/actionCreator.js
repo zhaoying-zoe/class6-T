@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as types from './actionTypes.js'
 import { message } from 'antd';// 引入全局提示,直接用
-import apiObj from '../../../api/index.js';
+import apiObj from 'api/index.js';
 
 import { removeLocalStorage } from 'util';
 // 定义好的派发action的方法 👇

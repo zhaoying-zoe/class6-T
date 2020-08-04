@@ -24,8 +24,15 @@ const request = (url,method,data)=>{
 		const options = {
 			method:method,
 			url:url,
-			data:data,
-			withCredentials:true
+			withCredentials:true// 发送ajax时:是否携带cookie信息。验证管理员登录信息。
+		}
+		switch(method.toUpperCase()){
+			case 'GET' :
+			case 'DELETE' :
+				options.params = data;
+			break;
+			default :
+				options.data = data;
 		}
 		axios(options)
 		.then(result=>{
@@ -45,7 +52,5 @@ const request = (url,method,data)=>{
 		})
 	})
 }
-
-
 
 export default getApiConfig(API_CONFIG)

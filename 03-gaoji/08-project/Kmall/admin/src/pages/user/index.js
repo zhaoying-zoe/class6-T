@@ -1,16 +1,20 @@
 import React,{Component} from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import './index.css';
 import { Breadcrumb,Table, Divider, Tag } from 'antd';
+import moment from 'moment';// 修改时间组件
 
 import {actionCreator} from './store/index.js';
-import AdminLayout from '../../common/layout';
+import AdminLayout from 'common/layout';// 公共模板
 
 //容器组件
 class User extends Component{
+	componentDidMount(){
+		// 
+		this.props.handlePage(1);
+	}
 	render(){
-		const { list } = this.props;
+		const { list,total,pageSize,current,handlePage,isFetching } = this.props;
 		const columns = [
 		  {
 		    title: 'UserName',
@@ -44,18 +48,18 @@ class User extends Component{
 		// console.log(list);
 		// 把immutable对象(数据)转化成数组
 		const dataSource = list.map((item) => {
-			// 1.遍历immutable数据
-			// 2.把遍历后 单独的immutable对象的数据的值提取出来(还是immutable数据)
-			// 3.把返回的 单独的immutable数据(item) 转化成 数组
+			// 1.遍历immutable数据;
+			// 2.把遍历后 单独的immutable对象的数据的值提取出来(还是immutable数据);
+			// 3.把返回的 单独的immutable数据(item) 转化成 数组(普通的数据,数组也是对象);
 			// console.log(item);
 			// console.log(item.get('username'));
 			return {
-			    key: '1',
+			    key: item.get('_id'),
 			    username: item.get('username'),
 			    isAdmin: item.get('isAdmin'),
 			    email: item.get('email'),
 			    phone: item.get('phone'),
-			    CreatedAt: item.get('CreatedAt'),
+			    CreatedAt: moment(item.get('CreatedAt')).format('YY-MM-DD HH:mm:ss'),
 			}
 		}).toJS()
 		// console.log(dataSource);// 数组
@@ -71,6 +75,16 @@ class User extends Component{
 			    	<Table 
 			    		columns={columns} 
 			    		dataSource={dataSource} 
+			    		pagination={{
+			    			total:total,
+			    			pageSize:pageSize,
+			    			current:current
+			    		}}
+				    	loading={ isFetching /*分页器加载*/ }
+			    		onChange={ (pages)=>{// 点击分页器按钮时触发
+			    			// 传入pages对象中的current(当前页)
+			    			handlePage(pages.current);
+			    		} }
 			    	/>
 			    </div>
 			  </AdminLayout>
@@ -83,11 +97,19 @@ class User extends Component{
 const mapStateToProps = (state)=>{
 	return {
 		list:state.get('user').get('list'),
+		total:state.get('user').get('total'),
+		pageSize:state.get('user').get('pageSize'),
+		current:state.get('user').get('current'),
+		isFetching:state.get('user').get('isFetching'),
 	}
 }
 //将方法映射到组件
 const mapDispatchToProps = (dispatch)=>{
 	return {
+		handlePage:(page)=>{
+			// 调用派发action的函数(分页)
+			dispatch(actionCreator.getPageAction(page));
+		},
 	}
 }
 
