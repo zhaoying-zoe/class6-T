@@ -1,4 +1,5 @@
-export const GET_PAGE = 'user@get_page';
-export const SET_COUNTS = 'user@set_counts';
-export const COUNTS_START_ACTIOIN = 'user@counts_start_actioin';
-export const COUNTS_DONE_ACTIOIN = 'user@counts_done_actioin';
+export const GET_PAGE = 'category@get_page';
+
+export const SET_LEVEL_CATEGORIES = 'category@set_level_categories';
+export const REQUEST_START_ACTION = 'category@request_start_action';
+export const REQUEST_DONE_ACTION = 'category@request_done_action';

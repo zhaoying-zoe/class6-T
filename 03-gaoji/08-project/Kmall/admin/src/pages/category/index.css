@@ -1,0 +1,7 @@
+.CategoryList .btn{
+	float: right;
+	min-height: 44px;
+}
+.CategoryList .btn-add{
+	z-index: 33;
+}
