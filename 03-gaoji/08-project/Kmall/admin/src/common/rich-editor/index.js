@@ -6,6 +6,12 @@ import $ from 'jquery';
 class RichEditor extends Component{
 	constructor(props){
 		super(props)
+		// 发送时携带cookie
+		$.ajaxSetup({
+			xhrFields:{
+				withCredentials:true,
+			}
+		})
 	}
 	componentDidMount(){
 		// console.log(this.textarea);// 准备dom节点
@@ -13,7 +19,14 @@ class RichEditor extends Component{
 			// 把富文本编辑器挂载到dom节点上
 			textarea: this.textarea,
 			// 富文本编辑器,配置工具栏按钮①
-			toolbar: this.toolbar
+			toolbar: this.toolbar,
+			upload:{
+				url:this.props.url,//后台接收图片地址
+				params:null,
+				fileKey:'upload',//后台接收图片需要
+				connectionCount:3,//允许同时上传图片数
+				leaveConfirm:'正在上传图片',//如果在上传文件时离开页面，则会显示此消息；
+			}
 		})
 	}
 

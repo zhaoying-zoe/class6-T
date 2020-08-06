@@ -9,6 +9,7 @@ import AdminLayout from 'common/layout';// 公共模板
 import UploadImages from 'common/upload-images';// 上传文件组件
 import RichEditor from 'common/rich-editor';// 富文本编辑器组件
 
+import {UPLOAD_IMAGES,UPLOAD_DETAIL_IMAGES} from 'api/config.js';// 引入上传图片api
 const { Option } = Select;
 
 //容器组件
@@ -81,13 +82,28 @@ class ProductEdit extends Component{
 			          })(<InputNumber />)}
 			        </Form.Item>
 			        <Form.Item label="封面图片">
-				        <UploadImages />
+				        <UploadImages 
+					        action={ UPLOAD_IMAGES }
+					        max={1}
+					        getFileList = {(fileList)=>{
+					        	console.log(fileList);
+					        }}
+				        />
 			        </Form.Item>
 					<Form.Item label="商品图片">
-				        商品图片
+				        <UploadImages 
+					        action={ UPLOAD_IMAGES }
+					        max={5}
+					        getFileList = {(fileList)=>{
+					        	// 获取图片地址,并把图片显示到页面
+					        	console.log(fileList);
+					        }}
+				        />
 			        </Form.Item>
 					<Form.Item label="商品详情">
-				        <RichEditor />
+				        <RichEditor 
+					        url={UPLOAD_DETAIL_IMAGES}
+				        />
 			        </Form.Item>
 			        <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
 			          <Button 
