@@ -34,13 +34,13 @@ export const getAddCategoriesAction = (values)=>{
 	}
 }
 
-// 处理父级分类
+// 处理商品分类
 export const getLevelCategoriesAction = ()=>{
 	return (dispatch,getState)=>{
 		// 先发送ajax再派送action
 		apiObj.getLevelCategories({
-			// 限制显示分类等级(后台默认为2)
-			level:2
+			// 限制显示分类等级
+			level:3
 		})
 		.then(result=>{
 			// console.log(result);

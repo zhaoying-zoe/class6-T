@@ -10,7 +10,7 @@ import {actionCreator} from './store/index.js';
 import AdminLayout from 'common/layout';// 公共模板
 
 //容器组件
-class CategoryList extends Component{
+class ProductList extends Component{
 	componentDidMount(){
 		this.props.handlePage(1)
 	}
@@ -80,9 +80,8 @@ class CategoryList extends Component{
 				      unCheckedChildren='隐藏'
 				      defaultChecked={isShow=='0'?false:true}
 				      onChange={ (checked)=>{
-				      	// 根据isShow的值,改变checked的状态
 				      	const isShow = checked ? '1' : '0'
-				      	handleChangeisShow(record._id,isShow)}
+				      	handleChangeisShow(record._id,isShow) }
 				      }
 				    />)
 		   		},
@@ -114,15 +113,15 @@ class CategoryList extends Component{
 		// console.log(dataSource);// 数组
 
 		return(
-			<div className='CategoryList'>
+			<div className='ProductList'>
 			  <AdminLayout>
 	            <Breadcrumb style={{ margin: '16px 0' }}>
 	              <Breadcrumb.Item>首页</Breadcrumb.Item>
-	              <Breadcrumb.Item>分类管理</Breadcrumb.Item>
-	              <Breadcrumb.Item>分类列表</Breadcrumb.Item>
+	              <Breadcrumb.Item>商品管理</Breadcrumb.Item>
+	              <Breadcrumb.Item>商品列表</Breadcrumb.Item>
 	            </Breadcrumb>
 				<div className="btn">
-					<Link to="/category/add"><Button type="primary btn-add">新增分类</Button></Link>
+					<Link to="/product/edit"><Button type="primary btn-add">新增商品</Button></Link>
 				</div>
 			    <div className="content">
 			    	<Table 
@@ -187,4 +186,4 @@ const mapDispatchToProps = (dispatch)=>{
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(CategoryList);
+export default connect(mapStateToProps,mapDispatchToProps)(ProductList);

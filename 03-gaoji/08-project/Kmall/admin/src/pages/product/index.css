@@ -1,0 +1,7 @@
+.Product .btn{
+	float: right;
+	min-height: 44px;
+}
+.Product .btn-add{
+	z-index: 33;
+}

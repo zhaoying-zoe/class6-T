@@ -11,10 +11,12 @@ import {reducer as loginReducer} from 'pages/login/store/index.js'
 import {reducer as homeReducer} from 'pages/home/store/index.js'
 import {reducer as userReducer} from 'pages/user/store/index.js'
 import {reducer as categoryReducer} from 'pages/category/store/index.js'
+import {reducer as productReducer} from 'pages/product/store/index.js'
 
 export default combineReducers({
 	home:homeReducer,
 	login:loginReducer,
 	user:userReducer,
 	category:categoryReducer,
+	product:productReducer,
 })
