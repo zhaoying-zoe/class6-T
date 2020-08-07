@@ -21,53 +21,17 @@ class ProductList extends Component{
 			current,
 			handlePage,
 			isFetching,
-			handleUpdataName ,
-			handleUpdataMobileName ,
+			handleUpdataisShow,
 			handleUpdataOrder,
-			handleChangeisShow,
+			handleUpdataisHot,
+			handleUpdataStatus,
 		} = this.props;
 
 		const columns = [
 		  {
 		    title: 'name',
 		    dataIndex: 'name',
-		    width:'40%',
 		    key: 'name',
-		    render: (name,record) => {
-		    	return <Input 
-			    	defaultValue={name} 
-			    	style={{ width:'50%' }} 
-			    	onBlur={
-			    		(ev)=>{
-			    			// 失去焦点时派发action
-			    			// 如果值未更改,则进行判断
-			    			if(ev.target.value!=name){
-			    				handleUpdataName(record._id,ev.target.value)
-			    			}
-			    		}
-			    	}
-		    	/>
-		    },
-		  },
-		  {
-		    title: 'mobileName',
-		    dataIndex: 'mobileName',
-		    key: 'mobileName',
-		    render: (mobileName,record) => {
-		    	return <Input 
-			    	defaultValue={mobileName} 
-			    	style={{ width:'50%' }} 
-			    	onBlur={
-			    		(ev)=>{
-			    			// 失去焦点时派发action
-			    			// 如果值未更改,则进行判断
-			    			if(ev.target.value!=mobileName){
-			    				handleUpdataMobileName(record._id,ev.target.value)
-			    			}
-			    		}
-			    	}
-		    	/>
-		    },
 		  },
 		  {
 		    title: 'isShow',
@@ -76,12 +40,46 @@ class ProductList extends Component{
 		    render: (isShow,record) => {
 		    	return (    
 				    <Switch
-				      checkedChildren='显示'
-				      unCheckedChildren='隐藏'
+				      checkedChildren='是'
+				      unCheckedChildren='否'
 				      defaultChecked={isShow=='0'?false:true}
 				      onChange={ (checked)=>{
 				      	const isShow = checked ? '1' : '0'
-				      	handleChangeisShow(record._id,isShow) }
+				      	handleUpdataisShow(record._id,isShow) }
+				      }
+				    />)
+		   		},
+		  },
+		  {
+		    title: 'isHot',
+		    dataIndex: 'isHot',
+		    key: 'isHot',
+		    render: (isHot,record) => {
+		    	return (    
+				    <Switch
+				      checkedChildren='是'
+				      unCheckedChildren='否'
+				      defaultChecked={isHot=='0'?false:true}
+				      onChange={ (checked)=>{
+				      	const isHot = checked ? '1' : '0'
+				      	handleUpdataisHot(record._id,isHot) }
+				      }
+				    />)
+		   		},
+		  },
+		  {
+		    title: 'status',
+		    dataIndex: 'status',
+		    key: 'status',
+		    render: (status,record) => {
+		    	return (    
+				    <Switch
+				      checkedChildren='上架'
+				      unCheckedChildren='下架'
+				      defaultChecked={status=='0'?false:true}
+				      onChange={ (checked)=>{
+				      	const status = checked ? '1' : '0'
+				      	handleUpdataStatus(record._id,status) }
 				      }
 				    />)
 		   		},
@@ -127,6 +125,7 @@ class ProductList extends Component{
 			    	<Table 
 			    		columns={columns} 
 			    		dataSource={dataSource} 
+			    		rowKey='_id'
 			    		pagination={{
 			    			total:total,
 			    			pageSize:pageSize,
@@ -148,11 +147,11 @@ class ProductList extends Component{
 //将属性映射到组件中
 const mapStateToProps = (state)=>{
 	return {
-		list:state.get('category').get('list'),
-		total:state.get('category').get('total'),
-		pageSize:state.get('category').get('pageSize'),
-		current:state.get('category').get('current'),
-		isFetching:state.get('category').get('isFetching'),
+		list:state.get('product').get('list'),
+		total:state.get('product').get('total'),
+		pageSize:state.get('product').get('pageSize'),
+		current:state.get('product').get('current'),
+		isFetching:state.get('product').get('isFetching'),
 	}
 }
 //将方法映射到组件
@@ -162,25 +161,21 @@ const mapDispatchToProps = (dispatch)=>{
 			// 调用派发action的函数(分页)
 			dispatch(actionCreator.getPageAction(page));
 		},
-		handleUpdataName:(id,newName)=>{
-			// 调用派发action的函数(更新分类)
-			// console.log(id,newName);
-			dispatch(actionCreator.updateNameAction(id,newName));
-		},
-		handleUpdataMobileName:(id,mobileName)=>{
-			// 调用派发action的函数(更新分类)
-			// console.log(id,mobileName);
-			dispatch(actionCreator.updateMobileNameAction(id,mobileName));
+		handleUpdataisShow:(id,isShow)=>{
+			// 调用派发action的函数(是否热卖)
+			dispatch(actionCreator.updateIsShowAction(id,isShow));
 		},
 		handleUpdataOrder:(id,order)=>{
-			// 调用派发action的函数(更新分类)
-			// console.log(id,order);
+			// 调用派发action的函数(排序)
 			dispatch(actionCreator.updatePageAction(id,order));
 		},
-		handleChangeisShow:(id,isShow)=>{
-			// 调用派发action的函数(更新分类)
-			// console.log(id,isShow)
-			dispatch(actionCreator.updateIsShowAction(id,isShow));
+		handleUpdataisHot:(id,isHot)=>{
+			// 调用派发action的函数(是否热卖)
+			dispatch(actionCreator.updateisHotAction(id,isHot));
+		},
+		handleUpdataStatus:(id,Status)=>{
+			// 调用派发action的函数(上架下架)
+			dispatch(actionCreator.updateStatusAction(id,Status));
 		},
 	}
 }

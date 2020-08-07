@@ -18,4 +18,10 @@ export const API_CONFIG = {
 	getIsShow: 					['/categories/isShow','put'],
 
 	addProducts: 				['/products','post'],
+	getProductsList: 			['/products/list','get'],
+	updateProductsOrder: 		['/products/order','put'],
+	updateProductsIsShow: 		['/products/isShow','put'],
+	updateProductsStatus: 		['/products/status','put'],
+	updateProductsIsHot: 		['/products/isHot','put'],
+	getProductDetail: 			['/products/detail','get'],
 }

@@ -126,7 +126,7 @@ export const getPageAction = (page)=>{
 		// 发送ajax前先派送加载图标的action
 		dispatch(getCategoriesStartAction());
 		// 先发送ajax再派送action
-		apiObj.getCategoriesList({
+		apiObj.getProductsList({
 			page:page
 		})
 		.then(result=>{
@@ -188,52 +188,15 @@ export const updateNameAction = (id,newName)=>{
 	}
 }
 
-// 处理更新手机分类数据
-export const updateMobileNameAction = (id,mobileName)=>{
-	return (dispatch,getState)=>{
-		// 获取当前页
-		const page = getState().get('category').get('current');
-		// 发送ajax前先派送加载图标的action
-		dispatch(getCategoriesStartAction());
-		// 先发送ajax再派送action
-		apiObj.getUpdataMobileName({
-			id:id,
-			mobileName:mobileName,
-			page:page,
-		})
-		.then(result=>{
-			// console.log(result);
-			const data = result.data;
-			if(data.code == 0){// 验证成功
-				// 更新成功的提示信息
-				message.success('更新手机分类成功');
-				// 1.派发action,将数据存到store
-				// 获取数据
-				dispatch(setPageAction(data.data));
-			}else{// 验证失败
-				message.error(data.message);
-			}
-		})
-		.catch(err=>{
-			console.log(err);
-			message.error('验证失败,请稍候再试!');
-		})
-		.finally(()=>{
-			// 取消加载图标的action
-			dispatch(getCategoriesDoneAction());
-		})
-	}
-}
-
 // 处理更新排序
 export const updatePageAction = (id,order)=>{
 	return (dispatch,getState)=>{
 		// 获取当前页
-		const page = getState().get('category').get('current');
+		const page = getState().get('product').get('current');
 		// 发送ajax前先派送加载图标的action
 		dispatch(getCategoriesStartAction());
 		// 先发送ajax再派送action
-		apiObj.getUpdataOrder({
+		apiObj.updateProductsOrder({
 			id:id,
 			order:order,
 			page:page,
@@ -262,7 +225,7 @@ export const updatePageAction = (id,order)=>{
 	}
 }
 
-// 处理更新显示隐藏
+// 处理首页显示
 export const updateIsShowAction = (id,isShow)=>{
 	return (dispatch,getState)=>{
 		// 获取当前页
@@ -270,9 +233,82 @@ export const updateIsShowAction = (id,isShow)=>{
 		// 发送ajax前先派送加载图标的action
 		dispatch(getCategoriesStartAction());
 		// 先发送ajax再派送action
-		apiObj.getIsShow({
+		apiObj.updateProductsIsShow({
 			id:id,
 			isShow:isShow,
+			page:page,
+		})
+		.then(result=>{
+			// console.log(result);
+			const data = result.data;
+			if(data.code == 0){// 验证成功
+				// 更新成功的提示信息
+				message.success('操作成功');
+				// 1.派发action,将数据存到store
+				// 获取数据
+				dispatch(setPageAction(data.data));
+			}else{// 验证失败
+				message.error(data.message);
+			}
+		})
+		.catch(err=>{
+			console.log(err);
+			message.error('验证失败,请稍候再试!');
+		})
+		.finally(()=>{
+			// 取消加载图标的action
+			dispatch(getCategoriesDoneAction());
+		})
+	}
+}
+
+// 处理下架/上架
+export const updateStatusAction = (id,Status)=>{
+	return (dispatch,getState)=>{
+		// 获取当前页
+		const page = getState().get('category').get('current');
+		// 发送ajax前先派送加载图标的action
+		dispatch(getCategoriesStartAction());
+		// 先发送ajax再派送action
+		apiObj.updateProductsStatus({
+			id:id,
+			status:Status,
+			page:page,
+		})
+		.then(result=>{
+			// console.log(result);
+			const data = result.data;
+			if(data.code == 0){// 验证成功
+				// 更新成功的提示信息
+				message.success('操作成功');
+				// 1.派发action,将数据存到store
+				// 获取数据
+				dispatch(setPageAction(data.data));
+			}else{// 验证失败
+				message.error(data.message);
+			}
+		})
+		.catch(err=>{
+			console.log(err);
+			message.error('验证失败,请稍候再试!');
+		})
+		.finally(()=>{
+			// 取消加载图标的action
+			dispatch(getCategoriesDoneAction());
+		})
+	}
+}
+// 处理热卖
+export const updateisHotAction = (id,isHot)=>{
+	return (dispatch,getState)=>{
+		// 获取当前页
+		const page = getState().get('category').get('current');
+		// 发送ajax前先派送加载图标的action
+		dispatch(getCategoriesStartAction());
+		// 先发送ajax再派送action
+		apiObj.updateProductsIsHot({
+			id:id,
+			isHot:isHot,
 			page:page,
 		})
 		.then(result=>{
