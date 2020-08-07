@@ -28,6 +28,11 @@ class RichEditor extends Component{
 				leaveConfirm:'正在上传图片',//如果在上传文件时离开页面，则会显示此消息；
 			}
 		})
+		this.editor.on("valuechanged", () => {
+			// editor上有getValue()的方法(获取输入框中的值)
+			// 把这个值传给父组件
+			this.props.getValues(this.editor.getValue());
+		})
 	}
 
 	render(){

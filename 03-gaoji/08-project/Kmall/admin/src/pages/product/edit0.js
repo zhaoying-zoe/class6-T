@@ -21,31 +21,20 @@ class ProductEdit extends Component{
 	handleSubmit(e){
 	  e.preventDefault();
 	  this.props.form.validateFields((err, values) => {
-	  	/*
 	    if (!err) {
 	      // console.log('Received values of form: ', values);
-	      this.props.handleSave(err,values);
+	      // 将值存到store
+	      this.props.handleSave(values);
 	    }
-	    */
-	    this.props.handleSave(err,values);
 	  });
 	};
 	componentDidMount(){
 		// 挂载结束 加载最新商品分类
-		this.props.handleLevelCategories();
+		// this.props.handleLevelCategories();
 	}
 	render(){
 		const { getFieldDecorator } = this.props.form;
-		const { categories,
-				handleMainImage,
-				handleImages,
-				handleDetail,
-
-				MainImageValidateStatus,
-				MainImageHelp,
-				ImagesValidateStatus,
-				ImagesHelp,
-		} = this.props;
+		const { categories } = this.props;
 		return(
 			<div className='ProductEdit'>
 			  <AdminLayout>
@@ -97,38 +86,33 @@ class ProductEdit extends Component{
 				          min={0}
 			          />)}
 			        </Form.Item>
-			        <Form.Item 
-			        	label="封面图片"
-			        	validateStatus={MainImageValidateStatus}
-			        	help={MainImageHelp}
-			        >
+			        <Form.Item label="封面图片">
 				        <UploadImages 
 					        action={ UPLOAD_IMAGES }
 					        max={1}
-					        getFileList = {(fileList)=>{
-					        	handleMainImage(fileList)
+					        getFileList = {(mainImage)=>{
+					        	handleMainImage(mainImage)
+					        	// console.log(mainImage);
 					        }}
 				        />
 			        </Form.Item>
-					<Form.Item 
-						label="商品图片"
-			        	validateStatus={ImagesValidateStatus}
-			        	help={ImagesHelp}
-					>
+					<Form.Item label="商品图片">
 				        <UploadImages 
 					        action={ UPLOAD_IMAGES }
 					        max={5}
-					        getFileList = {(fileList)=>{
-					        	handleImages(fileList)
+					        getFileList = {(Images)=>{
+					        	handleImages(Images)
 					        	// 获取图片地址,并把图片显示到页面
+					        	// console.log(Images);
 					        }}
 				        />
 			        </Form.Item>
 					<Form.Item label="商品详情">
 				        <RichEditor 
 					        url={UPLOAD_DETAIL_IMAGES}
-					        getValues={(fileList)=>{// 给子组件传一个函数
-					        	handleDetail(fileList)
+					        getValues={(Detail)=>{// 给子组件传一个函数
+					        	handleDetail(Detail)
+					        	// console.log(Detail)
 					        }}
 				        />
 			        </Form.Item>
@@ -144,7 +128,8 @@ class ProductEdit extends Component{
 			    </div>
 			  </AdminLayout>
 			</div>	
-		)	}
+		)
+	}
 }
 const WrappedProductEdit = Form.create({ name: 'coordinated' })(ProductEdit);
 
@@ -152,21 +137,16 @@ const WrappedProductEdit = Form.create({ name: 'coordinated' })(ProductEdit);
 const mapStateToProps = (state)=>{
 	return {
 		categories:state.get('product').get('categories'),
-		MainImageValidateStatus:state.get('product').get('MainImageValidateStatus'),
-		MainImageHelp:state.get('product').get('MainImageHelp'),
-		ImagesValidateStatus:state.get('product').get('ImagesValidateStatus'),
-		ImagesHelp:state.get('product').get('ImagesHelp'),
-
 	}
 }
 //将方法映射到组件
 const mapDispatchToProps = (dispatch)=>{
 	return {
-		handleLevelCategories:()=>{
-			dispatch(actionCreator.getLevelCategoriesAction());
+		handleAddCategories:(values)=>{
+			dispatch(actionCreator.getAddCategoriesAction(values));
 		},
-		handleSave:(err,values)=>{
-			dispatch(actionCreator.getSaveProductsAction(err,values));
+		handleSave:(values)=>{
+			dispatch(actionCreator.getSaveProductsAction(values));
 		},
 		handleMainImage:(mainImage)=>{
 			dispatch(actionCreator.getMainImageAction(mainImage));

@@ -28,6 +28,7 @@ class UploadImages extends Component{
 			this.props.getFileList(fileList.map(file=>{
 				// 获取图片的url,传给父组件
 				if(file.response){
+					console.log(file.response.url);
 					return file.response.url
 				}
 			}).join(','))

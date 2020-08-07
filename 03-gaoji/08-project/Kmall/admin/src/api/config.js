@@ -8,6 +8,7 @@ export const API_CONFIG = {
 	logout: 					['/sessions/users','delete'],
 	getCounts: 					['/counts','get'],
 	getUserList: 				['/users/list','get'],
+
 	addCategories: 				['/categories','post'],
 	getLevelCategories: 		['/categories/levelCategories','get'],
 	getCategoriesList: 			['/categories/list','get'],
@@ -15,4 +16,6 @@ export const API_CONFIG = {
 	getUpdataMobileName: 		['/categories/mobileName','put'],
 	getUpdataOrder: 			['/categories/order','put'],
 	getIsShow: 					['/categories/isShow','put'],
+
+	addProducts: 				['/products','post'],
 }

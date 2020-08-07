@@ -6,6 +6,14 @@ const defaultState = fromJS({
 	current:1,
 	isFetching:false,
 	categories:[],
+	mainImage:'',
+	Images:'',
+	Detail:'',
+	// 自定义组件验证
+	MainImageValidateStatus:'',
+	MainImageHelp:'',
+	ImagesValidateStatus:'',
+	ImagesHelp:'',
 })
 import * as types from './actionTypes.js';
 
@@ -35,5 +43,39 @@ export default (state=defaultState,action)=>{
 		// 2.转化成immutable数据
 		return state.set('categories',fromJS(action.payload));
 	}
+
+	// 处理自定义组件存值到store
+	if(action.type == types.SET_MAIN_IMAGE){
+		return state.merge({
+			mainImage:fromJS(action.payload),
+			MainImageValidateStatus:'',
+			MainImageHelp:'',
+		});
+	}
+	if(action.type == types.SET_IMAGES){
+		return state.merge({
+			Images:fromJS(action.payload),
+			ImagesValidateStatus:'',
+			ImagesHelp:'',
+		});
+	}
+	if(action.type == types.SET_DETAIL){
+		return state.set('Detail',fromJS(action.payload));
+	}
+
+	// 处理自定义组件校验
+	if(action.type == types.SET_MAIN_IMAGE_ERR){
+		return state.merge({
+			MainImageValidateStatus:'error',
+			MainImageHelp:'请添加封面图片!!',
+		});
+	}
+	if(action.type == types.SET_IMAGES_ERR){
+				return state.merge({
+			ImagesValidateStatus:'error',
+			ImagesHelp:'请添加商品图片!!',
+		});
+	}
+
 	return state
 }

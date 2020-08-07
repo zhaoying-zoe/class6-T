@@ -3,67 +3,37 @@ import * as types from './actionTypes.js';
 import apiObj from 'api/index.js';
 import { message } from 'antd';// 引入全局提示,直接用
 
+
 // 处理新增商品
-export const getMainImageAction = (mainImage) =>({
-	type:types.SET_MAIN_IMAGE,
+const getMainImageAction = (mainImage) =>({
+	type:types.SET_MAIN_IMAGES,
 	payload:mainImage
 })
-export const getImagesAction = (Images) =>({
+const getImagesAction = (Images) =>({
 	type:types.SET_IMAGES,
 	payload:Images
 })
-export const getDetailAction = (Detail) =>({
+const getDetailAction = (Detail) =>({
 	type:types.SET_DETAIL,
 	payload:Detail
 })
-export const setMainImageErrAction = () =>({
-	type:types.SET_MAIN_IMAGE_ERR,
-})
-export const setImagesErrAction = () =>({
-	type:types.SET_IMAGES_ERR,
-})
 
-export const getSaveProductsAction = (err,values)=>{
+export const getSaveProductsAction = (values)=>{
 	return (dispatch,getState)=>{
 		// 先发送ajax再派送action
-		// console.log(values);
-		const state = getState().get('product');
-		const mainImage = state.get("mainImage");
-		const images = state.get("Images");
-		const detail = state.get("Detail");
-
-		// 自定义组件验证
-		let hasErr = false;
-		if(err){
-			hasErr = true;
-		}
-		// 如果封面图片和商品图片无值,则派发 Erraction
-		if(!mainImage){
-			hasErr = true;
-			dispatch(setMainImageErrAction())
-		}
-		if(!images){
-			hasErr = true;
-			dispatch(setImagesErrAction())
-		}
-		if(hasErr){
-			return
-		};
-		// 验证通过,发送请求
-		apiObj.addProducts({
-			...values,
-			mainImage,
-			images,
-			detail,
-		})
+		console.log(values);
+		console.log(getState().get('product').get('mainImage'));
+		/*
+		apiObj.getProducts(values)
 		.then(result=>{
+			// console.log(result);
 			const data = result.data;
-			// console.log(data);
 			if(data.code == 0){// 添加成功
-				message.success(data.message,()=>{
-					// 添加成功后,进入商品管理页面
-					window.location.href='/product';
-				});
+				message.success('添加成功!');
+				// 1.派发action,将数据存到store
+				dispatch(setLevelCategories(data.data));
+				// 2.刷新页面
+				window.location.reload();
 			}else{// 添加失败
 				message.error(data.message);
 			}
@@ -72,15 +42,11 @@ export const getSaveProductsAction = (err,values)=>{
 			console.log(err);
 			message.error('验证失败,请稍候再试!');
 		})
+		*/
 	}
 }
 
-// 获取商品分类
-const setLevelCategories = (data) =>({
-	type:types.SET_LEVEL_CATEGORIES,
-	payload:data
-})
-
+// 处理商品分类
 export const getLevelCategoriesAction = ()=>{
 	return (dispatch,getState)=>{
 		// 先发送ajax再派送action
