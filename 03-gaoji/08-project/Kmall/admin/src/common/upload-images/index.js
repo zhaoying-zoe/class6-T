@@ -13,6 +13,15 @@ class UploadImages extends Component{
 		this.handlePreview = this.handlePreview.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
+	static getDerivedStateFromProps(props, state){
+		// 判断:只在编辑商品时执行👇代码
+		if(props.fileList.length > 0 && state.fileList.length == 0){
+			return {
+				fileList:props.fileList
+			}
+		}
+		return null;
+	}
 	handleCancel(){
 	  	this.setState({ previewVisible: false })
 	};
@@ -28,7 +37,7 @@ class UploadImages extends Component{
 			this.props.getFileList(fileList.map(file=>{
 				// 获取图片的url,传给父组件
 				if(file.response){
-					console.log(file.response.url);
+					// console.log(file.response.url);
 					return file.response.url
 				}
 			}).join(','))

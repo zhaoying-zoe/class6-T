@@ -10,3 +10,5 @@ export const SET_DETAIL = 'product@set_detail';
 
 export const SET_MAIN_IMAGE_ERR = 'product@set_main_image_err';
 export const SET_IMAGES_ERR = 'product@set_images_err';
+
+export const GET_PRODUCT_DETAIL = 'product@get_product_detail';

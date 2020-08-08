@@ -17,6 +17,18 @@ class ProductEdit extends Component{
 	constructor(props){
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		// 将商品id存到state上
+		this.state = {
+			productId:this.props.match.params.productId
+		}
+	}
+	componentDidMount(){
+		// 挂载结束 加载最新商品分类
+		this.props.handleLevelCategories();
+		// 根据state上是否有商品id,进行编辑或者新增
+		if(this.state.productId){
+			this.props.handleProductDetail(this.state.productId)
+		}
 	}
 	handleSubmit(e){
 	  e.preventDefault();
@@ -30,10 +42,6 @@ class ProductEdit extends Component{
 	    this.props.handleSave(err,values);
 	  });
 	};
-	componentDidMount(){
-		// 挂载结束 加载最新商品分类
-		this.props.handleLevelCategories();
-	}
 	render(){
 		const { getFieldDecorator } = this.props.form;
 		const { categories,
@@ -45,7 +53,29 @@ class ProductEdit extends Component{
 				MainImageHelp,
 				ImagesValidateStatus,
 				ImagesHelp,
+				// 商品信息回填
+				category,
+				name,
+				description,
+				price,
+				stock,
+				mainImage,
+				images,
+				detail,
 		} = this.props;
+		
+		// 定义一个空数组
+		let fileList = [];
+		if(mainImage){
+			fileList.push({
+				uid:'0',
+				name:'image-png',
+				status:'done',
+				url:mainImage
+			})
+		}
+		// console.log(fileList);
+
 		return(
 			<div className='ProductEdit'>
 			  <AdminLayout>
@@ -60,6 +90,7 @@ class ProductEdit extends Component{
 			        <Form.Item label="商品分类">
 			          {getFieldDecorator('category', {
 			            rules: [{ required: true, message: '请选择商品分类!!' }],
+			            initialValue:category,
 			          })(
 			            <Select
 			              placeholder="商品分类"
@@ -76,16 +107,19 @@ class ProductEdit extends Component{
 			        <Form.Item label="商品描述">
 			          {getFieldDecorator('description', {
 			            rules: [{ required: true, message: '请输入商品描述!!' }],
+			            initialValue:description,
 			          })(<Input />)}
 			        </Form.Item>
 			        <Form.Item label="商品名称">
 			          {getFieldDecorator('name', {
 			            rules: [{ required: true, message: '请输入商品名称!!' }],
+			            initialValue:name,
 			          })(<Input />)}
 			        </Form.Item>
 			        <Form.Item label="商品价格">
 			          {getFieldDecorator('price', {
 			            rules: [{ required: true, message: '请输入商品价格!!' }],
+			            initialValue:price,
 			          })(<InputNumber 
 				          min={0}
 			          />)}
@@ -93,6 +127,7 @@ class ProductEdit extends Component{
 			        <Form.Item label="商品库存">
 			          {getFieldDecorator('stock', {
 			            rules: [{ required: true, message: '请输入商品库存!!' }],
+			            initialValue:stock,
 			          })(<InputNumber 
 				          min={0}
 			          />)}
@@ -108,6 +143,7 @@ class ProductEdit extends Component{
 					        getFileList = {(fileList)=>{
 					        	handleMainImage(fileList)
 					        }}
+							fileList={fileList}
 				        />
 			        </Form.Item>
 					<Form.Item 
@@ -122,6 +158,7 @@ class ProductEdit extends Component{
 					        	handleImages(fileList)
 					        	// 获取图片地址,并把图片显示到页面
 					        }}
+							fileList={[]}
 				        />
 			        </Form.Item>
 					<Form.Item label="商品详情">
@@ -157,6 +194,14 @@ const mapStateToProps = (state)=>{
 		ImagesValidateStatus:state.get('product').get('ImagesValidateStatus'),
 		ImagesHelp:state.get('product').get('ImagesHelp'),
 
+		category:state.get('product').get('category'),
+		name:state.get('product').get('name'),
+		description:state.get('product').get('description'),
+		detail:state.get('product').get('detail'),
+		price:state.get('product').get('price'),
+		stock:state.get('product').get('stock'),
+		images:state.get('product').get('images'),
+		mainImage:state.get('product').get('mainImage'),
 	}
 }
 //将方法映射到组件
@@ -176,6 +221,9 @@ const mapDispatchToProps = (dispatch)=>{
 		},
 		handleDetail:(Detail)=>{
 			dispatch(actionCreator.getDetailAction(Detail));
+		},
+		handleProductDetail:(id)=>{
+			dispatch(actionCreator.getProductDetailAction(id));
 		},
 	}
 }

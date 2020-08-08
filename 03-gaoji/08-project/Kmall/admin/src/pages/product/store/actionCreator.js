@@ -334,3 +334,32 @@ export const updateisHotAction = (id,isHot)=>{
 		})
 	}
 }
+
+// 处理商品编辑
+const setProductDetailAction = (data) =>({
+	type:types.GET_PRODUCT_DETAIL,
+	payload:data
+})
+export const getProductDetailAction = (id)=>{
+	return (dispatch,getState)=>{
+		// 先发送ajax再派送action
+		apiObj.getProductDetail({
+			id:id,
+		})
+		.then(result=>{
+			const data = result.data;
+			// console.log(data);
+			if(data.code == 0){// 验证成功
+				// 1.派发action,将数据存到store
+				// 获取数据
+				dispatch(setProductDetailAction(data.data));
+			}else{// 验证失败
+				message.error(data.message);
+			}
+		})
+		.catch(err=>{
+			console.log(err);
+			message.error('获取商品信息失败,请稍候再试!');
+		})
+	}
+}

@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import './index.css';
-import { Breadcrumb,Table, Button ,Input,InputNumber,Switch, Icon  } from 'antd';
+import { Breadcrumb,Table, Button ,Input,InputNumber,Switch, Icon,Divider   } from 'antd';
 import moment from 'moment';// 修改时间组件
 import { 
 	Link ,
@@ -11,6 +11,9 @@ import AdminLayout from 'common/layout';// 公共模板
 
 //容器组件
 class ProductList extends Component{
+	constructor(props){
+		super(props);
+	}
 	componentDidMount(){
 		this.props.handlePage(1)
 	}
@@ -102,6 +105,17 @@ class ProductList extends Component{
 			    	}
 		    	/>
 		    },
+		  },{
+		  	title:'operation',
+		  	render:(name,record)=>{
+		  		return (
+		  			<span>
+			  			<Link to={'/product/edit/'+record._id}>编辑</Link>
+			  			<Divider type="vertical" />
+			  			<Link to={'/product/detail/'+record._id}>详情</Link>		  				
+		  			</span>
+		  		)
+		  	}
 		  },
 		];
 		

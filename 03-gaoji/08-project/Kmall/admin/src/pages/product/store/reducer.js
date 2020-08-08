@@ -14,6 +14,15 @@ const defaultState = fromJS({
 	MainImageHelp:'',
 	ImagesValidateStatus:'',
 	ImagesHelp:'',
+
+	category:'',
+	name:'',
+	description:'',
+	price:'',
+	stock:'',
+	mainImage:'',
+	images:'',
+	detail:'',
 })
 import * as types from './actionTypes.js';
 
@@ -71,11 +80,25 @@ export default (state=defaultState,action)=>{
 		});
 	}
 	if(action.type == types.SET_IMAGES_ERR){
-				return state.merge({
+		return state.merge({
 			ImagesValidateStatus:'error',
 			ImagesHelp:'请添加商品图片!!',
 		});
 	}
 
+	// 处理商品详情
+	if(action.type == types.GET_PRODUCT_DETAIL){
+		// 商品回填数据
+		return state.merge({
+			category:action.payload.category.name,
+			name:action.payload.name,
+			description:action.payload.description,
+			detail:action.payload.detail,
+			price:action.payload.price,
+			stock:action.payload.stock,
+			images:action.payload.images,
+			mainImage:action.payload.mainImage,
+		});
+	}
 	return state
 }
