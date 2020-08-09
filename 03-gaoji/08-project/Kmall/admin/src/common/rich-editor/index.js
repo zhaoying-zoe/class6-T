@@ -7,6 +7,9 @@ class RichEditor extends Component{
 	constructor(props){
 		super(props)
 		// 发送时携带cookie
+		this.state = {
+			isLoaded:false,
+		}
 		$.ajaxSetup({
 			xhrFields:{
 				withCredentials:true,
@@ -31,10 +34,20 @@ class RichEditor extends Component{
 		this.editor.on("valuechanged", () => {
 			// editor上有getValue()的方法(获取输入框中的值)
 			// 把这个值传给父组件
-			this.props.getValues(this.editor.getValue());
+			this.setState({isLoaded:true},()=>{
+				this.props.getValues(this.editor.getValue());
+			})
 		})
 	}
-
+	// 处理详情回填
+	componentDidUpdate(){
+		if(this.props.values && !this.state.isLoaded){
+			this.editor.setValue(this.props.values);
+			this.setState({
+				isLoaded:true,
+			})
+		}
+	}
 	render(){
 		// 富文本编辑器,配置工具栏按钮①
 		this.toolbar = [

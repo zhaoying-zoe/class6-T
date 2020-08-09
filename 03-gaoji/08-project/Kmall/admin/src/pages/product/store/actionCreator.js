@@ -3,7 +3,7 @@ import * as types from './actionTypes.js';
 import apiObj from 'api/index.js';
 import { message } from 'antd';// 引入全局提示,直接用
 
-// 处理新增商品
+// 处理新增或者编辑商品商品
 export const getMainImageAction = (mainImage) =>({
 	type:types.SET_MAIN_IMAGE,
 	payload:mainImage
@@ -26,18 +26,17 @@ export const setImagesErrAction = () =>({
 export const getSaveProductsAction = (err,values)=>{
 	return (dispatch,getState)=>{
 		// 先发送ajax再派送action
-		// console.log(values);
 		const state = getState().get('product');
 		const mainImage = state.get("mainImage");
 		const images = state.get("Images");
 		const detail = state.get("Detail");
 
-		// 自定义组件验证
+		//自定义组件验证
 		let hasErr = false;
 		if(err){
 			hasErr = true;
 		}
-		// 如果封面图片和商品图片无值,则派发 Erraction
+		//自定义组件验证
 		if(!mainImage){
 			hasErr = true;
 			dispatch(setMainImageErrAction())
@@ -47,10 +46,15 @@ export const getSaveProductsAction = (err,values)=>{
 			dispatch(setImagesErrAction())
 		}
 		if(hasErr){
-			return
-		};
+			return 
+		}
+		// 根据是否有商品id来判断是新增还是编辑
+		let request = apiObj.addProducts;
+		if(values.id){
+			request = apiObj.editProducts
+		}
 		// 验证通过,发送请求
-		apiObj.addProducts({
+		request({
 			...values,
 			mainImage,
 			images,

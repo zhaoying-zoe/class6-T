@@ -39,6 +39,7 @@ class ProductEdit extends Component{
 	      this.props.handleSave(err,values);
 	    }
 	    */
+		values.id = this.state.productId;
 	    this.props.handleSave(err,values);
 	  });
 	};
@@ -65,24 +66,43 @@ class ProductEdit extends Component{
 		} = this.props;
 		
 		// 定义一个空数组
-		let fileList = [];
+		let mainImageLIst = [];
+		// 封面图片回传
 		if(mainImage){
-			fileList.push({
+			mainImageLIst.push({
 				uid:'0',
 				name:'image-png',
 				status:'done',
-				url:mainImage
+				url:mainImage,
+				response:{
+					url:mainImage
+				}
 			})
 		}
-		// console.log(fileList);
-
+		// 商品图片回传
+		let imagesLIst = [];
+		if(images){
+			imagesLIst = images.split(',').map((url,index)=>{
+				return {
+					uid:index,
+					name:'image-png',
+					status:'done',
+					url:url,
+					response:{
+						url:url,
+					}
+				}
+			})
+		}
 		return(
 			<div className='ProductEdit'>
 			  <AdminLayout>
 	            <Breadcrumb style={{ margin: '16px 0' }}>
 	              <Breadcrumb.Item>首页</Breadcrumb.Item>
 	              <Breadcrumb.Item>商品管理</Breadcrumb.Item>
-	              <Breadcrumb.Item>新增商品</Breadcrumb.Item>
+	              {
+	              	this.state.productId ? <Breadcrumb.Item>编辑商品</Breadcrumb.Item> : <Breadcrumb.Item>新增商品</Breadcrumb.Item>
+	              }
 	            </Breadcrumb>
 
 			    <div className="content">
@@ -143,7 +163,7 @@ class ProductEdit extends Component{
 					        getFileList = {(fileList)=>{
 					        	handleMainImage(fileList)
 					        }}
-							fileList={fileList}
+							fileList={mainImageLIst}
 				        />
 			        </Form.Item>
 					<Form.Item 
@@ -158,15 +178,16 @@ class ProductEdit extends Component{
 					        	handleImages(fileList)
 					        	// 获取图片地址,并把图片显示到页面
 					        }}
-							fileList={[]}
+							fileList={imagesLIst}
 				        />
 			        </Form.Item>
 					<Form.Item label="商品详情">
 				        <RichEditor 
 					        url={UPLOAD_DETAIL_IMAGES}
-					        getValues={(fileList)=>{// 给子组件传一个函数
-					        	handleDetail(fileList)
+					        getValues={(values)=>{// 给子组件传一个函数
+					        	handleDetail(values)
 					        }}
+					        values={detail}
 				        />
 			        </Form.Item>
 			        <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
