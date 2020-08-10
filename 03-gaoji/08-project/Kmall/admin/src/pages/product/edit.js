@@ -17,14 +17,15 @@ class ProductEdit extends Component{
 	constructor(props){
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		// console.log(this.props.match.productId)
 		// 将商品id存到state上
 		this.state = {
 			productId:this.props.match.params.productId
 		}
 	}
 	componentDidMount(){
-		// 挂载结束 加载最新商品分类
-		this.props.handleLevelCategories();
+		// 加载最新商品分类
+		this.props.handleLevelCategories()
 		// 根据state上是否有商品id,进行编辑或者新增
 		if(this.state.productId){
 			this.props.handleProductDetail(this.state.productId)
@@ -39,37 +40,39 @@ class ProductEdit extends Component{
 	      this.props.handleSave(err,values);
 	    }
 	    */
+	   // console.log(values);
 		values.id = this.state.productId;
 	    this.props.handleSave(err,values);
 	  });
 	};
 	render(){
 		const { getFieldDecorator } = this.props.form;
-		const { categories,
-				handleMainImage,
-				handleImages,
-				handleDetail,
+		const { 
+			categories,
+			handleMainImage,
+			handleImages,
+			handleDetail,
 
-				MainImageValidateStatus,
-				MainImageHelp,
-				ImagesValidateStatus,
-				ImagesHelp,
-				// 商品信息回填
-				category,
-				name,
-				description,
-				price,
-				stock,
-				mainImage,
-				images,
-				detail,
+			MainImageValidateStatus,
+			MainImageHelp,
+			ImagesValidateStatus,
+			ImagesHelp,
+			// 商品信息回填
+			category,
+			name,
+			description,
+			price,
+			stock,
+			mainImage,
+			images,
+			detail,
 		} = this.props;
-		
+		// console.log(categories.toJS())
 		// 定义一个空数组
-		let mainImageLIst = [];
+		let mainImageList = [];
 		// 封面图片回传
 		if(mainImage){
-			mainImageLIst.push({
+			mainImageList.push({
 				uid:'0',
 				name:'image-png',
 				status:'done',
@@ -80,9 +83,10 @@ class ProductEdit extends Component{
 			})
 		}
 		// 商品图片回传
-		let imagesLIst = [];
+		let imagesList = [];
 		if(images){
-			imagesLIst = images.split(',').map((url,index)=>{
+			// console.log(images);
+			imagesList = images.split(',').map((url,index)=>{
 				return {
 					uid:index,
 					name:'image-png',
@@ -110,30 +114,27 @@ class ProductEdit extends Component{
 			        <Form.Item label="商品分类">
 			          {getFieldDecorator('category', {
 			            rules: [{ required: true, message: '请选择商品分类!!' }],
-			            initialValue:category,
+			            initialValue:category
 			          })(
-			            <Select
-			              placeholder="商品分类"
-			            >
+			            <Select placeholder="商品分类">
 			              {
-							// console.log(categories)
-							categories.map((category)=>{
-								return <Option key={category.get('_id')} value={category.get('_id')}>{category.get('name')}</Option>
-							})
+			              	categories.map((category)=>{
+			              		return <Option key={category.get('_id')} value={category.get('_id')}>{category.get('name')}</Option>
+			              	})
 			              }
 			            </Select>,
 			          )}
-			        </Form.Item>
-			        <Form.Item label="商品描述">
-			          {getFieldDecorator('description', {
-			            rules: [{ required: true, message: '请输入商品描述!!' }],
-			            initialValue:description,
-			          })(<Input />)}
 			        </Form.Item>
 			        <Form.Item label="商品名称">
 			          {getFieldDecorator('name', {
 			            rules: [{ required: true, message: '请输入商品名称!!' }],
 			            initialValue:name,
+			          })(<Input />)}
+			        </Form.Item>
+			        <Form.Item label="商品描述">
+			          {getFieldDecorator('description', {
+			            rules: [{ required: true, message: '请输入商品描述!!' }],
+			            initialValue:description,
 			          })(<Input />)}
 			        </Form.Item>
 			        <Form.Item label="商品价格">
@@ -163,7 +164,7 @@ class ProductEdit extends Component{
 					        getFileList = {(fileList)=>{
 					        	handleMainImage(fileList)
 					        }}
-							fileList={mainImageLIst}
+							fileList={mainImageList}
 				        />
 			        </Form.Item>
 					<Form.Item 
@@ -178,7 +179,7 @@ class ProductEdit extends Component{
 					        	handleImages(fileList)
 					        	// 获取图片地址,并把图片显示到页面
 					        }}
-							fileList={imagesLIst}
+							fileList={imagesList}
 				        />
 			        </Form.Item>
 					<Form.Item label="商品详情">

@@ -6,7 +6,6 @@ import './index.css'
 import {actionCreator} from './store/index.js'
 // 引入表单注册相关组件
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import {Sheep} from 'common/Sheep/index.js'
 
 //容器组件
 class NormalLoginForm extends React.Component {

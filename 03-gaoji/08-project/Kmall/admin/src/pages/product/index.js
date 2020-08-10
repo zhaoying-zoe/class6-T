@@ -8,6 +8,7 @@ import {
 
 import ProductEdit from './edit.js';
 import ProductList from './list.js';
+import ProductDetail from './detail.js';
 
 //容器组件
 class Product extends Component{
@@ -17,6 +18,7 @@ class Product extends Component{
 			<div className="Product">
 				<Switch>
 					<Route path="/product/edit/:productId?" component={ProductEdit} />
+					<Route path="/product/detail/:productId?" component={ProductDetail} />
 					<Route path="/product" component={ProductList} />
 				</Switch>
 			</div>	

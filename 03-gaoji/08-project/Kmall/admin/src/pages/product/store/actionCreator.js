@@ -28,9 +28,14 @@ export const getSaveProductsAction = (err,values)=>{
 		// 先发送ajax再派送action
 		const state = getState().get('product');
 		const mainImage = state.get("mainImage");
-		const images = state.get("Images");
-		const detail = state.get("Detail");
-
+		const images = state.get("images");
+		const detail = state.get("detail");
+		// let images = null;
+		// if(values.id){
+		// 	images = state.get("images");
+		// }else{
+		// 	images = state.get("Images");
+		// }
 		//自定义组件验证
 		let hasErr = false;
 		if(err){
@@ -125,14 +130,19 @@ const getCategoriesDoneAction  = () =>({
 	type:types.REQUEST_DONE_ACTION,
 })
 
-export const getPageAction = (page)=>{
+export const getPageAction = (page,keyword)=>{
 	return (dispatch,getState)=>{
 		// 发送ajax前先派送加载图标的action
 		dispatch(getCategoriesStartAction());
-		// 先发送ajax再派送action
-		apiObj.getProductsList({
+		const options = {
 			page:page
-		})
+		}
+		// 判断关键词检索
+		if(keyword){
+			options.keyword = keyword
+		}
+		// 先发送ajax再派送action
+		apiObj.getProductsList(options)
 		.then(result=>{
 			// console.log(result);
 			const data = result.data;
@@ -159,7 +169,7 @@ export const getPageAction = (page)=>{
 export const updateNameAction = (id,newName)=>{
 	return (dispatch,getState)=>{
 		// 获取当前页
-		const page = getState().get('category').get('current');
+		const page = getState().get('product').get('current');
 		// 发送ajax前先派送加载图标的action
 		dispatch(getCategoriesStartAction());
 		// 先发送ajax再派送action
@@ -233,7 +243,7 @@ export const updatePageAction = (id,order)=>{
 export const updateIsShowAction = (id,isShow)=>{
 	return (dispatch,getState)=>{
 		// 获取当前页
-		const page = getState().get('category').get('current');
+		const page = getState().get('product').get('current');
 		// 发送ajax前先派送加载图标的action
 		dispatch(getCategoriesStartAction());
 		// 先发送ajax再派送action
@@ -270,7 +280,7 @@ export const updateIsShowAction = (id,isShow)=>{
 export const updateStatusAction = (id,Status)=>{
 	return (dispatch,getState)=>{
 		// 获取当前页
-		const page = getState().get('category').get('current');
+		const page = getState().get('product').get('current');
 		// 发送ajax前先派送加载图标的action
 		dispatch(getCategoriesStartAction());
 		// 先发送ajax再派送action
@@ -306,7 +316,7 @@ export const updateStatusAction = (id,Status)=>{
 export const updateisHotAction = (id,isHot)=>{
 	return (dispatch,getState)=>{
 		// 获取当前页
-		const page = getState().get('category').get('current');
+		const page = getState().get('product').get('current');
 		// 发送ajax前先派送加载图标的action
 		dispatch(getCategoriesStartAction());
 		// 先发送ajax再派送action

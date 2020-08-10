@@ -7,8 +7,8 @@ const defaultState = fromJS({
 	isFetching:false,
 	categories:[],
 	mainImage:'',
-	Images:'',
-	Detail:'',
+	images:'',
+	detail:'',
 	// 自定义组件验证
 	MainImageValidateStatus:'',
 	MainImageHelp:'',
@@ -16,13 +16,15 @@ const defaultState = fromJS({
 	ImagesHelp:'',
 
 	category:'',
+	categoryName:'',
 	name:'',
 	description:'',
 	price:'',
 	stock:'',
-	mainImage:'',
-	images:'',
-	detail:'',
+	keyword:'',
+	// mainImage:'',
+	// images:'',
+	// detail:'',
 })
 import * as types from './actionTypes.js';
 
@@ -36,6 +38,7 @@ export default (state=defaultState,action)=>{
 			total:action.payload.total,
 			pageSize:action.payload.pageSize,
 			current:action.payload.current,
+			keyword:action.payload.keyword,
 		});
 	}
 	if(action.type == types.REQUEST_START_ACTION){
@@ -56,20 +59,20 @@ export default (state=defaultState,action)=>{
 	// 处理自定义组件存值到store
 	if(action.type == types.SET_MAIN_IMAGE){
 		return state.merge({
-			mainImage:fromJS(action.payload),
+			mainImage:action.payload,
 			MainImageValidateStatus:'',
 			MainImageHelp:'',
 		});
 	}
 	if(action.type == types.SET_IMAGES){
 		return state.merge({
-			Images:fromJS(action.payload),
+			images:action.payload,
 			ImagesValidateStatus:'',
 			ImagesHelp:'',
 		});
 	}
 	if(action.type == types.SET_DETAIL){
-		return state.set('Detail',fromJS(action.payload));
+		return state.set('detail',action.payload);
 	}
 
 	// 处理自定义组件校验
@@ -89,8 +92,10 @@ export default (state=defaultState,action)=>{
 	// 处理商品详情
 	if(action.type == types.GET_PRODUCT_DETAIL){
 		// 商品回填数据
+		// console.log(action.payload);
 		return state.merge({
-			category:action.payload.category.name,
+			category:action.payload.category._id,
+			categoryName:action.payload.category.name,
 			name:action.payload.name,
 			description:action.payload.description,
 			detail:action.payload.detail,

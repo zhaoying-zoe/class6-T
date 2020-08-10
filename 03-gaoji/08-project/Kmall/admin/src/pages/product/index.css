@@ -1,7 +1,19 @@
-.Product .btn{
-	float: right;
-	min-height: 44px;
+.ProductList .btn{
+	height: 44px;
 }
-.Product .btn-add{
-	z-index: 33;
+.ProductList .btn-add{
+	float: right;
+}
+.imageBox li{
+	list-style: none;
+	float: left;
+	width: 200px;
+	height: 200px;
+	border: 1px solid #000;
+	margin-left: 15px;
+	border-radius: 4px;
+}
+.imageBox li img{
+	width: 100%;
+	height: 100%;
 }

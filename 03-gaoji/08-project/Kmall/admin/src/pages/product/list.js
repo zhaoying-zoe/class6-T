@@ -9,6 +9,7 @@ import {
 import {actionCreator} from './store/index.js';
 import AdminLayout from 'common/layout';// 公共模板
 
+const { Search } = Input;
 //容器组件
 class ProductList extends Component{
 	constructor(props){
@@ -18,8 +19,10 @@ class ProductList extends Component{
 		this.props.handlePage(1)
 	}
 	render(){
-		const { list,
+		const { 
+			list,
 			total,
+			keyword,
 			pageSize,
 			current,
 			handlePage,
@@ -35,6 +38,15 @@ class ProductList extends Component{
 		    title: 'name',
 		    dataIndex: 'name',
 		    key: 'name',
+		    render:(name)=>{
+		    	if(keyword){
+		    		let reg = new RegExp(keyword,'ig');
+		    		let newName = name.replace(reg,'<b style="color:red">'+keyword+'</b>');
+		    		return <div dangerouslySetInnerHTML={{__html:newName}}></div>;
+		    	}else{
+		    		return <a>{name}</a>	
+		    	}
+		    }
 		  },
 		  {
 		    title: 'isShow',
@@ -119,7 +131,7 @@ class ProductList extends Component{
 		  },
 		];
 		
-		// console.log(list);
+		// console.log(keyword);
 		// 把immutable对象(数据)转化成数组
 		const dataSource = list.toJS()
 		// console.log(dataSource);// 数组
@@ -133,6 +145,15 @@ class ProductList extends Component{
 	              <Breadcrumb.Item>商品列表</Breadcrumb.Item>
 	            </Breadcrumb>
 				<div className="btn">
+				    <Search
+				      style={{ width:400 }}
+				      placeholder="请输入关键词！"
+				      enterButton="Search"
+				      size="large"
+				      onSearch={(value) => {
+				      	handlePage(1,value)}
+					  }
+				    />
 					<Link to="/product/edit"><Button type="primary btn-add">新增商品</Button></Link>
 				</div>
 			    <div className="content">
@@ -147,8 +168,13 @@ class ProductList extends Component{
 			    		}}
 				    	loading={ isFetching /*分页器加载*/ }
 			    		onChange={ (pages)=>{// 点击分页器按钮时触发
-			    			// 传入pages对象中的current(当前页)
-			    			handlePage(pages.current);
+			    			if(keyword){
+			    				handlePage(pages.current,keyword);
+							}else{
+				    			// 传入pages对象中的current(当前页)
+			    				handlePage(pages.current);
+							}
+
 			    		} }
 			    	/>
 			    </div>
@@ -166,14 +192,15 @@ const mapStateToProps = (state)=>{
 		pageSize:state.get('product').get('pageSize'),
 		current:state.get('product').get('current'),
 		isFetching:state.get('product').get('isFetching'),
+		keyword:state.get('product').get('keyword'),
 	}
 }
 //将方法映射到组件
 const mapDispatchToProps = (dispatch)=>{
 	return {
-		handlePage:(page)=>{
+		handlePage:(page,keyword)=>{
 			// 调用派发action的函数(分页)
-			dispatch(actionCreator.getPageAction(page));
+			dispatch(actionCreator.getPageAction(page,keyword));
 		},
 		handleUpdataisShow:(id,isShow)=>{
 			// 调用派发action的函数(是否热卖)

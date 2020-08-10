@@ -34,6 +34,7 @@ class UploadImages extends Component{
 	handleChange({ fileList }){
 		this.setState({ fileList },()=>{
 			// 调用父组件的函数,把图片地址传给父组件
+			// console.log(fileList);
 			this.props.getFileList(fileList.map(file=>{
 				// 获取图片的url,传给父组件
 				if(file.response){
