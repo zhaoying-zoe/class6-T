@@ -27,6 +27,8 @@ module.exports = {
 		'common': 					 './src/pages/common/index.js',
 		'list': 				 	 './src/pages/list/index.js',
 		'user-login': 				 './src/pages/user-login/index.js',
+		'user-register': 			 './src/pages/user-register/index.js',
+		'result': 					 './src/pages/result/index.js',
 	},
 	// 加上对应的配置
 	devtool:'inline-source-map',
@@ -47,6 +49,7 @@ module.exports = {
             pages:path.resolve(__dirname,'./src/pages'),
             node_modules:path.resolve(__dirname,'./node_modules'),
             util:path.resolve(__dirname,'./src/util'),
+            api:path.resolve(__dirname,'./src/api'),
         }
     },
 	module: {
@@ -105,6 +108,8 @@ module.exports = {
 	    new htmlWebpackPlugin(getHtmlConfig('index','首页')),
 	    new htmlWebpackPlugin(getHtmlConfig('list','列表页')),
 	    new htmlWebpackPlugin(getHtmlConfig('user-login','登录页')),
+	    new htmlWebpackPlugin(getHtmlConfig('user-register','注册页面')),
+	    new htmlWebpackPlugin(getHtmlConfig('result','提示页面')),
 	    //自动清理多余文件
 	    new CleanWebpackPlugin(),
 	    // css文件单独打包
@@ -116,7 +121,7 @@ module.exports = {
 	    contentBase: './dist',//内容的目录
 	    port:3002,//服务运行的端口,
 	    proxy: [{
-		  	context: ["/sessions"],
+		  	context: ["/sessions","/users"],
 		  	//请求地址是以context内部的值开头的路由全部代理到target提供的地址下
 		  	target: "http://127.0.0.1:3000",
 		}]

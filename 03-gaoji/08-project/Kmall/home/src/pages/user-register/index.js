@@ -31,13 +31,40 @@ var page = {
 				_this.submit()
 			}
 		})
+		// 用户名失去焦点验证
+		$('[name="username"]').on('blur',function(){
+			var username = $('[name="username"]').val();
+			// 1.用户名非空验证
+			if(!_util.validate(username,'required')){
+				formDataMsg.show('请输入用户名');
+				return
+			}
+			// 2.用户名合法性
+			if(!_util.validate(username,'username')){
+				formDataMsg.show('用户名是以字母开始的3-6位字符');
+				return
+			}
+			api.checkUsername({
+				data:{
+					username:username,
+				},
+				success:function(data){
+					formDataMsg.hide()
+				},
+				error:function(msg){
+					formDataMsg.show(msg);
+				}	
+			})
+		})
 	},
 	submit:function(){
 		//1.获取数据
 		var formData = {
 			username:$.trim($('[name="username"]').val()),
 			password:$.trim($('[name="password"]').val()),
-
+			repassword:$.trim($('[name="repassword"]').val()),
+			phone:$.trim($('[name="phone"]').val()),
+			email:$.trim($('[name="email"]').val()),
 		}
 		//2.验证数据合法性
 		var validateFormData = this.validate(formData)
@@ -46,35 +73,17 @@ var page = {
 			//隐藏错误提示
 			formDataMsg.hide();
 			// 发送ajax
-			api.login({
+			api.register({
 				data:formData,
 				success:function(data){
-					// console.log(data)
-					window.location.href = '/'
+					// 注册成功
+					window.location.href = '/result.html?type=register';
+					console.log(233)
 				},
 				error:function(msg){
 					formDataMsg.show(msg);
 				}	
 			})
-			/*
-			$.ajax({
-				url:'/sessions/users',
-				method:'post',
-				datatype:'json',
-				data:formData,
-				success:function(data){
-					// console.log(data)
-					if(data.code == 0){
-						window.location.href = '/'
-					}else{
-						formDataMsg.show(data.message);
-					}
-				},
-				error:function(err){
-					formDataMsg.show('网络错误,请稍后再试!!');
-				}
-			})
-			*/
 		}else{// 验证不通过
 			formDataMsg.show(validateFormData.meg)
 		}
@@ -104,8 +113,35 @@ var page = {
 			result.meg = '密码是3-6位任意字符';
 			return result;
 		}
-		result.status = true;
+		// 5.判断两次密码是否一致
+		if(formData.password != formData.repassword){
+			result.meg = '两次密码输入不一致';
+			return result;
+		}
 
+		// 6.手机号非空
+		if(!_util.validate(formData.phone,'required')){
+			result.meg = '请输入手机号';
+			return result;
+		}
+		// 7.手机号合法性验证
+		if(!_util.validate(formData.phone,'phone')){
+			result.meg = '手机号格式不正确';
+			return result;
+		}
+		// 8.邮箱非空
+		if(!_util.validate(formData.email,'required')){
+			result.meg = '请输入邮箱';
+			return result;
+		}
+		// 9.邮箱合法性验证
+		if(!_util.validate(formData.email,'email')){
+			result.meg = '邮箱格式不正确';
+			return result;
+		}
+
+
+		result.status = true;
 		return result;
 	}
 }
