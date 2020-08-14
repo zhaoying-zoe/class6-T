@@ -1,3 +1,6 @@
+import Hogan from 'hogan.js'
+
+
 module.exports = {
 	validate:function(value,type){
 		if(type == 'required'){
@@ -25,5 +28,24 @@ module.exports = {
 	},
 	showErrMsg:function(msg){
 		alert(msg)
+	},
+	getParamsUrl:function(keywords){
+		// 获取地址栏信息参数
+		var query = (window.location.search.substr(1));
+		// type=register
+		// type=register&name=tom
+		// name=tom&type=register
+		// name=tom&type=register&age=20
+
+		// 正则:用来匹配地址栏的url
+		var reg = new RegExp('(^|&)'+keywords+'='+'([^&]*)($|&)')
+		var result = query.match(reg);
+		return result ? decodeURIComponent(result[2]) : null;
+		console.log(result[2]);
+	},
+	render:function(tpl,data){
+		var template = Hogan.compile(tpl);
+		var html = template.render(data);
+		return html;
 	}
 }
