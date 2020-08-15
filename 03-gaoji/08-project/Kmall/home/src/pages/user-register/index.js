@@ -78,7 +78,7 @@ var page = {
 				success:function(data){
 					// 注册成功
 					window.location.href = '/result.html?type=register';
-					console.log(233)
+					// console.log(233)
 				},
 				error:function(msg){
 					formDataMsg.show(msg);

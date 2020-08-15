@@ -1,6 +1,5 @@
 import Hogan from 'hogan.js'
 
-
 module.exports = {
 	validate:function(value,type){
 		if(type == 'required'){
@@ -23,6 +22,13 @@ module.exports = {
 			return /^\w+@\w+\.\w{2,6}$/.test(value)
 		}
 	},
+	goResult:function(url){
+		window.location.href = '/result.html?type='+url;
+	},
+	goLogin:function(){
+		window.location.href = '/user-login.html?redirct='+window.location.href;
+	}
+	,
 	showSuccessMsg:function(msg){
 		alert(msg)
 	},

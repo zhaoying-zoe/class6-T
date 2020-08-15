@@ -30,6 +30,7 @@ module.exports = {
 		'user-register': 			 './src/pages/user-register/index.js',
 		'result': 					 './src/pages/result/index.js',
 		'user-center': 				 './src/pages/user-center/index.js',
+		'user-update-password': 	 './src/pages/user-update-password/index.js',
 	},
 	// 加上对应的配置
 	devtool:'inline-source-map',
@@ -121,6 +122,7 @@ module.exports = {
 	    new htmlWebpackPlugin(getHtmlConfig('user-register','注册页面')),
 	    new htmlWebpackPlugin(getHtmlConfig('result','提示页面')),
 	    new htmlWebpackPlugin(getHtmlConfig('user-center','个人中心')),
+	    new htmlWebpackPlugin(getHtmlConfig('user-update-password','修改密码')),
 	    //自动清理多余文件
 	    new CleanWebpackPlugin(),
 	    // css文件单独打包
@@ -132,7 +134,7 @@ module.exports = {
 	    contentBase: './dist',//内容的目录
 	    port:3002,//服务运行的端口,
 	    proxy: [{
-		  	context: ["/sessions","/users"],
+		  	context: ["/sessions","/users","/categories"],
 		  	//请求地址是以context内部的值开头的路由全部代理到target提供的地址下
 		  	target: "http://127.0.0.1:3000",
 		}]
