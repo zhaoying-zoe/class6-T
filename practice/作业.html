@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			background-color: cornflowerblue;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">1</button>
+	<button id="btn2">2</button>
+	<div id="box"></div>
+</body>
+<script type="text/javascript">
+	var oBtn1 = document.getElementById('btn1');
+	var oBtn2 = document.getElementById('btn2');
+	var oBox = document.getElementById('box');
+	// var ranColor = 'red';
+	function handle(attr1,attr2,attr3){
+		if(attr1 && attr2 && attr3){
+			document.getElementById('box').style.width = '400' + 'px';
+			document.getElementById('box').style.height = '400' + 'px';
+			return;
+		}
+		if(attr1 && attr2){
+			var ranColor = 'red';
+			console.log(oBox.style.background = ranColor);
+		}
+	}
+	oBtn1.onclick=function(){
+		handle('attr1','attr2','attr3');
+	}
+	oBtn2.onclick=function(){
+		handle('attr1','attr2');
+	}
+
+		function getStyle(obj,attr){
+
+　　　　　　if(obj.currentStyle){
+
+　　　　　　return obj.currentStyle[attr];//ie下
+
+　　　　　　}else{
+
+　　　　　　return getComputedStyle(obj,false)[attr];//非ie下
+
+　　　　　　}
+
+　　}
+
+	getStyle(oBox)
+</script>
+</html>

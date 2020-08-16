@@ -22,6 +22,8 @@ import Err from 'common/err';
 import Category from 'pages/category/index.js';
 // 引入 商品管理 路由的UI组件
 import Product from 'pages/product/index.js';
+// 引入 广告管理 路由的UI组件
+import Ad from 'pages/ad';
 
 class App extends Component{
 	render(){
@@ -48,6 +50,7 @@ class App extends Component{
 						<HomeRoute exact path='/' component={AdminHome} />
 						<HomeRoute path='/user' component={User} />
 						<HomeRoute path='/category' component={Category} />
+						<HomeRoute path='/ad' component={Ad} />
 						<HomeRoute path='/product' component={Product} />
 						<LoginRoute path='/login' component={Login} />
 						<Route component={Err} />
