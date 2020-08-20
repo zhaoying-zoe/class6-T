@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-数据与方法.html</title>
+</head>
+<body>
+	<div id="app">
+		{{message}} {{name}}
+		<p ref='p1'>64646</p>
+	</div>
+	
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			message:'菜鸟驿站',
+			name:'tom'
+		}
+	})
+
+	console.log(vm)
+	console.log(vm.$data)// Vue 实例观察的数据对象
+	console.log(vm.$data.message)// message
+	console.log(vm.$data.name)// name
+	console.log(vm.$el)// Vue 实例使用的根 DOM 元素。
+	console.log(vm.$el === document.getElementById('app'))// true
+	console.log(vm.$refs.p1)// 一个对象，持有注册过 ref 特性 的所有 DOM 元素和组件实例。
+
+	// 观察 Vue 实例变化的一个表达式或计算属性函数
+	vm.$watch('message',function(){
+		console.log('message has been changed')// 数据变化时会打印
+	})
+
+	// 完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令及事件监听器。
+	vm.$destroy();
+</script>
+</html>

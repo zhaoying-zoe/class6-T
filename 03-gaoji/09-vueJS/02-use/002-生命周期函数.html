@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-生命周期函数.html</title>
+</head>
+<body>
+	<div id="app">
+		<p ref='p1'>{{message}}</p>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			message:'菜鸟驿站',
+		},
+		// 创建前
+		beforeCreate(){
+			console.log('beforeCreate:::');
+			console.log('beforeCreate:::',this);// vm
+			console.log('beforeCreate:::',this.$data);// undefined
+			console.log('beforeCreate:::',this.$el);// undefined
+			console.log('beforeCreate:::',this.$refs.p1);// undefined
+		},
+		// 创建
+		created(){
+			console.log('created:::');
+			console.log('created:::',this.$data);// obj
+			console.log('created:::',this.$el);// undefined
+			console.log('created:::',this.$refs);// {}
+		},
+		// 挂载前
+		beforeMount(){
+			console.log('beforeMount:::');
+			console.log('beforeMount:::',this.$data);// obj
+			console.log('beforeMount:::',this.$el);// dom
+			console.log('beforeMount:::',this.$refs);// {}
+		},
+		// 挂载
+		mounted(){
+			console.log('mounted:::');
+			console.log('mounted:::',this.$data);// obj
+			console.log('mounted:::',this.$el);// dom
+			console.log('mounted:::',this.$refs);// {p1: p}
+		},
+		// 更新前
+		beforeUpdate(){
+			console.log('beforeUpdate:::');
+			console.log('beforeUpdate:::',this.$data);// obj
+			console.log('beforeUpdate:::',this.$el);// dom
+			console.log('beforeUpdate:::',this.$refs);// {p1: p}
+		},
+		// 更新
+		updated(){
+			console.log('updated:::');
+			console.log('updated:::',this.$data);// obj
+			console.log('updated:::',this.$el);// dom
+			console.log('updated:::',this.$refs);// {p1: p}
+		},
+		// 销毁前
+		beforeDestroy(){
+			console.log('beforeDestroy:::');
+			console.log('beforeDestroy:::',this.$data);// obj
+			console.log('beforeDestroy:::',this.$el);// dom
+			console.log('beforeDestroy:::',this.$refs);// {p1: p}
+		},
+		// 销毁
+		destroyed(){
+			console.log('destroyed:::');
+			console.log('destroyed:::',this.$data);// obj
+			console.log('destroyed:::',this.$el);// dom
+			console.log('destroyed:::',this.$refs);// {p1: undefined}
+		},
+	})
+</script>
+</html>

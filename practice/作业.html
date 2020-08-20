@@ -15,6 +15,7 @@
 	<div id="box"></div>
 </body>
 <script type="text/javascript">
+	/*
 	var oBtn1 = document.getElementById('btn1');
 	var oBtn2 = document.getElementById('btn2');
 	var oBox = document.getElementById('box');
@@ -50,7 +51,38 @@
 　　　　　　}
 
 　　}
-
 	getStyle(oBox)
+	*/
+
+	function css(obj,attr,val){
+		if(arguments.length==2){
+
+		// console.log(window);
+			// alert(getComputedStyle(obj,false)[attr]);
+			console.log(getComputedStyle(obj,false));// 获取对象的所有属性和值
+			console.log(getComputedStyle(obj,false)[attr]);
+		}else if(arguments.length==3){
+			obj.style[attr]=val;
+		}
+	}
+	var oBtn1=document.getElementById('btn1');
+	var oBtn2=document.getElementById('btn2');
+	var oDiv=document.getElementById('box');
+	oBtn1.onclick=function(){
+		css(oDiv,'width','400px');
+		css(oDiv,'height','400px');
+	}
+	oBtn2.onclick=function(){
+		css(oDiv,'backgroundColor');
+		// console.log(getComputedStyle(oDiv));
+	}
+
+	var obj1 = {
+		width:'200px',
+		height:'200px',
+		backgroundColor:'red',
+	}
+	console.log(getComputedStyle(obj1,false));
+		
 </script>
 </html>

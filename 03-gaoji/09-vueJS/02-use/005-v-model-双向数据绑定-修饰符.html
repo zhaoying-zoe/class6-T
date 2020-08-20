@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-v-model-双向数据绑定-修饰符.html</title>
+</head>
+<body>
+	<div id="app">
+		<p>{{message}}</p>
+		<input v-model="message" type="text">
+		<input v-model.lazy="message" type="text"><!-- 失去焦点时改变数据-->
+		<input v-model.number="message" type="text"><!-- 必须输入框重新输入数字才行-->
+		<input v-model.trim="message" type="text"><!-- 去掉输入框前后的空白符-->
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			message:'菜鸟驿站',
+		}
+	})
+</script>
+</html>

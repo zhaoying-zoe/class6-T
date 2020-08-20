@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>000-循环.html</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="message in messages">
+				{{message}}
+			</li>
+		</ul>
+	</div>
+	
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			messages:['tom','bob','mike'],
+		}
+	})
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-v-for.html</title>
+</head>
+<body>
+	<div id="app">
+		<table>
+			<tr>
+				<td>姓名:</td>
+				<td>年龄:</td>
+				<td>分数:</td>
+				<td>是否及格:</td>
+			</tr>
+			<tr v-for="student in messages">
+				<td>{{student.name}}</td>
+				<td>{{student.age}}</td>
+				<td>{{student.score}}</td>
+				<td v-if="student.score >= 60">及格</td>
+				<td v-else>臭弟弟,你不及格</td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			messages:[
+				{name:'tom',age:23,score:89},
+				{name:'bob',age:25,score:69},
+				{name:'mike',age:53,score:59},
+			],
+		}
+	})
+</script>
+</html>

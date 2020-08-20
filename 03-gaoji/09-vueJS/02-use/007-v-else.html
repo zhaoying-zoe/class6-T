@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-v-else.html</title>
+</head>
+<body>
+	<div id="app">
+		<input v-model="weight" type="text">
+		<p>你的体重是:{{weight}}</p>
+		<p v-if="weight < 60">不太正常啊</p>
+		<p v-else>正常啊</p>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			weight:90,
+		}
+	})
+</script>
+</html>
