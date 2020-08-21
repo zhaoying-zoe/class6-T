@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-计算属性-getter和setter.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="sum">
+		<p>sumfun::: {{addend1}}</p>
+		<p>sumfun::: {{addend2}}</p>
+		<p>sumfun::: {{sum}}</p>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			addend1:'tom',
+			addend2:'jhon',
+		},
+		// computed:计算 计算属性默认只有 getter，不过在需要时你也可以提供一个 setter：
+		computed:{
+			sum:{
+				// sum(属性)是一个对象,对象内有getter和setter,getter是获取属性,setter是设置属性
+				get:function(){
+					return this.addend1 + ' ' + this.addend2;
+				},
+				set:function(newSum){
+					// console.log(newSum)
+					addends = newSum.split(' ');
+					// console.log(addends);
+					this.addend1 = addends[0];
+					this.addend2 = addends[addends.length - 1];					
+				}
+			}
+		}
+	})
+</script>
+</html>

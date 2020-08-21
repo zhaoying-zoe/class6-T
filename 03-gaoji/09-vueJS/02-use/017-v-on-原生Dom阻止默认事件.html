@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-v-on-原生Dom阻止默认事件.html</title>
+<body>
+	<div id="app">
+		<a @click="goBaidu($event)" href="https://www.baidu.com">去百度吧,卡丘!</a>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// $event: 是vue语法
+	// 阻止默认行为:传入的参数应为$event
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			count:0,
+		},
+		methods:{
+			goBaidu:function(ev){
+				ev.preventDefault();
+				console.log('click')
+			},
+		}
+	})
+</script>
+</html>

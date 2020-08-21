@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-计算属性-侦听器watch.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="sum">
+		<p>sumfun::: {{addend1}}</p>
+		<p>sumfun::: {{addend2}}</p>
+		<textarea>22</textarea>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			addend1:'tom',
+			addend2:'jhon',
+		},
+		// computed:计算 
+		computed:{
+			sum:{
+				// sum(属性)是一个对象,对象内有getter和setter,getter是获取属性,setter是设置属性
+				get:function(){
+					return this.addend1 + ' ' + this.addend2;
+				},
+				set:function(newSum){
+					// console.log(newSum)
+					addends = newSum.split(' ');
+					// console.log(addends);
+					this.addend1 = addends[0];
+					this.addend2 = addends[addends.length - 1];					
+				}
+			}
+		},
+		watch:{
+			sum:function(){
+				console.log('1::: sum has changed');
+			},
+			addends:function(){// 监听不到,因为他不是vm里的属性(猜测)
+				console.log('3::: addends has changed');
+			},
+			addend2:function(){
+				console.log('4::: addend2 has changed')
+			}
+		}
+	})
+
+	vm.$watch('sum',function(){
+		console.log('2::: sum has changed');
+	})
+</script>
+</html>

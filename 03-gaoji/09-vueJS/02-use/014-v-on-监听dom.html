@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-v-on-监听dom.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			height: 30px;
+			font-size: 20px;
+			margin-top: 3px;
+			padding-left: 3px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button v-on:click="count++">请点击这里 {{ count }}次</button>
+		<button @click="click">请点击这里 {{ count }}次</button>
+		<button @click="click()">请点击这里 {{ count }}次</button>
+		<button @click="alert('tom')">谁点击了我?</button>
+		<button @click="alert('bob')">谁点击了我?</button>
+		<input @blur="value()" type="text" v-model="values">
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			count:0,
+			values:'leo',
+		},
+		methods:{
+			click:function(){
+				this.count++
+			},
+			alert(name){
+				alert(name + '点击了我')
+			},
+			value:function(){
+				this.values = 'tom';
+			}
+		}
+	})
+</script>
+</html>

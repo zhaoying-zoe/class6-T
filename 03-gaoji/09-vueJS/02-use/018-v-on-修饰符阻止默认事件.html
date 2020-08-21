@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-v-on-修饰符阻止默认事件.html</title>
+<body>
+	<div id="app">
+		<a @click.prevent="goBaidu()" href="https://www.baidu.com">去百度吧,卡丘!</a>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// .prevent: 在事件名后面加上.prevent 就可以阻止默认事件
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			count:0,
+		},
+		methods:{
+			goBaidu:function(){
+				console.log('click')
+			},
+		}
+	})
+</script>
+</html>

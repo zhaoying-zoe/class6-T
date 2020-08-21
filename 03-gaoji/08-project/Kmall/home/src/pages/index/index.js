@@ -37,26 +37,35 @@ var page = {
 	loadSwiper:function(){
 		// 加载广告
 		api.getHomeAds({
+			data:{
+				position:1,
+			},
 			success:function(ads){
-				console.log(ads)
+				console.log(ads);
+				var html = _util.render(adsTpl,{
+					ads:ads,
+				})
+				$('.swiper-wrapper').html(html)
+				// 配置swiper信息
+				var mySwiper = new Swiper ('.swiper-container', {
+				    loop: true, // 循环模式选项
+				    autoplay:true,//自动轮播
+				    // 如果需要分页器
+				    pagination: {
+				    	el: '.swiper-pagination',
+					    //底部按钮可以点击
+					    clickable :true,
+				    },
+				    
+				    // 如果需要前进后退按钮
+				    navigation: {
+				    	nextEl: '.swiper-button-next',
+				    	prevEl: '.swiper-button-prev',
+				    },
+				})				
 			}
 		})
-		var mySwiper = new Swiper ('.swiper-container', {
-		    loop: true, // 循环模式选项
-		    autoplay:true,//自动轮播
-		    // 如果需要分页器
-		    pagination: {
-		    	el: '.swiper-pagination',
-			    //底部按钮可以点击
-			    clickable :true,
-		    },
-		    
-		    // 如果需要前进后退按钮
-		    navigation: {
-		    	nextEl: '.swiper-button-next',
-		    	prevEl: '.swiper-button-prev',
-		    },
-		}) 
+ 
 		   
 	},
 	loadFloors:function(){

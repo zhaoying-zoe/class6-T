@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-组件-组件模版分离-script标签.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<lxxzhuzhu></lxxzhuzhu>
+		<!-- 插入多少组件都行 互不影响 -->
+		<lxxzhuzhu></lxxzhuzhu>
+	</div>
+	
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+	<script type="text/x-template" id="script">
+		<button v-on:click="count++">You clicked me {{ count }} times.</button>
+	</script>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// 1. 注册一个名为 lxxzhuzhu 的组件
+	// 2. Vue.component 来创建组件
+	// 3. 全局注册的行为必须在根 Vue 实例 (通过 new Vue) 创建之前发生
+	Vue.component('lxxzhuzhu',{
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#script'
+	})
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			
+		},
+	})
+</script>
+</html>
