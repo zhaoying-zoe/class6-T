@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>027-组件-组件模版分离-template标签.html</title>
+	<title>034-自定义事件.html</title>
 	<style type="text/css">
 		*{
 			margin: 0;
@@ -12,14 +12,16 @@
 </head>
 <body>
 	<div id="app">
-		<!-- 插入多少组件都行 互不影响 -->
-		<lxxzhuzhu></lxxzhuzhu>
-		<lxxzhuzhu></lxxzhuzhu>
+		<!-- 插入多少组件都行 互不影响 -->	
+		<!-- 在组件上调用自定义事件 -->
+		<lxxzhuzhu @my-event="addCounts()"></lxxzhuzhu>
+		<lxxzhuzhu @my-event="addCounts()"></lxxzhuzhu>
+		<div>You clicked me {{ counts }} total times.</div>
 	</div>
 
 	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
 	<template id="template">
-		<button v-on:click="count++">You clicked me {{ count }} times.</button>
+		<button v-on:click="addCount()">You clicked me {{ count }} times.</button>
 	</template>
 </body>
 <script src="js/vue.js"></script>
@@ -35,14 +37,28 @@
 			}
 		},
 		// 注册的组件需要一个模板
-		template:'#template'
+		template:'#template',
+		methods:{
+			// 在组件上定义一个事件
+			addCount:function(){
+				this.count++;
+				// 在组件上绑定自定义事件
+				this.$emit('my-event');
+			}
+		}
 	})
 	// vm (ViewModel 的缩写)
 	var vm = new Vue({
 		el:'#app',
 		data:{
-			
+			counts:0,
 		},
+		methods:{
+			// 在实例上定义事件
+			addCounts:function(){
+				this.counts++;
+			}
+		}
 	})
 </script>
 </html>

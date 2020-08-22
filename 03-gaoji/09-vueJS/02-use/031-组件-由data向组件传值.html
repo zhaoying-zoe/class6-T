@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>031-组件-由data向组件传值.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- 插入多少组件都行 互不影响 -->
+		<!-- 在组件上绑定task -->
+
+		<!-- v-for :循环tasks -->
+		<!-- :key :循环后的每个task都需要一个key值 -->
+		<!-- :task :把循环后的每个task(tasks里的)值绑定到task(组件prop里的task)上 -->
+		<!-- :id :把循环后的每个id(tasks里的)值绑定到id(组件prop里的id)上 -->
+		<todo-list
+			v-for="(task,index) in tasks"
+			:key="task.id"
+			:task="task.name"
+			:id="task.id"
+		>
+			
+		</todo-list>
+	</div>
+	
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+	<template id="todolist">
+		<!-- 模板里需要标签,用组件里的数据渲染模板 -->
+		<div>{{ id }}---{{task}}</div>
+	</template>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// 1. 先定义一个组件
+	var TodoList = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return{
+				
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#todolist',
+		props:{
+			// 1. 在props接收绑定的task,task的类型是字符串
+			// 2. id的类型是数字
+			task:String,
+			id:Number,
+		},
+	})
+	// 2.再注册组件
+	Vue.component('todo-list',TodoList)
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			tasks:[
+				{
+					id:0,
+					name:'eat',
+				},
+				{
+					id:1,
+					name:'study',
+				},
+				{
+					id:2,
+					name:'learn',
+				},
+			]
+		},
+	})
+</script>
+</html>

@@ -163,7 +163,8 @@ class ProductEdit extends Component{
 					        max={1}
 					        getFileList = {(fileList)=>{
 					        	handleMainImage(fileList)
-					        }}
+							}}
+							// 向子组件传值
 							fileList={mainImageList}
 				        />
 			        </Form.Item>
@@ -178,7 +179,8 @@ class ProductEdit extends Component{
 					        getFileList = {(fileList)=>{
 					        	handleImages(fileList)
 					        	// 获取图片地址,并把图片显示到页面
-					        }}
+							}}
+							// 向子组件传值
 							fileList={imagesList}
 				        />
 			        </Form.Item>
@@ -187,7 +189,8 @@ class ProductEdit extends Component{
 					        url={UPLOAD_DETAIL_IMAGES}
 					        getValues={(values)=>{// 给子组件传一个函数
 					        	handleDetail(values)
-					        }}
+							}}
+							// 向子组件传值
 					        values={detail}
 				        />
 			        </Form.Item>

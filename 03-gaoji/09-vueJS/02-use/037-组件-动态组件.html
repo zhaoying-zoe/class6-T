@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-组件-动态组件.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button @click="currentComponent='tab-home'">home</button>
+		<button @click="currentComponent='tab-list'">list</button>
+		<button @click="currentComponent='tab-item'">item</button>
+		
+		<!-- 通过is我们可以动态的更换模板中的组件 -->
+		<component v-bind:is="currentComponent"></component>
+	</div>
+	
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+	<template id="tab-home">
+		<!-- 1. 模板里需要标签 -->
+		<div>tab-home</div>
+	</template>
+	<template id="tab-list">
+		<!-- 1. 模板里需要标签 -->
+		<div>tab-list</div>
+	</template>
+	<template id="tab-item">
+		<!-- 1. 模板里需要标签 -->
+		<div>tab-item</div>
+	</template>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// 1. 先定义一个组件
+	var Home = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#tab-home'
+	})
+	var List = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#tab-list'
+	})
+	var Item = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#tab-item'
+	})
+	// 2.再注册组件
+	Vue.component('tab-home',Home)
+	Vue.component('tab-list',List)
+	Vue.component('tab-item',Item)
+	
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			currentComponent:'tab-home'
+		},
+	})
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>039-动画-单元素-过渡.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 50px;
+			height: 30px;
+		}
+		.slide-fade-enter-active {
+		  	transition: all .3s ease;
+		}
+		.slide-fade-leave-active {
+		 	 transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+		}
+		.slide-fade-enter, .slide-fade-leave-to{
+		  	transform: translateX(10px);
+		  opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button @click="show = !show">切换</button>
+		<transition name="slide-fade">
+			<div v-if="show">变幻莫测</div>
+		</transition>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			show: true,
+		},
+	})
+</script>
+</html>

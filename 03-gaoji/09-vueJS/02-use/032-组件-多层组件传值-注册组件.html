@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-组件-多层组件传值-注册组件.html</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- 插入多少组件都行 互不影响 -->
+		<!-- 在组件上绑定task -->
+		<todo-list
+			v-for="(task,index) in tasks"
+			:task="task.task"
+			:dataline="task.dataline"
+			:key="task.index"
+		>
+			
+		</todo-list>
+	</div>
+	
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+	<template id="todolist">
+		<!-- 模板里需要标签(一个dom节点),用组件里的数据渲染模板 -->
+		<div>
+			<task :task="task"></task>
+			<dataline :dataline="dataline"></dataline>
+		</div>
+	</template>
+
+	<template id="task">
+		<span>任务:{{task}}</span>
+	</template>
+	<template id="dataline">
+		<span>截止时间:{{dataline}}</span>
+	</template>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var Task = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return{
+				
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#task',
+		props:{
+			// 1. 在props接收绑定的task,task的类型是字符串
+			// 2. id的类型是数字
+			task:String,
+		},
+	})	
+	var Dataline = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return{
+				
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#dataline',
+		props:{
+			// 1. 组件传值需要props,task的类型是字符串
+			// 2. id的类型是数字
+			dataline:String,
+		},
+	})
+	// 1. 先定义一个组件
+	var TodoList = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return{
+				
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#todolist',
+		props:{
+			// 1. 组件传值需要props,task的类型是字符串
+			// 2. id的类型是数字
+			task:String,
+			dataline:String,
+		},
+		// 在父组件内 注册局部组件
+		components:{
+			'task':Task,
+			'dataline':Dataline
+		},
+	})
+
+	// 2.再注册组件
+	Vue.component('todo-list',TodoList);
+	
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			tasks:[
+				{
+					task:'学习Vue',
+					dataline:'今天晚上'
+				},
+				{
+					task:'学习React',
+					dataline:'眀天晚上'
+				},
+			]
+		},
+	})
+</script>
+</html>

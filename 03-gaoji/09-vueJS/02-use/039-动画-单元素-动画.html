@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>039-动画-单元素-动画.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 50px;
+			height: 30px;
+		}
+		.bounce-enter-active {
+		  	animation: bounce-in .5s;
+		}
+		.bounce-leave-active {
+		  	animation: bounce-in .5s reverse;
+		}
+		@keyframes bounce-in {
+		  	0% {
+		  	 	 transform: scale(0);
+		  	}
+		  	50% {
+		   	 	transform: scale(1.5);
+		  }
+		 	100% {
+		    	transform: scale(1);
+		  }
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button @click="show = !show">切换</button>
+		<transition name="bounce">
+			<div v-if="show">变幻莫测</div>
+		</transition>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			show: true,
+		},
+	})
+</script>
+</html>

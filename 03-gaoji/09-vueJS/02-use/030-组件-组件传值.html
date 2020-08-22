@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>030-组件-组件传值.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- 1. 插入多少组件都行 互不影响 -->
+		<!-- 2. 在组件上绑定task -->
+		<todo-list task="study"></todo-list>
+		<todo-list task="sleep"></todo-list>
+	</div>
+	
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+	<template id="todolist">
+		<!-- 1. 模板里需要标签 -->
+		<!-- 2. 模板里调用task -->
+		<div>{{task}}</div>
+	</template>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// 1. 先定义一个组件
+	var TodoList = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#todolist',
+		props:{
+			// 在props接收绑定的task,task的类型是字符串
+			task:String,
+		},
+	})
+	// 2.再注册组件
+	Vue.component('todo-list',TodoList)
+	
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			
+		},
+	})
+</script>
+</html>
