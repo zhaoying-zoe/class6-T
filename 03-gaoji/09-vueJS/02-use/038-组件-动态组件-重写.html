@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-组件-动态组件.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width:50px;
+			height:30px;
+		}
+		.article-wrap{
+			display: flex;
+			flex-direction: row;
+		}
+		.active{
+			color:#ff6700;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button
+			v-for="tab in tabs"
+			@click="currentTab = tab">
+			{{tab}}
+		</button>
+		
+		<!-- 通过is我们可以动态的更换模板中的组件 -->
+		<!-- keep-alive:保持组件切换前的状态 -->
+		<keep-alive>
+			<component :is="currentComponent"></component>
+		</keep-alive>
+	</div>
+	
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+	<template id="tab-home">
+		<!-- 1. 模板里需要标签 -->
+		<div class="article-wrap">
+			<ul>
+				<li
+					v-for="article in articles"
+					@click="currentContent = article"
+					:class="{active:currentContent == article}"
+				>
+					{{article.title}}
+				</li>
+			</ul>
+			<div
+				v-if="currentContent"
+			>
+				{{currentContent.content}}
+			</div>
+		</div>
+
+	</template>
+	<template id="tab-list">
+		<!-- 1. 模板里需要标签 -->
+		<div>tab-list</div>
+	</template>
+	<template id="tab-item">
+		<!-- 1. 模板里需要标签 -->
+		<div>tab-item</div>
+	</template>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// 1. 先定义一个组件
+	var Home = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				articles:[
+					{
+						title:'学习Vue',
+						content:'Vue的进阶之路'
+					},
+					{
+						title:'学习React',
+						content:'React的进阶之路'
+					}
+				],
+				currentContent:null,
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#tab-home'
+	})
+	var List = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#tab-list'
+	})
+	var Item = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#tab-item'
+	})
+	// 2.再注册组件
+	Vue.component('tab-home',Home)
+	Vue.component('tab-list',List)
+	Vue.component('tab-item',Item)
+	
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			currentTab:'home',
+			tabs:['home','list','item'],
+		},
+		computed:{
+			currentComponent:function(){
+				return 'tab-'+this.currentTab;
+			}
+		}
+	})
+</script>
+</html>

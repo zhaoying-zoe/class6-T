@@ -20,8 +20,7 @@ var page = {
 		//2.集成swiper并加载广告数据
 		this.loadSwiper()
 		//3.首页加载楼层
-		// this.loadFloors();
-
+		this.loadFloors();
 	},
 	loadHomeCategories:function(){
 		api.getHomeCategories({
@@ -41,7 +40,7 @@ var page = {
 				position:1,
 			},
 			success:function(ads){
-				console.log(ads);
+				// console.log(ads);
 				var html = _util.render(adsTpl,{
 					ads:ads,
 				})
@@ -64,14 +63,12 @@ var page = {
 				    },
 				})				
 			}
-		})
- 
-		   
+		})	   
 	},
 	loadFloors:function(){
 		api.getHomeFloors({
 			success:function(floors){
-				console.log(floors)
+				// console.log(floors)
 				var html = _util.render(floorsTpl,{
 					floors:floors
 				})
