@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>047-路由-子路由.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		a{
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<h1>Hello App!</h1>
+			<p>
+				<!-- 使用 router-link 组件来导航. -->
+				<!-- 通过传入 `to` 属性指定链接. -->
+				<!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+				<router-link to="/home">Home</router-link>
+				<router-link to="/list">List</router-link>
+			</p>
+			<!-- 路由出口 -->
+			<!-- 路由匹配到的组件将渲染在这里 -->
+			<router-view></router-view>
+		</div>
+	</div>
+	
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+	<template id="home">
+		<!-- 1. 模板里需要标签 -->
+		<h2>home</h2>
+	</template>
+	<template id="list">
+		<h2>
+			<router-link to="/tab1">tab1</router-link>
+			<router-link to="/tab2">tab2</router-link>
+			<router-view></router-view>
+		</h2>
+
+	</template>
+	<template id="tab1">
+		<h2>tab1</h2>
+	</template>
+	<template id="tab2">
+		<h2>tab2</h2>
+	</template>
+</body>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script type="text/javascript">
+	// 1. 定义 (路由) 组件。
+	var Home = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#home'
+	})
+	var List = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#list'
+	})
+	var Tab1 = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#tab1'
+	})
+	var Tab2 = Vue.extend({
+		// 组件的data选项必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		// 注册的组件需要一个模板
+		template:'#tab2'
+	})
+
+	// 2. 定义路由
+	// 每个路由应该映射一个组件。 其中"component" 可以是
+	// 通过 Vue.extend() 创建的组件构造器，
+	// 或者，只是一个组件配置对象。
+	// 我们晚点再讨论嵌套路由。
+	// redirect:重定向 , 当访问跟路由时跳转到home路由
+	const routes = [
+	  	{ path: '/home', component: Home },
+	  	{ 
+	  		path: '/list',
+	  		component:List,
+	  		children:[
+	  			{ path: 'tab1', component: Tab1 },
+	  			{ path: 'tab2', component: Tab2 },
+	  		]
+	  	},
+	  	{ path: '/', redirect: '/home' },
+	]
+	
+	// 3. 创建 router 实例，然后传 `routes` 配置
+	// 你还可以传别的配置参数, 不过先这么简单着吧。
+	const router = new VueRouter({
+		routes: routes // (缩写) 相当于 routes: routes
+	})
+
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		router,
+		data:{
+
+		},
+	})
+</script>
+</html>

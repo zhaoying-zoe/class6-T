@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-自定义指令-局部.htmll</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-focus="">
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			show: true,
+		},
+		directives:{
+			focus:{
+				// 指令的定义
+				inserted:function(el){
+					// 聚焦焦点
+					el.focus();
+				}
+			}
+		}
+	})
+</script>
+</html>

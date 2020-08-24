@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>045-过滤器-局部.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div :title="price | priceF">价格:{{price | priceF}}</div>
+	</div>
+	<div id="app2">
+		<div :title="price | priceF">价格:{{price | priceF}}</div>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// 注册一个全局过滤器
+	Vue.filter('priceF',function(price){
+		return '￥'+price.toFixed(4)
+	})
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			price: 33,
+		},
+		// 注册局部过滤器
+		filters:{
+			priceF:function(price){
+				return '￥'+price.toFixed(2)
+			}
+		}
+	})
+
+	// vm (ViewModel 的缩写)
+	var vm2 = new Vue({
+		el:'#app2',
+		data:{
+			price: 33,
+		},
+	})
+</script>
+</html>

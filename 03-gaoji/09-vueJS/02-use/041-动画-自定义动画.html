@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-动画-自定义动画.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 50px;
+			height: 30px;
+		}
+		div{
+			font-size: 50px;
+		}
+	</style>
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+	/>
+</head>
+<body>
+	<div id="app">
+		<button @click="show = !show">切换</button>
+		<transition
+			name="custom-classes-transition"
+			enter-active-class="animate__animated animate__slideInRight"
+			leave-active-class="animate__animated animate__zoomOutDown"
+			appear=""
+		>
+			<div v-if="show">面对疾风吧</div>
+		</transition>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			show: true,
+		},
+	})
+</script>
+</html>

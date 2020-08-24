@@ -3,11 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>000-循环.html</title>
+	<style>
+	    [v-cloak] {
+	       display: none; 
+	    }
+	</style>
 </head>
 <body>
 	<div id="app">
 		<ul>
-			<li v-for="message in messages">
+			<li v-cloak v-for="message in messages">
 				{{message}}
 			</li>
 		</ul>
