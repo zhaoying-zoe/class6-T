@@ -9,7 +9,7 @@ var tpl = require('./index.tpl');
 
 var page = {
 	productsDetailParams:{
-		id:_util.getParamsFromUrl('productId'),
+		id:_util.getParamsUrl('productId'),
 	},
 	init:function(){
 		this.detailBox = $('.detail-box');

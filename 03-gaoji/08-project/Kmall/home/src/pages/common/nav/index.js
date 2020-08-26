@@ -8,6 +8,21 @@ var page = {
 		this.loadUsername();
 		// 用户退出逻辑
 		this.bindEvent();
+		//加载购物车数量
+		this.loadCarts()
+		// console.log(this);
+		// return this;
+	},
+	loadCarts:function(){
+		var $cartNum = $('.cart-num');
+		api.getCartsCount({
+			success:function(count){
+				$cartNum.text(count || 0)
+			},
+			error:function(){
+				$cartNum.text(0)
+			}
+		})
 	},
 	bindEvent:function(){
 		$('#logout').on('click',function(){
@@ -53,4 +68,4 @@ var page = {
 $(function(){
 	page.init();
 })
-
+module.exports = page

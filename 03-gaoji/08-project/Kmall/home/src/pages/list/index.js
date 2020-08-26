@@ -85,7 +85,7 @@ var page = {
 		api.getProductList({
 			data:_this.productsListParams,
 			success:function(products){
-				console.log(products)
+				// console.log(products)
 				if(products.list.length > 0){
 					var html = _util.render(tpl,products)
 					$('.product-list-box').html(html)

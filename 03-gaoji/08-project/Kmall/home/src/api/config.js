@@ -24,6 +24,21 @@ const API_CONFIG = {
 	updateCartsChoice: 			['/carts/choices','put'],
 	deleteCarts: 				['/carts','delete'],
 	updateCartsCounts: 			['/carts/counts','put'],
+	//订单确认页面
+	getOrdersList: 				['/orders/products','get'],
+	addShippings: 				['/shippings','post'],
+	getShippingsList: 			['/shippings/list','get'],
+	deleteShippings: 			['/shippings','delete'],
+	getShippingsDetail: 		['/shippings/detail','get'],
+	updateShippingsDetail: 		['/shippings','put'],
+	addOrders: 					['/orders','post'],
+	//支付页面
+	getPayments: 				['/payments','get'],
+	getPaymentStatus: 			['/payments/status','get'],
+	//我的订单
+	getOrderList: 				['/orders/list','get'],
+	getOrderDetail: 		 	['/orders/detail','get'],
+	updateOrderStatus: 		 	['/orders/status','put'],
 }
 
 module.exports = {
