@@ -7,10 +7,17 @@
 </template>
 
 <script>
+	import {mapGetters} from 'vuex'
 	import {DEl_All} from '../store/types.js'
 	export default {
 		name:'Footer',
 		computed:{
+			// 使用对象展开运算符将 getter 混入 computed 对象中
+			...mapGetters([
+				'total',
+				'selectTodo',
+			]),
+			/*
 			total:function(){
 				return this.todos.length
 			},
@@ -22,6 +29,7 @@
 					return total;
 				},0)
 			},
+			*/
 			allTodo:{
 				get(){
 					return (this.total == this.selectTodo) && (this.total !=0)
