@@ -53,8 +53,6 @@
             },
             deleteSelectTodo(){
                 this.todos = this.todos.filter((item)=>item.tag != true)
-                /*
-                */
             }
         }
     }

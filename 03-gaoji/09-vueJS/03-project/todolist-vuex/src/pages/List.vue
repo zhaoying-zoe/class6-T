@@ -1,7 +1,7 @@
 <template>
 	<div id="List">
 		<Item 
-			v-for="(todo,index) in todos"
+			v-for="(todo,index) in this.$store.state.todos"
 			:key="index"
 			:todo="todo"
 			:index="index"

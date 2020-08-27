@@ -12,6 +12,7 @@
 </template>
 
 <script>
+	import {DEl_TODO} from '../store/types.js'
 	export default {
 		name:'Item',
 		data(){
@@ -30,9 +31,9 @@
 				this.bgColor = flag ? '#ccc' : '#fff';
 				this.isShow = flag
 			},
-			handleDel(){
+			handleDel(index){
 				if(window.confirm('您确定要删除该任务吗?')){
-					this.delTodo(this.index)
+					this.$store.dispatch(DEl_TODO,index)
 				}
 			}
 		}

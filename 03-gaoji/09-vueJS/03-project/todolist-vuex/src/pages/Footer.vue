@@ -7,6 +7,7 @@
 </template>
 
 <script>
+	import {DEl_All} from '../store/types.js'
 	export default {
 		name:'Footer',
 		computed:{
@@ -33,7 +34,7 @@
 		methods:{
 			handleSelectTodo(){
 				if(window.confirm('你确定要删除选中的任务吗?')){
-					this.deleteSelectTodo();
+					this.$store.dispatch(DEl_All)
 				}
 			}
 		},
