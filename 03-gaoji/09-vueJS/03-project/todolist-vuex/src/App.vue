@@ -54,13 +54,6 @@
             deleteSelectTodo(){
                 this.todos = this.todos.filter((item)=>item.tag != true)
                 /*
-                var arr = [];
-                this.todos.forEach((item)=>{
-                    if(!item.tag){
-                        arr.push(item)
-                    }
-                })
-                this.todos = arr;
                 */
             }
         }
