@@ -8,7 +8,10 @@
 
         <!-- 把list传来的数据插入标签 -->
         <span>{{todo.task}}</span>
-        <button v-if="isShow">删除</button>
+        <button
+            v-if="isShow"
+            @click="handleDel()"
+        >删除</button>
     </div>
 </template>
 
@@ -31,6 +34,11 @@ export default {
         handleShow:function(flog){
             this.bgColor = flog ? '#ccc' : '#fff';
             this.isShow = flog;
+        },
+        handleDel:function(){
+            if(!window.confirm('你确定删除此任务吗?')){
+                return;
+            }
         }
     }
 }
