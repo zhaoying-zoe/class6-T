@@ -5,6 +5,8 @@
         @mouseleave="handleShow(false)"
     >
         <input type='checkbox' v-model="todo.tag">
+
+        <!-- 把list传来的数据插入标签 -->
         <span>{{todo.task}}</span>
         <button v-if="isShow">删除</button>
     </div>
@@ -22,6 +24,7 @@ export default {
             isShow:false,
         }
     },props:{
+        // 接收list传来的数据
         todo:Object,
     },
     methods:{

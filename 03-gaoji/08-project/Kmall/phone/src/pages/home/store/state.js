@@ -12,5 +12,6 @@ export default {
             task:'playing',
             tag:true
         },
-    ]
+    ],
+    home:'this is a home page',
 }

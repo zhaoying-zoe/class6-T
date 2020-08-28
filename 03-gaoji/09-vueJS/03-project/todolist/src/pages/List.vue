@@ -1,6 +1,11 @@
 <template>
     <div id="List">
-        <Item v-for="(todo,index) in todos" :key="index" :todo="todo" />
+        <!-- 循环App传来的数据 -->
+        <Item
+            v-for="(todo,index) in todos"
+            :key="index"
+            :todo="todo" 
+        />
     </div>
 </template>
 
@@ -13,6 +18,7 @@ export default {
         Item,
     },
     props:{
+        // 接收App传来的数据
         todos:Array,
     }
 }

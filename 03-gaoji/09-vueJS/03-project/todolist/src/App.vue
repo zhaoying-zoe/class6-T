@@ -1,7 +1,12 @@
 <template>
     <div id="App">
-        <Header :addTodos="addTodos" />
-        <List :todos="todos" />
+        <Header
+            :addTodos="addTodos" 
+        />
+        <!-- 把数据传给list -->
+        <List
+            :todos="todos"
+        />
         <Footer />
     </div>
 </template>
@@ -34,9 +39,7 @@ export default {
     // 定义方法
     methods:{
         addTodos:function(todo){
-            console.log(this.todos);
             this.todos.unshift(todo);
-            console.log(this.todos);
         }
     }
 }
