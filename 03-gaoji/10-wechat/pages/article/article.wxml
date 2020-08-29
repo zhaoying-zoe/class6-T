@@ -1,0 +1,7 @@
+<!--pages/article/article.wxml-->
+<view>
+    <text>小猪猪</text>
+    <view> Hello {{name}}! </view>
+    <button bindtap="changeName"> Click me! </button>
+</view>
+

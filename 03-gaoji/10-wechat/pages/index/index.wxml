@@ -1,13 +1,18 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="/pages/images/icon/keji02.jpg" mode="cover"></image>
+    <text class="userinfo-nickname">开心之旅!</text>
   </view>
+  <!-- bind绑定的事件会向上冒泡 
+    <view class="usermotto" bindtap="handleTap">
+    <text class="user-motto" bindtap="handleText">开始旅行!</text>
+  </view> -->
+  <!-- catch绑定的事件不会向上冒泡 
+    <view class="usermotto" catchtap="catchTap">
+    <text class="user-motto" catchtap="catchText">开始旅行!</text>
+  </view> -->
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto" bindtap="handleMotto">开始旅行!</text>
   </view>
 </view>

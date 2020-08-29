@@ -43,12 +43,31 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  /*
+  handleTap: function(){
+    console.log('handleTap...'); 
+  },
+  handleText: function(){
+    console.log('handleText...');
+  },
+  catchTap: function(){
+    console.log('catchTap...');
+  },
+  catchText: function(){
+    console.log('catchText...');
+  },
+  */
+  handleMotto: function(){
+    // 点击跳转页面
+    /*
+    wx.redirectTo({
+      // 关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。
+      url:'/pages/article/article',
     })
-  }
+    */
+    wx.navigateTo({
+      // 保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。
+      url:'/pages/article/article',
+    })
+  },
 })
