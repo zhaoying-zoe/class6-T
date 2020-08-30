@@ -1,7 +1,110 @@
 <!--pages/article/article.wxml-->
-<view>
-    <text>小猪猪</text>
-    <view> Hello {{name}}! </view>
-    <button bindtap="changeName"> Click me! </button>
+<view class="swiper-category">
+    <!-- 轮播图结构 -->
+    <swiper indicator-dots="true"
+    autoplay="true" interval="5000" duration="500" indicator-active-color="#ff6700">
+        <swiper-item>
+            <image class="swiper-image" src="/pages/images/swiper/s01.jpg"></image>
+        </swiper-item>
+        <swiper-item>
+            <image class="swiper-image" src="/pages/images/swiper/s02.jpg"></image>
+        </swiper-item>
+        <swiper-item>
+            <image class="swiper-image" src="/pages/images/swiper/s03.jpg"></image>
+        </swiper-item>
+    </swiper>
+    <!-- 文章结构 -->
+    <!-- <view class="article-item">
+        <view class="article-head">
+            <image class="article-head-avatar" src="/pages/images/avatar/u1.jpg"></image>
+            <text class="article-head-date">发表于两天前</text>
+        </view>
+        <view class="article-body">
+            <text class="article-body-title">文章1</text>
+            <image class="article-body-image" src="/pages/images/article/a1.jpg"></image>
+            <text class="article-body-content">我是文章1内容</text>
+        </view>
+        <view class="article-foot">
+            <image class="article-foot-image" src="/pages/images/icon/star.png"></image>
+            <text class="article-foot-star">20</text>
+            <image class="article-foot-image" src="/pages/images/icon/view.png"></image>
+            <text class="article-foot-view">34</text>
+        </view>
+    </view>
+    <view class="article-item">
+        <view class="article-head">
+            <image class="article-head-avatar" src="/pages/images/avatar/u2.jpg"></image>
+            <text class="article-head-date">发表于前天</text>
+        </view>
+        <view class="article-body">
+            <text class="article-body-title">文章2</text>
+            <image class="article-body-image" src="/pages/images/article/a2.jpg"></image>
+            <text class="article-body-content">我是文章2内容</text>
+        </view>
+        <view class="article-foot">
+            <image class="article-foot-image" src="/pages/images/icon/star.png"></image>
+            <text class="article-foot-star">220</text>
+            <image class="article-foot-image" src="/pages/images/icon/view.png"></image>
+            <text class="article-foot-view">30</text>
+        </view>
+    </view>
+    <view class="article-item">
+        <view class="article-head">
+            <image class="article-head-avatar" src="/pages/images/avatar/u3.jpg"></image>
+            <text class="article-head-date">发表于两天前</text>
+        </view>
+        <view class="article-body">
+            <text class="article-body-title">文章3</text>
+            <image class="article-body-image" src="/pages/images/article/a3.jpg"></image>
+            <text class="article-body-content">我是文章3内容</text>
+        </view>
+        <view class="article-foot">
+            <image class="article-foot-image" src="/pages/images/icon/star.png"></image>
+            <text class="article-foot-star">220</text>
+            <image class="article-foot-image" src="/pages/images/icon/view.png"></image>
+            <text class="article-foot-view">320</text>
+        </view>
+    </view> -->
+
+    <!-- <view>
+        {{ name }}
+    </view> -->
+
+    <!-- index: 默认下标的变量名 -->
+    <!-- item: 默认元素的变量名 -->
+    <!-- <view wx:for="{{arr}}">
+        {{index}}: {{item.name}}
+    </view> -->
+
+    <!-- for-index: 当前下标的变量名 -->
+    <!-- for-initemdex: 当前元素的变量名 -->
+    <!-- <view wx:for="{{arr}}" wx:for-index="idx" wx:for-item="itemName">
+        {{idx}}: {{itemName.name}}
+    </view> -->
+
+    <!-- block: 不会生成多余的标签 -->
+    <!-- <block wx:for="{{arr}}" wx:for-index="idx" wx:for-item="itemName">
+        {{idx}}: {{itemName.name}}
+    </block> -->
+    <!-- 循环后的结构,数据是从js的data里获取的 -->
+    <block wx:for="{{articles}}" wx:for-index="idx" wx:for-item="article">
+        <view class="article-item">
+            <view class="article-head">
+                <image class="article-head-avatar" src="{{article.avatar}}"></image>
+                <text class="article-head-date">{{article.author}} 发布于{{article.time}}</text>
+            </view>
+            <view class="article-body">
+                <text class="article-body-title">{{article.title}}</text>
+                <image class="article-body-image" src="{{article.mainImage}}"></image>
+                <text class="article-body-content">{{article.desc}}</text>
+            </view>
+            <view class="article-foot">
+                <image class="article-foot-image" src="/pages/images/icon/star.png"></image>
+                <text class="article-foot-star">{{article.star}}</text>
+                <image class="article-foot-image" src="/pages/images/icon/view.png"></image>
+                <text class="article-foot-view">{{article.view}}</text>
+            </view>
+        </view>
+    </block>
 </view>
 
