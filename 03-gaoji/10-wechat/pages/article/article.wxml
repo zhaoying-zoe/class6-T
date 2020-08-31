@@ -1,4 +1,6 @@
 <!--pages/article/article.wxml-->
+<!-- 引入文章模板 -->
+<import src="./template/article-item-template.wxml"/>
 <view class="swiper-category">
     <!-- 轮播图结构 -->
     <swiper indicator-dots="true"
@@ -88,22 +90,9 @@
     </block> -->
     <!-- 循环后的结构,数据是从js的data里获取的 -->
     <block wx:for="{{articles}}" wx:for-index="idx" wx:for-item="article" wx:key="idx">
-        <view class="article-item">
-            <view class="article-head">
-                <image class="article-head-avatar" src="{{article.avatar}}"></image>
-                <text class="article-head-date">{{article.author}} 发布于{{article.time}}</text>
-            </view>
-            <view class="article-body">
-                <text class="article-body-title">{{article.title}}</text>
-                <image class="article-body-image" src="{{article.mainImage}}"></image>
-                <text class="article-body-content">{{article.desc}}</text>
-            </view>
-            <view class="article-foot">
-                <image class="article-foot-image" src="/pages/images/icon/star.png"></image>
-                <text class="article-foot-star">{{article.star}}</text>
-                <image class="article-foot-image" src="/pages/images/icon/view.png"></image>
-                <text class="article-foot-view">{{article.view}}</text>
-            </view>
+        <!-- 使用模板 -->
+        <view bindtap="topArticle" data-article-id="{{article.id}}">
+            <template is="articleItem" data="{{...article}}" />
         </view>
     </block>
 </view>

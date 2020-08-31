@@ -1,0 +1,31 @@
+<view class='container article-detail'>
+  <view class='focus'>
+    <image class='focus-bg' src='/pages/images/article/a1.jpg'></image>
+    <image 
+      catchtap="tapMusic"
+      class='focus-music' 
+      src="/pages/images/icon/music-stop.png"
+    >
+    </image>
+  </view>
+  <view class='head'>
+    <image class='avatar' src='/pages/images/avatar/u1.jpg'></image>
+    <text class='author'>Tom</text>
+    <text class='text'>发表于</text>
+    <text class='time'>10天前</text>
+  </view>
+  <text class='title'>{{article.title}}</text>
+  <view class='operation'>
+    <image
+      class='operation-collection'
+      src='/pages/images/icon/collection.png'>
+    </image>
+    <image 
+      class='operation-share' 
+      src='/pages/images/icon/share.png'
+    >
+    </image>
+    <view class='operation-line'></view>    
+  </view>
+  <text class='content'>我是文章111的内容</text>
+</view>
