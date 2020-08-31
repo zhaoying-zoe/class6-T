@@ -7,6 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        // 背景音乐默认不播放
         music:true,
     },
 
@@ -18,6 +19,19 @@ Page({
         var article = articles.articles[articleId];
         // 处理文章收藏
         var isCollected = false;
+
+        // 处理背景播放
+        var backgroundAudioManager =  wx.getBackgroundAudioManager()
+        // 监听背景音频播放事件
+        backgroundAudioManager.onPlay(function(){
+            this.setData({music:false});
+        }.bind(this))
+        // 监听背景音频暂停事件
+        backgroundAudioManager.onPause(function(){
+            this.setData({music:true});
+        }.bind(this))
+        
+        // 动态处理文章详情
         this.setData({...article,isCollected})
         // console.log(articles.articles)
         // console.log(article)
@@ -36,9 +50,9 @@ Page({
                     data:true,
                 }
             */
-            var data = {};
-            data[articleId] = false;
-            wx.setStorageSync('articles_collection',data);
+            // var data = {};
+            // data[articleId] = false;
+            // wx.setStorageSync('articles_collection',data);
         }
         // 加载文章状态
         // 1. 设置收藏storage
@@ -125,21 +139,22 @@ Page({
     // 背景音乐播放
     tapMusic:function(){
         // 获取背景播放器
-        var BackgroundAudioManager =  wx.getBackgroundAudioManager();
-        // console.log(BackgroundAudioManager());
+        var backgroundAudioManager =  wx.getBackgroundAudioManager()
         // 如果音乐播放着
         if(!this.data.music){
-            console.log(1);
-
-        }
-        // 如果音乐停止了
-        else{
-            console.log(2);
-            BackgroundAudioManager.title = '飞鸟和蝉';
-            BackgroundAudioManager.src = 'http://mp.111ttt.cn/mp3music/144152379.mp3';
-            BackgroundAudioManager.play();
-            backgroundAudioManager.coverImgUrl = 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2972743467,129165969&fm=26&gp=0.jpg'
-            
+            backgroundAudioManager.pause();
+            // 改变播放音乐图标(不播放)
+            this.setData({music:true})
+        }else{// 如果音乐停止了
+            backgroundAudioManager.title = '飞鸟和蝉';
+            backgroundAudioManager.src = 'http://mp.111ttt.cn/mp3music/144152379.mp3';
+            backgroundAudioManager.coverImgUrl = 'https://bkimg.cdn.bcebos.com/pic/8718367adab44aed2e73f2c9ce559001a18b87d64dce?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2U4MA==,g_7,xp_5,yp_5'
+            // 动态加载数据
+            // backgroundAudioManager.title = this.data.music.title;
+            // backgroundAudioManager.src = this.data.music.src;
+            // backgroundAudioManager.coverImgUrl = this.data.music.coverImgUrl;
+            // 改变播放音乐图标(播放)
+            this.setData({music:false});
         }
     }
 })
