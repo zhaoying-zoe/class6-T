@@ -1,31 +1,39 @@
 <view class='container article-detail'>
   <view class='focus'>
-    <image class='focus-bg' src='/pages/images/article/a1.jpg'></image>
+    <image class='focus-bg' src='{{mainImage}}'></image>
     <image 
       catchtap="tapMusic"
-      class='focus-music' 
-      src="/pages/images/icon/music-stop.png"
+      class='focus-music'
+      src="{{ music ? '/pages/images/icon/music-start.png' : '/pages/images/icon/music-stop.png' }}"
     >
     </image>
   </view>
   <view class='head'>
-    <image class='avatar' src='/pages/images/avatar/u1.jpg'></image>
-    <text class='author'>Tom</text>
+    <image class='avatar' src='{{avatar}}'></image>
+    <text class='author'>{{author}}</text>
     <text class='text'>发表于</text>
-    <text class='time'>10天前</text>
+    <text class='time'>{{time}}</text>
   </view>
-  <text class='title'>{{article.title}}</text>
+  <text class='title'>{{title}}</text>
   <view class='operation'>
     <image
+      wx:if="{{isCollected}}"
       class='operation-collection'
       src='/pages/images/icon/collection.png'>
     </image>
-    <image 
+    <image
+      catchtap="topCollecd"
+      wx:else
+      class='operation-collection'
+      src='/pages/images/icon/collection-none.png'>
+    </image>
+    <image
+      catchtap="shareArticle"
       class='operation-share' 
       src='/pages/images/icon/share.png'
     >
     </image>
     <view class='operation-line'></view>    
   </view>
-  <text class='content'>我是文章111的内容</text>
+  <text class='content'>{{desc}}</text>
 </view>
