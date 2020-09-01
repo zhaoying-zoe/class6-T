@@ -4,7 +4,7 @@
     <image 
       catchtap="tapMusic"
       class='focus-music'
-      src="{{ music ? '/pages/images/icon/music-start.png' : '/pages/images/icon/music-stop.png' }}"
+      src="{{ ismusic ? '/pages/images/icon/music-start.png' : '/pages/images/icon/music-stop.png' }}"
     >
     </image>
   </view>

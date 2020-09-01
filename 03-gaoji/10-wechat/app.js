@@ -18,5 +18,9 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+  // 全局变量的使用
+  GLOBAL_DATA: {
+    URL:'http://t.yushu.im/v2/movie'
   }
 })

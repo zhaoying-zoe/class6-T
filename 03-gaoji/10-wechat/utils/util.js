@@ -1,19 +1,28 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+// 接收一个url和一个回调函数
+// url:api接口、回调函数:用来设置获取的数据
+function getMovieList(url,success){
+    wx.request({
+        url: url,
+        success:function(items){
+            var items = formatMovieList(items);
+            success(items);
+        }
+    })
+};
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
+// 获取电影数据
+function formatMovieList(items){
+    // map返回一个新数组
+    return items = items.data.subjects.map(function(item){
+        return {
+            title:item.title,
+            stars:item.rating.stars,
+            coverImage:item.images.large,
+            average:item.rating.average,
+        }
+    })
 }
 
 module.exports = {
-  formatTime: formatTime
+    getMovieList:getMovieList,
 }

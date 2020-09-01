@@ -64,9 +64,13 @@ Page({
       // 关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。
       url:'/pages/article/article',
     })
-    */
     wx.navigateTo({
       // 保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。
+      url:'/pages/article/article',
+    })
+    */
+   
+    wx.switchTab({
       url:'/pages/article/article',
     })
   },
