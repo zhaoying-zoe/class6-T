@@ -1,9 +1,9 @@
 <import src="./movie-list-template/movie-list-template.wxml"/>
 
 <view class="movie-list">
-    <template is="movieList" data="{{movies:inTheaters}}"/> 
-    <template is="movieList" data="{{movies:comingSoon}}"/> 
-    <template is="movieList" data="{{movies:top250}}"/> 
+    <template is="movieList" data="{{movies:inTheaters,tag:'正在热映',type:'inTheaters'}}"/> 
+    <template is="movieList" data="{{movies:comingSoon,tag:'即将上映',type:'comingSoon'}}"/> 
+    <template is="movieList" data="{{movies:top250,tag:'Top250',type:'top250'}}"/> 
     <!-- <template is="movieList" /> 
     <template is="movieList" />  -->
 </view>

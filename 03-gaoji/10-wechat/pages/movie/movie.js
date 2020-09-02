@@ -79,5 +79,15 @@ Page({
      */
     onShareAppMessage: function () {
 
-    }
+    },
+    /*
+    点击按钮,查看更多电影  
+    */
+   tapMore:function(ev){
+       // 获取当前页面的相关参数
+       var type = ev.target.dataset.type;
+       wx.navigateTo({
+           url:'/pages/movie/movie-more/movie-more?type='+type
+       })
+   }
 })
