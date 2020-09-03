@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>022-数组排序-正序、反序.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 题目: 将下列数组降序排列
+	// 1. 数组.splice(起始下标,删除个数,插入值1,插入值2...),
+	// 2. 返回包含从原数组中删除项的新数组,如果没有删除则返回空数组
+	var arr = [6,4,8,7,3,1];
+	console.log(arr);
+	function compare(value1,value2){
+		// console.log(value1,value2) // 代表数组中的两项
+		// 以下内容是定义好的,不用纠结为什么
+		/*
+		if (value1 < value2) {
+			return -1;// return负数 n1排列在前
+		}
+		else if (value1 > value2) {
+			return 1;// return正数 n1排列在后
+		}else{
+			return 0;
+		}
+		*/
+		return value1 - value2;// 正序
+		// return value2 - value1;// 反序
+	}
+	var res = arr.sort(compare)
+	console.log(arr);
+	console.log(res);
+</script>
+</html>

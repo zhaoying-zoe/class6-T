@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>020-undefined与xx is not defined的区别.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	/*
+	undefined 与 xx is not defined 的区别
+　　1. undefined 表示是javascript中的一种数据类型,
+		当被定义的变量没有被赋值或者某个被调用的函数没有定义返回值时候会产生。
+　　2. xx is not defined 是一种语法错误,表示xx变量没有被定义。
+	*/
+	function test(){
+		console.log(a);
+		function test1(){
+			var a = 2;
+		}
+		test1();
+	}
+	test();
+</script>
+</html>
