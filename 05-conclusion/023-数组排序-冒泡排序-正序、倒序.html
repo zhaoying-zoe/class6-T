@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>023-数组排序-冒泡排序-正序、倒序.html</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 步骤: 
+	// 1. 将数组中的每一项同后面一项比较
+	// 2. 如果后面的一项大于(或小于)前面一项
+	// 3. 两项互换位置(定义一个变量用来存前面的值)
+	var arr = [6,4,8,7,3,1];
+	var tem;
+	for(var i = 0;i<arr.length;i++){
+		for(var j = i + 1;j<arr.length;j++){
+			if(arr[i] > arr[j]){
+				tem = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tem;
+			}
+		}
+	}
+	console.log(arr);
+</script>
+</html>

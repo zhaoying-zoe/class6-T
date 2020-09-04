@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-变量&&函数声明的优先级2.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	解析：
+	1.声明的提升，test函数定义的变量a(var a=1)的声明会被提升到test函数的顶部,所以第一个输出是undefined
+	2.作用域链,子函数会沿着作用域链向上查找变量,所以test2中会访问到test中定义的变量a
+	 */
+	var a = 2;
+	function test(){
+		console.log(a);// undefined:因为内部的a的声明提前了,但是却没赋值
+		var a = 1;// 声明提升到test最上边
+		function test2(){
+			console.log(a);// 1
+		}
+		test2()
+	}
+	test();
+</script>
+</html>
