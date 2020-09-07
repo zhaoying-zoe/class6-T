@@ -1,20 +1,50 @@
+<!-- 结构 -->
 <template>
-    <div class="TabBar">
-        TabBar
-    </div>
-  </template>
-  
-  <script>
+  <div id="Tabbar">
+    <van-tabbar v-model="active">
+        <van-tabbar-item 
+            name="home" 
+            icon="wap-home"
+            to="home"
+        >
+            首页
+        </van-tabbar-item>
+        <van-tabbar-item 
+            name="search" 
+            icon="bag"
+            to="list"
+        >
+            商品列表
+        </van-tabbar-item>
+        <van-tabbar-item 
+            name="friends" 
+            icon="cart"
+            to="cart"
+        >
+            购物车
+        </van-tabbar-item>
+        <van-tabbar-item 
+            name="setting" 
+            icon="manager"
+            to="me"
+        >
+            个人中心
+        </van-tabbar-item>
+    </van-tabbar>
+  </div>
+</template>
+<!-- 逻辑 -->
+<script>
   export default {
-    name: 'TabBar',
-    props: {
-      
-    }
+      name:'Tabbar',
+      data(){
+          return {
+              active: 0,
+          }
+      },
   }
-  </script>
-  
-  <!-- Add "scoped" attribute to limit CSS to this component only -->
-  <style scoped>
+</script>
+<!-- 样式 -->
+<style scoped lang="less">
 
-  </style>
-  
+</style>

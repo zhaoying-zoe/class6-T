@@ -5,6 +5,8 @@ import VueRouter from "vue-router"
 //2.引入页面组件
 import Home from 'pages/home'
 import Cart from 'pages/cart'
+import List from 'pages/list'
+import Me from 'pages/me'
 
 //3.声明使用
 Vue.use(VueRouter)
@@ -14,7 +16,8 @@ export default new VueRouter({
 	routes:[
 		{path:"/home",component:Home},
 		{path:"/cart",component:Cart},
-		// {path:"/me",component:Me},
+		{path:"/list",component:List},
+		{path:"/me",component:Me},
 		{path:"/",redirect:"/home"},
 	]
 })
