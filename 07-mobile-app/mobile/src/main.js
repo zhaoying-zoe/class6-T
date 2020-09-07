@@ -12,9 +12,13 @@ import './assets/css/index.css'
 import './plugins/vant/index.js'
 // 引入router
 import router from './router/index'
+// 引入axios
+import axios from 'axios'
+// Vue.prototype.$http=axios
 Vue.config.productionTip = false
 
 new Vue({
+    axios,
     router,
     render: h => h(App),
 }).$mount('#app')

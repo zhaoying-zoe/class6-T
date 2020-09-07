@@ -8,5 +8,18 @@ module.exports = {
       libraryDirectory: 'es',
       style: true
     }, 'vant']
-  ]
+  ],
+  // 定制主题的配置
+  // plugins: [
+  //   [
+  //     'import',
+  //     {
+  //       libraryName: 'vant',
+  //       libraryDirectory: 'es',
+  //       // 指定样式路径
+  //       style: (name) => `${name}/style/less`,
+  //     },
+  //     'vant',
+  //   ],
+  // ],
 }

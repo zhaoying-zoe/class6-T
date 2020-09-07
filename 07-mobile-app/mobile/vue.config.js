@@ -1,18 +1,27 @@
 // 引入模块
 const path = require('path')
-
 module.exports = {
     devServer: {
-        port:3003
+        port:3003,
+        proxy: {
+            "server":{
+                target:'https://api.mall.kuazhu.com',
+                ws:true,
+                changeOrigin:true,
+                pathRewrite:{
+                    '^/server':''
+                }
+            }
+        }
     },
-    // module: {
-    //     rules: [
-    //       //  省略已有配置
-    //       {
-    //         test: /\.less$/,
-    //         loader: "style-loader!css-loader!less-loader",
-    //       }
-    //     ]
+    // devServer: {
+    //     port:3003,
+    //     open: process.platform === 'darwin',
+    //     host: '0.0.0.0',
+    //     https: false,
+    //     hotOnly: false,
+    //     proxy: 'https://api.mall.kuazhu.com', // 设置代理
+    //     before: app => {}
     // },
     pluginOptions: {
         'style-resources-loader': {
