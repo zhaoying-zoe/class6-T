@@ -8,6 +8,7 @@ import App from './App.vue'
 // import store from './store/index.js'
 // 加载全局css样式
 import './assets/css/index.css'
+import './assets/css/font-awesome.css'
 //加载全局vant组件
 import './plugins/vant/index.js'
 // 引入router

@@ -8,7 +8,12 @@ import { Image as VanImage } from 'vant';
 import { Grid, GridItem } from 'vant';
 // 引入粘性布局
 import { Sticky } from 'vant';
+// 引入layout布局
+import { Col, Row } from 'vant';
 
+
+Vue.use(Col);
+Vue.use(Row);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
 Vue.use(Search);

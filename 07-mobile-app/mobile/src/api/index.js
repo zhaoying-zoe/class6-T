@@ -1,6 +1,5 @@
 //目标 导出一个对象:对象的属性就是方法名,值就是对应的方法
 var { API_CONFIG } =  require('api/config.js')
-var _util = require('util');
 
 const getApiConfig = (API_CONFIG)=>{
 	const apiObj = {};
