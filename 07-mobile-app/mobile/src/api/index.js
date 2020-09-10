@@ -1,45 +1,52 @@
-//目标 导出一个对象:对象的属性就是方法名,值就是对应的方法
-var { API_CONFIG } =  require('api/config.js')
+//目标，导出一个对象：对象的属性名就是方法名，值就是方法
 
-const getApiConfig = (API_CONFIG)=>{
-	const apiObj = {};
+
+import { API_CONFIG } from './config.js'
+import axios from 'axios'
+
+const getApiObj = (API_CONFIG)=>{
+	const apiObj = {}
 	for(let key in API_CONFIG){
-		apiObj[key] = (options)=>{
-			let url = API_CONFIG[key][0] || '/';
-			let method = API_CONFIG[key][1] || 'get';
-			//发送请求到后台
-			return request({
-				url:url,
-				method:method,
-				data:options.data,
-				success:options.success,
-				error:options.error
-			})
+		apiObj[key] = (data)=>{
+			let url = API_CONFIG[key][0] || '/'
+			let method = API_CONFIG[key][1] || 'get'
+			//发送请求
+			return request(url,method,data)
 		}
 	}
-
-	return apiObj;
+ 
+	return apiObj
 }
-const request = (options)=>{
-	return $.ajax({
-		url:options.url,
-		method:options.method,
-		dataType:'json',
-		data:options.data,
-		success:function(data){
-			if(data.code == 0){//成功
-				options.success && options.success(data.data)
-			}else if(data.code == 1){//失败
-				options.error && options.error(data.message)
-			}else if(data.code == 10){//未登录
-				// window.location.href = '/user-login.html'
-				_util.goLogin();
-			}
-		},
-		error:function(err){
-			options.error && options.error('网络错误,请稍后再试!!')
+const request = (url,method,data)=>{
+	return new Promise((resolve,reject)=>{
+		const options = {
+			method:method,
+			url:url,
+			withCredentials:true
 		}
+		//携带参数
+		switch(method.toUpperCase()){
+			case 'GET':
+			case 'DELETE':
+				options.params = data
+				break
+			default :
+				options.data = data
+		}
+		axios(options)
+		.then(result=>{
+			if(result.data.code == 10){
+				//应该前台返回登录页面
+				//2.返回登录页面
+				window.location.href = '/login'
+				reject('请求失败,没有权限')
+			}
+			resolve(result)
+		})
+		.catch(err=>{
+			reject(err)
+		})
 	})
 }
 
-module.exports = getApiConfig(API_CONFIG)
+export default getApiObj(API_CONFIG)

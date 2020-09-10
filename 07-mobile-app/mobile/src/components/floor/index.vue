@@ -1,156 +1,31 @@
 <!-- 结构 -->
 <template>
     <div id="Floor">
-        <div class="floor-header">电脑耗材</div>
-        <van-row>
-            <van-col span="12">
-                <div class="category-item">
-                    <div class="category-image">
-                        <a href="javascript:;">
-                            <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg">
-                        </a>
+        <div v-for="(floor,index) in this.$store.state.floor.floorAds" :key="index">
+            <div class="floor-title">{{floor.title}}</div>
+            <van-row>
+                <van-col span="12" v-for="(product,productIndex) in floor.products" :key="productIndex">
+                    <div class="category-item">
+                        <div class="category-image">
+                            <a href="javascript:;">
+                                <img :src="product.mainImage">
+                            </a>
+                        </div>
+                        <div class="category-text">
+                            <div class="category-desc">{{product.name}}</div>
+                            <span>￥</span><span>{{product.price}}</span>
+                            <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
+                        </div>
                     </div>
-                    <div class="category-text">
-                        <div class="category-desc">宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）</div>
-                        <span>￥</span><span>9999.00</span>
-                        <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
-                    </div>
-                </div>
-            </van-col>
-            <van-col span="12">
-                <div class="category-item">
-                    <div class="category-image">
-                        <a href="javascript:;">
-                            <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg">
-                        </a>
-                    </div>
-                    <div class="category-text">
-                        <div class="category-desc">宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）</div>
-                        <span>￥</span><span>9999.00</span>
-                        <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
-                    </div>
-                </div>
-            </van-col>
-            <van-col span="12">
-                <div class="category-item">
-                    <div class="category-image">
-                        <a href="javascript:;">
-                            <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg">
-                        </a>
-                    </div>
-                    <div class="category-text">
-                        <div class="category-desc">宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）</div>
-                        <span>￥</span><span>9999.00</span>
-                        <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
-                    </div>
-                </div>
-            </van-col>
-            <van-col span="12">
-                <div class="category-item">
-                    <div class="category-image">
-                        <a href="javascript:;">
-                            <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg">
-                        </a>
-                    </div>
-                    <div class="category-text">
-                        <div class="category-desc">宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）</div>
-                        <span>￥</span><span>9999.00</span>
-                        <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
-                    </div>
-                </div>
-            </van-col>
-            <van-col span="12">
-                <div class="category-item">
-                    <div class="category-image">
-                        <a href="javascript:;">
-                            <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg">
-                        </a>
-                    </div>
-                    <div class="category-text">
-                        <div class="category-desc">宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）</div>
-                        <span>￥</span><span>9999.00</span>
-                        <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
-                    </div>
-                </div>
-            </van-col>
-        </van-row>
-        <div class="floor-header">家用电器</div>
-        <van-row>
-            <van-col span="12">
-                <div class="category-item">
-                    <div class="category-image">
-                        <a href="javascript:;">
-                            <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg">
-                        </a>
-                    </div>
-                    <div class="category-text">
-                        <div class="category-desc">宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）</div>
-                        <span>￥</span><span>9999.00</span>
-                        <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
-                    </div>
-                </div>
-            </van-col>
-            <van-col span="12">
-                <div class="category-item">
-                    <div class="category-image">
-                        <a href="javascript:;">
-                            <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg">
-                        </a>
-                    </div>
-                    <div class="category-text">
-                        <div class="category-desc">宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）</div>
-                        <span>￥</span><span>9999.00</span>
-                        <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
-                    </div>
-                </div>
-            </van-col>
-            <van-col span="12">
-                <div class="category-item">
-                    <div class="category-image">
-                        <a href="javascript:;">
-                            <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg">
-                        </a>
-                    </div>
-                    <div class="category-text">
-                        <div class="category-desc">宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）</div>
-                        <span>￥</span><span>9999.00</span>
-                        <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
-                    </div>
-                </div>
-            </van-col>
-            <van-col span="12">
-                <div class="category-item">
-                    <div class="category-image">
-                        <a href="javascript:;">
-                            <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg">
-                        </a>
-                    </div>
-                    <div class="category-text">
-                        <div class="category-desc">宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）</div>
-                        <span>￥</span><span>9999.00</span>
-                        <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
-                    </div>
-                </div>
-            </van-col>
-            <van-col span="12">
-                <div class="category-item">
-                    <div class="category-image">
-                        <a href="javascript:;">
-                            <img src="https://api.mall.kuazhu.com/product-images/1587973772260.jpg">
-                        </a>
-                    </div>
-                    <div class="category-text">
-                        <div class="category-desc">宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）</div>
-                        <span>￥</span><span>9999.00</span>
-                        <span @click="shopBtn" class="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
-                    </div>
-                </div>
-            </van-col>
-        </van-row>
+                </van-col>
+            </van-row>
+        </div>
+
     </div>
 </template>
 <!-- 逻辑 -->
 <script>
+    import { GET_FLOOR } from './store/types.js'
     export default {
         name:'Floor',
         data(){
@@ -164,11 +39,15 @@
                 console.log(2333)
             }
         },
+        mounted(){
+            // 获取floors数据
+            this.$store.dispatch(GET_FLOOR)
+        },
     }
 </script>
 <!-- 样式 -->
 <style scoped lang="less">
-    .floor-header{
+    .floor-title{
         font-size: 22px;
         color: #000;
         text-align: center;
@@ -176,10 +55,13 @@
         margin-bottom: 10px;
     }
     .van-row{
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
         box-sizing: border-box;
-        // display: flex;
+        display:flex;
+        flex-flow: wrap;
+        /* 项目对齐方式 */
+        justify-content:space-between;
         .van-col{
             width: 170px;
             height: 257px;

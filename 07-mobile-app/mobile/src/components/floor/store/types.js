@@ -1,0 +1,1 @@
+export const GET_FLOOR = 'get_floor';

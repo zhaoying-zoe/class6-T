@@ -11,15 +11,15 @@ import './assets/css/index.css'
 import './assets/css/font-awesome.css'
 //加载全局vant组件
 import './plugins/vant/index.js'
+// 引入store
+import store from './store/index.js'
 // 引入router
 import router from './router/index'
-// 引入axios
-import axios from 'axios'
 // Vue.prototype.$http=axios
 Vue.config.productionTip = false
 
 new Vue({
-    axios,
+    store,
     router,
     render: h => h(App),
 }).$mount('#app')

@@ -1,3 +1,4 @@
 export default {
-    homeAds:[]
+    positionads:[],
+    categoryicons:[],
 }

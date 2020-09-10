@@ -1,0 +1,1 @@
+export const GET_LISTICONS = 'get_listicons';
