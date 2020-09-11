@@ -8,7 +8,6 @@
                 @focus="handleSearch()"
             />
         </van-sticky>
-        
     </div>
 </template>
 <!-- 逻辑 -->
@@ -24,9 +23,6 @@
             handleSearch(){
                 // 跳转路由到指定页面
                 this.$router.push('search')
-                // $route.path('/')
-                // <router-link :to="{name:'home'}"> 
-                // console.log(23);
             }
         }
     }

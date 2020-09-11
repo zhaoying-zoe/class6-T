@@ -14,7 +14,13 @@ import { Col, Row } from 'vant';
 import { Swipe, SwipeItem } from 'vant';
 // 引入list分类选择
 import { Sidebar, SidebarItem } from 'vant';
+// 引入按钮
+import { Button } from 'vant';
+// 引入商品card
+import { Card } from 'vant';
 
+Vue.use(Card);
+Vue.use(Button);
 Vue.use(Sidebar);
 Vue.use(SidebarItem);
 Vue.use(Swipe);

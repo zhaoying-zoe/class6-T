@@ -1,9 +1,9 @@
 <template>
-    <div class="Search">
-        <van-row class="search-top">
+    <div class="SearchCommon">
+        <van-row class="searchcommon-top">
             <van-col span="2">
                 <span 
-                    class="search-title"
+                    class="searchcommon-title"
                     @click="handleBack()"
                 >
                     &#60;
@@ -17,25 +17,26 @@
                 />
             </van-col>
         </van-row>
-        <SearchBody />
     </div>
 </template>
 
 <script>
-    import SearchBody from '../searchbody/index'
     export default {
         data(){
             return {
                 value: '',
             };
         },
-        name: 'Search',
+        name: 'SearchCommon',
         components: {
-            SearchBody
+            
         },
         methods:{
             handleBack(){
                 window.history.back()
+            },
+            handleClear(){
+                console.log(23456);
             },
             handleSearch(ev){
                 console.log(ev);
@@ -46,18 +47,18 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .Search{
+    .SearchCommon{
         background-color:#fff;
     }
-    .search-top{
+    .searchcommon-top{
         text-align: center;
         line-height: 1.5rem;
     }
-    .search-title{
+    .searchcommon-title{
         font-size: .8rem;
         color: rgb(24, 144, 255);
     }
-    .search-head{
+    .searchcommon-head{
         display: flex;
         padding: 0.4rem;
         justify-content:space-between;

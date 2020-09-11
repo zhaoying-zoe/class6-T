@@ -8,6 +8,7 @@ import Cart from 'pages/cart'
 import List from 'pages/list'
 import Me from 'pages/me'
 import Search from 'pages/search'
+import shopList from 'pages/shoplist'
 
 //3.声明使用
 Vue.use(VueRouter)
@@ -20,6 +21,7 @@ export default new VueRouter({
 		{path:"/list",component:List},
 		{path:"/me",component:Me},
 		{path:"/search",component:Search},
+		{path:"/shoplist",component:shopList},
 		{path:"/",redirect:"/home"},
 	]
 })
