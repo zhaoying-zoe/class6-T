@@ -48,29 +48,29 @@
 <!-- 样式 -->
 <style scoped lang="less">
     .floor-title{
-        font-size: 22px;
+        font-size: .5rem;
         color: #000;
         text-align: center;
-        margin-top: 5px;
-        margin-bottom: 10px;
+        margin-top: .3rem;
+        margin-bottom: .3rem;
     }
     .van-row{
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: .3rem;
+        padding-right: .3rem;
         box-sizing: border-box;
         display:flex;
         flex-flow: wrap;
         /* 项目对齐方式 */
         justify-content:space-between;
         .van-col{
-            width: 170px;
-            height: 257px;
+            width: 4.55rem;
+            height: 7rem;
             background-color: #fff;
-            margin-bottom: 10px;
-            padding: 5px;
+            margin-bottom: .3rem;
+            padding: .2rem;
             .category-image img{
-                width: 158px;
-                height: 158px;
+                width: 4rem;
+                height: 4rem;
             }
         }
     }
@@ -78,7 +78,6 @@
         margin-top: 12px;
         .category-desc{
             height: 44px;
-            // line-height: 47px;
             white-space:pre-line;
             overflow: hidden;
             text-overflow: ellipsis;

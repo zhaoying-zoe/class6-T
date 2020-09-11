@@ -1,22 +1,28 @@
 <template>
     <div class="Me">
         Me
+        <TabBar />
     </div>
   </template>
   
-  <script>
-  export default {
-    name: 'Me',
-    props: {
-      
-    }
-  }
-  </script>
+    <script>
+        // 引入tab-bar组件
+        import TabBar from 'tab-bar';
+        export default {
+            name: 'Me',
+            props: {
+            
+            },
+            components:{
+                TabBar
+            }
+        }
+    </script>
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
-      .Me{
-          color:red;
-      }
+        .Me{
+            color:red;
+        }
   </style>
   

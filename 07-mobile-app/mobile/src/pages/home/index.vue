@@ -1,7 +1,7 @@
 <template>
     <div class="Home">
         <!-- 搜索 -->
-        <Search />
+        <SearchInput />
         <!-- 轮播图 -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -16,7 +16,7 @@
         <van-grid :column-num="5">
             <van-grid-item v-for="(image,index) in this.$store.state.home.categoryicons" :key="index">
                 <a href="javascript:;">
-                    <van-image round :src="image.icon" />
+                    <van-image :src="image.icon" />
                     <span class="category-text">{{image.mobileName}}</span>
                 </a>
             </van-grid-item>
@@ -24,6 +24,7 @@
 
         <!-- 商品楼层 -->
         <Floor />
+        <TabBar />
     </div>
   </template>
   
@@ -34,10 +35,11 @@
     // 引入swiper css样式
     import 'swiper/css/swiper.min.css';
     // 引入搜索框
-    import Search from '../../components/search/index.vue'
+    import SearchInput from '../../components/search/index.vue'
     // 引入楼层
     import Floor from '../../components/floor/index.vue'
-    
+    // 引入tab-bar组件
+    import TabBar from 'tab-bar';
     export default {
         name: 'Home',
 		data:function(){
@@ -64,8 +66,9 @@
         },
         // 组件注册
         components: {
-            Search,
-            Floor
+            SearchInput,
+            Floor,
+            TabBar
         }
     }
   </script>
@@ -76,12 +79,12 @@
         color:red;
     }
     .swiper-container{
-        height: 200px;
+        height: 5rem;
     }
     #Search{
         /* position: fixed; */
-        top: 100px;
-        left: 100px;
+        top: 2rem;
+        left: 2rem;
     }
     .swiper-slide img{
         width: 100%;
@@ -93,8 +96,7 @@
     .category-text{
         font-size: .3rem;
         text-align: center;
-        /* width: 53px; */
-        /* margin-left: 7px; */
+        color:rgb(125, 126, 128)
     }
   </style>
   

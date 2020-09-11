@@ -7,7 +7,7 @@ const API_CONFIG = {
 	getCategoryIcons: 			['/categories/arrayCategories','get'],
 	getFloors: 					['/floors?limit=10','get'],
 	// 列表页
-	// getListIcons: 				['/categories/arrayCategories','get'],
+	getListIcons: 				['/categories/childArrayCategories','get'],
 }
 
 module.exports = {
