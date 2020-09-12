@@ -51,6 +51,7 @@
                 this.$store.dispatch(GET_LISTICONS);
                 // 第一次进组件获取数据
                 // this.$store.dispatch(GET_SHOP,id)
+                // handleImg(listIcon._id)
             },
             // 组件注册
             components: {

@@ -23,7 +23,7 @@
                 :key="index"
             >
                 <a href="javascript:;"
-                    @click="handleList()"
+                    @click="handleList(image._id)"
                 >
                     <van-image :src="image.icon" />
                     <div class="category-text">
@@ -87,9 +87,14 @@
             TabBar
         },
         methods:{
-            handleList(){
-                this.$router.push('shoplist');
-                console.log(345678);
+            handleList(id){
+                console.log(id);
+                // {path:'/home',query: {id:'1'}}
+                this.$router.push({
+                    path:'shoplist',
+                    query:{id:id}
+                });
+                // console.log(345678);
             }
         }
     }

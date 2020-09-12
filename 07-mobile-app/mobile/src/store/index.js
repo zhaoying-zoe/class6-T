@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import home from 'pages/home/store'
 import list from 'pages/list/store'
 import floor from '../components/floor/store/index'
+import shoplist from 'pages/shoplist/store/index'
 
 // 使用vuex
 Vue.use(Vuex);
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     modules:{
         home:home,
         floor:floor,
-        list:list
+        list:list,
+        shoplist:shoplist
     }
 }) 

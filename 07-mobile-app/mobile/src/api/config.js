@@ -8,6 +8,7 @@ const API_CONFIG = {
 	getFloors: 					['/floors?limit=10','get'],
 	// 列表页
 	getListIcons: 				['/categories/childArrayCategories','get'],
+	getShopList: 				['/products/list','get'],
 }
 
 module.exports = {
