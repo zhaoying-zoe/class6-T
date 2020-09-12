@@ -10,21 +10,20 @@ import { Grid, GridItem } from 'vant';
 import { Sticky } from 'vant';
 // 引入layout布局
 import { Col, Row } from 'vant';
-// 引入轮播图
-import { Swipe, SwipeItem } from 'vant';
 // 引入list分类选择
 import { Sidebar, SidebarItem } from 'vant';
 // 引入按钮
 import { Button } from 'vant';
 // 引入商品card
 import { Card } from 'vant';
+// 引入NavBar 导航栏
+import { NavBar } from 'vant';
 
+Vue.use(NavBar);
 Vue.use(Card);
 Vue.use(Button);
 Vue.use(Sidebar);
 Vue.use(SidebarItem);
-Vue.use(Swipe);
-Vue.use(SwipeItem);
 Vue.use(Col);
 Vue.use(Row);
 Vue.use(Tabbar);

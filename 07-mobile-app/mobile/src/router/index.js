@@ -9,6 +9,7 @@ import List from 'pages/list'
 import Me from 'pages/me'
 import Search from 'pages/search'
 import shopList from 'pages/shoplist'
+import ShopDetail from 'pages/detail'
 
 //3.声明使用
 Vue.use(VueRouter)
@@ -22,6 +23,7 @@ export default new VueRouter({
 		{path:"/me",component:Me},
 		{path:"/search",component:Search},
 		{path:"/shoplist",component:shopList},
+		{path:"/detail",component:ShopDetail},
 		{path:"/",redirect:"/home"},
 	]
 })

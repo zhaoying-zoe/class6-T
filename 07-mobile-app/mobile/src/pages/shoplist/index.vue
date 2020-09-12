@@ -84,10 +84,10 @@
             display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
             -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
             -webkit-line-clamp: 2; 
-            width: 5rem;
-            white-space:pre-line;
             overflow: hidden;  /** 隐藏超出的内容 **/
             text-overflow: ellipsis;
+            width: 5rem;
+            white-space:pre-line;
             margin-bottom: .1rem;
         }
         .shoplist-desc{

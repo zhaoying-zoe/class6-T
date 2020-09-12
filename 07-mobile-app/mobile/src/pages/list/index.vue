@@ -47,11 +47,17 @@
             },
             // 组件加载完毕
             mounted(){
+                // 存this值
+                var _this = this;
                 // 获取icon数据
-                this.$store.dispatch(GET_LISTICONS);
-                // 第一次进组件获取数据
-                // this.$store.dispatch(GET_SHOP,id)
-                // handleImg(listIcon._id)
+                this.$store.dispatch(GET_LISTICONS)
+                .then(()=>{
+                    // 第一次进组件获取数据
+                    // this.$store.state.list.shop
+                    // console.log(_this.$store.state.list.listicons[0]._id);
+                    _this.$store.dispatch(GET_SHOP,_this.$store.state.list.listicons[0]._id)
+                    // console.log(_this.$store.state.list);
+                })
             },
             // 组件注册
             components: {

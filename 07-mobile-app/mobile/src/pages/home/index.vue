@@ -88,7 +88,7 @@
         },
         methods:{
             handleList(id){
-                console.log(id);
+                // console.log(id);
                 // {path:'/home',query: {id:'1'}}
                 this.$router.push({
                     path:'shoplist',

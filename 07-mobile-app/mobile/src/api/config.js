@@ -6,9 +6,12 @@ const API_CONFIG = {
 	getPositionAds: 			['/ads/positionAds','get'],
 	getCategoryIcons: 			['/categories/arrayCategories','get'],
 	getFloors: 					['/floors?limit=10','get'],
-	// 列表页
+	// 商品列表页面
 	getListIcons: 				['/categories/childArrayCategories','get'],
+	// 获取分类列表页面
 	getShopList: 				['/products/list','get'],
+	// 获取商品详情
+	getDetail: 					['/products/detail','get'],
 }
 
 module.exports = {

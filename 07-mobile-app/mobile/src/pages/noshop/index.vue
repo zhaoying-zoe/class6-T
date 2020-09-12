@@ -23,6 +23,7 @@
   <style scoped>
         .NoShop{
             width: 100%;
+            text-align: center;
         }
   </style>
   

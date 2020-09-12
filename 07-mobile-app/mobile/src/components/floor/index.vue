@@ -4,8 +4,15 @@
         <div v-for="(floor,index) in this.$store.state.floor.floorAds" :key="index">
             <div class="floor-title">{{floor.title}}</div>
             <van-row>
-                <van-col span="12" v-for="(product,productIndex) in floor.products" :key="productIndex">
-                    <div class="category-item">
+                <van-col 
+                    span="12" 
+                    v-for="(product,productIndex) in floor.products" 
+                    :key="productIndex"
+                >
+                    <div 
+                        class="category-item"
+                        @click="handleDetail(product._id)"
+                    >
                         <div class="category-image">
                             <a href="javascript:;">
                                 <img :src="product.mainImage">
@@ -35,8 +42,17 @@
         },
         methods: {
             shopBtn:function(){
-                // 
+                // 点击购物车图标
                 console.log(2333)
+            },
+            handleDetail(id){
+                // console.log(this.$store.state.floor)
+                // console.log(id)
+                this.$router.push({
+                    path:'detail',
+                    query:{id:id}
+                })
+                // console.log(6789);
             }
         },
         mounted(){

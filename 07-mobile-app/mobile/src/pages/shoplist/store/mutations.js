@@ -5,6 +5,6 @@ export default {
     [GET_SHOPLIST](state,shops){
         // console.log(state,shops);
         state.shoplist = shops;
-        console.log(state,shops);
+        // console.log(state,shops);
     },
 }
