@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>026-圣杯布局.html</title>
+    <style>
+        .wraper{
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            display: flex; /*块状元素、弹性布局*/
+            flex-direction: column; /*使项目垂直排列*/
+            overflow: hidden;/*配合resize使用*/
+            resize: both;
+        }
+        .header,.footer,.right,.left{
+            flex: 0 0 20%;
+            border: 1px solid green;
+            box-sizing: border-box;
+        }
+        .contain{
+            flex: 1 1 auto;
+            display: flex;
+        }
+        .center{
+            flex: 1 1 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <div class="header">header</div>
+        <div class="contain">
+            <div class="left">left</div>
+            <div class="center">center</div>
+            <div class="right">right</div>
+        </div>
+        <div class="footer">footer</div>
+    </div>    
+</body>
+</html>
