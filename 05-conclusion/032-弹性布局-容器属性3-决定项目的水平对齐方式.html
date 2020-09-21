@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>032-弹性布局-容器属性3-决定项目的水平对齐方式.html</title>
+    <style>
+        .father{
+            width: 600px;
+            border: 1px solid #000;
+            display: flex;
+            box-sizing: border-box;
+            margin: 200px auto;
+            /* 左对齐 */
+            /*justify-content: flex-start;*/
+            /* 右对齐 */
+            /*justify-content: flex-end;*/
+            /* 居中 */
+            /*justify-content: center;*/
+            /* 两端对齐,项目之间的间隔都相等。 */
+            /*justify-content: space-between;*/
+            /* 每个项目两侧的间隔相等。所以,项目之间的间隔比项目与边框的间隔大一倍。 */
+            justify-content: space-around;
+        }
+        .son1{
+            /* float: left; */
+            width: 100px;
+            background-color: blue;
+        }
+        .son2{
+            /* float: left; */
+            width: 200px;
+            background-color: red;
+        }
+        .son3{
+            /* float: left; */
+            width: 200px;
+            background-color: rgb(45, 187, 52);
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son1">块状盒子</div>
+        <div class="son2">行内块状盒子</div>
+        <div class="son3">flex布局后float、clear和vertical-align属性失效</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>028-弹性布局-把元素变为弹性盒子.html</title>
+    <style>
+        .father{
+            width: 900px;
+            border: 1px solid #000;
+            display: flex;
+            box-sizing: border-box;
+            margin: 200px auto;
+        }
+        .son1{
+            float: left;
+            width: 200px;
+            background-color: blue;
+        }
+        .son2{
+            float: left;
+            width: 300px;
+            background-color: red;
+        }
+        .son3{
+            /* float: left; */
+            width: 400px;
+            background-color: rgb(45, 187, 52);
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son1">块状盒子</div>
+        <div class="son2">行内块状盒子</div>
+        <div class="son3">flex 布局后float clear 和 vertical-align 属性失效</div>
+    </div>
+</body>
+</html>

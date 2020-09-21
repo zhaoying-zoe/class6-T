@@ -1,0 +1,110 @@
+h1{
+	margin: 50px auto;
+	text-align: center;
+}
+.father{
+	width: 100%;
+	height: 300px;
+	border: 1px solid #000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/* 点数盒子的父盒子样式共通 */
+.son1,.son2,.son3,.son4,#son4,.son5,.son6{
+	width: 200px;
+	height: 200px;
+	border: 1px solid #000;
+	display: flex;
+	border-radius: 10px;
+}
+/* 点数盒子样式共通 */
+.son1>div,.son2>div,.son3>div,.son4>div,.son5>div>span,.son6>div>span{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: red;
+}
+/* span共通样式 */
+span{
+	display: block;
+}
+/* 1号盒子的样式 */
+.son1{
+	justify-content: center;
+	align-items: center;
+}
+/* 2号盒子的样式 */
+.son2{
+	justify-content: space-between;
+	align-items: flex-end;
+}
+/* 2号盒子的第一个点数盒子的样式 */
+.son2>div:nth-child(1){
+	align-self: flex-start;
+}
+/* 3号盒子的样式 */
+.son3{
+	justify-content: space-between;
+}
+.son3>div:nth-child(2){
+	align-self: center;
+}
+.son3>div:nth-child(3){
+	align-self: flex-end;
+}
+
+/* .son4用了margin值的方法 */
+/*
+.son4{
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.son4>div:nth-child(1){
+	margin-right: 100px;
+	margin-bottom: 100px;
+}
+*/
+
+/* #son4没用margin值的方法 */
+#son4{
+	/* 换行:使两个div盒子呈水平排列 👇 */
+	flex-wrap: wrap;
+}
+#son4>div{
+	width: 100%;
+	height: 50%;
+	display: flex;
+	/*align-items: flex-end;*/
+	justify-content: space-between;
+}
+#son4>div:last-child{
+	align-items: flex-end;
+}
+#son4>div span{
+	width: 50px;
+	height: 50px;
+	background-color: red;
+	border-radius: 50%;
+}
+
+/* .son5样式 */
+.son5,.son6{
+	flex-wrap: wrap;
+}
+.son5>div,.son6>div{
+	width: 100%;
+	height: 33.3%;
+	display: flex;
+	justify-content: space-between;
+}
+.son5>div:last-child,.son6>div:last-child{
+	align-items: flex-end;
+}
+.son5>div:nth-child(2){
+	align-items: center;
+	justify-content: center;
+}
+.son6>div:nth-child(2){
+	align-items: center;
+}

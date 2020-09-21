@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>037-弹性布局-项目属性3-flex-shrink.html</title>
+    <style>
+        .father{
+            width: 900px;
+            border: 1px solid #000;
+            display: flex;
+            box-sizing: border-box;
+            margin: 50px auto;
+        }
+        .son1{
+        	flex-shrink: 1;
+            width: 200px;
+            background-color: blue;
+        }
+        .son2{
+        	flex-shrink: 1;
+            width: 200px;
+            background-color: red;
+        }
+        .son3{
+        	flex-shrink: 0;
+            width: 200px;
+            background-color: rgb(45, 187, 52);
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        flex-shrink 项目的缩小比例,默认为1,即如果空间不足,该项目将缩小
+    </h1>
+    <h2>
+        如果所有项目的flex-shrink属性都为1,当空间不足时,都将等比例缩小
+    </h2>
+    <h2>
+        如果一个项目的flex-shrink属性为0,其他项目都为1,则空间不足时,前者不缩小
+    </h2>
+    <div class="father">
+        <div class="son1">0</div>
+        <div class="son2">1</div>
+        <div class="son3">2</div>
+    </div>
+</body>
+</html>

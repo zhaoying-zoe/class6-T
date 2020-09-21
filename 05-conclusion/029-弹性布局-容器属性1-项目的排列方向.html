@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>029-弹性布局-容器属性1-项目的排列方向.html</title>
+    <style>
+        .father{
+            width: 900px;
+            border: 1px solid #000;
+            display: flex;
+            box-sizing: border-box;
+            margin: 200px auto;
+            /*垂直排列,上端开始*/
+            /* flex-direction: column; */
+            /*垂直排列,下端开始*/
+            /* flex-direction: column-reverse; */
+            /*水平排列,左端起点*/
+            /* flex-direction: row; */
+            /*水平排列,右端起点*/
+            flex-direction: row-reverse;
+        }
+        .son1{
+            /* float: left; */
+            width: 200px;
+            background-color: blue;
+        }
+        .son2{
+            /* float: left; */
+            width: 300px;
+            background-color: red;
+        }
+        .son3{
+            /* float: left; */
+            width: 400px;
+            background-color: rgb(45, 187, 52);
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son1">块状盒子</div>
+        <div class="son2">行内块状盒子</div>
+        <div class="son3">flex布局后float、clear和vertical-align属性失效</div>
+    </div>
+</body>
+</html>

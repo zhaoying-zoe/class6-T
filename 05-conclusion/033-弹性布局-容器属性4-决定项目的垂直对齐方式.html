@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>033-弹性布局-容器属性4-决定项目的垂直对齐方式.html</title>
+    <style>
+        .father{
+            width: 600px;
+            height: 400px;
+            border: 1px solid #000;
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            margin: 200px auto;
+            /*
+                flex-start：起点对齐
+                flex-end：终点对齐
+                center：中点对齐
+                baseline: 项目的第一行文字的基线对齐
+             */
+            /*align-content: stretch;*/
+            /*align-content: flex-start;*/
+            /*align-content: flex-end;*/
+            /* 父元素所有的内容都垂直居中显示(无论是否独占一行) */
+            /*align-content: center;*/
+            /*align-content: baseline;*/
+
+            /*align-items: stretch;*/
+            /* 对于独占一行的元素,每个元素都垂直居上显示 */
+            align-items: baseline;
+            /* 对于独占一行的元素,每个元素都垂直居上显示 */
+            /*align-items: flex-start;*/
+            /* 对于独占一行的元素,每个元素都垂直居下显示 */
+            /*align-items: flex-end;*/
+            /* 对于独占一行的元素,每个元素都垂直居中显示 */
+            /*align-items: center;*/
+        }
+        .son1{
+            /* float: left; */
+            width: 200px;
+            background-color: blue;
+        }
+        .son2{
+            /* float: left; */
+            width: 300px;
+            background-color: red;
+        }
+        .son3{
+            /* float: left; */
+            width: 400px;
+            background-color: rgb(45, 187, 52);
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son1">块状盒子</div>
+        <div class="son2">行内块状盒子</div>
+        <div class="son3">align-items/align-content的区别:前者针对每个元素,后者把父元素内所有的元素当成一个元素</div>
+    </div>
+</body>
+</html>
