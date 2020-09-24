@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>026-选项卡.html</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .title div{
+            display: inline-block;
+        }
+        .active{
+            color: #ff6700;
+            text-decoration: underline;
+        }
+        ul li{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            background-color: #ff6700;
+            margin: 10px 0px 10px 10px;
+            display: none;
+            text-align: center;
+            line-height: 200px;
+            font-size: 50px;
+        }
+        ul>li:first-child{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <div class="btn active"><a href="#">选项一</a></div>
+        <div class="btn"><a href="#">选项二</a></div>
+        <div class="btn"><a href="#">选项三</a></div>
+        <div class="btn"><a href="#">选项四</a></div>
+    </div>
+    <ul>
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li class="item">4</li>
+    </ul>
+</body>
+<script type="text/javascript">
+    // 目的:点击选项的文字,切换不同的item选项
+    // 1.获取元素
+    // 2.绑定事件
+    // 3.点击事件
+    // 4.切换目标选项和对应按钮
+    // 5.隐藏其他选项和其他按钮
+    var aBtn = document.querySelectorAll('.btn');
+    var aItem = document.querySelectorAll('.item');
+    for(let i = 0;i<aBtn.length;i++){
+        aBtn[i].onmouseover = function(){
+            for(let i = 0;i<aBtn.length;i++){
+                // 清空操作
+                
+                // 改变按钮的类名
+                aBtn[i].className = 'btn';
+                // 改变选项的属性
+                aItem[i].style.display='none';
+            }
+            // console.log(this);
+            // 切换目标按钮
+            this.className = 'btn active';
+            // 切换目标选项
+            aItem[i].style.display='block';
+        }
+    }
+
+</script>
+</html>

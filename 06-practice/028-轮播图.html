@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>028-轮播图.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.carousel{
+			width: 1200px;
+			height: 500px;
+			position: absolute;
+			top: 10%;
+			left: 10%;
+			box-sizing: border-box;
+		}
+		.carousel-img{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		.carousel-img li{
+			width: 1200px;
+			height: 500px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		.carousel-img li img{
+			/*display: none;*/
+			width: 100%;
+			height: 100%;
+		}
+		.carousel-btn-l,.carousel-btn-r{
+			position: absolute;
+			top: 50%;
+			left: 0px;
+			margin-top: -40px;
+			height: 0px;
+			display: inline-block;
+			width: 40px;
+			height: 80px;
+			font-size: 40px;
+			line-height: 80px;
+			margin-left: auto;
+			margin-right: auto;
+			color: #ccc;
+			/*background-color: #ccc;*/
+			cursor: pointer;
+		}
+		.carousel-btn-l:hover,.carousel-btn-r:hover{
+			color: #fff;
+			background-color: #ccc;
+		}
+		.carousel-btn-l{
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+		.carousel-btn-r{
+			left: 100%;
+			margin-left: -40px;
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+		}
+		.carousel-item li:first-child{
+			right: 110px;
+		}
+		.carousel-item li{
+			position: absolute;
+			right: 80px;
+			bottom: 40px;
+			width: 6px;
+			height: 6px;
+			background-color: #ccc;
+			display: inline-block;
+			border-radius: 50%;
+			border: 2px solid #b1b0b3;
+			cursor: pointer;
+		}
+		.carousel-item li:last-child{
+			right: 50px;
+		}
+		.carousel-item li:hover{
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel">
+		<ul class="carousel-img">
+			<li>
+				<img src="images/carousel-1-1.webp">
+			</li>
+			<li>
+				<img src="images/carousel-2.webp">
+			</li>
+			<li>
+				<img src="images/carousel-3.webp">
+			</li>
+		</ul>
+		<sapn class="carousel-btn-l">&lt;</sapn>
+		<sapn class="carousel-btn-r">&gt;</sapn>
+		<ul class="carousel-item">
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

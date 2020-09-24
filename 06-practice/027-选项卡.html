@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>027-选项卡.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.btn-item{
+			margin-left: 20px;
+			overflow: hidden;
+		}
+		.btn{
+			float: left;
+			margin-right: 5px;
+		}
+		.active{
+			color: #ff6700;
+			text-decoration: underline;
+		}
+		.item-list{
+			margin: 20px 0px 10px 30px;
+		}
+		.item{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			background-color: #ff6700;
+			display: none;
+			font-size: 50px;
+			color: #fff;
+			line-height: 200px;
+			text-align: center;
+		}
+		.item:first-child{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<ul class="btn-item">
+		<li class="btn active">按钮1</li>
+		<li class="btn">按钮2</li>
+		<li class="btn">按钮3</li>
+		<li class="btn">按钮4</li>
+	</ul>
+	<ul class="item-list">
+		<li class="item">1</li>
+		<li class="item">2</li>
+		<li class="item">3</li>
+		<li class="item">4</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	// 1.获取元素
+	// 2.循环按钮元素
+	// 3.给按钮添加绑定事件
+	// 4.点击按钮切换对应按钮及选项 并 重置其他按钮及选项
+	var aBtn = document.querySelectorAll('.btn');
+	var aItem = document.querySelectorAll('.item');
+	// console.log(aBtn);
+	// console.log(aItem);
+	for(let i = 0;i<aBtn.length;i++){
+		aBtn[i].onclick = function(){
+			for(let i = 0;i<aBtn.length;i++){
+				// 重置其他按钮的类名(属性)
+				aBtn[i].className = 'btn';
+				// 重置其他选项的属性(类名)
+				aItem[i].style.display = 'none';
+			}
+			// console.log(aBtn[i]);
+			// 切换对应的按钮
+			this.className = 'btn active';
+			// 切换对应选项
+			aItem[i].style.display = 'block';
+		}
+	}
+</script>
+</html>
