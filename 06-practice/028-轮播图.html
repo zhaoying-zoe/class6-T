@@ -10,7 +10,7 @@
 			padding: 0;
 			list-style: none;
 		}
-		.carousel{
+		#carousel{
 			width: 1200px;
 			height: 500px;
 			position: absolute;
@@ -18,6 +18,7 @@
 			left: 10%;
 			box-sizing: border-box;
 		}
+		/* 轮播图图片 */
 		.carousel-img{
 			position: absolute;
 			top: 0px;
@@ -29,13 +30,27 @@
 			position: absolute;
 			top: 0px;
 			left: 0px;
+			z-index: 0;
+			opacity: 0.5;
+			transition: all 1s;
+		}
+		.carousel-img li:first-child{
+			z-index: 1;
+			opacity: 1;
 		}
 		.carousel-img li img{
 			/*display: none;*/
 			width: 100%;
 			height: 100%;
 		}
-		.carousel-btn-l,.carousel-btn-r{
+/*		.carousel-img li:first-child{
+			z-index: 20;
+		}
+		.carousel-img li:last-child{
+			z-index: 20;
+		}*/
+		/* 轮播图两侧按钮 */
+		#carousel-btn-l,#carousel-btn-r{
 			position: absolute;
 			top: 50%;
 			left: 0px;
@@ -51,25 +66,28 @@
 			color: #ccc;
 			/*background-color: #ccc;*/
 			cursor: pointer;
+			z-index: 999;
 		}
-		.carousel-btn-l:hover,.carousel-btn-r:hover{
+		#carousel-btn-l:hover,#carousel-btn-r:hover{
 			color: #fff;
-			background-color: #ccc;
+			background-color: rgba(0,0,0,0.5);
 		}
-		.carousel-btn-l{
+		#carousel-btn-l{
 			border-top-right-radius: 10px;
 			border-bottom-right-radius: 10px;
 		}
-		.carousel-btn-r{
+		#carousel-btn-r{
 			left: 100%;
 			margin-left: -40px;
 			border-top-left-radius: 10px;
 			border-bottom-left-radius: 10px;
 		}
+		/* 轮播图底部圆点 */
 		.carousel-item li:first-child{
 			right: 110px;
 		}
 		.carousel-item li{
+			z-index: 999;
 			position: absolute;
 			right: 80px;
 			bottom: 40px;
@@ -87,10 +105,13 @@
 		.carousel-item li:hover{
 			background-color: #fff;
 		}
+		.carousel-item .active{
+			background-color: #fff;
+		}
 	</style>
 </head>
 <body>
-	<div class="carousel">
+	<div id="carousel">
 		<ul class="carousel-img">
 			<li>
 				<img src="images/carousel-1-1.webp">
@@ -102,16 +123,82 @@
 				<img src="images/carousel-3.webp">
 			</li>
 		</ul>
-		<sapn class="carousel-btn-l">&lt;</sapn>
-		<sapn class="carousel-btn-r">&gt;</sapn>
+		<sapn id="carousel-btn-l">&lt;</sapn>
+		<sapn id="carousel-btn-r">&gt;</sapn>
 		<ul class="carousel-item">
-			<li></li>
+			<li class="active"></li>
 			<li></li>
 			<li></li>
 		</ul>
 	</div>
 </body>
 <script type="text/javascript">
+	// 获取轮播图最外面父元素
+	var oCategory = document.getElementById('carousel');
+	// 获取轮播图元素
+	var aLi = document.querySelectorAll('.carousel-img li');
+	// console.log(aLi);
+	// 获取按钮元素
+	var oBtn1 = document.getElementById('carousel-btn-l');
+	var oBtn2 = document.getElementById('carousel-btn-r');
+	// 获取底部圆点按钮
+	var aBtns = document.querySelectorAll('.carousel-item li');
+	// 定义默认值,用来做当前元素的下标
+	var now = 0;
+	// 定义定时器的变量
+	var timer = null;
 
+	// 抽取公共函数
+	function click(){
+		for(let i = 0;i<aLi.length;i++){
+			aLi[i].style.zIndex = 2;
+			aLi[i].style.opacity = 0.5;
+			aBtns[i].className = '';
+		}
+		aLi[now].style.zIndex = 20;
+		aLi[now].style.opacity = 1;
+		aBtns[now].className = 'active';
+	}
+
+	// 右侧按钮点击
+	oBtn2.onclick = function(){
+		now ++;
+		// 判断now的值
+		if(now > aLi.length - 1){
+			now = 0;
+		}
+		click();
+	}
+
+	// 左侧按钮点击
+	oBtn1.onclick = function(){
+		now --;
+		// 判断now的值
+		if(now < 0){
+			now = aLi.length - 1;
+		}
+		click();
+	}
+
+	// 底部圆点点击
+	for(let i = 0;i<aBtns.length;i++){
+		aBtns[i].onclick = function(){
+			// now的值我当前按钮的下标值
+			now = i;
+			// 执行点击函数
+			click();
+		}
+	}
+
+	// 自动轮播功能
+	timer = setInterval(oBtn2.onclick,5000);
+	// 关闭自动轮播
+	oCategory.onmouseover = function(){
+		clearInterval(timer)
+	}
+	// 打开自动轮播
+	oCategory.onmouseout = function(){
+		timer = setInterval(oBtn2.onclick,5000);
+	}
 </script>
 </html>

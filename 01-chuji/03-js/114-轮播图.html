@@ -150,10 +150,12 @@
 	}
 	// 4.轮播效果
 	timer = setInterval(oBtnRight.onclick,5000);
-		oCarousel.onmouseover = function(){
+	// 关闭定时器
+	oCarousel.onmouseover = function(){
 		clearInterval(timer);
-	} 
-		oCarousel.onmouseout = function(){
+	}
+	// 打开定时器
+	oCarousel.onmouseout = function(){
 		timer = setInterval(oBtnRight.onclick,5000);
 	} 
 </script>
