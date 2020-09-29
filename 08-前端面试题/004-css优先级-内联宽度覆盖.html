@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>004-css优先级-内联宽度覆盖.html</title>
+</head>
+<body>
+	<p>
+		示例: <br/>
+		<img src="./img/004.jpg" style="width: 480px !important">
+	</p>
+	<p>
+		方法四:js方法 <br/>
+		<img src="./img/004.jpg" style="width: 480px !important">
+	</p>
+	<p>
+		方法一: max-width <br>
+		<img src="./img/004.jpg" style="width: 480px !important;max-width:300px">
+	</p>
+	<p>
+		
+	</p>
+	<p>
+		方法二:transform:scale() <br>
+		<img src="./img/004.jpg" style="width: 480px !important;transform:scale(0.625,0.625)">
+	</p>
+	<p>
+		方法三:width:300px!important <br>
+		<img src="./img/004.jpg" style="width: 480px !important;width:300px!important">
+	</p>
+</body>
+<script type="text/javascript">
+	document.getElementsByTagName('img')[1].setAttribute('style','width:300px!important');
+</script>
+</html>
