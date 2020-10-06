@@ -12,6 +12,16 @@
 			border: 1px solid #000;
 			margin: 0px auto;
 		}
+		.father1{
+			width: 60%;
+			height: 400px;
+			border: 1px solid #000;
+			margin: 0px auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			/*align-content: center;*/
+		}
 		.div1{
 			width: 200px;
 			height: 200px;
@@ -31,6 +41,30 @@
 			margin-left: -100px;
 			margin-top: -100px;
 		}
+		.div3{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+		}
+		.div4{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+		.div5{
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
 	</style>
 </head>
 <body>
@@ -41,7 +75,22 @@
 	</div>
 	<div class="father">
 		<div class="div2">
-			方法二: 
+			方法二: margin-left: -width/2 + position: absolute(top:50% + left:50%)
+		</div>
+	</div>
+	<div class="father">
+		<div class="div3">
+			方法三: margin: auto + position: absolute(top:0 + left:0 + right:0 + bottom: 0)
+		</div>
+	</div>
+	<div class="father1">
+		<div class="div4">
+			方法四: margin: auto + position: absolute(top:0 + left:0 + right:0 + bottom: 0)
+		</div>
+	</div>
+	<div class="father1">
+		<div class="div5">
+			方法五: display: table-cell(表格)
 		</div>
 	</div>
 </body>
