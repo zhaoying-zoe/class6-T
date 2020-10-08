@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>042-ajax-post.html</title>
+</head>
+<body>
+    <input type="button" id="btn" value="请求数据">
+    <div id="html"></div>
+</body>
+<script>
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick = function(){
+        // 1.生成ajax对象
+        const oAjax = new XMLHttpRequest();
+        // console.log(oAjax);
+        // 2.建立连接(请求方法, 请求url, 同步、异步(true))
+        oAjax.open('POST','http://127.0.0.1:3000',true);
+        // 设置请求头信息(只能在open和send之间设置)
+        oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        // 3.发送请求
+        oAjax.send();
+        // 4.等待响应
+        oAjax.onreadystatechange = function(){// 返回数据
+            // console.log(oAjax.readyState);
+            // console.log(oAjax.responseText);
+            if(oAjax.readyState == 4){// 数据完全返回
+                if(oAjax.status == 200){// 状态码是200时,对数据进行操作
+                    // 容错处理(try catch)
+                    try{
+                        // console.log(oAjax.responseText);
+                        var data = oAjax.responseText;
+                        var obj = JSON.parse(data);
+                        console.log(obj);
+                        console.log(obj.des);
+                        document.getElementById('html').innerHTML = obj.des;
+                    }catch(err){
+                        console.log(err);
+                    }
+                }
+            }
+        }
+    }
+</script>
+</html>

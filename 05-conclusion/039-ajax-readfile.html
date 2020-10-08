@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>039-ajax-readfile.html</title>
+</head>
+<body>
+	<p>this is a ajax test</p>
+	<input type="button" value="请求数据" id="btn">
+</body>
+<script type="text/javascript">
+	document.getElementById('btn').onclick = function(){
+		console.log(78);
+		// 1. 定义电话
+		var ajax = new XMLHttpRequest();
+		// 2.建立连接(请求方法,ip地址,同步true 异步false)
+		ajax.open('GET','http://127.0.0.1:3001',true);
+		// 设置ajax请求头
+		ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		// 3,发送请求
+		ajax.send();
+		console.log(ajax);
+		// 4.等待服务器返回数据()
+		ajax.onreadystatechange = function(){
+			// console.log(ajax.readyState);
+			if(ajax.readystate == 4){
+				console.log(ajax.status);
+			}
+		}
+	}
+</script>
+</html>
