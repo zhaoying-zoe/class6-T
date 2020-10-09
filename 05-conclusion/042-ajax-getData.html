@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>041-ajax-get.html</title>
+    <title>042-ajax-getData.html</title>
 </head>
 <body>
+    <!-- ajax GET请求 -->
     <input type="button" id="btn" value="请求数据">
     <div id="html"></div>
 </body>
@@ -17,10 +18,11 @@
         const oAjax = new XMLHttpRequest();
         // console.log(oAjax);
         // 2.建立连接(请求方法, 请求url, 同步、异步(true))
-        oAjax.open('GET','http://127.0.0.1:3000/041-data.json',true);
+        oAjax.open('GET','http://127.0.0.1:3000/?name=tom',true);
         // 设置请求头信息(只能在open和send之间设置)
         oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
         // 3.发送请求
+        // 发送数据{"name":"晓猪","age":18,"des":"大水牛"}
         oAjax.send();
         // 4.等待响应
         oAjax.onreadystatechange = function(){// 返回数据
@@ -34,14 +36,14 @@
                         var data = oAjax.responseText;
                         var obj = JSON.parse(data);
                         console.log(obj);
-                        console.log(obj.des);
-                        document.getElementById('html').innerHTML = obj.des;
+                        // console.log(obj.des);
+                        // document.getElementById('html').innerHTML = obj.des;
                     }catch(err){
                         console.log(err);
                     }
-                }else{
-                    console.log("request failed ,status code "+oAjax.status)
                 }
+            }else{
+                console.log("request failed ,status code "+oAjax.status)
             }
         }
     }

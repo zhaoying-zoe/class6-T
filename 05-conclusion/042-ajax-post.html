@@ -7,6 +7,7 @@
     <title>042-ajax-post.html</title>
 </head>
 <body>
+    <!-- ajax POST请求 -->
     <input type="button" id="btn" value="请求数据">
     <div id="html"></div>
 </body>
@@ -21,7 +22,8 @@
         // 设置请求头信息(只能在open和send之间设置)
         oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
         // 3.发送请求
-        oAjax.send();
+        // 发送数据{"name":"晓猪","age":18,"des":"大水牛"}
+        oAjax.send('{"name":"晓猪","age":18,"des":"大水牛"}');
         // 4.等待响应
         oAjax.onreadystatechange = function(){// 返回数据
             // console.log(oAjax.readyState);
@@ -34,11 +36,13 @@
                         var data = oAjax.responseText;
                         var obj = JSON.parse(data);
                         console.log(obj);
-                        console.log(obj.des);
+                        // console.log(obj.des);
                         document.getElementById('html').innerHTML = obj.des;
                     }catch(err){
                         console.log(err);
                     }
+                }else{
+                    console.log("request failed ,status code "+oAjax.status)
                 }
             }
         }

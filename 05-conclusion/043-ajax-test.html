@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>043-ajax-test.html</title>
+</head>
+<body>
+    <!-- ajax 封装方法 -->
+    <input type="button" id="btn" value="请求数据">
+    <div id="html"></div>
+</body>
+<script>
+    var oBtn = document.getElementById('btn');
+    function ajax(method,url,data,fnSuccess,fnFail){
+        // 1.生成ajax对象
+        const oAjax = new XMLHttpRequest();
+        if(method.toUpperCase() == 'POST'){
+            // 2.建立连接(请求方法, 请求url, 同步、异步(true))
+            oAjax.open(method,url,true);
+            // 设置请求头信息(只能在open和send之间设置)
+            oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            // 3.发送请求
+            oAjax.send(data);
+        }else if(method.toUpperCase() == 'GET'){
+            if(data){
+                url = '/?' + data;
+            }
+            // 2.建立连接(请求方法, 请求url, 同步、异步(true))
+            oAjax.open(method,url,true);
+            // 设置请求头信息(只能在open和send之间设置)
+            oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            // 3.发送请求
+            oAjax.send();
+        }
+        // 4.等待响应
+        oAjax.onreadystatechange = function(){// 返回数据
+            // console.log(oAjax.readyState);
+            // console.log(oAjax.responseText);
+            if(oAjax.readyState == 4){// 数据完全返回
+                if(oAjax.status == 200){// 状态码是200时,对数据进行操作
+                    // 容错处理(try catch)
+                    try{
+                        // 你向ajax后台的程序发送xmlhttp请求的时候
+                        // 后台程序接到请求会进行处理,处理结束后,可以返回一串数据给前台
+                        // 这个就是responseText
+                        var data = oAjax.responseText;
+                        // 判断传入的参数是否为函数
+                        typeof fnSuccess == 'function' && fnSuccess(data);
+                    }catch(err){
+                        console.log(err);
+                    }
+                }else{
+                    typeof fnFail == 'function' && fnFail();
+                }
+            }
+        }
+    }
+    oBtn.onclick = function(){
+        /*
+        ajax(
+            'post',
+            'http://127.0.0.1:3000',
+            '{"name":"晓猪","age":18,"des":"大水牛"}',
+            function(data){
+                var obj = JSON.parse(data);
+                console.log(obj);
+                if(obj.des){
+                    document.getElementById('html').innerHTML = obj.des;
+                }
+            },
+            function(){
+                console.log("request failed ,status code "+oAjax.status)
+            }
+        );
+        
+        ajax(
+            'get',
+            'http://127.0.0.1:3000',
+            'name=tom',
+            function(data){
+                var obj = JSON.parse(data);
+                console.log(obj);
+                if(obj.des){
+                    document.getElementById('html').innerHTML = obj.des;
+                }
+            },
+            function(){
+                console.log("request failed ,status code "+oAjax.status)
+            }
+        );*/
+        ajax(
+            'get',
+            'http://127.0.0.1:3000/043-data.json',
+            '',
+            function(data){
+                var obj = JSON.parse(data);
+                console.log(obj);
+                // 生成一个ul列表 并 生成对应数据的li 添加到页面中
+                // 生成ul
+                let oUl = document.createElement('ul');
+                // 生成li并把数据赋给li
+                for(let i = 0;i<obj.length;i++){
+                    // 生成li
+                    let oLi = document.createElement('li');
+                    oLi.innerHTML = ' 姓名:' + obj[i].name + ' 年龄:' + obj[i].age + ' 描述:' + obj[i].des;
+                    // console.log(oLi);
+                    // 把li插入到ul中
+                    oUl.appendChild(oLi);
+                }
+                // 把ul添加到页面中
+                document.body.appendChild(oUl);
+                if(obj.des){
+                    document.getElementById('html').innerHTML = obj.des;
+                }
+            },
+            function(){
+                console.log("request failed ,status code "+oAjax.status)
+            }
+        );
+    }
+</script>
+</html>
