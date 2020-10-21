@@ -52,7 +52,7 @@
                         console.log(err);
                     }
                 }else{
-                    typeof fnFail == 'function' && fnFail();
+                    typeof fnFail == 'function' && fnFail(oAjax.status);
                 }
             }
         }
@@ -70,8 +70,8 @@
                     document.getElementById('html').innerHTML = obj.des;
                 }
             },
-            function(){
-                console.log("request failed ,status code "+oAjax.status)
+            function(err){
+                console.log(err)
             }
         );
         
@@ -86,8 +86,8 @@
                     document.getElementById('html').innerHTML = obj.des;
                 }
             },
-            function(){
-                console.log("request failed ,status code "+oAjax.status)
+            function(err){
+                console.log(err)
             }
         );*/
         ajax(
@@ -101,8 +101,8 @@
                     document.getElementById('html').innerHTML = obj.des;
                 }
             },
-            function(){
-                console.log("request failed ,status code "+oAjax.status)
+            function(err){
+                console.log(err)
             }
         );
     }

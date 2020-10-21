@@ -1,13 +1,22 @@
 const http = require('http');// 核心模块
 const fs = require('fs');// 核心模块
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 3001;
 const url = require('url');// 核心模块
 
 const server = http.createServer((req, res) => {
 	// 浏览器请求的url (req.url)
 	// console.log(req.url);
 
+	// 允许跨域
+	res.setHeader('Access-Control-Allow-Origin','*')
+	// 设置允许的访问的响应头信息(设置多个的话,打逗号)
+	res.setHeader("Access-Control-Expose-Headers",'Date,Connection,Zhuzhu-test')
+	// 设置响应头字段信息
+	res.setHeader("Content-Type",'text/plain');
+	// 自定义响应头字段信息
+	res.setHeader("Zhuzhu-test",'Zhuzhu-test');
+	
 	// 发送数据时使用的方法 (req.method)
 	// console.log(req.method);
 	if(req.method == "POST"){

@@ -42,6 +42,11 @@
                 if(oAjax.status == 200){// 状态码是200时,对数据进行操作
                     // 容错处理(try catch)
                     try{
+                        // 获取响应头字段信息
+                        console.log(oAjax.getResponseHeader('Date'));
+                        console.log(oAjax.getResponseHeader('Connection'));
+                        console.log(oAjax.getResponseHeader('Content-Type'));
+                        console.log(oAjax.getResponseHeader('Zhuzhu-test'));
                         // 你向ajax后台的程序发送xmlhttp请求的时候
                         // 后台程序接到请求会进行处理,处理结束后,可以返回一串数据给前台
                         // 这个就是responseText
@@ -56,43 +61,14 @@
                 }
             }
         }
+        oAjax.onerror = function(){
+            console.log('request err')
+        }
     }
     oBtn.onclick = function(){
-        /*
-        ajax(
-            'post',
-            'http://127.0.0.1:3000',
-            '{"name":"晓猪","age":18,"des":"大水牛"}',
-            function(data){
-                var obj = JSON.parse(data);
-                console.log(obj);
-                if(obj.des){
-                    document.getElementById('html').innerHTML = obj.des;
-                }
-            },
-            function(err){
-                console.log(err))
-            }
-        );
-        
         ajax(
             'get',
-            'http://127.0.0.1:3000',
-            'name=tom',
-            function(data){
-                var obj = JSON.parse(data);
-                console.log(obj);
-                if(obj.des){
-                    document.getElementById('html').innerHTML = obj.des;
-                }
-            },
-            function(err){
-                console.log(err))
-            }
-        );*/
-        ajax(
-            'get',
-            'http://127.0.0.1:3000/043-data.json',
+            'http://127.0.0.1:3001/043-data.json',
             '',
             function(data){
                 var obj = JSON.parse(data);
@@ -116,7 +92,7 @@
                 }
             },
             function(err){
-                console.log(err))
+                console.log("request failed ,status code " + err)
             }
         );
     }
