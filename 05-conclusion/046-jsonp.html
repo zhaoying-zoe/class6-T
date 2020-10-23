@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>046-jsonp.html</title>
+</head>
+<body>
+    <input type="button" value="请求数据" id="btn">
+</body>
+<script>
+    var oBtn = document.getElementById('btn');
+    function handleData(data){
+        // console.log('this is handleData');
+        console.log(data);
+    }
+    oBtn.onclick = function(){
+        console.log('oBtn');
+        let script = document.createElement('script');
+        script.src = "http://127.0.0.1:3001/?getData=handleData";
+        document.body.appendChild(script);
+    }
+</script>
+<!-- <script src="http://127.0.0.1:3001/046-data.js"></script> -->
+<!-- <script src="http://127.0.0.1:3001/?getData=handleData"></script> -->
+</html>
