@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
 	<title>044-async处理ajax.html</title>
@@ -23,6 +23,8 @@
 		})
 	}
 	async function fn(uel){
+        // 接收的都是数据
+        // await 等待promise处理好数据
 		const data1 = await getDataPromise('https://api.github.com/users/zhaoying-zoe');
 		console.log(data1);
 		const data2 = await getDataPromise(data1.followers_url);
@@ -31,10 +33,39 @@
 		console.log(data3);
 		return data3;
 	}
-	const promise = fn()
-	promise
-	.then((data)=>{
-		console.log(data);
-	})
+	// const promise = fn()
+	// promise
+	// .then((data)=>{
+	// 	console.log(data);
+	// })
+
+
+	function getDataPromise0(){
+		return new Promise((resolve,reject)=>{
+			$.ajax({
+				url: 'https://api.github.com/users/zhaoying-zoe',
+				success: (data)=>{
+					resolve(data);
+				},
+				error:(jqXHR,statusMsg)=>{
+					reject(statusMsg);
+				}
+			})
+		})
+	}
+    // 接收的都是数据
+    const data1 = getDataPromise0();
+    console.log(data1);
+    data1.then(() => {
+        console.log(true);
+    })
+
+    async function fn() {
+        obj1 = {name:'tom'};
+        const obj = await obj1.name === 'tom';
+        return obj;
+    };
+
+    console.log(fn());
 </script>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试题.html</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Foo() {
+        getName = function() {
+            console.log('1', 'AAA');
+            return this;
+        }
+    };
+    Foo.getName = function() {
+        console.log('2', 'BBB');
+    }
+    Foo.prototype.getName = function() {
+        console.log('3', 'CCC');
+    }
+    var getName = function() {
+        console.log('4', 'DDD');
+    }
+    function getName() {
+        console.log('5', 'EEE');
+    }
+    Foo.getName(); // '2', 'BBB'
+    getName(); // '4', 'DDD'
+    // Foo().getName(); // Cannot read property 'getName' of undefined
+    getName(); // '4', 'DDD'
+    new Foo.getName(); // '2', 'BBB'   
+    (new Foo()).getName(); // '3', 'CCC'   new出来个实例  实例上的getName方法
+</script>
+</html>

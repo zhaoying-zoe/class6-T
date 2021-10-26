@@ -38,11 +38,12 @@
 	oBtn.onclick = function(){//点击时触发动画
 		timer = setInterval(function(){//设置定时器:为了让动画持续进行
 			if (oBox.offsetLeft == 400) {//如果oBox.offsetLeft等于400,需要停止定时器
-			clearInterval(timer);//关闭定时器
-		}else{
-				oBox.style.left = oBox.offsetLeft + 10 + 'px';//移动值为oBox.offsetLeft+10px
-			}
-		},30)
+                clearInterval(timer);//关闭定时器
+            }else{
+                    oBox.style.left = oBox.offsetLeft + 10 + 'px';//移动值为oBox.offsetLeft+10px
+                }
+            },
+        30)
 	}
 </script>
 </html>

@@ -41,6 +41,7 @@
 		},
 		// 挂载
 		mounted(){
+            this.$desc
 			console.log('mounted:::');
 			console.log('mounted:::',this.$data);// obj
 			console.log('mounted:::',this.$el);// dom
@@ -65,7 +66,7 @@
 			console.log('beforeDestroy:::');
 			console.log('beforeDestroy:::',this.$data);// obj
 			console.log('beforeDestroy:::',this.$el);// dom
-			console.log('beforeDestroy:::',this.$refs);// {p1: p}
+			console.log('beforeDestroy:::',this.$refs);// {p1: undefined}
 		},
 		// 销毁
 		destroyed(){

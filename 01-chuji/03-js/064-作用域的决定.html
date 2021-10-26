@@ -4,23 +4,24 @@
 	<meta charset="UTF-8">
 	<title>064-作用域的决定.html</title>
 	<script type="text/javascript">
-		//案例1
-		/*var i = 233;
-		function fn1(){
-			var i = 23333;//执行时是233，但在函数内部是23333；所以是23333；
+		// 案例1
+		var i = 233;
+		function fn1() {
+			var i = 23333;// 执行时是233,但在函数内部是23333,所以是23333;
 			return i;
 		}
 		console.log(i);
-		console.log(fn1());*/
-		//案例2
-		var i = 12;
-		function fn1(){
-			console.log(i);
+		console.log(fn1());
+		// 案例2
+		var p = 12;
+		function fn3() {
+			console.log(p);
 		}
-		function fn2(){
-			var i = 13;
-			fn1();
+		function fn2() {
+			var p = 13;
+			fn3();
 		}
+        fn2();
 	</script>
 </head>
 <body>
