@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-v-on-其他修饰符-.passive.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#largeBox{
+			width: 400px;
+			height: 400px;
+			margin: 50px auto;
+			background-color: red;
+			border: 1px solid #000;
+		}
+		#bigBox{
+			width: 300px;
+			height: 300px;
+			margin: 50px auto;
+			background-color: blue;
+			border: 1px solid #000;
+		}
+		#smallBox{
+			width: 200px;
+			height: 200px;
+			margin: 50px auto;
+			background-color: green;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- <div @click="largeBox()" id="largeBox">
+			<div @click.once="bigBox()" id="bigBox">
+				<div @click="smallBox()" id="smallBox"></div>
+			</div>
+		</div> -->
+        <div @scroll.passive.capture="onScroll" style="height: 2000px;">...</div>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// .once: 自身事件只触发一次,冒泡不会停止
+	// vm (ViewModel 的缩写)
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			count:0,
+		},
+		methods:{
+            onScroll() {
+                console.log(222);
+            },
+			largeBox:function(){
+				console.log('largeBox')
+			},
+			bigBox:function(){
+				console.log('bigBox')
+			},
+			smallBox:function(){
+				// 阻止事件冒泡:传入的参数应为$event
+				console.log('smallBox')
+			},
+		},
+        mounted () {
+            window.addEventListener('scroll', this.onScroll, true)
+        },
+	})
+</script>
+</html>
